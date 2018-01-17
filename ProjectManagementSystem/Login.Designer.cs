@@ -37,9 +37,9 @@
 			this.usernameLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.usernameLBL.Location = new System.Drawing.Point(51, 88);
 			this.usernameLBL.Name = "usernameLBL";
-			this.usernameLBL.Size = new System.Drawing.Size(65, 15);
+			this.usernameLBL.Size = new System.Drawing.Size(68, 15);
 			this.usernameLBL.TabIndex = 0;
-			this.usernameLBL.Text = "Username";
+			this.usernameLBL.Text = "Username:";
 			// 
 			// passwordLBL
 			// 
@@ -47,9 +47,9 @@
 			this.passwordLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.passwordLBL.Location = new System.Drawing.Point(51, 135);
 			this.passwordLBL.Name = "passwordLBL";
-			this.passwordLBL.Size = new System.Drawing.Size(61, 15);
+			this.passwordLBL.Size = new System.Drawing.Size(64, 15);
 			this.passwordLBL.TabIndex = 1;
-			this.passwordLBL.Text = "Password";
+			this.passwordLBL.Text = "Password:";
 			// 
 			// loginBTN
 			// 
