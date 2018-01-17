@@ -1,5 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
-using ProjectManagementSystem.org.unibl.etf.model.dto;
+using ProjectManagementSystem.dto;
 using System;
 using System.Data;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectManagementSystem.org.unibl.etf.model.dao.mysql
+namespace ProjectManagementSystem.dao.mysql
 {
     class MySqlUcesnikDao:UcesnikDao<Ucesnik>
     {

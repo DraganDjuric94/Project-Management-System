@@ -1,5 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
-using ProjectManagementSystem.org.unibl.etf.model.dto;
+using ProjectManagementSystem.dto;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectManagementSystem.org.unibl.etf.model.dao.mysql
+namespace ProjectManagementSystem.dao.mysql
 {
     class MySqlAktivnostDao : AktivnostDao<Aktivnost>
     {
@@ -185,7 +185,7 @@ namespace ProjectManagementSystem.org.unibl.etf.model.dao.mysql
                     UpdateUcesnikAktivnost(pair.Key.UcesnikID.Value, aktivnost.AktivnostID.Value, pair.Value);
                 }
             }
-            #region
+            #endregion
         }
 
         public void Delete(int aktivnostID)

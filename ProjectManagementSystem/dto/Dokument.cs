@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectManagementSystem.org.unibl.etf.model.dto
+namespace ProjectManagementSystem.dto
 {
     class Dokument
     {

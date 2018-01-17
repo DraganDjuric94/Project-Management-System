@@ -32,6 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -57,16 +58,16 @@
     <Compile Include="dao\DaoAbstractFactory.cs" />
     <Compile Include="dao\DokumentDao.cs" />
     <Compile Include="dao\KomentarDao.cs" />
-    <Compile Include="dao\MySqlAktivnostDao.cs" />
-    <Compile Include="dao\MySqlCjelinaDao.cs" />
-    <Compile Include="dao\MySqlDaoFactory.cs" />
-    <Compile Include="dao\MySqlDokumentDao.cs" />
-    <Compile Include="dao\MySqlKomentarDao.cs" />
-    <Compile Include="dao\MySqlProjekatDao.cs" />
-    <Compile Include="dao\MySqlRevizijaDokumentaDao.cs" />
-    <Compile Include="dao\MySqlTransakcijaDao.cs" />
-    <Compile Include="dao\MySqlUcesnikDao.cs" />
-    <Compile Include="dao\MySqlUlogaDao.cs" />
+    <Compile Include="dao\mysql\MySqlAktivnostDao.cs" />
+    <Compile Include="dao\mysql\MySqlCjelinaDao.cs" />
+    <Compile Include="dao\mysql\MySqlDaoFactory.cs" />
+    <Compile Include="dao\mysql\MySqlDokumentDao.cs" />
+    <Compile Include="dao\mysql\MySqlKomentarDao.cs" />
+    <Compile Include="dao\mysql\MySqlProjekatDao.cs" />
+    <Compile Include="dao\mysql\MySqlRevizijaDokumentaDao.cs" />
+    <Compile Include="dao\mysql\MySqlTransakcijaDao.cs" />
+    <Compile Include="dao\mysql\MySqlUcesnikDao.cs" />
+    <Compile Include="dao\mysql\MySqlUlogaDao.cs" />
     <Compile Include="dao\ProjekatDao.cs" />
     <Compile Include="dao\RevizijaDokumentaDao.cs" />
     <Compile Include="dao\TransakcijaDao.cs" />

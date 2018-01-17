@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
-using ProjectManagementSystem.org.unibl.etf.model.dto;
+using ProjectManagementSystem.dto;
 
-namespace ProjectManagementSystem.org.unibl.etf.model.dao.mysql
+namespace ProjectManagementSystem.dao.mysql
 {
     class MySqlUlogaDao : UlogaDao<Uloga>
     {

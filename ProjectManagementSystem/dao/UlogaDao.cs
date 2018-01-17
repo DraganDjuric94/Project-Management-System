@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ProjectManagementSystem.org.unibl.etf.model.dto;
+using ProjectManagementSystem.dto;
 
-namespace ProjectManagementSystem.org.unibl.etf.model.dao
+namespace ProjectManagementSystem.dao
 {
     interface UlogaDao<Uloga>: Crud<Uloga>
     {
