@@ -51,6 +51,36 @@
     <Compile Include="Administrator.Designer.cs">
       <DependentUpon>Administrator.cs</DependentUpon>
     </Compile>
+    <Compile Include="dao\AktivnostDao.cs" />
+    <Compile Include="dao\CjelinaDao.cs" />
+    <Compile Include="dao\Crud.cs" />
+    <Compile Include="dao\DaoAbstractFactory.cs" />
+    <Compile Include="dao\DokumentDao.cs" />
+    <Compile Include="dao\KomentarDao.cs" />
+    <Compile Include="dao\MySqlAktivnostDao.cs" />
+    <Compile Include="dao\MySqlCjelinaDao.cs" />
+    <Compile Include="dao\MySqlDaoFactory.cs" />
+    <Compile Include="dao\MySqlDokumentDao.cs" />
+    <Compile Include="dao\MySqlKomentarDao.cs" />
+    <Compile Include="dao\MySqlProjekatDao.cs" />
+    <Compile Include="dao\MySqlRevizijaDokumentaDao.cs" />
+    <Compile Include="dao\MySqlTransakcijaDao.cs" />
+    <Compile Include="dao\MySqlUcesnikDao.cs" />
+    <Compile Include="dao\MySqlUlogaDao.cs" />
+    <Compile Include="dao\ProjekatDao.cs" />
+    <Compile Include="dao\RevizijaDokumentaDao.cs" />
+    <Compile Include="dao\TransakcijaDao.cs" />
+    <Compile Include="dao\UcesnikDao.cs" />
+    <Compile Include="dao\UlogaDao.cs" />
+    <Compile Include="dto\Aktivnost.cs" />
+    <Compile Include="dto\Cjelina.cs" />
+    <Compile Include="dto\Dokument.cs" />
+    <Compile Include="dto\Komentar.cs" />
+    <Compile Include="dto\Projekat.cs" />
+    <Compile Include="dto\RevizijaDokumenta.cs" />
+    <Compile Include="dto\Transakcija.cs" />
+    <Compile Include="dto\Ucesnik.cs" />
+    <Compile Include="dto\Uloga.cs" />
     <Compile Include="NadzorAktivnostDetalji.cs">
       <SubType>UserControl</SubType>
     </Compile>
