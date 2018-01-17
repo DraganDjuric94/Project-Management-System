@@ -1,23 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProjectManagementSystem {
-    public partial class Login : Form {
-        public Login() {
+    public partial class ProjekatDetalji : UserControl {
+        public ProjekatDetalji() {
             InitializeComponent();
         }
-
-		private void loginBTN_Click(object sender, EventArgs e)
-		{
-            new Projekti().Show();
-		}
-
-	}
+    }
 }
