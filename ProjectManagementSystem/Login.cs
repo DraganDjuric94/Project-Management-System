@@ -13,5 +13,11 @@ namespace ProjectManagementSystem {
         public Login() {
             InitializeComponent();
         }
-    }
+
+		private void loginBTN_Click(object sender, EventArgs e)
+		{
+
+		}
+
+	}
 }
