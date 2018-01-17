@@ -9,13 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProjectManagementSystem {
-    public partial class UcesnikProjekatDetalji : UserControl {
-        public UcesnikProjekatDetalji() {
+    public partial class SefZadatakDetalji : UserControl {
+        public SefZadatakDetalji() {
             InitializeComponent();
-        }
-
-        private void label4_Click(object sender, EventArgs e) {
-
         }
     }
 }

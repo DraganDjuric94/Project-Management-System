@@ -16,17 +16,17 @@ namespace ProjectManagementSystem {
 
         private void projekat_Click(object sender, EventArgs e) {
             detaljiPNL.Controls.Clear();
-            detaljiPNL.Controls.Add(new ProjekatDetalji());
+            detaljiPNL.Controls.Add(new UcesnikProjekatDetalji());
         }
 
         private void zadatak_Click(object sender, EventArgs e) {
             detaljiPNL.Controls.Clear();
-            detaljiPNL.Controls.Add(new ZadatakDetalji());
+            detaljiPNL.Controls.Add(new UcesnikZadatakDetalji());
         }
 
         private void aktivnost_Click(object sender, EventArgs e) {
             detaljiPNL.Controls.Clear();
-            detaljiPNL.Controls.Add(new AktivnostDetalji());
+            detaljiPNL.Controls.Add(new UcesnikAktivnostDetalji());
         }
     }
 }
