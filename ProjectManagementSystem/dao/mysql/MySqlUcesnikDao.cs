@@ -60,7 +60,7 @@ namespace ProjectManagementSystem.dao.mysql
             #endregion
 
             #region Add Ucesnik_Uloga to DB
-            InsertIntoUcesnikUloga(ucesnik.UcesnikID.Value, ucesnik.Uloga.UlogaID.Value);
+            InsertUcesnikUloga(ucesnik.UcesnikID.Value, ucesnik.Uloga.UlogaID.Value);
             #endregion
         }
 
@@ -109,8 +109,7 @@ namespace ProjectManagementSystem.dao.mysql
             #region Read Uloga for every Ucesnik
             foreach (Ucesnik u in ucesnici)
             {
-                Int32 ulogaID = ReadAllUlogaIDByUcesnikID(u.UcesnikID.Value)[0];
-                 u.Uloga = (MySqlUlogaDao.Instance.Read(new Uloga { UlogaID = ulogaID })[0]);
+                u.Uloga = MySqlUlogaDao.Instance.Read(new Uloga { UlogaID = ReadUlogaIDFromUcesnikUlogaByUcesnikID(u.UcesnikID.Value, null)[0] })[0];
             }
             #endregion
 
@@ -164,7 +163,7 @@ namespace ProjectManagementSystem.dao.mysql
             Update(ucesnik);
         }
 
-        private List<Int32> ReadAllUlogaIDByUcesnikID(Int32 ucesnikID)
+        private List<Int32> ReadUlogaIDFromUcesnikUlogaByUcesnikID(Int32 ucesnikID, Int32? ulogaID)
         {
             List<Int32> ulogeID = new List<Int32>();
             using (conn)
@@ -172,23 +171,26 @@ namespace ProjectManagementSystem.dao.mysql
                 conn.Open();
                 MySqlCommand cmd = conn.CreateCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "read_ucesnik_uloga_by_ucesnikID";
+                cmd.CommandText = "read_ucesnik_uloga";
 
                 cmd.Parameters.AddWithValue("@ucesnikID", ucesnikID);
                 cmd.Parameters["@ucesnikID"].Direction = ParameterDirection.Input;
+
+                cmd.Parameters.AddWithValue("@ulogaID", ulogaID);
+                cmd.Parameters["@ulogaID"].Direction = ParameterDirection.Input;
 
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    ulogeID.Add(reader.GetInt32(0));
+                    ulogeID.Add(reader.GetInt32(1));
                 }
 
             }
             return ulogeID;
         }
 
-        private void InsertIntoUcesnikUloga(Int32 ucesnikID, Int32 ulogaID)
+        private void InsertUcesnikUloga(Int32 ucesnikID, Int32 ulogaID)
         {
             using (conn)
             {

@@ -14,8 +14,13 @@ namespace ProjectManagementSystem.dto
         public Boolean? Aktivan { get; set; }
 
         public List<Cjelina> Cjeline { get; set; }
+        public List<Ucesnik> Ucesnici { get; set; }
 
-        public Projekat() => Cjeline = new List<Cjelina>();
+        public Projekat()
+        {
+            Cjeline = new List<Cjelina>();
+            Ucesnici = new List<Ucesnik>();
+        }
 
         public static void DeaktivirajProjekat(Projekat projekat)
         {

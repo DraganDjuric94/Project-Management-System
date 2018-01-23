@@ -17,7 +17,6 @@ namespace ProjectManagementSystem.dao
         CjelinaDao<Cjelina> GetCjelinaDao();
         ProjekatDao<Projekat> GetProjekat();
         RevizijaDokumentaDao<RevizijaDokumenta> GetRevizijaDokumentaDao();
-        KomentarDao<Komentar> GetKomentarDao();
         DokumentDao<Dokument> GetDokumentDao();
         UcesnikDao<Ucesnik> GetUcesnikDao();
         #endregion

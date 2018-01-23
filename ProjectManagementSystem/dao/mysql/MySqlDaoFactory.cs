@@ -62,11 +62,6 @@ namespace ProjectManagementSystem.dao.mysql
             return MySqlRevizijaDokumentaDao.Instance;
         }
 
-        public KomentarDao<Komentar> GetKomentarDao()
-        {
-            return MySqlKomentarDao.Instance;
-        }
-
         public DokumentDao<Dokument> GetDokumentDao()
         {
             return MySqlDokumentDao.Instance;

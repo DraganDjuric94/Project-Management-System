@@ -38,25 +38,23 @@ namespace ProjectManagementSystem.dao.mysql
                 cmd.Parameters.AddWithValue("@ucesnikID", dokument.UcesnikID);
                 cmd.Parameters["@ucesnikID"].Direction = ParameterDirection.Input;
 
+                cmd.Parameters.AddWithValue("@aktivnostID", dokument.AktivnostID);
+                cmd.Parameters["@aktivnostID"].Direction = ParameterDirection.Input;
+
                 cmd.Parameters.AddWithValue("@putanja", dokument.Putanja);
                 cmd.Parameters["@putanja"].Direction = ParameterDirection.Input;
 
                 cmd.Parameters.AddWithValue("@datum_kreiranja", dokument.DatumKreiranja);
                 cmd.Parameters["@datum_kreiranja"].Direction = ParameterDirection.Input;
 
+                cmd.Parameters.AddWithValue("@napomena", dokument.Napomena);
+                cmd.Parameters["@napomena"].Direction = ParameterDirection.Input;
+
                 cmd.Parameters.AddWithValue("@aktivan", dokument.Aktivan);
                 cmd.Parameters["@aktivan"].Direction = ParameterDirection.Input;
 
                 cmd.ExecuteNonQuery();
                 dokument.DokumentID = Convert.ToInt32(cmd.Parameters["@dokumentID"].Value);
-            }
-            #endregion
-
-            #region Dodaj komentare za dokument u bp
-            foreach(Komentar komentar in dokument.Komentari)
-            {
-                komentar.DokumentID = dokument.DokumentID;
-                MySqlKomentarDao.Instance.Create(komentar);
             }
             #endregion
 
@@ -88,11 +86,17 @@ namespace ProjectManagementSystem.dao.mysql
                 cmd.Parameters.AddWithValue("@ucesnikID", dokument.UcesnikID);
                 cmd.Parameters["@ucesnikID"].Direction = ParameterDirection.Input;
 
+                cmd.Parameters.AddWithValue("@aktivnostID", dokument.AktivnostID);
+                cmd.Parameters["@aktivnostID"].Direction = ParameterDirection.Input;
+
                 cmd.Parameters.AddWithValue("@putanja", dokument.Putanja);
                 cmd.Parameters["@putanja"].Direction = ParameterDirection.Input;
 
                 cmd.Parameters.AddWithValue("@datum_kreiranja", dokument.DatumKreiranja);
                 cmd.Parameters["@datum_kreiranja"].Direction = ParameterDirection.Input;
+
+                cmd.Parameters.AddWithValue("@napomena", dokument.Napomena);
+                cmd.Parameters["@napomena"].Direction = ParameterDirection.Input;
 
                 cmd.Parameters.AddWithValue("@aktivan", dokument.Aktivan);
                 cmd.Parameters["@aktivan"].Direction = ParameterDirection.Input;
@@ -101,16 +105,15 @@ namespace ProjectManagementSystem.dao.mysql
 
                 while (reader.Read())
                 {
-                    dokumenti.Add(new Dokument { DokumentID = reader.GetInt32(0), UcesnikID = reader.GetInt32(1), Putanja = reader.GetString(2), DatumKreiranja = reader.GetDateTime(3), Aktivan = reader.GetBoolean(4) });
+                    dokumenti.Add(new Dokument { DokumentID = reader.GetInt32(0), UcesnikID = reader.GetInt32(1), Putanja = reader.GetString(2), DatumKreiranja = reader.GetDateTime(3), Napomena = reader.GetString(4), Aktivan = reader.GetBoolean(5) });
                 }
 
             }
             #endregion
 
-            #region Za svaki dokument procitaj komentare i revizije
+            #region Za svaki dokument procitaj revizije
             foreach(Dokument d in dokumenti)
             {
-                d.Komentari = MySqlKomentarDao.Instance.Read(new Komentar { DokumentID = d.DokumentID });
                 d.RevizijeDokumenta = MySqlRevizijaDokumentaDao.Instance.Read(new RevizijaDokumenta { DokumentID = d.DokumentID });
             }
             #endregion
@@ -134,32 +137,23 @@ namespace ProjectManagementSystem.dao.mysql
                 cmd.Parameters.AddWithValue("@ucesnikID", dokument.UcesnikID);
                 cmd.Parameters["@ucesnikID"].Direction = ParameterDirection.Input;
 
+                cmd.Parameters.AddWithValue("@aktivnostID", dokument.AktivnostID);
+                cmd.Parameters["@aktivnostID"].Direction = ParameterDirection.Input;
+
                 cmd.Parameters.AddWithValue("@putanja", dokument.Putanja);
                 cmd.Parameters["@putanja"].Direction = ParameterDirection.Input;
 
                 cmd.Parameters.AddWithValue("@datum_kreiranja", dokument.DatumKreiranja);
                 cmd.Parameters["@datum_kreiranja"].Direction = ParameterDirection.Input;
 
+                cmd.Parameters.AddWithValue("@napomena", dokument.Napomena);
+                cmd.Parameters["@napomena"].Direction = ParameterDirection.Input;
+
                 cmd.Parameters.AddWithValue("@aktivan", dokument.Aktivan);
                 cmd.Parameters["@aktivan"].Direction = ParameterDirection.Input;
 
                 cmd.ExecuteNonQuery();
 
-            }
-            #endregion
-
-            #region Azuriraj sve komentare i dodaj nove ako ima u bp
-            foreach(Komentar k in dokument.Komentari)
-            {
-                if(k.KomentarID is null)
-                {
-                    k.DokumentID = dokument.DokumentID;
-                    MySqlKomentarDao.Instance.Create(k);
-                }
-                else
-                {
-                    MySqlKomentarDao.Instance.Update(k);
-                }
             }
             #endregion
 
@@ -185,11 +179,6 @@ namespace ProjectManagementSystem.dao.mysql
             Dokument dokument = Read(new Dokument { DokumentID = dokumentID })[0];
 
             dokument.Aktivan = false;
-
-            foreach(Komentar komentar in dokument.Komentari)
-            {
-                Komentar.DeaktivirajKomentar(komentar);
-            }
 
             Update(dokument);
         }

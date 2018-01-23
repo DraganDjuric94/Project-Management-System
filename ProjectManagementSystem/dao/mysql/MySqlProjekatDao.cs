@@ -50,8 +50,16 @@ namespace ProjectManagementSystem.dao.mysql
 
             #endregion
 
+            #region Unesi ucesnike za projekat
+            foreach(Ucesnik u in projekat.Ucesnici)
+            {
+                MySqlUcesnikDao.Instance.Create(u);
+                InsertUcesnikProjekat(u.UcesnikID.Value, projekat.ProjekatID.Value);
+            }
+            #endregion
+
             #region Unesi cjeline za dati projekat
-            foreach(Cjelina cjelina in projekat.Cjeline)
+            foreach (Cjelina cjelina in projekat.Cjeline)
             {
                 cjelina.ProjekatID = projekat.ProjekatID;
                 MySqlCjelinaDao.Instance.Create(cjelina);
@@ -93,6 +101,18 @@ namespace ProjectManagementSystem.dao.mysql
             }
             #endregion
 
+            #region Procitaj sve ucesnike za projekat iz bp
+            foreach(Projekat p in projekti)
+            {
+                List<Int32> ucesniciID = ReadUcesnikIDFromUcesnikProjekatByProjekatID(p.ProjekatID.Value);
+
+                foreach(Int32 ucesnikID in ucesniciID)
+                {
+                    p.Ucesnici.Add(MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = ucesnikID })[0]);
+                }
+            }
+            #endregion
+
             #region Procitaj sve cjeline za svaki projekat iz bp
             foreach(Projekat p in projekti)
             {
@@ -130,6 +150,14 @@ namespace ProjectManagementSystem.dao.mysql
             }
             #endregion
 
+            #region Azuriraj ucesnike na projektu
+            foreach(Ucesnik u in projekat.Ucesnici)
+            {
+                DeleteUcesnikProjekatByProjekatID(projekat.ProjekatID.Value);
+                InsertUcesnikProjekat(u.UcesnikID.Value, projekat.ProjekatID.Value);
+            }
+            #endregion
+
             #region Azuriraj cjeline za projekat i dodaj nove ako postoje u bp
             foreach(Cjelina cjelina in projekat.Cjeline)
             {
@@ -153,5 +181,72 @@ namespace ProjectManagementSystem.dao.mysql
             Projekat.DeaktivirajProjekat(projekat);
             Update(projekat);         
         }
+
+        private List<Int32> ReadUcesnikIDFromUcesnikProjekatByProjekatID(Int32 projekatID)
+        {
+            List<Int32> ucesniciID = new List<Int32>();
+
+            using (conn)
+            {
+                conn.Open();
+                MySqlCommand cmd = conn.CreateCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "read_ucesnik_projekat";
+
+                cmd.Parameters.AddWithValue("@ucesnikID", null);
+                cmd.Parameters["@ucesnikID"].Direction = ParameterDirection.Input;
+
+                cmd.Parameters.AddWithValue("@projekatID", projekatID);
+                cmd.Parameters["@projekatID"].Direction = ParameterDirection.Input;
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    ucesniciID.Add(reader.GetInt32(0));
+                }
+            }
+
+            return ucesniciID;
+        }
+
+        private void InsertUcesnikProjekat(Int32 ucesnikID, Int32 projekatID)
+        {
+            using (conn)
+            {
+                conn.Open();
+                MySqlCommand cmd = conn.CreateCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "insert_ucesnik_projekat";
+
+                cmd.Parameters.AddWithValue("@ucesnikID", ucesnikID);
+                cmd.Parameters["@ucesnikID"].Direction = ParameterDirection.Input;
+
+                cmd.Parameters.AddWithValue("@projekatID", projekatID);
+                cmd.Parameters["@projekatID"].Direction = ParameterDirection.Input;
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        private void DeleteUcesnikProjekatByProjekatID(Int32 projekatID)
+        {
+            using (conn)
+            {
+                conn.Open();
+                MySqlCommand cmd = conn.CreateCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "delete_ucesnik_projekat";
+
+                cmd.Parameters.AddWithValue("@ucesnikID", null);
+                cmd.Parameters["@ucesnikID"].Direction = ParameterDirection.Input;
+
+                cmd.Parameters.AddWithValue("@projekatID", projekatID);
+                cmd.Parameters["@projekatID"].Direction = ParameterDirection.Input;
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+
     }
 }

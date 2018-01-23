@@ -70,6 +70,14 @@ namespace ProjectManagementSystem.dao.mysql
             }
             #endregion
 
+            #region Unesi ucesnike i dodaj ucesnike cjelini
+            foreach(Ucesnik u in cjelina.Ucesnici)
+            {
+                MySqlUcesnikDao.Instance.Create(u);
+                InsertUcesnikCjelina(u.UcesnikID.Value, cjelina.CjelinaID.Value);
+            }
+            #endregion
+
             #region Unesi podcjeline u bp
             foreach (Cjelina podcjelina in cjelina.Podcjeline)
             {
@@ -139,6 +147,14 @@ namespace ProjectManagementSystem.dao.mysql
 
                 cmd.ExecuteNonQuery();
                 cjelina.CjelinaID = Convert.ToInt32(cmd.Parameters["@cjelinaID"].Value);
+            }
+            #endregion
+
+            #region Azuriraj ucesnike na cjelini
+            foreach(Ucesnik u in cjelina.Ucesnici)
+            {
+                DeleteUcesnikCjelinaByCjelinaID(cjelina.CjelinaID.Value);
+                InsertUcesnikCjelina(u.UcesnikID.Value, cjelina.CjelinaID.Value);
             }
             #endregion
 
@@ -218,7 +234,19 @@ namespace ProjectManagementSystem.dao.mysql
 
                 while (reader.Read())
                 {
-                    cjeline.Add(new Cjelina { CjelinaID = reader.GetInt32(0), CjelinaRoditeljID = reader.GetInt32(1), ProjekatID = reader.GetInt32(2), Naziv = reader.GetString(3), ProcenatIzvrsenosti = reader.GetInt32(4), Rok = reader.GetDateTime(5), DatumKreiranja = reader.GetDateTime(6), BrojPotrebnihCovjekCasova = reader.GetInt32(7), Aktivna = reader.GetBoolean(8) });
+                    cjeline.Add(new Cjelina { CjelinaID = reader.GetInt32(0), CjelinaRoditeljID = ((!reader.IsDBNull(1))?reader.GetInt32(1):(Int32?)null), ProjekatID = reader.GetInt32(2), Naziv = reader.GetString(3), ProcenatIzvrsenosti = reader.GetInt32(4), Rok = reader.GetDateTime(5), DatumKreiranja = reader.GetDateTime(6), BrojPotrebnihCovjekCasova = reader.GetInt32(7), Aktivna = reader.GetBoolean(8) });
+                }
+            }
+            #endregion
+
+            #region Procitaj ucesnike za svaku cjelinu
+            foreach (Cjelina c in cjeline)
+            {
+                List<Int32> ucesniciID = ReadUcesnikIDFromUcesnikCjelinaByCjelinaID(c.CjelinaID.Value);
+
+                foreach (Int32 ucesnikID in ucesniciID)
+                {
+                    c.Ucesnici.Add(MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = ucesnikID })[0]);
                 }
             }
             #endregion
@@ -244,6 +272,72 @@ namespace ProjectManagementSystem.dao.mysql
                 {
                     AddChildrenTo(child);
                 }
+            }
+        }
+
+        private List<Int32> ReadUcesnikIDFromUcesnikCjelinaByCjelinaID(Int32 cjelinaID)
+        {
+            List<Int32> ucesniciID = new List<Int32>();
+
+            using (conn)
+            {
+                conn.Open();
+                MySqlCommand cmd = conn.CreateCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "read_ucesnik_cjelina";
+
+                cmd.Parameters.AddWithValue("@ucesnikID", null);
+                cmd.Parameters["@ucesnikID"].Direction = ParameterDirection.Input;
+
+                cmd.Parameters.AddWithValue("@cjelinaID", cjelinaID);
+                cmd.Parameters["@cjelinaID"].Direction = ParameterDirection.Input;
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    ucesniciID.Add(reader.GetInt32(0));
+                }
+            }
+
+            return ucesniciID;
+        }
+
+        private void InsertUcesnikCjelina(Int32 ucesnikID, Int32 cjelinaID)
+        {
+            using (conn)
+            {
+                conn.Open();
+                MySqlCommand cmd = conn.CreateCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "insert_ucesnik_cjelina";
+
+                cmd.Parameters.AddWithValue("@ucesnikID", ucesnikID);
+                cmd.Parameters["@ucesnikID"].Direction = ParameterDirection.Input;
+
+                cmd.Parameters.AddWithValue("@cjelinaID", cjelinaID);
+                cmd.Parameters["@cjelinaID"].Direction = ParameterDirection.Input;
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        private void DeleteUcesnikCjelinaByCjelinaID(Int32 cjelinaID)
+        {
+            using (conn)
+            {
+                conn.Open();
+                MySqlCommand cmd = conn.CreateCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "delete_ucesnik_cjelina";
+
+                cmd.Parameters.AddWithValue("@ucesnikID", null);
+                cmd.Parameters["@ucesnikID"].Direction = ParameterDirection.Input;
+
+                cmd.Parameters.AddWithValue("@cjelinaID", cjelinaID);
+                cmd.Parameters["@cjelinaID"].Direction = ParameterDirection.Input;
+
+                cmd.ExecuteNonQuery();            
             }
         }
 
