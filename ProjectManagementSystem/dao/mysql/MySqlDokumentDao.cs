@@ -61,9 +61,11 @@ namespace ProjectManagementSystem.dao.mysql
             #region Dodaj revizije dokumenta za dokument u bp
             foreach(RevizijaDokumenta revizijaDokumenta in dokument.RevizijeDokumenta)
             {
-                revizijaDokumenta.DokumentID = dokument.DokumentID;
-                MySqlRevizijaDokumentaDao.Instance.Create(revizijaDokumenta);
-
+                if(revizijaDokumenta.RevizijaDokumentaID is null)
+                {
+                    revizijaDokumenta.DokumentID = dokument.DokumentID;
+                    MySqlRevizijaDokumentaDao.Instance.Create(revizijaDokumenta);
+                }
             }
             #endregion
         }

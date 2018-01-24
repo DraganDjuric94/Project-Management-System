@@ -62,18 +62,25 @@ namespace ProjectManagementSystem.dao.mysql
             }
             #endregion
 
-            #region Unesi aktivnosti za cjelinu
+            #region Unesi nove aktivnosti za cjelinu
             foreach (Aktivnost aktivnost in cjelina.Aktivnosti)
             {
-                aktivnost.CjelinaID = cjelina.CjelinaID;
-                MySqlAktivnostDao.Instance.Create(aktivnost);
+                if(aktivnost.AktivnostID is null)
+                {
+                    aktivnost.CjelinaID = cjelina.CjelinaID;
+                    MySqlAktivnostDao.Instance.Create(aktivnost);
+                }
             }
             #endregion
 
-            #region Unesi ucesnike i dodaj ucesnike cjelini
+            #region Unesi nove ucesnike i dodaj ucesnike cjelini
             foreach(Ucesnik u in cjelina.Ucesnici)
             {
-                MySqlUcesnikDao.Instance.Create(u);
+                if(u.UcesnikID is null)
+                {
+                   MySqlUcesnikDao.Instance.Create(u);
+                }
+
                 InsertUcesnikCjelina(u.UcesnikID.Value, cjelina.CjelinaID.Value);
             }
             #endregion

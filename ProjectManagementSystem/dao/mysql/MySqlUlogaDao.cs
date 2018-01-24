@@ -37,6 +37,9 @@ namespace ProjectManagementSystem.dao.mysql
                 cmd.Parameters.AddWithValue("@naziv", uloga.Naziv);
                 cmd.Parameters["@naziv"].Direction = ParameterDirection.Input;
 
+                cmd.Parameters.AddWithValue("@softver_poslovna_logika", uloga.SoftverPoslovnaLogika);
+                cmd.Parameters["@softver_poslovna_logika"].Direction = ParameterDirection.Input;
+
                 cmd.Parameters.AddWithValue("@aktivna", uloga.Aktivna);
                 cmd.Parameters["@aktivna"].Direction = ParameterDirection.Input;
 
@@ -61,6 +64,9 @@ namespace ProjectManagementSystem.dao.mysql
                 cmd.Parameters.AddWithValue("@naziv", uloga.Naziv);
                 cmd.Parameters["@naziv"].Direction = ParameterDirection.Input;
 
+                cmd.Parameters.AddWithValue("@softver_poslovna_logika", uloga.SoftverPoslovnaLogika);
+                cmd.Parameters["@softver_poslovna_logika"].Direction = ParameterDirection.Input;
+
                 cmd.Parameters.AddWithValue("@aktivna", uloga.Aktivna);
                 cmd.Parameters["@aktivna"].Direction = ParameterDirection.Input;
 
@@ -68,7 +74,7 @@ namespace ProjectManagementSystem.dao.mysql
 
                 while (reader.Read())
                 {
-                    uloge.Add(new Uloga { UlogaID = reader.GetInt32(0), Naziv = reader.GetString(1), Aktivna = reader.GetBoolean(2) });
+                    uloge.Add(new Uloga { UlogaID = reader.GetInt32(0), Naziv = reader.GetString(1), SoftverPoslovnaLogika = reader.GetBoolean(2), Aktivna = reader.GetBoolean(3) });
                 }
 
             }
@@ -83,12 +89,19 @@ namespace ProjectManagementSystem.dao.mysql
                 MySqlCommand cmd = conn.CreateCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "update_uloga";
+
                 cmd.Parameters.AddWithValue("@ulogaID", uloga.UlogaID);
                 cmd.Parameters["@ulogaID"].Direction = ParameterDirection.Input;
+
                 cmd.Parameters.AddWithValue("@naziv", uloga.Naziv);
                 cmd.Parameters["@naziv"].Direction = ParameterDirection.Input;
+
+                cmd.Parameters.AddWithValue("@softver_poslovna_logika", uloga.SoftverPoslovnaLogika);
+                cmd.Parameters["@softver_poslovna_logika"].Direction = ParameterDirection.Input;
+
                 cmd.Parameters.AddWithValue("@aktivna", uloga.Aktivna);
                 cmd.Parameters["@aktivna"].Direction = ParameterDirection.Input;
+
                 cmd.ExecuteNonQuery();
             }
         }

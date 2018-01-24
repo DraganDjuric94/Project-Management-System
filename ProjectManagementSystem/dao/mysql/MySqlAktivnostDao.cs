@@ -55,17 +55,26 @@ namespace ProjectManagementSystem.dao.mysql
             }
             #endregion
 
-            #region Dodaj transakcije aktivnosti u bp
+            #region Dodaj nove transakcije aktivnosti u bp
             foreach (Transakcija transakcija in aktivnost.Transakcije)
             {
-                transakcija.AktivnostID = aktivnost.AktivnostID;
-                MySqlTransakcijaDao.Instance.Create(transakcija);
+                if(transakcija.TransakcijaID is null)
+                {
+                    transakcija.AktivnostID = aktivnost.AktivnostID;
+                    MySqlTransakcijaDao.Instance.Create(transakcija);
+                }
             }
             #endregion
 
-            #region Dodaj ucesnike na aktivnosti u bp
+            #region Dodaj nove ucesnike na aktivnosti u bp
             foreach(KeyValuePair<Ucesnik, Int32> pair in aktivnost.UcesniciSaBrojemUtrosenihSati.ToArray())
             {
+
+                if(pair.Key.UcesnikID is null)
+                {
+                    MySqlUcesnikDao.Instance.Create(pair.Key);
+                }
+
                 InsertUcesnikAktivnost(pair.Key.UcesnikID.Value, aktivnost.AktivnostID.Value, pair.Value);
             }
             #endregion

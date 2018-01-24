@@ -51,18 +51,33 @@ namespace ProjectManagementSystem.dao.mysql
             #endregion
 
             #region Unesi ucesnike za projekat
-            foreach(Ucesnik u in projekat.Ucesnici)
+            foreach(KeyValuePair<Ucesnik, Uloga> parUcesnikUloga in projekat.UcesniciNaProjektu)
             {
-                MySqlUcesnikDao.Instance.Create(u);
-                InsertUcesnikProjekat(u.UcesnikID.Value, projekat.ProjekatID.Value);
+                Ucesnik ucesnik = parUcesnikUloga.Key;
+                Uloga uloga = parUcesnikUloga.Value;
+                
+                if(uloga.UlogaID is null)
+                {
+                    MySqlUlogaDao.Instance.Create(uloga);
+                }
+
+                if(ucesnik.UcesnikID is null)
+                {
+                    MySqlUcesnikDao.Instance.Create(ucesnik);
+                }
+
+                InsertUcesnikProjekatUloga(ucesnik.UcesnikID.Value, projekat.ProjekatID.Value, uloga.UlogaID.Value);
             }
             #endregion
 
             #region Unesi cjeline za dati projekat
             foreach (Cjelina cjelina in projekat.Cjeline)
             {
-                cjelina.ProjekatID = projekat.ProjekatID;
-                MySqlCjelinaDao.Instance.Create(cjelina);
+                if(cjelina.CjelinaID is null)
+                {
+                    cjelina.ProjekatID = projekat.ProjekatID;
+                    MySqlCjelinaDao.Instance.Create(cjelina);
+                }
             }
             #endregion
 
@@ -104,11 +119,13 @@ namespace ProjectManagementSystem.dao.mysql
             #region Procitaj sve ucesnike za projekat iz bp
             foreach(Projekat p in projekti)
             {
-                List<Int32> ucesniciID = ReadUcesnikIDFromUcesnikProjekatByProjekatID(p.ProjekatID.Value);
+                Dictionary<Int32, Int32> dict = ReadUcesnikIDAndUlogaIDFromUcesnikProjekatUlogaByProjekatID(p.ProjekatID.Value);
 
-                foreach(Int32 ucesnikID in ucesniciID)
+                foreach(KeyValuePair<Int32, Int32> pair in dict)
                 {
-                    p.Ucesnici.Add(MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = ucesnikID })[0]);
+                    Ucesnik ucesnik = MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = pair.Key })[0];
+                    Uloga uloga = MySqlUlogaDao.Instance.Read(new Uloga { UlogaID = pair.Value})[0];
+                    p.UcesniciNaProjektu[ucesnik] = uloga;
                 }
             }
             #endregion
@@ -151,10 +168,10 @@ namespace ProjectManagementSystem.dao.mysql
             #endregion
 
             #region Azuriraj ucesnike na projektu
-            foreach(Ucesnik u in projekat.Ucesnici)
+            foreach(KeyValuePair<Ucesnik, Uloga> pair in projekat.UcesniciNaProjektu)
             {
-                DeleteUcesnikProjekatByProjekatID(projekat.ProjekatID.Value);
-                InsertUcesnikProjekat(u.UcesnikID.Value, projekat.ProjekatID.Value);
+                DeleteUcesnikProjekatUlogaByProjekatID(projekat.ProjekatID.Value);
+                InsertUcesnikProjekatUloga(pair.Key.UcesnikID.Value, projekat.ProjekatID.Value, pair.Value.UlogaID.Value);
             }
             #endregion
 
@@ -182,16 +199,53 @@ namespace ProjectManagementSystem.dao.mysql
             Update(projekat);         
         }
 
-        private List<Int32> ReadUcesnikIDFromUcesnikProjekatByProjekatID(Int32 projekatID)
+        public List<Projekat> ReadProjekatByUcesnikID(Ucesnik ucesnik)
         {
-            List<Int32> ucesniciID = new List<Int32>();
+            List<Projekat> projekti = new List<Projekat>();
+            List<Int32> projektiID = new List<Int32>();
 
             using (conn)
             {
                 conn.Open();
                 MySqlCommand cmd = conn.CreateCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "read_ucesnik_projekat";
+                cmd.CommandText = "read_ucesnik_projekat_uloga";
+
+                cmd.Parameters.AddWithValue("@ucesnikID", ucesnik.UcesnikID);
+                cmd.Parameters["@ucesnikID"].Direction = ParameterDirection.Input;
+
+                cmd.Parameters.AddWithValue("@projekatID", null);
+                cmd.Parameters["@projekatID"].Direction = ParameterDirection.Input;
+
+                cmd.Parameters.AddWithValue("@ulogaID", null);
+                cmd.Parameters["@ulogaID"].Direction = ParameterDirection.Input;
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    projektiID.Add(reader.GetInt32(1));
+                }
+            }
+
+            foreach(Int32 projekatID in projektiID)
+            {
+                projekti.Add(MySqlProjekatDao.Instance.Read(new Projekat { ProjekatID = projekatID })[0]);
+            }
+
+            return projekti;
+        }
+
+        private Dictionary<Int32, Int32> ReadUcesnikIDAndUlogaIDFromUcesnikProjekatUlogaByProjekatID(Int32 projekatID)
+        {
+            Dictionary<Int32, Int32> dict = new Dictionary<Int32, Int32>();
+
+            using (conn)
+            {
+                conn.Open();
+                MySqlCommand cmd = conn.CreateCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "read_ucesnik_projekat_uloga";
 
                 cmd.Parameters.AddWithValue("@ucesnikID", null);
                 cmd.Parameters["@ucesnikID"].Direction = ParameterDirection.Input;
@@ -199,25 +253,28 @@ namespace ProjectManagementSystem.dao.mysql
                 cmd.Parameters.AddWithValue("@projekatID", projekatID);
                 cmd.Parameters["@projekatID"].Direction = ParameterDirection.Input;
 
+                cmd.Parameters.AddWithValue("@ulogaID", null);
+                cmd.Parameters["@ulogaID"].Direction = ParameterDirection.Input;
+
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    ucesniciID.Add(reader.GetInt32(0));
+                    dict[reader.GetInt32(0)] = reader.GetInt32(2);
                 }
             }
 
-            return ucesniciID;
+            return dict;
         }
 
-        private void InsertUcesnikProjekat(Int32 ucesnikID, Int32 projekatID)
+        private void InsertUcesnikProjekatUloga(Int32 ucesnikID, Int32 projekatID, Int32 ulogaID)
         {
             using (conn)
             {
                 conn.Open();
                 MySqlCommand cmd = conn.CreateCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "insert_ucesnik_projekat";
+                cmd.CommandText = "insert_ucesnik_projekat_uloga";
 
                 cmd.Parameters.AddWithValue("@ucesnikID", ucesnikID);
                 cmd.Parameters["@ucesnikID"].Direction = ParameterDirection.Input;
@@ -225,18 +282,21 @@ namespace ProjectManagementSystem.dao.mysql
                 cmd.Parameters.AddWithValue("@projekatID", projekatID);
                 cmd.Parameters["@projekatID"].Direction = ParameterDirection.Input;
 
+                cmd.Parameters.AddWithValue("@ulogaID", ulogaID);
+                cmd.Parameters["@ulogaID"].Direction = ParameterDirection.Input;
+
                 cmd.ExecuteNonQuery();
             }
         }
 
-        private void DeleteUcesnikProjekatByProjekatID(Int32 projekatID)
+        private void DeleteUcesnikProjekatUlogaByProjekatID(Int32 projekatID)
         {
             using (conn)
             {
                 conn.Open();
                 MySqlCommand cmd = conn.CreateCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "delete_ucesnik_projekat";
+                cmd.CommandText = "delete_ucesnik_projekat_uloga";
 
                 cmd.Parameters.AddWithValue("@ucesnikID", null);
                 cmd.Parameters["@ucesnikID"].Direction = ParameterDirection.Input;
@@ -244,9 +304,14 @@ namespace ProjectManagementSystem.dao.mysql
                 cmd.Parameters.AddWithValue("@projekatID", projekatID);
                 cmd.Parameters["@projekatID"].Direction = ParameterDirection.Input;
 
+                cmd.Parameters.AddWithValue("@ulogaID", null);
+                cmd.Parameters["@ulogaID"].Direction = ParameterDirection.Input;
+
                 cmd.ExecuteNonQuery();
             }
         }
+
+
 
     }
 }

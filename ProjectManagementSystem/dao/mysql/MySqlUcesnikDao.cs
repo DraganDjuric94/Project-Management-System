@@ -24,7 +24,7 @@ namespace ProjectManagementSystem.dao.mysql
 
         public void Create(Ucesnik ucesnik)
         {
-            #region Add Ucesnik to DB
+            #region Dodaj ucesnika u bp
             using (conn)
             {
                 conn.Open();
@@ -59,7 +59,12 @@ namespace ProjectManagementSystem.dao.mysql
             }
             #endregion
 
-            #region Add Ucesnik_Uloga to DB
+            #region Dodaj ulogu ucesnika u bp
+            if(ucesnik.Uloga.UlogaID is null)
+            {
+                MySqlUlogaDao.Instance.Create(ucesnik.Uloga);
+            }
+
             InsertUcesnikUloga(ucesnik.UcesnikID.Value, ucesnik.Uloga.UlogaID.Value);
             #endregion
         }
@@ -118,7 +123,7 @@ namespace ProjectManagementSystem.dao.mysql
 
         public void Update(Ucesnik ucesnik)
         {
-            #region Update Ucesnik
+            #region Azuriraj ucesnika
             using (conn)
             {
                 conn.Open();
@@ -151,8 +156,13 @@ namespace ProjectManagementSystem.dao.mysql
             }
             #endregion
 
-            #region Update Uloga
-            UpdateUcesnikUlogaByUcesnikID(ucesnik.UcesnikID.Value, ucesnik.Uloga.UlogaID.Value);
+            #region Azuriraj ulogu u softveru ucesnika
+            if(ucesnik.Uloga.UlogaID is null)
+            {
+                MySqlUlogaDao.Instance.Create(ucesnik.Uloga);
+                DeleteUcesnikUlogaByUcesnikID(ucesnik.UcesnikID.Value);
+                InsertUcesnikUloga(ucesnik.UcesnikID.Value, ucesnik.Uloga.UlogaID.Value);
+            }
             #endregion
         }
 
@@ -209,20 +219,20 @@ namespace ProjectManagementSystem.dao.mysql
             }
         }
 
-        private void UpdateUcesnikUlogaByUcesnikID(Int32 ucesnikID, Int32 ulogaID)
+        private void DeleteUcesnikUlogaByUcesnikID(Int32 ucesnikID)
         {
             using (conn)
             {
                 conn.Open();
                 MySqlCommand cmd = conn.CreateCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "update_ucesnik_uloga_by_ucesnikID";
+                cmd.CommandText = "delete_ucesnik_uloga";
 
                 cmd.Parameters.AddWithValue("@ucesnikID", ucesnikID);
                 cmd.Parameters["@ucesnikID"].Direction = ParameterDirection.Input;
 
-                cmd.Parameters.AddWithValue("@ulogaId", ulogaID);
-                cmd.Parameters["@ulogaId"].Direction = ParameterDirection.Input;
+                cmd.Parameters.AddWithValue("@ulogaID", null);
+                cmd.Parameters["@ulogaID"].Direction = ParameterDirection.Input;
 
                 cmd.ExecuteNonQuery();
             }
