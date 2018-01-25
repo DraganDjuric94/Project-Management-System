@@ -55,18 +55,27 @@ namespace ProjectManagementSystem.dao.mysql
             }
             #endregion
 
-            #region Dodaj transakcije aktivnosti u bp
+            #region Dodaj nove transakcije aktivnosti u bp
             foreach (Transakcija transakcija in aktivnost.Transakcije)
             {
-                transakcija.AktivnostID = aktivnost.AktivnostID;
-                MySqlTransakcijaDao.Instance.Create(transakcija);
+                if(transakcija.TransakcijaID is null)
+                {
+                    transakcija.AktivnostID = aktivnost.AktivnostID;
+                    MySqlTransakcijaDao.Instance.Create(transakcija);
+                }
             }
             #endregion
 
-            #region Dodaj ucesnike na aktivnosti u bp
+            #region Dodaj nove ucesnike na aktivnosti u bp
             foreach(KeyValuePair<Ucesnik, Int32> pair in aktivnost.UcesniciSaBrojemUtrosenihSati.ToArray())
             {
-                InsertIntoUcesnikAktivnost(pair.Key.UcesnikID.Value, aktivnost.AktivnostID.Value, pair.Value);
+
+                if(pair.Key.UcesnikID is null)
+                {
+                    MySqlUcesnikDao.Instance.Create(pair.Key);
+                }
+
+                InsertUcesnikAktivnost(pair.Key.UcesnikID.Value, aktivnost.AktivnostID.Value, pair.Value);
             }
             #endregion
         }
@@ -173,17 +182,11 @@ namespace ProjectManagementSystem.dao.mysql
             }
             #endregion
 
-            #region Azuriraj postojece ucesnike na aktivnosti i dodaj nove u bp, ako postoje
+            #region Azuriraj ucesnike na aktivnosti
             foreach(KeyValuePair<Ucesnik, Int32> pair in aktivnost.UcesniciSaBrojemUtrosenihSati.ToArray())
             {
-                if(pair.Key.UcesnikID is null)
-                {
-                    InsertIntoUcesnikAktivnost(pair.Key.UcesnikID.Value, aktivnost.AktivnostID.Value, pair.Value);
-                }
-                else
-                {
-                    UpdateUcesnikAktivnost(pair.Key.UcesnikID.Value, aktivnost.AktivnostID.Value, pair.Value);
-                }
+                DeleteUcesnikAktivnostByAktivnostID(aktivnost.AktivnostID.Value);
+                InsertUcesnikAktivnost(pair.Key.UcesnikID.Value, aktivnost.AktivnostID.Value, pair.Value);
             }
             #endregion
         }
@@ -203,22 +206,28 @@ namespace ProjectManagementSystem.dao.mysql
                 conn.Open();
                 MySqlCommand cmd = conn.CreateCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "read_ucesnik_aktivnost_by_aktivnostID";
+                cmd.CommandText = "read_ucesnik_aktivnost";
+
+                cmd.Parameters.AddWithValue("@ucesnikID", null);
+                cmd.Parameters["@ucesnikID"].Direction = ParameterDirection.Input;
 
                 cmd.Parameters.AddWithValue("@aktivnostID", aktivnostID);
                 cmd.Parameters["@aktivnostID"].Direction = ParameterDirection.Input;
+
+                cmd.Parameters.AddWithValue("@utroseno_sati", null);
+                cmd.Parameters["@utroseno_sati"].Direction = ParameterDirection.Input;
 
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    dict.Add(reader.GetInt32(0), reader.GetInt32(1));
+                    dict.Add(reader.GetInt32(0), reader.GetInt32(2));
                 }
             }
             return dict;
         }
 
-        private void InsertIntoUcesnikAktivnost(Int32 ucesnikID, Int32 aktivnostID, Int32 utrosenoSati)
+        private void InsertUcesnikAktivnost(Int32 ucesnikID, Int32 aktivnostID, Int32 utrosenoSati)
         {
             using (conn)
             {
@@ -240,22 +249,22 @@ namespace ProjectManagementSystem.dao.mysql
             }
         }
 
-        private void UpdateUcesnikAktivnost(Int32 ucesnikID, Int32 aktivnostID, Int32 utrosenoSati)
+        private void DeleteUcesnikAktivnostByAktivnostID(Int32 aktivnostID)
         {
             using (conn)
             {
                 conn.Open();
                 MySqlCommand cmd = conn.CreateCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "update_ucesnik_aktivnost_by_ucesnikID_and_aktivnostID";
+                cmd.CommandText = "delete_ucesnik_aktivnost";
 
-                cmd.Parameters.AddWithValue("@ucesnikID", ucesnikID);
+                cmd.Parameters.AddWithValue("@ucesnikID", null);
                 cmd.Parameters["@ucesnikID"].Direction = ParameterDirection.Input;
 
                 cmd.Parameters.AddWithValue("@aktivnostID", aktivnostID);
                 cmd.Parameters["@aktivnostID"].Direction = ParameterDirection.Input;
 
-                cmd.Parameters.AddWithValue("@utroseno_sati", utrosenoSati);
+                cmd.Parameters.AddWithValue("@utroseno_sati", null);
                 cmd.Parameters["@utroseno_sati"].Direction = ParameterDirection.Input;
 
                 cmd.ExecuteNonQuery();

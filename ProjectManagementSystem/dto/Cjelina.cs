@@ -18,11 +18,13 @@ namespace ProjectManagementSystem.dto
         public Int32? BrojPotrebnihCovjekCasova { get; set; }
         public Boolean? Aktivna { get; set; }
 
+        public List<Ucesnik> Ucesnici { get; set; }
         public List<Aktivnost> Aktivnosti { get; set; }
         public List<Cjelina> Podcjeline { get; set; }
 
         public Cjelina()
         {
+            Ucesnici = new List<Ucesnik>();
             Aktivnosti = new List<Aktivnost>();
             Podcjeline = new List<Cjelina>();
         }
@@ -55,6 +57,7 @@ namespace ProjectManagementSystem.dto
                 ", DatumKreiranja=" + DatumKreiranja.Value.ToString() +
                 ", BrojPotrebnihCovjekCasova=" + BrojPotrebnihCovjekCasova +
                 ", Aktivna=" + Aktivna +
+                ", Ucesnici=" + String.Join(",", Ucesnici?.Select(ucesnik => ucesnik.ToString()).ToArray()) +
                 ", Aktivnosti=" + String.Join(",",Aktivnosti?.Select(aktivnost => aktivnost.ToString()).ToArray()) +
                 ", Podcjeline=" + String.Join(",", Podcjeline?.Select(podcjelina => podcjelina.ToString()).ToArray()) + 
                 "]";

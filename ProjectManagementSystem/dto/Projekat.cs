@@ -14,8 +14,13 @@ namespace ProjectManagementSystem.dto
         public Boolean? Aktivan { get; set; }
 
         public List<Cjelina> Cjeline { get; set; }
+        public Dictionary<Ucesnik, Uloga> UcesniciNaProjektu { get; set; }
 
-        public Projekat() => Cjeline = new List<Cjelina>();
+        public Projekat()
+        {
+            Cjeline = new List<Cjelina>();
+            UcesniciNaProjektu = new Dictionary<Ucesnik, Uloga>();
+        }
 
         public static void DeaktivirajProjekat(Projekat projekat)
         {
@@ -35,6 +40,7 @@ namespace ProjectManagementSystem.dto
                 ", Naziv=" + Naziv +
                 ", DatumKreiranja=" + DatumKreiranja.Value.ToString() +
                 ", Aktivan=" + Aktivan +
+                ", UcesniciNaProjektu=" + String.Join(",", UcesniciNaProjektu?.Select(pair => pair.Key.ToString() + ", " + pair.Value.ToString()).ToArray()) +
                 ", Cjeline=" + String.Join(",", Cjeline?.Select(cjelina => cjelina.ToString()).ToArray()) +
                 "]";
         }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProjectManagementSystem.dao.mysql;
+using ProjectManagementSystem.dto;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,6 +16,11 @@ namespace ProjectManagementSystem {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Login());
+
+            foreach (Projekat p in MySqlProjekatDao.Instance.ReadProjekatByUcesnikID(1))
+            {
+                Console.WriteLine(p);
+            }
         }
     }
 }

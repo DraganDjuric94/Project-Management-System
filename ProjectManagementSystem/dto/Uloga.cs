@@ -10,8 +10,9 @@ namespace ProjectManagementSystem.dto
     {
         public Int32? UlogaID { get; set; }
         public String Naziv { get; set; }
+        public Boolean? SoftverPoslovnaLogika { get; set; }
         public Boolean? Aktivna { get; set; }
 
-        public override string ToString() => "[UlogaID=" + UlogaID + ", Naziv=" + Naziv + ", Aktivna=" + Aktivna + "]";
+        public override string ToString() => "[UlogaID=" + UlogaID + ", Naziv=" + Naziv + ", SoftverPoslovnaLogika=" + SoftverPoslovnaLogika + ", Aktivna=" + Aktivna + "]";
     }
 }
