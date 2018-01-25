@@ -71,7 +71,7 @@ namespace ProjectManagementSystem.dao.mysql
             #region Read Ucesnik from DB
             using (conn)
             {
-                conn.Open();
+			     conn.Open();
                 MySqlCommand cmd = conn.CreateCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "read_ucesnik";
