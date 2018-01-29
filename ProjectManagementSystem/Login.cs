@@ -23,17 +23,19 @@ namespace ProjectManagementSystem {
 			{
 				MessageBox.Show("Korisnik sa unjetim informacijama ne postoji.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
-			else if (ucesnik[0].Uloga.Naziv.Equals("Administrator"))
+			else if (ucesnik[0].Uloga.Naziv.Equals("administrator"))
 			{
 				new Administrator().Show();
 			}
-			else if (ucesnik[0].Uloga.Naziv.Equals("Ucesnik"))
+			else if (ucesnik[0].Uloga.Naziv.Equals("učesnik"))
 			{
 
 			}*/
 			new Administrator().Show();
 		}
 
-		
-	}
+        private void testBTN_Click(object sender, EventArgs e) {
+            new Projekti().Show();
+        }
+    }
 }

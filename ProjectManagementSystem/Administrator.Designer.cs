@@ -31,16 +31,6 @@
 			this.administratorTC = new System.Windows.Forms.TabControl();
 			this.ucesniciTP = new System.Windows.Forms.TabPage();
 			this.korisniciDGW = new System.Windows.Forms.DataGridView();
-			this.ucesnikID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ucesnikIme = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ucesnikPrezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ucesnikKorisnickoIme = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ucesnikLozinka = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ucesnikJmbg = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ucesnikAktivan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ucesnikUlogaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ucesnikUlogaNaziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ucesnikUlogaAktivna = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.projektiTP = new System.Windows.Forms.TabPage();
 			this.projektiDGW = new System.Windows.Forms.DataGridView();
 			this.projekatID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +40,17 @@
 			this.dodatiBTN = new System.Windows.Forms.Button();
 			this.azuriratiBTN = new System.Windows.Forms.Button();
 			this.obrisatiBTN = new System.Windows.Forms.Button();
+			this.ucesnikID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ucesnikIme = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ucesnikPrezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ucesnikKorisnickoIme = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ucesnikLozinka = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ucesnikJmbg = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ucesnikAktivan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ucesnikUlogaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ucesnikUlogaNaziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ucesnikPoslovnaLogika = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ucesnikUlogaAktivna = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.administratorTC.SuspendLayout();
 			this.ucesniciTP.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.korisniciDGW)).BeginInit();
@@ -92,61 +93,12 @@
             this.ucesnikAktivan,
             this.ucesnikUlogaID,
             this.ucesnikUlogaNaziv,
+            this.ucesnikPoslovnaLogika,
             this.ucesnikUlogaAktivna});
 			this.korisniciDGW.Location = new System.Drawing.Point(0, 0);
 			this.korisniciDGW.Name = "korisniciDGW";
 			this.korisniciDGW.Size = new System.Drawing.Size(1043, 267);
 			this.korisniciDGW.TabIndex = 0;
-			// 
-			// ucesnikID
-			// 
-			this.ucesnikID.HeaderText = "ID";
-			this.ucesnikID.Name = "ucesnikID";
-			// 
-			// ucesnikIme
-			// 
-			this.ucesnikIme.HeaderText = "Ime";
-			this.ucesnikIme.Name = "ucesnikIme";
-			// 
-			// ucesnikPrezime
-			// 
-			this.ucesnikPrezime.HeaderText = "Prezime";
-			this.ucesnikPrezime.Name = "ucesnikPrezime";
-			// 
-			// ucesnikKorisnickoIme
-			// 
-			this.ucesnikKorisnickoIme.HeaderText = "Korisničko ime";
-			this.ucesnikKorisnickoIme.Name = "ucesnikKorisnickoIme";
-			// 
-			// ucesnikLozinka
-			// 
-			this.ucesnikLozinka.HeaderText = "Lozinka";
-			this.ucesnikLozinka.Name = "ucesnikLozinka";
-			// 
-			// ucesnikJmbg
-			// 
-			this.ucesnikJmbg.HeaderText = "Jmbg";
-			this.ucesnikJmbg.Name = "ucesnikJmbg";
-			// 
-			// ucesnikAktivan
-			// 
-			this.ucesnikAktivan.HeaderText = "Aktivan";
-			this.ucesnikAktivan.Name = "ucesnikAktivan";
-			// 
-			// ucesnikUlogaID
-			// 
-			this.ucesnikUlogaID.HeaderText = "ID uloge";
-			this.ucesnikUlogaID.Name = "ucesnikUlogaID";
-			// 
-			// ucesnikUlogaNaziv
-			// 
-			this.ucesnikUlogaNaziv.HeaderText = "Naziv uloge";
-			this.ucesnikUlogaNaziv.Name = "ucesnikUlogaNaziv";
-			// 
-			// ucesnikUlogaAktivna
-			// 
-			this.ucesnikUlogaAktivna.HeaderText = "Aktivna uloga";
-			this.ucesnikUlogaAktivna.Name = "ucesnikUlogaAktivna";
 			// 
 			// projektiTP
 			// 
@@ -222,6 +174,61 @@
 			this.obrisatiBTN.UseVisualStyleBackColor = true;
 			this.obrisatiBTN.Click += new System.EventHandler(this.obrisatiBTN_Click);
 			// 
+			// ucesnikID
+			// 
+			this.ucesnikID.HeaderText = "ID";
+			this.ucesnikID.Name = "ucesnikID";
+			// 
+			// ucesnikIme
+			// 
+			this.ucesnikIme.HeaderText = "Ime";
+			this.ucesnikIme.Name = "ucesnikIme";
+			// 
+			// ucesnikPrezime
+			// 
+			this.ucesnikPrezime.HeaderText = "Prezime";
+			this.ucesnikPrezime.Name = "ucesnikPrezime";
+			// 
+			// ucesnikKorisnickoIme
+			// 
+			this.ucesnikKorisnickoIme.HeaderText = "Korisničko ime";
+			this.ucesnikKorisnickoIme.Name = "ucesnikKorisnickoIme";
+			// 
+			// ucesnikLozinka
+			// 
+			this.ucesnikLozinka.HeaderText = "Lozinka";
+			this.ucesnikLozinka.Name = "ucesnikLozinka";
+			// 
+			// ucesnikJmbg
+			// 
+			this.ucesnikJmbg.HeaderText = "Jmbg";
+			this.ucesnikJmbg.Name = "ucesnikJmbg";
+			// 
+			// ucesnikAktivan
+			// 
+			this.ucesnikAktivan.HeaderText = "Aktivan";
+			this.ucesnikAktivan.Name = "ucesnikAktivan";
+			// 
+			// ucesnikUlogaID
+			// 
+			this.ucesnikUlogaID.HeaderText = "ID uloge";
+			this.ucesnikUlogaID.Name = "ucesnikUlogaID";
+			// 
+			// ucesnikUlogaNaziv
+			// 
+			this.ucesnikUlogaNaziv.HeaderText = "Naziv uloge";
+			this.ucesnikUlogaNaziv.Name = "ucesnikUlogaNaziv";
+			// 
+			// ucesnikPoslovnaLogika
+			// 
+			this.ucesnikPoslovnaLogika.HeaderText = "Poslovna logika";
+			this.ucesnikPoslovnaLogika.Name = "ucesnikPoslovnaLogika";
+			// 
+			// ucesnikUlogaAktivna
+			// 
+			this.ucesnikUlogaAktivna.HeaderText = "Aktivna uloga";
+			this.ucesnikUlogaAktivna.Name = "ucesnikUlogaAktivna";
+			// 
 			// Administrator
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -266,6 +273,7 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn ucesnikAktivan;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ucesnikUlogaID;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ucesnikUlogaNaziv;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ucesnikPoslovnaLogika;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ucesnikUlogaAktivna;
 	}
 }

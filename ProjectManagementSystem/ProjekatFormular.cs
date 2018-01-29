@@ -23,6 +23,7 @@ namespace ProjectManagementSystem
 		{
 			MySqlProjekatDao.Instance.Create(new Projekat { Naziv = nazivTXT.Text, DatumKreiranja = Convert.ToDateTime(datumKreiranjaDTP.Value.Date.ToString()), Aktivan = aktivanProjekatCB.Checked });
 			MessageBox.Show("Projekat je uspješno unešen", "Obavještenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			this.Close();
 		}
 	}
 }

@@ -9,9 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProjectManagementSystem {
-    public partial class SefAktivnostDetalji : UserControl {
-        public SefAktivnostDetalji() {
+    public partial class ZadatakDetalji : UserControl {
+        public ZadatakDetalji() {
             InitializeComponent();
         }
+
     }
 }

@@ -48,6 +48,8 @@ namespace ProjectManagementSystem
 			this.aktivnaUlogaCB = new System.Windows.Forms.CheckBox();
 			this.dodatiBTN = new System.Windows.Forms.Button();
 			this.korisnickoImeKorektnoLBL = new System.Windows.Forms.Label();
+			this.poslovnaLogikaLBL = new System.Windows.Forms.Label();
+			this.poslovnaLogikaCB = new System.Windows.Forms.CheckBox();
 			this.SuspendLayout();
 			// 
 			// imeLBL
@@ -115,21 +117,21 @@ namespace ProjectManagementSystem
 			// 
 			// imeTXT
 			// 
-			this.imeTXT.Location = new System.Drawing.Point(161, 24);
+			this.imeTXT.Location = new System.Drawing.Point(150, 24);
 			this.imeTXT.Name = "imeTXT";
 			this.imeTXT.Size = new System.Drawing.Size(157, 20);
 			this.imeTXT.TabIndex = 7;
 			// 
 			// prezimeTXT
 			// 
-			this.prezimeTXT.Location = new System.Drawing.Point(161, 61);
+			this.prezimeTXT.Location = new System.Drawing.Point(150, 61);
 			this.prezimeTXT.Name = "prezimeTXT";
 			this.prezimeTXT.Size = new System.Drawing.Size(157, 20);
 			this.prezimeTXT.TabIndex = 8;
 			// 
 			// korisnickoImeTXT
 			// 
-			this.korisnickoImeTXT.Location = new System.Drawing.Point(161, 98);
+			this.korisnickoImeTXT.Location = new System.Drawing.Point(150, 98);
 			this.korisnickoImeTXT.Name = "korisnickoImeTXT";
 			this.korisnickoImeTXT.Size = new System.Drawing.Size(157, 20);
 			this.korisnickoImeTXT.TabIndex = 9;
@@ -137,14 +139,14 @@ namespace ProjectManagementSystem
 			// 
 			// lozinkaTXT
 			// 
-			this.lozinkaTXT.Location = new System.Drawing.Point(161, 134);
+			this.lozinkaTXT.Location = new System.Drawing.Point(150, 134);
 			this.lozinkaTXT.Name = "lozinkaTXT";
 			this.lozinkaTXT.Size = new System.Drawing.Size(157, 20);
 			this.lozinkaTXT.TabIndex = 10;
 			// 
 			// jmbgTXT
 			// 
-			this.jmbgTXT.Location = new System.Drawing.Point(161, 170);
+			this.jmbgTXT.Location = new System.Drawing.Point(150, 170);
 			this.jmbgTXT.Name = "jmbgTXT";
 			this.jmbgTXT.Size = new System.Drawing.Size(157, 20);
 			this.jmbgTXT.TabIndex = 11;
@@ -153,9 +155,9 @@ namespace ProjectManagementSystem
 			// 
 			this.nazivUlogeCB.FormattingEnabled = true;
 			this.nazivUlogeCB.Items.AddRange(new object[] {
-            "Administrator",
-            "Učesnik"});
-			this.nazivUlogeCB.Location = new System.Drawing.Point(161, 243);
+            "administrator",
+            "učesnik"});
+			this.nazivUlogeCB.Location = new System.Drawing.Point(150, 243);
 			this.nazivUlogeCB.Name = "nazivUlogeCB";
 			this.nazivUlogeCB.Size = new System.Drawing.Size(157, 21);
 			this.nazivUlogeCB.TabIndex = 12;
@@ -172,7 +174,7 @@ namespace ProjectManagementSystem
 			// aktivanUcesnikCB
 			// 
 			this.aktivanUcesnikCB.AutoSize = true;
-			this.aktivanUcesnikCB.Location = new System.Drawing.Point(161, 210);
+			this.aktivanUcesnikCB.Location = new System.Drawing.Point(150, 206);
 			this.aktivanUcesnikCB.Name = "aktivanUcesnikCB";
 			this.aktivanUcesnikCB.Size = new System.Drawing.Size(62, 17);
 			this.aktivanUcesnikCB.TabIndex = 14;
@@ -182,7 +184,7 @@ namespace ProjectManagementSystem
 			// aktivnaUlogaCB
 			// 
 			this.aktivnaUlogaCB.AutoSize = true;
-			this.aktivnaUlogaCB.Location = new System.Drawing.Point(161, 283);
+			this.aktivnaUlogaCB.Location = new System.Drawing.Point(150, 284);
 			this.aktivnaUlogaCB.Name = "aktivnaUlogaCB";
 			this.aktivnaUlogaCB.Size = new System.Drawing.Size(62, 17);
 			this.aktivnaUlogaCB.TabIndex = 15;
@@ -191,7 +193,7 @@ namespace ProjectManagementSystem
 			// 
 			// dodatiBTN
 			// 
-			this.dodatiBTN.Location = new System.Drawing.Point(242, 354);
+			this.dodatiBTN.Location = new System.Drawing.Point(243, 362);
 			this.dodatiBTN.Name = "dodatiBTN";
 			this.dodatiBTN.Size = new System.Drawing.Size(75, 23);
 			this.dodatiBTN.TabIndex = 16;
@@ -202,16 +204,37 @@ namespace ProjectManagementSystem
 			// korisnickoImeKorektnoLBL
 			// 
 			this.korisnickoImeKorektnoLBL.AutoSize = true;
-			this.korisnickoImeKorektnoLBL.Location = new System.Drawing.Point(269, 312);
+			this.korisnickoImeKorektnoLBL.Location = new System.Drawing.Point(313, 101);
 			this.korisnickoImeKorektnoLBL.Name = "korisnickoImeKorektnoLBL";
 			this.korisnickoImeKorektnoLBL.Size = new System.Drawing.Size(0, 13);
 			this.korisnickoImeKorektnoLBL.TabIndex = 17;
+			// 
+			// poslovnaLogikaLBL
+			// 
+			this.poslovnaLogikaLBL.AutoSize = true;
+			this.poslovnaLogikaLBL.Location = new System.Drawing.Point(40, 325);
+			this.poslovnaLogikaLBL.Name = "poslovnaLogikaLBL";
+			this.poslovnaLogikaLBL.Size = new System.Drawing.Size(82, 13);
+			this.poslovnaLogikaLBL.TabIndex = 18;
+			this.poslovnaLogikaLBL.Text = "Poslovna logika";
+			// 
+			// poslovnaLogikaCB
+			// 
+			this.poslovnaLogikaCB.AutoSize = true;
+			this.poslovnaLogikaCB.Location = new System.Drawing.Point(150, 324);
+			this.poslovnaLogikaCB.Name = "poslovnaLogikaCB";
+			this.poslovnaLogikaCB.Size = new System.Drawing.Size(62, 17);
+			this.poslovnaLogikaCB.TabIndex = 19;
+			this.poslovnaLogikaCB.Text = "Aktivna";
+			this.poslovnaLogikaCB.UseVisualStyleBackColor = true;
 			// 
 			// UčesnikFormular
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(371, 411);
+			this.Controls.Add(this.poslovnaLogikaCB);
+			this.Controls.Add(this.poslovnaLogikaLBL);
 			this.Controls.Add(this.korisnickoImeKorektnoLBL);
 			this.Controls.Add(this.dodatiBTN);
 			this.Controls.Add(this.aktivnaUlogaCB);
@@ -231,7 +254,7 @@ namespace ProjectManagementSystem
 			this.Controls.Add(this.prezimeLBL);
 			this.Controls.Add(this.imeLBL);
 			this.Name = "UčesnikFormular";
-			this.Text = "Formular za učesnika";
+			this.Text = "Formular za korisnika";
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -257,5 +280,7 @@ namespace ProjectManagementSystem
 		private System.Windows.Forms.CheckBox aktivnaUlogaCB;
 		private System.Windows.Forms.Button dodatiBTN;
 		private System.Windows.Forms.Label korisnickoImeKorektnoLBL;
+		private System.Windows.Forms.Label poslovnaLogikaLBL;
+		private System.Windows.Forms.CheckBox poslovnaLogikaCB;
 	}
 }
