@@ -23,59 +23,59 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.nazivZadatkaLBL = new System.Windows.Forms.Label();
-            this.opisZadatkaLBL = new System.Windows.Forms.Label();
-            this.ucesniciLBL = new System.Windows.Forms.Label();
-            this.procenatZadatakLBL = new System.Windows.Forms.Label();
+            this.nazivProjektaLBL = new System.Windows.Forms.Label();
+            this.sefProjektaLBL = new System.Windows.Forms.Label();
+            this.procenatIzvrsenostiLBL = new System.Windows.Forms.Label();
+            this.procenatIzvrsenostiPBR = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
-            // nazivZadatkaLBL
+            // nazivProjektaLBL
             // 
-            this.nazivZadatkaLBL.AutoSize = true;
-            this.nazivZadatkaLBL.Location = new System.Drawing.Point(375, 33);
-            this.nazivZadatkaLBL.Name = "nazivZadatkaLBL";
-            this.nazivZadatkaLBL.Size = new System.Drawing.Size(75, 13);
-            this.nazivZadatkaLBL.TabIndex = 0;
-            this.nazivZadatkaLBL.Text = "Naziv zadatka";
+            this.nazivProjektaLBL.AutoSize = true;
+            this.nazivProjektaLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nazivProjektaLBL.Location = new System.Drawing.Point(23, 23);
+            this.nazivProjektaLBL.Name = "nazivProjektaLBL";
+            this.nazivProjektaLBL.Size = new System.Drawing.Size(273, 46);
+            this.nazivProjektaLBL.TabIndex = 0;
+            this.nazivProjektaLBL.Text = "Naziv projekta";
             // 
-            // opisZadatkaLBL
+            // sefProjektaLBL
             // 
-            this.opisZadatkaLBL.AutoSize = true;
-            this.opisZadatkaLBL.Location = new System.Drawing.Point(109, 117);
-            this.opisZadatkaLBL.Name = "opisZadatkaLBL";
-            this.opisZadatkaLBL.Size = new System.Drawing.Size(69, 13);
-            this.opisZadatkaLBL.TabIndex = 1;
-            this.opisZadatkaLBL.Text = "Opis zadatka";
+            this.sefProjektaLBL.AutoSize = true;
+            this.sefProjektaLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sefProjektaLBL.Location = new System.Drawing.Point(27, 166);
+            this.sefProjektaLBL.Name = "sefProjektaLBL";
+            this.sefProjektaLBL.Size = new System.Drawing.Size(111, 22);
+            this.sefProjektaLBL.TabIndex = 1;
+            this.sefProjektaLBL.Text = "Šef projekta:";
             // 
-            // ucesniciLBL
+            // procenatIzvrsenostiLBL
             // 
-            this.ucesniciLBL.AutoSize = true;
-            this.ucesniciLBL.Location = new System.Drawing.Point(109, 264);
-            this.ucesniciLBL.Name = "ucesniciLBL";
-            this.ucesniciLBL.Size = new System.Drawing.Size(51, 13);
-            this.ucesniciLBL.TabIndex = 2;
-            this.ucesniciLBL.Text = "Učesnici:";
+            this.procenatIzvrsenostiLBL.AutoSize = true;
+            this.procenatIzvrsenostiLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.procenatIzvrsenostiLBL.Location = new System.Drawing.Point(508, 98);
+            this.procenatIzvrsenostiLBL.Name = "procenatIzvrsenostiLBL";
+            this.procenatIzvrsenostiLBL.Size = new System.Drawing.Size(61, 29);
+            this.procenatIzvrsenostiLBL.TabIndex = 2;
+            this.procenatIzvrsenostiLBL.Text = "32%";
             // 
-            // procenatZadatakLBL
+            // procenatIzvrsenostiPBR
             // 
-            this.procenatZadatakLBL.AutoSize = true;
-            this.procenatZadatakLBL.Location = new System.Drawing.Point(109, 458);
-            this.procenatZadatakLBL.Name = "procenatZadatakLBL";
-            this.procenatZadatakLBL.Size = new System.Drawing.Size(27, 13);
-            this.procenatZadatakLBL.TabIndex = 3;
-            this.procenatZadatakLBL.Text = "45%";
-            this.procenatZadatakLBL.Click += new System.EventHandler(this.label4_Click);
+            this.procenatIzvrsenostiPBR.Location = new System.Drawing.Point(31, 98);
+            this.procenatIzvrsenostiPBR.Name = "procenatIzvrsenostiPBR";
+            this.procenatIzvrsenostiPBR.Size = new System.Drawing.Size(471, 29);
+            this.procenatIzvrsenostiPBR.TabIndex = 3;
             // 
             // UcesnikProjekatDetalji
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.procenatZadatakLBL);
-            this.Controls.Add(this.ucesniciLBL);
-            this.Controls.Add(this.opisZadatkaLBL);
-            this.Controls.Add(this.nazivZadatkaLBL);
+            this.Controls.Add(this.procenatIzvrsenostiPBR);
+            this.Controls.Add(this.procenatIzvrsenostiLBL);
+            this.Controls.Add(this.sefProjektaLBL);
+            this.Controls.Add(this.nazivProjektaLBL);
             this.Name = "UcesnikProjekatDetalji";
-            this.Size = new System.Drawing.Size(900, 500);
+            this.Size = new System.Drawing.Size(792, 500);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -83,9 +83,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Label nazivZadatkaLBL;
-        private System.Windows.Forms.Label opisZadatkaLBL;
-        private System.Windows.Forms.Label ucesniciLBL;
-        private System.Windows.Forms.Label procenatZadatakLBL;
+        private System.Windows.Forms.Label nazivProjektaLBL;
+        private System.Windows.Forms.Label sefProjektaLBL;
+        private System.Windows.Forms.Label procenatIzvrsenostiLBL;
+        private System.Windows.Forms.ProgressBar procenatIzvrsenostiPBR;
     }
 }

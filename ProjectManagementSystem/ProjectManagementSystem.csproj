@@ -32,7 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=6.10.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\MySQL\MySQL Connector Net 6.10.6\Assemblies\v4.5.2\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -86,17 +89,11 @@
     <Compile Include="NadzorAktivnostDetalji.Designer.cs">
       <DependentUpon>NadzorAktivnostDetalji.cs</DependentUpon>
     </Compile>
-    <Compile Include="NadzorProjekatDetalji.cs">
+    <Compile Include="ZadatakDetalji.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="NadzorProjekatDetalji.Designer.cs">
-      <DependentUpon>NadzorProjekatDetalji.cs</DependentUpon>
-    </Compile>
-    <Compile Include="NadzorZadatakDetalji.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="NadzorZadatakDetalji.Designer.cs">
-      <DependentUpon>NadzorZadatakDetalji.cs</DependentUpon>
+    <Compile Include="ZadatakDetalji.Designer.cs">
+      <DependentUpon>ZadatakDetalji.cs</DependentUpon>
     </Compile>
     <Compile Include="ProjekatFormular.cs">
       <SubType>Form</SubType>
@@ -104,29 +101,17 @@
     <Compile Include="ProjekatFormular.Designer.cs">
       <DependentUpon>ProjekatFormular.cs</DependentUpon>
     </Compile>
-    <Compile Include="SefAktivnostDetalji.cs">
+    <Compile Include="SefUcesnikAktivnostDetalji.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SefAktivnostDetalji.Designer.cs">
-      <DependentUpon>SefAktivnostDetalji.cs</DependentUpon>
+    <Compile Include="SefUcesnikAktivnostDetalji.Designer.cs">
+      <DependentUpon>SefUcesnikAktivnostDetalji.cs</DependentUpon>
     </Compile>
-    <Compile Include="SefProjekatDetalji.cs">
+    <Compile Include="SefNadzorProjekatDetalji.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SefProjekatDetalji.Designer.cs">
-      <DependentUpon>SefProjekatDetalji.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SefZadatakDetalji.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="SefZadatakDetalji.Designer.cs">
-      <DependentUpon>SefZadatakDetalji.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UcesnikAktivnostDetalji.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UcesnikAktivnostDetalji.Designer.cs">
-      <DependentUpon>UcesnikAktivnostDetalji.cs</DependentUpon>
+    <Compile Include="SefNadzorProjekatDetalji.Designer.cs">
+      <DependentUpon>SefNadzorProjekatDetalji.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -154,20 +139,20 @@
       <DependentUpon>Projekti.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UcesnikZadatakDetalji.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UcesnikZadatakDetalji.Designer.cs">
-      <DependentUpon>UcesnikZadatakDetalji.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Administrator.resx">
       <DependentUpon>Administrator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjekatFormular.resx">
       <DependentUpon>ProjekatFormular.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UcesnikAktivnostDetalji.resx">
-      <DependentUpon>UcesnikAktivnostDetalji.cs</DependentUpon>
+    <EmbeddedResource Include="SefNadzorProjekatDetalji.resx">
+      <DependentUpon>SefNadzorProjekatDetalji.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NadzorAktivnostDetalji.resx">
+      <DependentUpon>NadzorAktivnostDetalji.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SefUcesnikAktivnostDetalji.resx">
+      <DependentUpon>SefUcesnikAktivnostDetalji.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -190,8 +175,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UcesnikZadatakDetalji.resx">
-      <DependentUpon>UcesnikZadatakDetalji.cs</DependentUpon>
+    <EmbeddedResource Include="ZadatakDetalji.resx">
+      <DependentUpon>ZadatakDetalji.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -205,6 +190,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

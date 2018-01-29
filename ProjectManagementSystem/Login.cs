@@ -34,6 +34,8 @@ namespace ProjectManagementSystem {
 			new Administrator().Show();
 		}
 
-		
-	}
+        private void testBTN_Click(object sender, EventArgs e) {
+            new Projekti().Show();
+        }
+    }
 }

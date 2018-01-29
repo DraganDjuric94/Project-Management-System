@@ -21,12 +21,12 @@ namespace ProjectManagementSystem {
 
         private void zadatak_Click(object sender, EventArgs e) {
             detaljiPNL.Controls.Clear();
-            detaljiPNL.Controls.Add(new UcesnikZadatakDetalji());
+            detaljiPNL.Controls.Add(new SefNadzorProjekatDetalji());
         }
 
         private void aktivnost_Click(object sender, EventArgs e) {
             detaljiPNL.Controls.Clear();
-            detaljiPNL.Controls.Add(new UcesnikAktivnostDetalji());
+            detaljiPNL.Controls.Add(new SefUcesnikAktivnostDetalji());
         }
     }
 }
