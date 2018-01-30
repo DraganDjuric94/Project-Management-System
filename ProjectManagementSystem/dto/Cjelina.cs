@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectManagementSystem.dto
 {
-    class Cjelina
+    public class Cjelina
     {
         public Int32? CjelinaID { get; set; }
         public Int32? CjelinaRoditeljID { get; set; }

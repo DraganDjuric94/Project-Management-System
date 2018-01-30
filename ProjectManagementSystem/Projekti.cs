@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProjectManagementSystem.dao.mysql;
+using ProjectManagementSystem.dto;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +12,11 @@ using System.Windows.Forms;
 
 namespace ProjectManagementSystem {
     public partial class Projekti : Form {
-        public Projekti() {
+
+        public Ucesnik Ucesnik { get; set; }
+
+        public Projekti(Ucesnik uc) {
+            Ucesnik = uc;
             InitializeComponent();
         }
 
@@ -21,7 +27,8 @@ namespace ProjectManagementSystem {
 
         private void zadatak_Click(object sender, EventArgs e) {
             detaljiPNL.Controls.Clear();
-            detaljiPNL.Controls.Add(new SefNadzorProjekatDetalji());
+            Projekat pr = MySqlProjekatDao.Instance.ReadProjekatByUcesnikID(Ucesnik).First();
+            detaljiPNL.Controls.Add(new SefNadzorProjekatDetalji(pr));
         }
 
         private void aktivnost_Click(object sender, EventArgs e) {
