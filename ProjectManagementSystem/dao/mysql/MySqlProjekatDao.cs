@@ -96,7 +96,7 @@ namespace ProjectManagementSystem.dao.mysql
                 cmd.CommandText = "read_projekat";
 
                 cmd.Parameters.AddWithValue("@projekatID", projekat.ProjekatID);
-                cmd.Parameters["@projekatID"].Direction = ParameterDirection.Output;
+                cmd.Parameters["@projekatID"].Direction = ParameterDirection.Input;
 
                 cmd.Parameters.AddWithValue("@naziv", projekat.Naziv);
                 cmd.Parameters["@naziv"].Direction = ParameterDirection.Input;
@@ -228,9 +228,9 @@ namespace ProjectManagementSystem.dao.mysql
                 }
             }
 
-            foreach(Int32 projekatID in projektiID)
+            foreach(Int32 pID in projektiID)
             {
-                projekti.Add(MySqlProjekatDao.Instance.Read(new Projekat { ProjekatID = projekatID })[0]);
+                projekti.Add(MySqlProjekatDao.Instance.Read(new Projekat { ProjekatID = pID })[0]);
             }
 
             return projekti;

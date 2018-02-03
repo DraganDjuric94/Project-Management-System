@@ -89,6 +89,11 @@
     <Compile Include="NadzorAktivnostDetalji.Designer.cs">
       <DependentUpon>NadzorAktivnostDetalji.cs</DependentUpon>
     </Compile>
+    <Compile Include="Slike.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Slike.resx</DependentUpon>
+    </Compile>
     <Compile Include="ZadatakDetalji.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -157,6 +162,10 @@
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Slike.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Slike.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="UcesnikFormular.resx">
       <DependentUpon>UcesnikFormular.cs</DependentUpon>
     </EmbeddedResource>
@@ -193,6 +202,15 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\p.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\a.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
