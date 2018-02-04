@@ -22,12 +22,11 @@ namespace ProjectManagementSystem {
 
         private void Projekti_Load(object sender, EventArgs e) {
             List<Projekat> projekti = MySqlProjekatDao.Instance.ReadProjekatByUcesnikID(Ucesnik);
-            Uloga sef = new Uloga { UlogaID = 2, Naziv = "sef", SoftverPoslovnaLogika = false, Aktivna = true };
-            Uloga nadzor = new Uloga { UlogaID = 3, Naziv = "nadzor", SoftverPoslovnaLogika = false, Aktivna = true };
-            Uloga ucesnik = new Uloga { UlogaID = 6, Naziv = "ucesnik", SoftverPoslovnaLogika = false, Aktivna = true };
+            Uloga uloga = null;
             foreach (Projekat p in projekti) {
                 if (p.UcesniciNaProjektu.ContainsKey(Ucesnik)) {
-                    if (p.UcesniciNaProjektu.TryGetValue(Ucesnik, out sef)) {
+                    if (p.UcesniciNaProjektu.TryGetValue(Ucesnik, out uloga) && (uloga.Naziv.Equals("sef") || uloga.Naziv.Equals("nadzor"))) {
+                        Console.WriteLine("Projekat: " + p.Naziv + " Uloga: nadzor ili sef");
                         projektiTVW.Nodes.Add("p#" + p.ProjekatID.ToString(), p.Naziv, 2); //dodaj projekat u tree view
                         TreeNode me = projektiTVW.Nodes.Find("p#" + p.ProjekatID.ToString(), false)[0];
                         Cjelina cjelinaZaPretragu = new Cjelina {
@@ -35,12 +34,30 @@ namespace ProjectManagementSystem {
                         };
                         List<Cjelina> cjeline = MySqlCjelinaDao.Instance.Read(cjelinaZaPretragu);
                         foreach (Cjelina c in cjeline) {
-                            dodajCjelinu(c, me);
+                            if (c.CjelinaRoditeljID == null) {
+                                dodajCjelinu(c, me, false);
+                            }
                         }
-                    } else if (p.UcesniciNaProjektu.TryGetValue(Ucesnik, out nadzor)) {
 
-                    } else if (p.UcesniciNaProjektu.TryGetValue(Ucesnik, out ucesnik)) {
-
+                    } else if (p.UcesniciNaProjektu.TryGetValue(Ucesnik, out uloga) && uloga.Naziv.Equals("ucesnik")) {
+                        Console.WriteLine("Projekat: " + p.Naziv + " Uloga: ucesnik");
+                        projektiTVW.Nodes.Add("p#" + p.ProjekatID.ToString(), p.Naziv, 2); //dodaj projekat u tree view
+                        TreeNode me = projektiTVW.Nodes.Find("p#" + p.ProjekatID.ToString(), false)[0];
+                        Cjelina cjelinaZaPretragu = new Cjelina {
+                            ProjekatID = p.ProjekatID
+                        };
+                        List<Cjelina> cjeline = MySqlCjelinaDao.Instance.Read(cjelinaZaPretragu);
+                        foreach (Cjelina c1 in cjeline.ToArray()) {
+                            if (!c1.Ucesnici.Contains(Ucesnik)){
+                                cjeline.Remove(c1);
+                                Console.WriteLine(c1.Naziv);
+                            }
+                        }
+                        foreach (Cjelina c2 in cjeline) {
+                            if (c2.CjelinaRoditeljID == null) {
+                                dodajCjelinu(c2, me, true);
+                            }
+                        }
                     } else {
                         Application.Exit();
                     }
@@ -50,15 +67,22 @@ namespace ProjectManagementSystem {
             }   
         }
 
-        private void dodajCjelinu(Cjelina cjelina, TreeNode parent) {
+        private void dodajCjelinu(Cjelina cjelina, TreeNode parent, bool obicniUcesnik) {
             parent.Nodes.Add("c#" + cjelina.CjelinaID.ToString(), cjelina.Naziv, 1);
             TreeNode me = parent.Nodes.Find("c#" + cjelina.CjelinaID.ToString(), false)[0];
             Cjelina cjelinaZaPretragu = new Cjelina {
                 CjelinaRoditeljID = cjelina.CjelinaID
             };
             List<Cjelina> podcjeline = MySqlCjelinaDao.Instance.Read(cjelinaZaPretragu);
-            foreach(Cjelina c in podcjeline) {
-                dodajCjelinu(c, me);
+            if (obicniUcesnik) {
+                foreach(Cjelina c1 in podcjeline.ToArray()) {
+                    if (!c1.Ucesnici.Contains(Ucesnik)){
+                        podcjeline.Remove(c1);
+                    }
+                }
+            }
+            foreach(Cjelina c2 in podcjeline) {
+                dodajCjelinu(c2, me, obicniUcesnik);
             }
             Aktivnost aktivnostZaPretragu = new Aktivnost {
                 CjelinaID = cjelina.CjelinaID
