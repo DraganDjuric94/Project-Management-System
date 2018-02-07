@@ -55,6 +55,12 @@
     <Compile Include="Administrator.Designer.cs">
       <DependentUpon>Administrator.cs</DependentUpon>
     </Compile>
+    <Compile Include="AktivnostFormular.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AktivnostFormular.Designer.cs">
+      <DependentUpon>AktivnostFormular.cs</DependentUpon>
+    </Compile>
     <Compile Include="dao\AktivnostDao.cs" />
     <Compile Include="dao\CjelinaDao.cs" />
     <Compile Include="dao\Crud.cs" />
@@ -147,8 +153,17 @@
       <DependentUpon>Projekti.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ZadatakFormular.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ZadatakFormular.Designer.cs">
+      <DependentUpon>ZadatakFormular.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Administrator.resx">
       <DependentUpon>Administrator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AktivnostFormular.resx">
+      <DependentUpon>AktivnostFormular.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjekatFormular.resx">
       <DependentUpon>ProjekatFormular.cs</DependentUpon>
@@ -189,6 +204,9 @@
     </Compile>
     <EmbeddedResource Include="ZadatakDetalji.resx">
       <DependentUpon>ZadatakDetalji.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ZadatakFormular.resx">
+      <DependentUpon>ZadatakFormular.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
