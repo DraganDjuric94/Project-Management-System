@@ -163,6 +163,11 @@ namespace ProjectManagementSystem.dao.mysql
                 DeleteUcesnikUlogaByUcesnikID(ucesnik.UcesnikID.Value);
                 InsertUcesnikUloga(ucesnik.UcesnikID.Value, ucesnik.Uloga.UlogaID.Value);
             }
+            else
+            {
+                DeleteUcesnikUlogaByUcesnikID(ucesnik.UcesnikID.Value);
+                InsertUcesnikUloga(ucesnik.UcesnikID.Value, ucesnik.Uloga.UlogaID.Value);
+            }
             #endregion
         }
 
