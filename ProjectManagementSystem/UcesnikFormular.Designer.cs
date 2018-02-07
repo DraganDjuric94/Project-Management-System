@@ -43,13 +43,9 @@ namespace ProjectManagementSystem
 			this.lozinkaTXT = new System.Windows.Forms.TextBox();
 			this.jmbgTXT = new System.Windows.Forms.TextBox();
 			this.nazivUlogeCB = new System.Windows.Forms.ComboBox();
-			this.aktivnaUlogaLBL = new System.Windows.Forms.Label();
 			this.aktivanUcesnikCB = new System.Windows.Forms.CheckBox();
-			this.aktivnaUlogaCB = new System.Windows.Forms.CheckBox();
 			this.dodatiBTN = new System.Windows.Forms.Button();
 			this.korisnickoImeKorektnoLBL = new System.Windows.Forms.Label();
-			this.poslovnaLogikaLBL = new System.Windows.Forms.Label();
-			this.poslovnaLogikaCB = new System.Windows.Forms.CheckBox();
 			this.SuspendLayout();
 			// 
 			// imeLBL
@@ -82,7 +78,7 @@ namespace ProjectManagementSystem
 			// lozinkaLBL
 			// 
 			this.lozinkaLBL.AutoSize = true;
-			this.lozinkaLBL.Location = new System.Drawing.Point(37, 134);
+			this.lozinkaLBL.Location = new System.Drawing.Point(37, 143);
 			this.lozinkaLBL.Name = "lozinkaLBL";
 			this.lozinkaLBL.Size = new System.Drawing.Size(44, 13);
 			this.lozinkaLBL.TabIndex = 3;
@@ -91,7 +87,7 @@ namespace ProjectManagementSystem
 			// jmbgLBL
 			// 
 			this.jmbgLBL.AutoSize = true;
-			this.jmbgLBL.Location = new System.Drawing.Point(37, 170);
+			this.jmbgLBL.Location = new System.Drawing.Point(37, 183);
 			this.jmbgLBL.Name = "jmbgLBL";
 			this.jmbgLBL.Size = new System.Drawing.Size(36, 13);
 			this.jmbgLBL.TabIndex = 4;
@@ -100,7 +96,7 @@ namespace ProjectManagementSystem
 			// aktivanLBL
 			// 
 			this.aktivanLBL.AutoSize = true;
-			this.aktivanLBL.Location = new System.Drawing.Point(37, 210);
+			this.aktivanLBL.Location = new System.Drawing.Point(37, 219);
 			this.aktivanLBL.Name = "aktivanLBL";
 			this.aktivanLBL.Size = new System.Drawing.Size(83, 13);
 			this.aktivanLBL.TabIndex = 5;
@@ -109,7 +105,7 @@ namespace ProjectManagementSystem
 			// nazivUlogeLBL
 			// 
 			this.nazivUlogeLBL.AutoSize = true;
-			this.nazivUlogeLBL.Location = new System.Drawing.Point(38, 251);
+			this.nazivUlogeLBL.Location = new System.Drawing.Point(37, 260);
 			this.nazivUlogeLBL.Name = "nazivUlogeLBL";
 			this.nazivUlogeLBL.Size = new System.Drawing.Size(63, 13);
 			this.nazivUlogeLBL.TabIndex = 6;
@@ -139,14 +135,14 @@ namespace ProjectManagementSystem
 			// 
 			// lozinkaTXT
 			// 
-			this.lozinkaTXT.Location = new System.Drawing.Point(150, 134);
+			this.lozinkaTXT.Location = new System.Drawing.Point(150, 140);
 			this.lozinkaTXT.Name = "lozinkaTXT";
 			this.lozinkaTXT.Size = new System.Drawing.Size(157, 20);
 			this.lozinkaTXT.TabIndex = 10;
 			// 
 			// jmbgTXT
 			// 
-			this.jmbgTXT.Location = new System.Drawing.Point(150, 170);
+			this.jmbgTXT.Location = new System.Drawing.Point(150, 180);
 			this.jmbgTXT.Name = "jmbgTXT";
 			this.jmbgTXT.Size = new System.Drawing.Size(157, 20);
 			this.jmbgTXT.TabIndex = 11;
@@ -154,46 +150,25 @@ namespace ProjectManagementSystem
 			// nazivUlogeCB
 			// 
 			this.nazivUlogeCB.FormattingEnabled = true;
-			this.nazivUlogeCB.Items.AddRange(new object[] {
-            "administrator",
-            "učesnik"});
-			this.nazivUlogeCB.Location = new System.Drawing.Point(150, 243);
+			this.nazivUlogeCB.Location = new System.Drawing.Point(150, 257);
 			this.nazivUlogeCB.Name = "nazivUlogeCB";
 			this.nazivUlogeCB.Size = new System.Drawing.Size(157, 21);
 			this.nazivUlogeCB.TabIndex = 12;
-			// 
-			// aktivnaUlogaLBL
-			// 
-			this.aktivnaUlogaLBL.AutoSize = true;
-			this.aktivnaUlogaLBL.Location = new System.Drawing.Point(40, 288);
-			this.aktivnaUlogaLBL.Name = "aktivnaUlogaLBL";
-			this.aktivnaUlogaLBL.Size = new System.Drawing.Size(72, 13);
-			this.aktivnaUlogaLBL.TabIndex = 13;
-			this.aktivnaUlogaLBL.Text = "Aktivna uloga";
+			this.nazivUlogeCB.MouseClick += new System.Windows.Forms.MouseEventHandler(this.nazivUlogeCB_MouseClick);
 			// 
 			// aktivanUcesnikCB
 			// 
 			this.aktivanUcesnikCB.AutoSize = true;
-			this.aktivanUcesnikCB.Location = new System.Drawing.Point(150, 206);
+			this.aktivanUcesnikCB.Location = new System.Drawing.Point(150, 218);
 			this.aktivanUcesnikCB.Name = "aktivanUcesnikCB";
 			this.aktivanUcesnikCB.Size = new System.Drawing.Size(62, 17);
 			this.aktivanUcesnikCB.TabIndex = 14;
 			this.aktivanUcesnikCB.Text = "Aktivan";
 			this.aktivanUcesnikCB.UseVisualStyleBackColor = true;
 			// 
-			// aktivnaUlogaCB
-			// 
-			this.aktivnaUlogaCB.AutoSize = true;
-			this.aktivnaUlogaCB.Location = new System.Drawing.Point(150, 284);
-			this.aktivnaUlogaCB.Name = "aktivnaUlogaCB";
-			this.aktivnaUlogaCB.Size = new System.Drawing.Size(62, 17);
-			this.aktivnaUlogaCB.TabIndex = 15;
-			this.aktivnaUlogaCB.Text = "Aktivna";
-			this.aktivnaUlogaCB.UseVisualStyleBackColor = true;
-			// 
 			// dodatiBTN
 			// 
-			this.dodatiBTN.Location = new System.Drawing.Point(243, 362);
+			this.dodatiBTN.Location = new System.Drawing.Point(238, 342);
 			this.dodatiBTN.Name = "dodatiBTN";
 			this.dodatiBTN.Size = new System.Drawing.Size(75, 23);
 			this.dodatiBTN.TabIndex = 16;
@@ -204,42 +179,19 @@ namespace ProjectManagementSystem
 			// korisnickoImeKorektnoLBL
 			// 
 			this.korisnickoImeKorektnoLBL.AutoSize = true;
-			this.korisnickoImeKorektnoLBL.Location = new System.Drawing.Point(313, 101);
+			this.korisnickoImeKorektnoLBL.Location = new System.Drawing.Point(147, 124);
 			this.korisnickoImeKorektnoLBL.Name = "korisnickoImeKorektnoLBL";
 			this.korisnickoImeKorektnoLBL.Size = new System.Drawing.Size(0, 13);
 			this.korisnickoImeKorektnoLBL.TabIndex = 17;
-			// 
-			// poslovnaLogikaLBL
-			// 
-			this.poslovnaLogikaLBL.AutoSize = true;
-			this.poslovnaLogikaLBL.Location = new System.Drawing.Point(40, 325);
-			this.poslovnaLogikaLBL.Name = "poslovnaLogikaLBL";
-			this.poslovnaLogikaLBL.Size = new System.Drawing.Size(82, 13);
-			this.poslovnaLogikaLBL.TabIndex = 18;
-			this.poslovnaLogikaLBL.Text = "Poslovna logika";
-			// 
-			// poslovnaLogikaCB
-			// 
-			this.poslovnaLogikaCB.AutoSize = true;
-			this.poslovnaLogikaCB.Location = new System.Drawing.Point(150, 324);
-			this.poslovnaLogikaCB.Name = "poslovnaLogikaCB";
-			this.poslovnaLogikaCB.Size = new System.Drawing.Size(62, 17);
-			this.poslovnaLogikaCB.TabIndex = 19;
-			this.poslovnaLogikaCB.Text = "Aktivna";
-			this.poslovnaLogikaCB.UseVisualStyleBackColor = true;
 			// 
 			// UčesnikFormular
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(371, 411);
-			this.Controls.Add(this.poslovnaLogikaCB);
-			this.Controls.Add(this.poslovnaLogikaLBL);
+			this.ClientSize = new System.Drawing.Size(369, 400);
 			this.Controls.Add(this.korisnickoImeKorektnoLBL);
 			this.Controls.Add(this.dodatiBTN);
-			this.Controls.Add(this.aktivnaUlogaCB);
 			this.Controls.Add(this.aktivanUcesnikCB);
-			this.Controls.Add(this.aktivnaUlogaLBL);
 			this.Controls.Add(this.nazivUlogeCB);
 			this.Controls.Add(this.jmbgTXT);
 			this.Controls.Add(this.lozinkaTXT);
@@ -275,12 +227,8 @@ namespace ProjectManagementSystem
 		private System.Windows.Forms.TextBox lozinkaTXT;
 		private System.Windows.Forms.TextBox jmbgTXT;
 		private System.Windows.Forms.ComboBox nazivUlogeCB;
-		private System.Windows.Forms.Label aktivnaUlogaLBL;
 		private System.Windows.Forms.CheckBox aktivanUcesnikCB;
-		private System.Windows.Forms.CheckBox aktivnaUlogaCB;
 		private System.Windows.Forms.Button dodatiBTN;
 		private System.Windows.Forms.Label korisnickoImeKorektnoLBL;
-		private System.Windows.Forms.Label poslovnaLogikaLBL;
-		private System.Windows.Forms.CheckBox poslovnaLogikaCB;
 	}
 }

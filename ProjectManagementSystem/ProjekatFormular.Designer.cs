@@ -30,11 +30,12 @@
 		{
 			this.nazivLBL = new System.Windows.Forms.Label();
 			this.datumKreiranjaLBL = new System.Windows.Forms.Label();
-			this.aktivanProjekatLBL = new System.Windows.Forms.Label();
 			this.nazivTXT = new System.Windows.Forms.TextBox();
-			this.aktivanProjekatCB = new System.Windows.Forms.CheckBox();
 			this.datumKreiranjaDTP = new System.Windows.Forms.DateTimePicker();
 			this.dodatiBTN = new System.Windows.Forms.Button();
+			this.nazivKorektnoLBL = new System.Windows.Forms.Label();
+			this.sefProjektaLBL = new System.Windows.Forms.Label();
+			this.sefProjektaCB = new System.Windows.Forms.ComboBox();
 			this.SuspendLayout();
 			// 
 			// nazivLBL
@@ -55,31 +56,13 @@
 			this.datumKreiranjaLBL.TabIndex = 1;
 			this.datumKreiranjaLBL.Text = "Datum kreiranja";
 			// 
-			// aktivanProjekatLBL
-			// 
-			this.aktivanProjekatLBL.AutoSize = true;
-			this.aktivanProjekatLBL.Location = new System.Drawing.Point(24, 142);
-			this.aktivanProjekatLBL.Name = "aktivanProjekatLBL";
-			this.aktivanProjekatLBL.Size = new System.Drawing.Size(84, 13);
-			this.aktivanProjekatLBL.TabIndex = 2;
-			this.aktivanProjekatLBL.Text = "Aktivan projekat";
-			// 
 			// nazivTXT
 			// 
 			this.nazivTXT.Location = new System.Drawing.Point(111, 24);
 			this.nazivTXT.Name = "nazivTXT";
 			this.nazivTXT.Size = new System.Drawing.Size(200, 20);
 			this.nazivTXT.TabIndex = 3;
-			// 
-			// aktivanProjekatCB
-			// 
-			this.aktivanProjekatCB.AutoSize = true;
-			this.aktivanProjekatCB.Location = new System.Drawing.Point(168, 138);
-			this.aktivanProjekatCB.Name = "aktivanProjekatCB";
-			this.aktivanProjekatCB.Size = new System.Drawing.Size(62, 17);
-			this.aktivanProjekatCB.TabIndex = 4;
-			this.aktivanProjekatCB.Text = "Aktivan";
-			this.aktivanProjekatCB.UseVisualStyleBackColor = true;
+			this.nazivTXT.TextChanged += new System.EventHandler(this.nazivTXT_TextChanged);
 			// 
 			// datumKreiranjaDTP
 			// 
@@ -98,16 +81,43 @@
 			this.dodatiBTN.UseVisualStyleBackColor = true;
 			this.dodatiBTN.Click += new System.EventHandler(this.dodatiBTN_Click);
 			// 
+			// nazivKorektnoLBL
+			// 
+			this.nazivKorektnoLBL.AutoSize = true;
+			this.nazivKorektnoLBL.Location = new System.Drawing.Point(111, 53);
+			this.nazivKorektnoLBL.Name = "nazivKorektnoLBL";
+			this.nazivKorektnoLBL.Size = new System.Drawing.Size(0, 13);
+			this.nazivKorektnoLBL.TabIndex = 7;
+			// 
+			// sefProjektaLBL
+			// 
+			this.sefProjektaLBL.AutoSize = true;
+			this.sefProjektaLBL.Location = new System.Drawing.Point(24, 131);
+			this.sefProjektaLBL.Name = "sefProjektaLBL";
+			this.sefProjektaLBL.Size = new System.Drawing.Size(65, 13);
+			this.sefProjektaLBL.TabIndex = 8;
+			this.sefProjektaLBL.Text = "Šef Projekta";
+			// 
+			// sefProjektaCB
+			// 
+			this.sefProjektaCB.FormattingEnabled = true;
+			this.sefProjektaCB.Location = new System.Drawing.Point(114, 128);
+			this.sefProjektaCB.Name = "sefProjektaCB";
+			this.sefProjektaCB.Size = new System.Drawing.Size(197, 21);
+			this.sefProjektaCB.TabIndex = 9;
+			this.sefProjektaCB.MouseClick += new System.Windows.Forms.MouseEventHandler(this.sefProjektaCB_MouseClick);
+			// 
 			// ProjekatFormular
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(325, 289);
+			this.Controls.Add(this.sefProjektaCB);
+			this.Controls.Add(this.sefProjektaLBL);
+			this.Controls.Add(this.nazivKorektnoLBL);
 			this.Controls.Add(this.dodatiBTN);
 			this.Controls.Add(this.datumKreiranjaDTP);
-			this.Controls.Add(this.aktivanProjekatCB);
 			this.Controls.Add(this.nazivTXT);
-			this.Controls.Add(this.aktivanProjekatLBL);
 			this.Controls.Add(this.datumKreiranjaLBL);
 			this.Controls.Add(this.nazivLBL);
 			this.Name = "ProjekatFormular";
@@ -121,10 +131,11 @@
 
 		private System.Windows.Forms.Label nazivLBL;
 		private System.Windows.Forms.Label datumKreiranjaLBL;
-		private System.Windows.Forms.Label aktivanProjekatLBL;
 		private System.Windows.Forms.TextBox nazivTXT;
-		private System.Windows.Forms.CheckBox aktivanProjekatCB;
 		private System.Windows.Forms.DateTimePicker datumKreiranjaDTP;
 		private System.Windows.Forms.Button dodatiBTN;
+		private System.Windows.Forms.Label nazivKorektnoLBL;
+		private System.Windows.Forms.Label sefProjektaLBL;
+		private System.Windows.Forms.ComboBox sefProjektaCB;
 	}
 }

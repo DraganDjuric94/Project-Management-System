@@ -21,9 +21,42 @@ namespace ProjectManagementSystem
 
 		private void dodatiBTN_Click(object sender, EventArgs e)
 		{
-			MySqlProjekatDao.Instance.Create(new Projekat { Naziv = nazivTXT.Text, DatumKreiranja = Convert.ToDateTime(datumKreiranjaDTP.Value.Date.ToString()), Aktivan = aktivanProjekatCB.Checked });
-			MessageBox.Show("Projekat je uspješno unešen", "Obavještenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			this.Close();
+			if (nazivKorektnoLBL.Text.Equals("korektno"))
+			{
+				Dictionary<Ucesnik, Uloga> ucesnici = new Dictionary<Ucesnik, Uloga>();
+				List<Ucesnik> ucesnik = MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = sefProjektaCB.Text });
+				List<Uloga> uloga = MySqlUlogaDao.Instance.Read(new Uloga { Naziv = "sef" });
+				ucesnici.Add(ucesnik[0], uloga[0]);
+				MySqlProjekatDao.Instance.Create(new Projekat { Naziv = nazivTXT.Text, DatumKreiranja = Convert.ToDateTime(datumKreiranjaDTP.Value.Date.ToString()), Aktivan = true, UcesniciNaProjektu = ucesnici });
+				MessageBox.Show("Projekat je uspješno unešen", "Obavještenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				this.Close();
+			}
+		}
+
+		private void nazivTXT_TextChanged(object sender, EventArgs e)
+		{
+			List<Projekat> projekti = MySqlProjekatDao.Instance.Read(new Projekat { Naziv = nazivTXT.Text });
+			if (projekti.Count == 0)
+			{
+				nazivKorektnoLBL.Text = "korektno";
+			}
+			else
+			{
+				nazivKorektnoLBL.Text = "nekorektno";
+			}
+		}
+
+		private void sefProjektaCB_MouseClick(object sender, EventArgs e)
+		{
+			List<Ucesnik> ucesnici = MySqlUcesnikDao.Instance.Read(new Ucesnik());
+			sefProjektaCB.Items.Clear();
+			foreach (Ucesnik ucesnik in ucesnici)
+			{
+				if (ucesnik.Aktivan == true && ucesnik.Uloga.Naziv.Equals("korisnik"))
+				{
+					sefProjektaCB.Items.Add(ucesnik.KorisnickoIme);
+				}
+			}
 		}
 	}
 }

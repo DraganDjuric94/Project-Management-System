@@ -27,8 +27,8 @@ namespace ProjectManagementSystem
 		{
 			if (korisnickoImeKorektnoLBL.Text.Equals("korektno") && UcesnikIDKontrolni == 0)
 			{
-				Uloga uloga = new Uloga { Naziv = nazivUlogeCB.Text, Aktivna = aktivnaUlogaCB.Checked, SoftverPoslovnaLogika = poslovnaLogikaCB.Checked };
-				MySqlUcesnikDao.Instance.Create(new Ucesnik { Ime = imeTXT.Text, Prezime = prezimeTXT.Text, KorisnickoIme = korisnickoImeTXT.Text, Lozinka = lozinkaTXT.Text, Jmbg = jmbgTXT.Text, Aktivan = aktivanUcesnikCB.Checked, Uloga = uloga });
+				List<Uloga> uloga = MySqlUlogaDao.Instance.Read(new Uloga { Naziv = nazivUlogeCB.Text });
+				MySqlUcesnikDao.Instance.Create(new Ucesnik { Ime = imeTXT.Text, Prezime = prezimeTXT.Text, KorisnickoIme = korisnickoImeTXT.Text, Lozinka = lozinkaTXT.Text, Jmbg = jmbgTXT.Text, Aktivan = aktivanUcesnikCB.Checked, Uloga = uloga[0] });
 				MessageBox.Show("Korisnik je uspješno unešen", "Obavještenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				this.Close();
 			}
@@ -41,9 +41,8 @@ namespace ProjectManagementSystem
 				ucesnik[0].Lozinka = lozinkaTXT.Text;
 				ucesnik[0].Jmbg = jmbgTXT.Text;
 				ucesnik[0].Aktivan = aktivanUcesnikCB.Checked;
-				ucesnik[0].Uloga.Naziv = nazivUlogeCB.Text;
-				ucesnik[0].Uloga.Aktivna = aktivnaUlogaCB.Checked;
-				ucesnik[0].Uloga.SoftverPoslovnaLogika = poslovnaLogikaCB.Checked;
+				List<Uloga> uloga = MySqlUlogaDao.Instance.Read(new Uloga { Naziv = nazivUlogeCB.Text });
+				ucesnik[0].Uloga = uloga[0];
 				MySqlUcesnikDao.Instance.Update(ucesnik[0]);
 				MessageBox.Show("Korisnik je uspješno ažuriran", "Obavještenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				this.Close();
@@ -73,11 +72,18 @@ namespace ProjectManagementSystem
 			jmbgTXT.Text = ucesnici[0].Jmbg;
 			aktivanUcesnikCB.Checked = (bool)ucesnici[0].Aktivan;
 			nazivUlogeCB.Text = ucesnici[0].Uloga.Naziv;
-			aktivnaUlogaCB.Checked = (bool)ucesnici[0].Uloga.Aktivna;
-			poslovnaLogikaCB.Checked = (bool)ucesnici[0].Uloga.SoftverPoslovnaLogika;
 			UcesnikIDKontrolni = ucesnici[0].UcesnikID;
 			this.ShowDialog();
 		}
 
+		private void nazivUlogeCB_MouseClick(object sender, EventArgs e)
+		{
+			List<Uloga> uloge = MySqlUlogaDao.Instance.Read(new Uloga());
+			nazivUlogeCB.Items.Clear();
+			foreach (Uloga uloga in uloge)
+			{
+				nazivUlogeCB.Items.Add(uloga.Naziv);
+			}
+		}
 	}
 }

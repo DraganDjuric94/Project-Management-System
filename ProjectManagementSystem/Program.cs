@@ -16,8 +16,8 @@ namespace ProjectManagementSystem {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Login());
-<<<<<<< HEAD
-<<<<<<< HEAD
+//<<<<<<< HEAD
+//<<<<<<< HEAD
 
             /*foreach (Projekat p in MySqlProjekatDao.Instance.ReadProjekatByUcesnikID(1))
 =======
