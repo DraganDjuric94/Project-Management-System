@@ -12,16 +12,11 @@ namespace ProjectManagementSystem {
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main() {
+        static void Main()
+        {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Login());
-
-            /*
-            foreach (Projekat p in MySqlProjekatDao.Instance.ReadProjekatByUcesnikID(1))
-            {
-                Console.WriteLine(p);
-            }*/
         }
     }
 }

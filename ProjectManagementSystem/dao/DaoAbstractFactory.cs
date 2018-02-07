@@ -19,6 +19,7 @@ namespace ProjectManagementSystem.dao
         RevizijaDokumentaDao<RevizijaDokumenta> GetRevizijaDokumentaDao();
         DokumentDao<Dokument> GetDokumentDao();
         UcesnikDao<Ucesnik> GetUcesnikDao();
+        IstorijaAktivnostiDao<IstorijaAktivnosti> GetIstorijaAktivnostiDao();
         #endregion
     }
 }
