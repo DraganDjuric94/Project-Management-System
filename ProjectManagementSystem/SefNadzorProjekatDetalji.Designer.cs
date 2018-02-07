@@ -99,6 +99,7 @@
             this.procenatIzvrsenostiPBR.Location = new System.Drawing.Point(32, 98);
             this.procenatIzvrsenostiPBR.Name = "procenatIzvrsenostiPBR";
             this.procenatIzvrsenostiPBR.Size = new System.Drawing.Size(498, 31);
+            this.procenatIzvrsenostiPBR.Step = 1;
             this.procenatIzvrsenostiPBR.TabIndex = 6;
             // 
             // ucesniciLVW

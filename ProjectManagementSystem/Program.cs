@@ -12,10 +12,12 @@ namespace ProjectManagementSystem {
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main() {
+        static void Main()
+        {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Login());
+<<<<<<< HEAD
 //<<<<<<< HEAD
 //<<<<<<< HEAD
 
@@ -33,6 +35,8 @@ namespace ProjectManagementSystem {
             {
                 Console.WriteLine(p);
             }*/
+=======
+>>>>>>> 6247d2d50fcf99960cc28319f52e27c57998429f
         }
     }
 }

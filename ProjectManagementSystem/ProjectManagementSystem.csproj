@@ -55,16 +55,24 @@
     <Compile Include="Administrator.Designer.cs">
       <DependentUpon>Administrator.cs</DependentUpon>
     </Compile>
+    <Compile Include="AktivnostFormular.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AktivnostFormular.Designer.cs">
+      <DependentUpon>AktivnostFormular.cs</DependentUpon>
+    </Compile>
     <Compile Include="dao\AktivnostDao.cs" />
     <Compile Include="dao\CjelinaDao.cs" />
     <Compile Include="dao\Crud.cs" />
     <Compile Include="dao\DaoAbstractFactory.cs" />
     <Compile Include="dao\DokumentDao.cs" />
+    <Compile Include="dao\IstorijaAktivnostiDao.cs" />
     <Compile Include="dao\KomentarDao.cs" />
     <Compile Include="dao\mysql\MySqlAktivnostDao.cs" />
     <Compile Include="dao\mysql\MySqlCjelinaDao.cs" />
     <Compile Include="dao\mysql\MySqlDaoFactory.cs" />
     <Compile Include="dao\mysql\MySqlDokumentDao.cs" />
+    <Compile Include="dao\mysql\MySqlIstorijaAktivnostiDao.cs" />
     <Compile Include="dao\mysql\MySqlProjekatDao.cs" />
     <Compile Include="dao\mysql\MySqlRevizijaDokumentaDao.cs" />
     <Compile Include="dao\mysql\MySqlTransakcijaDao.cs" />
@@ -78,6 +86,7 @@
     <Compile Include="dto\Aktivnost.cs" />
     <Compile Include="dto\Cjelina.cs" />
     <Compile Include="dto\Dokument.cs" />
+    <Compile Include="dto\IstorijaAktivnosti.cs" />
     <Compile Include="dto\Projekat.cs" />
     <Compile Include="dto\RevizijaDokumenta.cs" />
     <Compile Include="dto\Transakcija.cs" />
@@ -88,6 +97,11 @@
     </Compile>
     <Compile Include="NadzorAktivnostDetalji.Designer.cs">
       <DependentUpon>NadzorAktivnostDetalji.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Slike.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Slike.resx</DependentUpon>
     </Compile>
     <Compile Include="ZadatakDetalji.cs">
       <SubType>UserControl</SubType>
@@ -139,8 +153,17 @@
       <DependentUpon>Projekti.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ZadatakFormular.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ZadatakFormular.Designer.cs">
+      <DependentUpon>ZadatakFormular.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Administrator.resx">
       <DependentUpon>Administrator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AktivnostFormular.resx">
+      <DependentUpon>AktivnostFormular.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjekatFormular.resx">
       <DependentUpon>ProjekatFormular.cs</DependentUpon>
@@ -156,6 +179,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Slike.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Slike.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="UcesnikFormular.resx">
       <DependentUpon>UcesnikFormular.cs</DependentUpon>
@@ -178,6 +205,9 @@
     <EmbeddedResource Include="ZadatakDetalji.resx">
       <DependentUpon>ZadatakDetalji.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ZadatakFormular.resx">
+      <DependentUpon>ZadatakFormular.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -193,6 +223,15 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\p.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\a.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

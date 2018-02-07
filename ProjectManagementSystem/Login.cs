@@ -35,7 +35,8 @@ namespace ProjectManagementSystem {
 		}
 
         private void testBTN_Click(object sender, EventArgs e) {
-            new Projekti().Show();
+            Ucesnik uc = MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = 3})[0];
+            new Projekti(uc).Show();
         }
     }
 }

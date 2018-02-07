@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProjectManagementSystem.dto
 {
-    class Dokument
+    public class Dokument
     {
         public Int32? DokumentID { get; set; }
         public Int32? UcesnikID { get; set; }

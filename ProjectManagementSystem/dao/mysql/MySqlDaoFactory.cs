@@ -71,6 +71,11 @@ namespace ProjectManagementSystem.dao.mysql
         {
             return MySqlUcesnikDao.Instance;
         }
+
+        public IstorijaAktivnostiDao<IstorijaAktivnosti> GetIstorijaAktivnostiDao()
+        {
+            return MySqlIstorijaAktivnostiDao.Instance;
+        }
         #endregion
     }
 }

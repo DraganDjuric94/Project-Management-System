@@ -50,6 +50,7 @@
             this.procenatZavrsenostiPBR.Location = new System.Drawing.Point(30, 93);
             this.procenatZavrsenostiPBR.Name = "procenatZavrsenostiPBR";
             this.procenatZavrsenostiPBR.Size = new System.Drawing.Size(600, 29);
+            this.procenatZavrsenostiPBR.Step = 1;
             this.procenatZavrsenostiPBR.TabIndex = 1;
             // 
             // datumKreiranjaLBL
