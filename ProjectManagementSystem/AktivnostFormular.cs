@@ -16,5 +16,10 @@ namespace ProjectManagementSystem
         {
             InitializeComponent();
         }
+
+        private void ucesceUcesnikaLBL_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
