@@ -17,26 +17,12 @@ namespace ProjectManagementSystem {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Login());
-<<<<<<< HEAD
-//<<<<<<< HEAD
-//<<<<<<< HEAD
-
-            /*foreach (Projekat p in MySqlProjekatDao.Instance.ReadProjekatByUcesnikID(1))
-=======
-=======
->>>>>>> 562015e22fcf7a8e916e43325cd431dd2235a030
-=======
->>>>>>> 562015e22fcf7a8e916e43325cd431dd2235a030
-=======
->>>>>>> 562015e22fcf7a8e916e43325cd431dd2235a030
             /*
             foreach (Projekat p in MySqlProjekatDao.Instance.ReadProjekatByUcesnikID(1))
->>>>>>> 562015e22fcf7a8e916e43325cd431dd2235a030
             {
                 Console.WriteLine(p);
             }*/
-=======
->>>>>>> 6247d2d50fcf99960cc28319f52e27c57998429f
+
         }
     }
 }
