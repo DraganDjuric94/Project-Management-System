@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectManagementSystem.dto;
+using ProjectManagementSystem.dao.mysql;
 
 namespace ProjectManagementSystem {
     public partial class ZadatakDetalji : UserControl {
@@ -27,8 +28,11 @@ namespace ProjectManagementSystem {
                 procenatZavrsenostiPBR.PerformStep();
             }
 
-            //foreach(Aktivnost a in cj.Aktivnosti)
-            //ISTORIJA AKTIVNOSTI
+            List<IstorijaAktivnosti> istorija = MySqlIstorijaAktivnostiDao.Instance.Read(new IstorijaAktivnosti { CjelinaID = cj.CjelinaID });
+            foreach(IstorijaAktivnosti ia in istorija) {
+                istorijaAktivnostiLVW.Items.Add(ia.Datum + " " + ia.Opis);
+            }
+            
         }
 
     }

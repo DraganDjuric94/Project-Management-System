@@ -34,12 +34,16 @@
             this.rokDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.brojPotrebnihCovjekCasovaLabel = new System.Windows.Forms.Label();
             this.brojPotrebnihCovjekCasovaNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.dostupniUcesniciListBox = new System.Windows.Forms.ListBox();
-            this.ucesniciZadatkaListBox = new System.Windows.Forms.ListBox();
             this.ucesniciLabel = new System.Windows.Forms.Label();
             this.ubaciUcesnikaButton = new System.Windows.Forms.Button();
             this.izbaciUcesnikaButton = new System.Windows.Forms.Button();
+            this.sacuvajBTN = new System.Windows.Forms.Button();
+            this.procenatIzvrsenostiNUD = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dostupniUcesniciListBox = new System.Windows.Forms.ListView();
+            this.ucesniciZadatkaListBox = new System.Windows.Forms.ListView();
             ((System.ComponentModel.ISupportInitialize)(this.brojPotrebnihCovjekCasovaNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.procenatIzvrsenostiNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // nazivLabel
@@ -91,26 +95,10 @@
             this.brojPotrebnihCovjekCasovaNumericUpDown.Size = new System.Drawing.Size(235, 20);
             this.brojPotrebnihCovjekCasovaNumericUpDown.TabIndex = 5;
             // 
-            // dostupniUcesniciListBox
-            // 
-            this.dostupniUcesniciListBox.FormattingEnabled = true;
-            this.dostupniUcesniciListBox.Location = new System.Drawing.Point(15, 131);
-            this.dostupniUcesniciListBox.Name = "dostupniUcesniciListBox";
-            this.dostupniUcesniciListBox.Size = new System.Drawing.Size(120, 95);
-            this.dostupniUcesniciListBox.TabIndex = 6;
-            // 
-            // ucesniciZadatkaListBox
-            // 
-            this.ucesniciZadatkaListBox.FormattingEnabled = true;
-            this.ucesniciZadatkaListBox.Location = new System.Drawing.Point(283, 131);
-            this.ucesniciZadatkaListBox.Name = "ucesniciZadatkaListBox";
-            this.ucesniciZadatkaListBox.Size = new System.Drawing.Size(120, 95);
-            this.ucesniciZadatkaListBox.TabIndex = 7;
-            // 
             // ucesniciLabel
             // 
             this.ucesniciLabel.AutoSize = true;
-            this.ucesniciLabel.Location = new System.Drawing.Point(12, 115);
+            this.ucesniciLabel.Location = new System.Drawing.Point(12, 124);
             this.ucesniciLabel.Name = "ucesniciLabel";
             this.ucesniciLabel.Size = new System.Drawing.Size(48, 13);
             this.ucesniciLabel.TabIndex = 8;
@@ -119,32 +107,79 @@
             // 
             // ubaciUcesnikaButton
             // 
-            this.ubaciUcesnikaButton.Location = new System.Drawing.Point(168, 150);
+            this.ubaciUcesnikaButton.Location = new System.Drawing.Point(168, 159);
             this.ubaciUcesnikaButton.Name = "ubaciUcesnikaButton";
             this.ubaciUcesnikaButton.Size = new System.Drawing.Size(75, 23);
             this.ubaciUcesnikaButton.TabIndex = 9;
             this.ubaciUcesnikaButton.Text = "Ubaci";
             this.ubaciUcesnikaButton.UseVisualStyleBackColor = true;
+            this.ubaciUcesnikaButton.Click += new System.EventHandler(this.ubaciUcesnikaButton_Click);
             // 
             // izbaciUcesnikaButton
             // 
-            this.izbaciUcesnikaButton.Location = new System.Drawing.Point(168, 179);
+            this.izbaciUcesnikaButton.Location = new System.Drawing.Point(168, 188);
             this.izbaciUcesnikaButton.Name = "izbaciUcesnikaButton";
             this.izbaciUcesnikaButton.Size = new System.Drawing.Size(75, 23);
             this.izbaciUcesnikaButton.TabIndex = 10;
             this.izbaciUcesnikaButton.Text = "Izbaci";
             this.izbaciUcesnikaButton.UseVisualStyleBackColor = true;
+            this.izbaciUcesnikaButton.Click += new System.EventHandler(this.izbaciUcesnikaButton_Click);
+            // 
+            // sacuvajBTN
+            // 
+            this.sacuvajBTN.Location = new System.Drawing.Point(327, 252);
+            this.sacuvajBTN.Name = "sacuvajBTN";
+            this.sacuvajBTN.Size = new System.Drawing.Size(75, 23);
+            this.sacuvajBTN.TabIndex = 11;
+            this.sacuvajBTN.Text = "Sačuvaj";
+            this.sacuvajBTN.UseVisualStyleBackColor = true;
+            this.sacuvajBTN.Click += new System.EventHandler(this.sacuvajBTN_Click);
+            // 
+            // procenatIzvrsenostiNUD
+            // 
+            this.procenatIzvrsenostiNUD.Location = new System.Drawing.Point(168, 95);
+            this.procenatIzvrsenostiNUD.Name = "procenatIzvrsenostiNUD";
+            this.procenatIzvrsenostiNUD.Size = new System.Drawing.Size(235, 20);
+            this.procenatIzvrsenostiNUD.TabIndex = 12;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 97);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(105, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Procenat izvršenosti:";
+            // 
+            // dostupniUcesniciListBox
+            // 
+            this.dostupniUcesniciListBox.Location = new System.Drawing.Point(15, 141);
+            this.dostupniUcesniciListBox.Name = "dostupniUcesniciListBox";
+            this.dostupniUcesniciListBox.Size = new System.Drawing.Size(121, 97);
+            this.dostupniUcesniciListBox.TabIndex = 14;
+            this.dostupniUcesniciListBox.UseCompatibleStateImageBehavior = false;
+            // 
+            // ucesniciZadatkaListBox
+            // 
+            this.ucesniciZadatkaListBox.Location = new System.Drawing.Point(272, 141);
+            this.ucesniciZadatkaListBox.Name = "ucesniciZadatkaListBox";
+            this.ucesniciZadatkaListBox.Size = new System.Drawing.Size(121, 97);
+            this.ucesniciZadatkaListBox.TabIndex = 15;
+            this.ucesniciZadatkaListBox.UseCompatibleStateImageBehavior = false;
             // 
             // ZadatakFormular
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(415, 252);
+            this.ClientSize = new System.Drawing.Size(415, 294);
+            this.Controls.Add(this.ucesniciZadatkaListBox);
+            this.Controls.Add(this.dostupniUcesniciListBox);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.procenatIzvrsenostiNUD);
+            this.Controls.Add(this.sacuvajBTN);
             this.Controls.Add(this.izbaciUcesnikaButton);
             this.Controls.Add(this.ubaciUcesnikaButton);
             this.Controls.Add(this.ucesniciLabel);
-            this.Controls.Add(this.ucesniciZadatkaListBox);
-            this.Controls.Add(this.dostupniUcesniciListBox);
             this.Controls.Add(this.brojPotrebnihCovjekCasovaNumericUpDown);
             this.Controls.Add(this.brojPotrebnihCovjekCasovaLabel);
             this.Controls.Add(this.rokDateTimePicker);
@@ -154,6 +189,7 @@
             this.Name = "ZadatakFormular";
             this.Text = "Formular za zadatak";
             ((System.ComponentModel.ISupportInitialize)(this.brojPotrebnihCovjekCasovaNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.procenatIzvrsenostiNUD)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,10 +203,13 @@
         private System.Windows.Forms.DateTimePicker rokDateTimePicker;
         private System.Windows.Forms.Label brojPotrebnihCovjekCasovaLabel;
         private System.Windows.Forms.NumericUpDown brojPotrebnihCovjekCasovaNumericUpDown;
-        private System.Windows.Forms.ListBox dostupniUcesniciListBox;
-        private System.Windows.Forms.ListBox ucesniciZadatkaListBox;
         private System.Windows.Forms.Label ucesniciLabel;
         private System.Windows.Forms.Button ubaciUcesnikaButton;
         private System.Windows.Forms.Button izbaciUcesnikaButton;
+        private System.Windows.Forms.Button sacuvajBTN;
+        private System.Windows.Forms.NumericUpDown procenatIzvrsenostiNUD;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListView dostupniUcesniciListBox;
+        private System.Windows.Forms.ListView ucesniciZadatkaListBox;
     }
 }

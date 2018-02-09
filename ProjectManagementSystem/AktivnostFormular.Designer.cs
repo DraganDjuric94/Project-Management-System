@@ -32,11 +32,12 @@
             this.opisLabel = new System.Windows.Forms.Label();
             this.nazivTextBox = new System.Windows.Forms.TextBox();
             this.opisRichTextBox = new System.Windows.Forms.RichTextBox();
-            this.ucesniciListBox = new System.Windows.Forms.ListBox();
             this.ucesceUcesnikaLBL = new System.Windows.Forms.Label();
             this.dodajButton = new System.Windows.Forms.Button();
             this.izmijeniButton = new System.Windows.Forms.Button();
             this.obrisiButton = new System.Windows.Forms.Button();
+            this.sacuvajBTN = new System.Windows.Forms.Button();
+            this.ucesniciListBox = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // nazivLabel
@@ -72,14 +73,6 @@
             this.opisRichTextBox.TabIndex = 3;
             this.opisRichTextBox.Text = "";
             // 
-            // ucesniciListBox
-            // 
-            this.ucesniciListBox.FormattingEnabled = true;
-            this.ucesniciListBox.Location = new System.Drawing.Point(15, 70);
-            this.ucesniciListBox.Name = "ucesniciListBox";
-            this.ucesniciListBox.Size = new System.Drawing.Size(243, 108);
-            this.ucesniciListBox.TabIndex = 4;
-            // 
             // ucesceUcesnikaLBL
             // 
             this.ucesceUcesnikaLBL.AutoSize = true;
@@ -98,6 +91,7 @@
             this.dodajButton.TabIndex = 6;
             this.dodajButton.Text = "Dodaj";
             this.dodajButton.UseVisualStyleBackColor = true;
+            this.dodajButton.Click += new System.EventHandler(this.dodajButton_Click);
             // 
             // izmijeniButton
             // 
@@ -107,6 +101,7 @@
             this.izmijeniButton.TabIndex = 7;
             this.izmijeniButton.Text = "Izmijeni";
             this.izmijeniButton.UseVisualStyleBackColor = true;
+            this.izmijeniButton.Click += new System.EventHandler(this.izmijeniButton_Click);
             // 
             // obrisiButton
             // 
@@ -116,17 +111,38 @@
             this.obrisiButton.TabIndex = 8;
             this.obrisiButton.Text = "Obriši";
             this.obrisiButton.UseVisualStyleBackColor = true;
+            this.obrisiButton.Click += new System.EventHandler(this.obrisiButton_Click);
+            // 
+            // sacuvajBTN
+            // 
+            this.sacuvajBTN.Location = new System.Drawing.Point(264, 368);
+            this.sacuvajBTN.Name = "sacuvajBTN";
+            this.sacuvajBTN.Size = new System.Drawing.Size(75, 23);
+            this.sacuvajBTN.TabIndex = 9;
+            this.sacuvajBTN.Text = "Sacuvaj";
+            this.sacuvajBTN.UseVisualStyleBackColor = true;
+            this.sacuvajBTN.Click += new System.EventHandler(this.sacuvajBTN_Click);
+            // 
+            // ucesniciListBox
+            // 
+            this.ucesniciListBox.Location = new System.Drawing.Point(15, 70);
+            this.ucesniciListBox.MultiSelect = false;
+            this.ucesniciListBox.Name = "ucesniciListBox";
+            this.ucesniciListBox.Size = new System.Drawing.Size(243, 108);
+            this.ucesniciListBox.TabIndex = 10;
+            this.ucesniciListBox.UseCompatibleStateImageBehavior = false;
             // 
             // AktivnostFormular
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(351, 364);
+            this.ClientSize = new System.Drawing.Size(351, 404);
+            this.Controls.Add(this.ucesniciListBox);
+            this.Controls.Add(this.sacuvajBTN);
             this.Controls.Add(this.obrisiButton);
             this.Controls.Add(this.izmijeniButton);
             this.Controls.Add(this.dodajButton);
             this.Controls.Add(this.ucesceUcesnikaLBL);
-            this.Controls.Add(this.ucesniciListBox);
             this.Controls.Add(this.opisRichTextBox);
             this.Controls.Add(this.nazivTextBox);
             this.Controls.Add(this.opisLabel);
@@ -144,10 +160,11 @@
         private System.Windows.Forms.Label opisLabel;
         private System.Windows.Forms.TextBox nazivTextBox;
         private System.Windows.Forms.RichTextBox opisRichTextBox;
-        private System.Windows.Forms.ListBox ucesniciListBox;
         private System.Windows.Forms.Label ucesceUcesnikaLBL;
         private System.Windows.Forms.Button dodajButton;
         private System.Windows.Forms.Button izmijeniButton;
         private System.Windows.Forms.Button obrisiButton;
+        private System.Windows.Forms.Button sacuvajBTN;
+        private System.Windows.Forms.ListView ucesniciListBox;
     }
 }

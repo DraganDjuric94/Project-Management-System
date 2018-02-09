@@ -19,8 +19,14 @@ namespace ProjectManagementSystem {
                 procenatIzvrsenosti += ((c.ProcenatIzvrsenosti / 100) * c.BrojPotrebnihCovjekCasova);
                 ukupnoPotrebnoCC += c.BrojPotrebnihCovjekCasova;
             }
-            procenatIzvrsenostiLBL.Text = (int?)((procenatIzvrsenosti / ukupnoPotrebnoCC) * 100) + "%";
-            for (int i = 0; i < (int?)((procenatIzvrsenosti / ukupnoPotrebnoCC) * 100); i++) {
+            int? n;
+            if (ukupnoPotrebnoCC == 0) {
+                n = 0;
+            } else {
+                n = (int?)((procenatIzvrsenosti / ukupnoPotrebnoCC) * 100);
+            }
+            procenatIzvrsenostiLBL.Text = n + "%";
+            for (int i = 0; i < n; i++) {
                 procenatIzvrsenostiPBR.PerformStep();
             }
             Ucesnik sef = null;

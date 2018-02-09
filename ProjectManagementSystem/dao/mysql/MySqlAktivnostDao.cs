@@ -181,11 +181,14 @@ namespace ProjectManagementSystem.dao.mysql
                 }
             }
             #endregion
+            Dictionary<Ucesnik, int> stari = Read(new Aktivnost { AktivnostID = aktivnost.AktivnostID})[0].UcesniciSaBrojemUtrosenihSati;
+            foreach (KeyValuePair<Ucesnik, Int32> pair in stari.ToArray()) {
+                DeleteUcesnikAktivnostByAktivnostID(aktivnost.AktivnostID.Value);
+            }
 
             #region Azuriraj ucesnike na aktivnosti
-            foreach(KeyValuePair<Ucesnik, Int32> pair in aktivnost.UcesniciSaBrojemUtrosenihSati.ToArray())
+            foreach (KeyValuePair<Ucesnik, Int32> pair in aktivnost.UcesniciSaBrojemUtrosenihSati.ToArray())
             {
-                DeleteUcesnikAktivnostByAktivnostID(aktivnost.AktivnostID.Value);
                 InsertUcesnikAktivnost(pair.Key.UcesnikID.Value, aktivnost.AktivnostID.Value, pair.Value);
             }
             #endregion
@@ -236,7 +239,7 @@ namespace ProjectManagementSystem.dao.mysql
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "insert_ucesnik_aktivnost";
 
-                cmd.Parameters.AddWithValue("@ucesnikID", aktivnostID);
+                cmd.Parameters.AddWithValue("@ucesnikID", ucesnikID);
                 cmd.Parameters["@ucesnikID"].Direction = ParameterDirection.Input;
 
                 cmd.Parameters.AddWithValue("@aktivnostID", aktivnostID);

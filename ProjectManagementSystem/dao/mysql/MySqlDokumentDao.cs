@@ -107,7 +107,7 @@ namespace ProjectManagementSystem.dao.mysql
 
                 while (reader.Read())
                 {
-                    dokumenti.Add(new Dokument { DokumentID = reader.GetInt32(0), UcesnikID = reader.GetInt32(1), Putanja = reader.GetString(2), DatumKreiranja = reader.GetDateTime(3), Napomena = reader.GetString(4), Aktivan = reader.GetBoolean(5) });
+                    dokumenti.Add(new Dokument { DokumentID = reader.GetInt32(0), UcesnikID = reader.GetInt32(1), AktivnostID = reader.GetInt32(2), Putanja = reader.GetString(3), DatumKreiranja = reader.GetDateTime(4), Napomena = reader.GetString(5), Aktivan = reader.GetBoolean(6) });
                 }
 
             }
