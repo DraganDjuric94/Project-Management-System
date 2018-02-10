@@ -47,6 +47,9 @@ namespace ProjectManagementSystem.dao.mysql
                 cmd.Parameters.AddWithValue("@opis", aktivnost.Opis);
                 cmd.Parameters["@opis"].Direction = ParameterDirection.Input;
 
+                cmd.Parameters.AddWithValue("@zavrsena", aktivnost.Zavrsena);
+                cmd.Parameters["@zavrsena"].Direction = ParameterDirection.Input;
+
                 cmd.Parameters.AddWithValue("@aktivna", aktivnost.Aktivna);
                 cmd.Parameters["@aktivna"].Direction = ParameterDirection.Input;
 
@@ -104,6 +107,9 @@ namespace ProjectManagementSystem.dao.mysql
                 cmd.Parameters.AddWithValue("@opis", aktivnost.Opis);
                 cmd.Parameters["@opis"].Direction = ParameterDirection.Input;
 
+                cmd.Parameters.AddWithValue("@zavrsena", aktivnost.Zavrsena);
+                cmd.Parameters["@zavrsena"].Direction = ParameterDirection.Input;
+
                 cmd.Parameters.AddWithValue("@aktivna", aktivnost.Aktivna);
                 cmd.Parameters["@aktivna"].Direction = ParameterDirection.Input;
 
@@ -159,6 +165,9 @@ namespace ProjectManagementSystem.dao.mysql
 
                 cmd.Parameters.AddWithValue("@opis", aktivnost.Opis);
                 cmd.Parameters["@opis"].Direction = ParameterDirection.Input;
+
+                cmd.Parameters.AddWithValue("@zavrsena", aktivnost.Zavrsena);
+                cmd.Parameters["@zavrsena"].Direction = ParameterDirection.Input;
 
                 cmd.Parameters.AddWithValue("@aktivna", aktivnost.Aktivna);
                 cmd.Parameters["@aktivna"].Direction = ParameterDirection.Input;

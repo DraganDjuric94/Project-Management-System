@@ -12,6 +12,7 @@ namespace ProjectManagementSystem.dto
         public Int32? CjelinaID { get; set; }
         public String Naziv { get; set; }
         public String Opis { get; set; }
+        public Boolean? Zavrsena { get; set; }
         public Boolean? Aktivna { get; set; }
 
         public List<Transakcija> Transakcije { get; set; }
@@ -30,6 +31,7 @@ namespace ProjectManagementSystem.dto
                 ", CjelinaID=" + CjelinaID +
                 ", Naziv=" + Naziv +
                 ", Opis=" + Opis +
+                ", Zavrsena=" + Zavrsena +
                 ", Aktivna=" + Aktivna +
                 ", UcesniciSaPotrosenimBrojemSati=" + String.Join(",", UcesniciSaBrojemUtrosenihSati?.Select(elem => "[" + elem.Key.ToString() + ", BrojPotrosenihSati=" + elem.Value.ToString() + "]" ).ToArray()) +
                 ", Transakcije=" + String.Join(",",Transakcije?.Select(transakcija => transakcija.ToString()).ToArray()) + 
