@@ -36,8 +36,8 @@ namespace ProjectManagementSystem {
 
         private void dokumentiLVW_SelectedIndexChanged(object sender, EventArgs e) {
             if (dokumentiLVW.SelectedItems.Count > 0) {
-                if (MySqlDokumentDao.Instance.Read(new Dokument { DokumentID = Convert.ToInt32(dokumentiLVW.SelectedItems[0].Text.Split('.')[0]) }).Count > 0) {
-                    Dokument d = MySqlDokumentDao.Instance.Read(new Dokument { DokumentID = Convert.ToInt32(dokumentiLVW.SelectedItems[0].Text.Split('.')[0]) })[0];
+                if (MySqlDokumentDao.Instance.Read(new Dokument { DokumentID = Convert.ToInt32(dokumentiLVW.SelectedItems[0].Text.Split('.')[0]), Aktivan = true }).Count > 0) {
+                    Dokument d = MySqlDokumentDao.Instance.Read(new Dokument { DokumentID = Convert.ToInt32(dokumentiLVW.SelectedItems[0].Text.Split('.')[0]), Aktivan = true })[0];
                     posljednjaIzmjenaLBL.Text = d.DatumKreiranja.ToString();
                     napomenaDokumentLBL.Text = d.Napomena;
                 }
@@ -46,8 +46,8 @@ namespace ProjectManagementSystem {
 
         private void izmijeniDokumentBTN_Click(object sender, EventArgs e) {
             if (dokumentiLVW.SelectedItems.Count > 0) {
-                if (MySqlDokumentDao.Instance.Read(new Dokument { DokumentID = Convert.ToInt32(dokumentiLVW.SelectedItems[0].Text.Split('.')[0]) }).Count > 0) {
-                    Dokument d = MySqlDokumentDao.Instance.Read(new Dokument { DokumentID = Convert.ToInt32(dokumentiLVW.SelectedItems[0].Text.Split('.')[0]) })[0];
+                if (MySqlDokumentDao.Instance.Read(new Dokument { DokumentID = Convert.ToInt32(dokumentiLVW.SelectedItems[0].Text.Split('.')[0]), Aktivan = true }).Count > 0) {
+                    Dokument d = MySqlDokumentDao.Instance.Read(new Dokument { DokumentID = Convert.ToInt32(dokumentiLVW.SelectedItems[0].Text.Split('.')[0]), Aktivan = true })[0];
                     new DokumentFormular(aktivnost, ucesnik, d, true).ShowDialog();
                 }
             }
@@ -59,8 +59,8 @@ namespace ProjectManagementSystem {
 
         private void obrisiDokumentBTN_Click(object sender, EventArgs e) {
             if(dokumentiLVW.SelectedItems.Count > 0) {
-                if (MySqlDokumentDao.Instance.Read(new Dokument { DokumentID = Convert.ToInt32(dokumentiLVW.SelectedItems[0].Text.Split('.')[0]) }).Count > 0) {
-                    Dokument d = MySqlDokumentDao.Instance.Read(new Dokument { DokumentID = Convert.ToInt32(dokumentiLVW.SelectedItems[0].Text.Split('.')[0]) })[0];
+                if (MySqlDokumentDao.Instance.Read(new Dokument { DokumentID = Convert.ToInt32(dokumentiLVW.SelectedItems[0].Text.Split('.')[0]), Aktivan = true }).Count > 0) {
+                    Dokument d = MySqlDokumentDao.Instance.Read(new Dokument { DokumentID = Convert.ToInt32(dokumentiLVW.SelectedItems[0].Text.Split('.')[0]), Aktivan = true })[0];
                     MySqlDokumentDao.Instance.Delete(Convert.ToInt32(d.DokumentID));
                 }
             }

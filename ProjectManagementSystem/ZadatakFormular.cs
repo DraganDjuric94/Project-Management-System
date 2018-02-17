@@ -103,15 +103,17 @@ namespace ProjectManagementSystem
                 cjelina.CjelinaRoditeljID = ncid;
                 cjelina.Aktivna = true;
                 foreach(ListViewItem it in ucesniciZadatkaListBox.Items) {
-                    cjelina.Ucesnici.Add(MySqlUcesnikDao.Instance.Read(new Ucesnik {KorisnickoIme = it.Text.Split('"')[1]})[0]);
+                    if (MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = it.Text.Split('"')[1], Aktivan = true }).Count > 0) {
+                        cjelina.Ucesnici.Add(MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = it.Text.Split('"')[1], Aktivan = true })[0]);
+                    }
                 }
                 MySqlCjelinaDao.Instance.Create(cjelina);
                 updateNadcjeline();
             } else {
                 cjelina.Ucesnici.Clear();
                 foreach (ListViewItem it in ucesniciZadatkaListBox.Items) {
-                    if (MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = it.Text.Split('"')[1] }).Count > 0) {
-                        cjelina.Ucesnici.Add(MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = it.Text.Split('"')[1] })[0]);
+                    if (MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = it.Text.Split('"')[1], Aktivan = true }).Count > 0) {
+                        cjelina.Ucesnici.Add(MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = it.Text.Split('"')[1], Aktivan = true })[0]);
                     }
                 }
                 MySqlCjelinaDao.Instance.Update(cjelina);

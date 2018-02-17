@@ -27,8 +27,8 @@ namespace ProjectManagementSystem {
                 ucesniciLVW.Enabled = false;
                 utrosenoSatiNUD.Value = pair.Value;
             } else {
-                if (MySqlCjelinaDao.Instance.Read(new Cjelina { CjelinaID = cid }).Count > 0) {
-                    Cjelina c = MySqlCjelinaDao.Instance.Read(new Cjelina { CjelinaID = cid })[0];
+                if (MySqlCjelinaDao.Instance.Read(new Cjelina { CjelinaID = cid, Aktivna = true }).Count > 0) {
+                    Cjelina c = MySqlCjelinaDao.Instance.Read(new Cjelina { CjelinaID = cid, Aktivna = true })[0];
                     foreach (Ucesnik u in c.Ucesnici) {
                         bool postoji = false;
                         foreach (ListViewItem it in af.Ucesnici.Items) {
@@ -51,8 +51,8 @@ namespace ProjectManagementSystem {
 
         private void sacuvajBTN_Click(object sender, EventArgs e) {
             if (edit) {
-                if (MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = Convert.ToInt32(af.Ucesnici.SelectedItems[0].Text.Split('.')[0]) }).Count > 0) {
-                    Ucesnik u = MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = Convert.ToInt32(af.Ucesnici.SelectedItems[0].Text.Split('.')[0]) })[0];
+                if (MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = Convert.ToInt32(af.Ucesnici.SelectedItems[0].Text.Split('.')[0]), Aktivan = true }).Count > 0) {
+                    Ucesnik u = MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = Convert.ToInt32(af.Ucesnici.SelectedItems[0].Text.Split('.')[0]), Aktivan = true })[0];
                     af.Ucesnici.Items.Remove(af.Ucesnici.SelectedItems[0]);
                     af.Ucesnici.Items.Add(p.Key.UcesnikID + ". " + p.Key.Ime + " " + p.Key.Prezime + " " + Convert.ToInt32(utrosenoSatiNUD.Value) + " sati");
                     if (af.Svi.ContainsKey(u)) {
@@ -60,8 +60,8 @@ namespace ProjectManagementSystem {
                     }
                 }
             } else {
-                if (MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = Convert.ToInt32(ucesniciLVW.SelectedItems[0].Text.Split('.')[0]) }).Count > 0) {
-                    Ucesnik u = MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = Convert.ToInt32(ucesniciLVW.SelectedItems[0].Text.Split('.')[0]) })[0];
+                if (MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = Convert.ToInt32(ucesniciLVW.SelectedItems[0].Text.Split('.')[0]), Aktivan = true }).Count > 0) {
+                    Ucesnik u = MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = Convert.ToInt32(ucesniciLVW.SelectedItems[0].Text.Split('.')[0]), Aktivan = true })[0];
                     af.Ucesnici.Items.Add(u.UcesnikID + ". " + u.Ime + " " + u.Prezime + " " + Convert.ToInt32(utrosenoSatiNUD.Value) + " sati");
                     af.Svi.Add(u, (int)Convert.ToInt32(utrosenoSatiNUD.Value));
                 }
