@@ -46,21 +46,25 @@ namespace ProjectManagementSystem
         }
 
         private void izmijeniButton_Click(object sender, EventArgs e) {
-            Ucesnik uc = MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = Convert.ToInt32(ucesniciListBox.SelectedItems[0].Text.Split('.')[0]) })[0];
-            int val = 0;
-            if (Svi.ContainsKey(uc)) {
-                val = Svi[uc];
+            if (MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = Convert.ToInt32(ucesniciListBox.SelectedItems[0].Text.Split('.')[0]) }).Count > 0) {
+                Ucesnik uc = MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = Convert.ToInt32(ucesniciListBox.SelectedItems[0].Text.Split('.')[0]) })[0];
+                int val = 0;
+                if (Svi.ContainsKey(uc)) {
+                    val = Svi[uc];
+                }
+                KeyValuePair<Ucesnik, int> pair = new KeyValuePair<Ucesnik, int>(uc, val);
+                new UtrosenoSatiUcesnikFormular(this, cid, pair, true).ShowDialog();
             }
-            KeyValuePair<Ucesnik, int> pair = new KeyValuePair<Ucesnik, int>(uc, val);
-            new UtrosenoSatiUcesnikFormular(this, cid, pair, true).ShowDialog();
         }
 
         private void obrisiButton_Click(object sender, EventArgs e) {
             foreach(ListViewItem it in ucesniciListBox.SelectedItems) {
-                ucesniciListBox.Items.Remove(it);
-                Ucesnik uc = MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = Convert.ToInt32(it.Text.Split('.')[0]) })[0];
-                if (Svi.ContainsKey(uc)) {
-                    Svi.Remove(uc);
+                if (MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = Convert.ToInt32(it.Text.Split('.')[0]) }).Count > 0) {
+                    ucesniciListBox.Items.Remove(it);
+                    Ucesnik uc = MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = Convert.ToInt32(it.Text.Split('.')[0]) })[0];
+                    if (Svi.ContainsKey(uc)) {
+                        Svi.Remove(uc);
+                    }
                 }
             }
         }

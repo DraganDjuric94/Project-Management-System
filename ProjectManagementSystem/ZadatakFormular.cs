@@ -33,26 +33,36 @@ namespace ProjectManagementSystem
                     ucesniciZadatkaListBox.Items.Add(u.Ime + " " + u.Prezime + " \"" + u.KorisnickoIme + "\"");
                 }
                 if (nadcjelinaID == null) {
-                    foreach (Ucesnik u in MySqlProjekatDao.Instance.Read(new Projekat { ProjekatID = cj.ProjekatID, Aktivan = true })[0].UcesniciNaProjektu.Keys) {
-                        if (!cj.Ucesnici.Contains(u)) {
-                            dostupniUcesniciListBox.Items.Add(u.Ime + " " + u.Prezime + " \"" + u.KorisnickoIme + "\"");
+                    if (MySqlProjekatDao.Instance.Read(new Projekat { ProjekatID = cj.ProjekatID, Aktivan = true }).Count > 0) {
+                        foreach (Ucesnik u in MySqlProjekatDao.Instance.Read(new Projekat { ProjekatID = cj.ProjekatID, Aktivan = true })[0].UcesniciNaProjektu.Keys) {
+                            if (!cj.Ucesnici.Contains(u)) {
+                                dostupniUcesniciListBox.Items.Add(u.Ime + " " + u.Prezime + " \"" + u.KorisnickoIme + "\"");
+                            }
                         }
                     }
                 } else {
-                    foreach (Ucesnik u in MySqlCjelinaDao.Instance.Read(new Cjelina { CjelinaID = nadcjelinaID, Aktivna = true })[0].Ucesnici) {
-                        if (!cj.Ucesnici.Contains(u)) {
-                            dostupniUcesniciListBox.Items.Add(u.Ime + " " + u.Prezime + " \"" + u.KorisnickoIme + "\"");
+                    if (MySqlCjelinaDao.Instance.Read(new Cjelina { CjelinaID = nadcjelinaID, Aktivna = true }).Count > 0) {
+                        if (MySqlCjelinaDao.Instance.Read(new Cjelina { CjelinaID = nadcjelinaID, Aktivna = true }).Count > 0) {
+                            foreach (Ucesnik u in MySqlCjelinaDao.Instance.Read(new Cjelina { CjelinaID = nadcjelinaID, Aktivna = true })[0].Ucesnici) {
+                                if (!cj.Ucesnici.Contains(u)) {
+                                    dostupniUcesniciListBox.Items.Add(u.Ime + " " + u.Prezime + " \"" + u.KorisnickoIme + "\"");
+                                }
+                            }
                         }
                     }
                 }
             } else {
                 if (nadcjelinaID == null) {
-                    foreach (Ucesnik u in MySqlProjekatDao.Instance.Read(new Projekat { ProjekatID = projekatID, Aktivan = true })[0].UcesniciNaProjektu.Keys) {  
-                        dostupniUcesniciListBox.Items.Add(u.Ime + " " + u.Prezime + " \"" + u.KorisnickoIme + "\"");
+                    if (MySqlProjekatDao.Instance.Read(new Projekat { ProjekatID = projekatID, Aktivan = true }).Count > 0) {
+                        foreach (Ucesnik u in MySqlProjekatDao.Instance.Read(new Projekat { ProjekatID = projekatID, Aktivan = true })[0].UcesniciNaProjektu.Keys) {
+                            dostupniUcesniciListBox.Items.Add(u.Ime + " " + u.Prezime + " \"" + u.KorisnickoIme + "\"");
+                        }
                     }
                 } else {
-                    foreach (Ucesnik u in MySqlCjelinaDao.Instance.Read(new Cjelina { CjelinaID = nadcjelinaID, Aktivna = true })[0].Ucesnici) {
-                        dostupniUcesniciListBox.Items.Add(u.Ime + " " + u.Prezime + " \"" + u.KorisnickoIme + "\"");
+                    if (MySqlCjelinaDao.Instance.Read(new Cjelina { CjelinaID = nadcjelinaID, Aktivna = true }).Count > 0) {
+                        foreach (Ucesnik u in MySqlCjelinaDao.Instance.Read(new Cjelina { CjelinaID = nadcjelinaID, Aktivna = true })[0].Ucesnici) {
+                            dostupniUcesniciListBox.Items.Add(u.Ime + " " + u.Prezime + " \"" + u.KorisnickoIme + "\"");
+                        }
                     }
                 }
             }
@@ -100,7 +110,9 @@ namespace ProjectManagementSystem
             } else {
                 cjelina.Ucesnici.Clear();
                 foreach (ListViewItem it in ucesniciZadatkaListBox.Items) {
-                    cjelina.Ucesnici.Add(MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = it.Text.Split('"')[1] })[0]);
+                    if (MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = it.Text.Split('"')[1] }).Count > 0) {
+                        cjelina.Ucesnici.Add(MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = it.Text.Split('"')[1] })[0]);
+                    }
                 }
                 MySqlCjelinaDao.Instance.Update(cjelina);
                 updateNadcjeline();

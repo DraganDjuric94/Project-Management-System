@@ -136,7 +136,9 @@ namespace ProjectManagementSystem.dao.mysql
             {
                 foreach (KeyValuePair<Int32, Int32> pair in ReadUcesnikAktivnostByAktivnostID(a.AktivnostID.Value).ToArray())
                 {
-                    a.UcesniciSaBrojemUtrosenihSati.Add((MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = pair.Key })[0]), pair.Value) ;             
+                    if (MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = pair.Key }).Count > 0) {
+                        a.UcesniciSaBrojemUtrosenihSati.Add((MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = pair.Key })[0]), pair.Value);
+                    }
                 }
             }
             #endregion
