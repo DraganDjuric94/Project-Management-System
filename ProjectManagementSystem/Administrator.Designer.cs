@@ -32,6 +32,15 @@
 			this.administratorTC = new System.Windows.Forms.TabControl();
 			this.ucesniciTP = new System.Windows.Forms.TabPage();
 			this.korisniciDGW = new System.Windows.Forms.DataGridView();
+			this.projektiTP = new System.Windows.Forms.TabPage();
+			this.projektiDGW = new System.Windows.Forms.DataGridView();
+			this.projekatID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.projekatNaziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.projekatDatumKreiranja = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.projekatAktivan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dodatiBTN = new System.Windows.Forms.Button();
+			this.azuriratiBTN = new System.Windows.Forms.Button();
+			this.obrisatiBTN = new System.Windows.Forms.Button();
 			this.ucesnikID = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ucesnikIme = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ucesnikPrezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,15 +52,6 @@
 			this.ucesnikUlogaNaziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ucesnikPoslovnaLogika = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ucesnikUlogaAktivna = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.projektiTP = new System.Windows.Forms.TabPage();
-			this.projektiDGW = new System.Windows.Forms.DataGridView();
-			this.projekatID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.projekatNaziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.projekatDatumKreiranja = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.projekatAktivan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dodatiBTN = new System.Windows.Forms.Button();
-			this.azuriratiBTN = new System.Windows.Forms.Button();
-			this.obrisatiBTN = new System.Windows.Forms.Button();
 			this.administratorTC.SuspendLayout();
 			this.ucesniciTP.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.korisniciDGW)).BeginInit();
@@ -155,65 +155,14 @@
             this.ucesnikPoslovnaLogika,
             this.ucesnikUlogaAktivna});
 <<<<<<< HEAD
+<<<<<<< HEAD
 			this.korisniciDGW.Location = new System.Drawing.Point(1, -1);
+=======
+			this.korisniciDGW.Location = new System.Drawing.Point(0, 0);
+>>>>>>> parent of 6ca9bae... Update
 			this.korisniciDGW.Name = "korisniciDGW";
-			this.korisniciDGW.Size = new System.Drawing.Size(1047, 267);
+			this.korisniciDGW.Size = new System.Drawing.Size(1043, 267);
 			this.korisniciDGW.TabIndex = 0;
-			// 
-			// ucesnikID
-			// 
-			this.ucesnikID.HeaderText = "ID";
-			this.ucesnikID.Name = "ucesnikID";
-			// 
-			// ucesnikIme
-			// 
-			this.ucesnikIme.HeaderText = "Ime";
-			this.ucesnikIme.Name = "ucesnikIme";
-			// 
-			// ucesnikPrezime
-			// 
-			this.ucesnikPrezime.HeaderText = "Prezime";
-			this.ucesnikPrezime.Name = "ucesnikPrezime";
-			// 
-			// ucesnikKorisnickoIme
-			// 
-			this.ucesnikKorisnickoIme.HeaderText = "Korisničko ime";
-			this.ucesnikKorisnickoIme.Name = "ucesnikKorisnickoIme";
-			// 
-			// ucesnikLozinka
-			// 
-			this.ucesnikLozinka.HeaderText = "Lozinka";
-			this.ucesnikLozinka.Name = "ucesnikLozinka";
-			// 
-			// ucesnikJmbg
-			// 
-			this.ucesnikJmbg.HeaderText = "Jmbg";
-			this.ucesnikJmbg.Name = "ucesnikJmbg";
-			// 
-			// ucesnikAktivan
-			// 
-			this.ucesnikAktivan.HeaderText = "Aktivan";
-			this.ucesnikAktivan.Name = "ucesnikAktivan";
-			// 
-			// ucesnikUlogaID
-			// 
-			this.ucesnikUlogaID.HeaderText = "ID uloge";
-			this.ucesnikUlogaID.Name = "ucesnikUlogaID";
-			// 
-			// ucesnikUlogaNaziv
-			// 
-			this.ucesnikUlogaNaziv.HeaderText = "Naziv uloge";
-			this.ucesnikUlogaNaziv.Name = "ucesnikUlogaNaziv";
-			// 
-			// ucesnikPoslovnaLogika
-			// 
-			this.ucesnikPoslovnaLogika.HeaderText = "Poslovna logika";
-			this.ucesnikPoslovnaLogika.Name = "ucesnikPoslovnaLogika";
-			// 
-			// ucesnikUlogaAktivna
-			// 
-			this.ucesnikUlogaAktivna.HeaderText = "Aktivna uloga";
-			this.ucesnikUlogaAktivna.Name = "ucesnikUlogaAktivna";
 			// 
 			// projektiTP
 			// 
@@ -313,9 +262,12 @@
             this.projekatDatumKreiranja,
             this.projekatAktivan});
 <<<<<<< HEAD
+<<<<<<< HEAD
 			this.projektiDGW.Location = new System.Drawing.Point(-3, 0);
+=======
+			this.projektiDGW.Location = new System.Drawing.Point(0, 0);
+>>>>>>> parent of 6ca9bae... Update
 			this.projektiDGW.Name = "projektiDGW";
-			this.projektiDGW.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
 			this.projektiDGW.Size = new System.Drawing.Size(1044, 266);
 			this.projektiDGW.TabIndex = 0;
 			// 
@@ -368,6 +320,61 @@
 			this.obrisatiBTN.Text = "Obrisati";
 			this.obrisatiBTN.UseVisualStyleBackColor = true;
 			this.obrisatiBTN.Click += new System.EventHandler(this.obrisatiBTN_Click);
+			// 
+			// ucesnikID
+			// 
+			this.ucesnikID.HeaderText = "ID";
+			this.ucesnikID.Name = "ucesnikID";
+			// 
+			// ucesnikIme
+			// 
+			this.ucesnikIme.HeaderText = "Ime";
+			this.ucesnikIme.Name = "ucesnikIme";
+			// 
+			// ucesnikPrezime
+			// 
+			this.ucesnikPrezime.HeaderText = "Prezime";
+			this.ucesnikPrezime.Name = "ucesnikPrezime";
+			// 
+			// ucesnikKorisnickoIme
+			// 
+			this.ucesnikKorisnickoIme.HeaderText = "Korisničko ime";
+			this.ucesnikKorisnickoIme.Name = "ucesnikKorisnickoIme";
+			// 
+			// ucesnikLozinka
+			// 
+			this.ucesnikLozinka.HeaderText = "Lozinka";
+			this.ucesnikLozinka.Name = "ucesnikLozinka";
+			// 
+			// ucesnikJmbg
+			// 
+			this.ucesnikJmbg.HeaderText = "Jmbg";
+			this.ucesnikJmbg.Name = "ucesnikJmbg";
+			// 
+			// ucesnikAktivan
+			// 
+			this.ucesnikAktivan.HeaderText = "Aktivan";
+			this.ucesnikAktivan.Name = "ucesnikAktivan";
+			// 
+			// ucesnikUlogaID
+			// 
+			this.ucesnikUlogaID.HeaderText = "ID uloge";
+			this.ucesnikUlogaID.Name = "ucesnikUlogaID";
+			// 
+			// ucesnikUlogaNaziv
+			// 
+			this.ucesnikUlogaNaziv.HeaderText = "Naziv uloge";
+			this.ucesnikUlogaNaziv.Name = "ucesnikUlogaNaziv";
+			// 
+			// ucesnikPoslovnaLogika
+			// 
+			this.ucesnikPoslovnaLogika.HeaderText = "Poslovna logika";
+			this.ucesnikPoslovnaLogika.Name = "ucesnikPoslovnaLogika";
+			// 
+			// ucesnikUlogaAktivna
+			// 
+			this.ucesnikUlogaAktivna.HeaderText = "Aktivna uloga";
+			this.ucesnikUlogaAktivna.Name = "ucesnikUlogaAktivna";
 			// 
 			// Administrator
 			// 

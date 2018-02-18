@@ -18,7 +18,10 @@ namespace ProjectManagementSystem {
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Login());
 <<<<<<< HEAD
+<<<<<<< HEAD
 //<<<<<<< HEAD
+=======
+>>>>>>> parent of 6ca9bae... Update
 //<<<<<<< HEAD
 //<<<<<<< HEAD
 
@@ -38,11 +41,16 @@ namespace ProjectManagementSystem {
                 Console.WriteLine(p);
             }*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 //=======
 //>>>>>>> 6247d2d50fcf99960cc28319f52e27c57998429f
 =======
 
 >>>>>>> b3588dea45fd6435cf59b4528c15037062a60914
+=======
+=======
+>>>>>>> 6247d2d50fcf99960cc28319f52e27c57998429f
+>>>>>>> parent of 6ca9bae... Update
         }
     }
 }
