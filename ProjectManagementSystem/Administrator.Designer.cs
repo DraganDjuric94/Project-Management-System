@@ -31,15 +31,6 @@
 			this.administratorTC = new System.Windows.Forms.TabControl();
 			this.ucesniciTP = new System.Windows.Forms.TabPage();
 			this.korisniciDGW = new System.Windows.Forms.DataGridView();
-			this.projektiTP = new System.Windows.Forms.TabPage();
-			this.projektiDGW = new System.Windows.Forms.DataGridView();
-			this.projekatID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.projekatNaziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.projekatDatumKreiranja = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.projekatAktivan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dodatiBTN = new System.Windows.Forms.Button();
-			this.azuriratiBTN = new System.Windows.Forms.Button();
-			this.obrisatiBTN = new System.Windows.Forms.Button();
 			this.ucesnikID = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ucesnikIme = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ucesnikPrezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,6 +42,15 @@
 			this.ucesnikUlogaNaziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ucesnikPoslovnaLogika = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ucesnikUlogaAktivna = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.projektiTP = new System.Windows.Forms.TabPage();
+			this.projektiDGW = new System.Windows.Forms.DataGridView();
+			this.projekatID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.projekatNaziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.projekatDatumKreiranja = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.projekatAktivan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dodatiBTN = new System.Windows.Forms.Button();
+			this.azuriratiBTN = new System.Windows.Forms.Button();
+			this.obrisatiBTN = new System.Windows.Forms.Button();
 			this.administratorTC.SuspendLayout();
 			this.ucesniciTP.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.korisniciDGW)).BeginInit();
@@ -95,84 +95,10 @@
             this.ucesnikUlogaNaziv,
             this.ucesnikPoslovnaLogika,
             this.ucesnikUlogaAktivna});
-			this.korisniciDGW.Location = new System.Drawing.Point(0, 0);
+			this.korisniciDGW.Location = new System.Drawing.Point(1, -1);
 			this.korisniciDGW.Name = "korisniciDGW";
-			this.korisniciDGW.Size = new System.Drawing.Size(1043, 267);
+			this.korisniciDGW.Size = new System.Drawing.Size(1047, 267);
 			this.korisniciDGW.TabIndex = 0;
-			// 
-			// projektiTP
-			// 
-			this.projektiTP.Controls.Add(this.projektiDGW);
-			this.projektiTP.Location = new System.Drawing.Point(4, 22);
-			this.projektiTP.Name = "projektiTP";
-			this.projektiTP.Padding = new System.Windows.Forms.Padding(3);
-			this.projektiTP.Size = new System.Drawing.Size(1044, 266);
-			this.projektiTP.TabIndex = 1;
-			this.projektiTP.Text = "Projekti";
-			this.projektiTP.UseVisualStyleBackColor = true;
-			// 
-			// projektiDGW
-			// 
-			this.projektiDGW.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.projektiDGW.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.projekatID,
-            this.projekatNaziv,
-            this.projekatDatumKreiranja,
-            this.projekatAktivan});
-			this.projektiDGW.Location = new System.Drawing.Point(0, 0);
-			this.projektiDGW.Name = "projektiDGW";
-			this.projektiDGW.Size = new System.Drawing.Size(1044, 266);
-			this.projektiDGW.TabIndex = 0;
-			// 
-			// projekatID
-			// 
-			this.projekatID.HeaderText = "ID";
-			this.projekatID.Name = "projekatID";
-			// 
-			// projekatNaziv
-			// 
-			this.projekatNaziv.HeaderText = "Naziv";
-			this.projekatNaziv.Name = "projekatNaziv";
-			// 
-			// projekatDatumKreiranja
-			// 
-			this.projekatDatumKreiranja.HeaderText = "Datum Kreiranja";
-			this.projekatDatumKreiranja.Name = "projekatDatumKreiranja";
-			// 
-			// projekatAktivan
-			// 
-			this.projekatAktivan.HeaderText = "Aktivan";
-			this.projekatAktivan.Name = "projekatAktivan";
-			// 
-			// dodatiBTN
-			// 
-			this.dodatiBTN.Location = new System.Drawing.Point(3, 313);
-			this.dodatiBTN.Name = "dodatiBTN";
-			this.dodatiBTN.Size = new System.Drawing.Size(75, 23);
-			this.dodatiBTN.TabIndex = 1;
-			this.dodatiBTN.Text = "Dodati";
-			this.dodatiBTN.UseVisualStyleBackColor = true;
-			this.dodatiBTN.Click += new System.EventHandler(this.dodatiBTN_Click);
-			// 
-			// azuriratiBTN
-			// 
-			this.azuriratiBTN.Location = new System.Drawing.Point(102, 313);
-			this.azuriratiBTN.Name = "azuriratiBTN";
-			this.azuriratiBTN.Size = new System.Drawing.Size(75, 23);
-			this.azuriratiBTN.TabIndex = 2;
-			this.azuriratiBTN.Text = "Ažurirati";
-			this.azuriratiBTN.UseVisualStyleBackColor = true;
-			this.azuriratiBTN.Click += new System.EventHandler(this.azuriratiBTN_Click);
-			// 
-			// obrisatiBTN
-			// 
-			this.obrisatiBTN.Location = new System.Drawing.Point(198, 313);
-			this.obrisatiBTN.Name = "obrisatiBTN";
-			this.obrisatiBTN.Size = new System.Drawing.Size(75, 23);
-			this.obrisatiBTN.TabIndex = 3;
-			this.obrisatiBTN.Text = "Obrisati";
-			this.obrisatiBTN.UseVisualStyleBackColor = true;
-			this.obrisatiBTN.Click += new System.EventHandler(this.obrisatiBTN_Click);
 			// 
 			// ucesnikID
 			// 
@@ -228,6 +154,81 @@
 			// 
 			this.ucesnikUlogaAktivna.HeaderText = "Aktivna uloga";
 			this.ucesnikUlogaAktivna.Name = "ucesnikUlogaAktivna";
+			// 
+			// projektiTP
+			// 
+			this.projektiTP.Controls.Add(this.projektiDGW);
+			this.projektiTP.Location = new System.Drawing.Point(4, 22);
+			this.projektiTP.Name = "projektiTP";
+			this.projektiTP.Padding = new System.Windows.Forms.Padding(3);
+			this.projektiTP.Size = new System.Drawing.Size(1044, 266);
+			this.projektiTP.TabIndex = 1;
+			this.projektiTP.Text = "Projekti";
+			this.projektiTP.UseVisualStyleBackColor = true;
+			// 
+			// projektiDGW
+			// 
+			this.projektiDGW.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.projektiDGW.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.projekatID,
+            this.projekatNaziv,
+            this.projekatDatumKreiranja,
+            this.projekatAktivan});
+			this.projektiDGW.Location = new System.Drawing.Point(-3, 0);
+			this.projektiDGW.Name = "projektiDGW";
+			this.projektiDGW.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+			this.projektiDGW.Size = new System.Drawing.Size(1044, 266);
+			this.projektiDGW.TabIndex = 0;
+			// 
+			// projekatID
+			// 
+			this.projekatID.HeaderText = "ID";
+			this.projekatID.Name = "projekatID";
+			// 
+			// projekatNaziv
+			// 
+			this.projekatNaziv.HeaderText = "Naziv";
+			this.projekatNaziv.Name = "projekatNaziv";
+			// 
+			// projekatDatumKreiranja
+			// 
+			this.projekatDatumKreiranja.HeaderText = "Datum Kreiranja";
+			this.projekatDatumKreiranja.Name = "projekatDatumKreiranja";
+			// 
+			// projekatAktivan
+			// 
+			this.projekatAktivan.HeaderText = "Aktivan";
+			this.projekatAktivan.Name = "projekatAktivan";
+			// 
+			// dodatiBTN
+			// 
+			this.dodatiBTN.Location = new System.Drawing.Point(3, 313);
+			this.dodatiBTN.Name = "dodatiBTN";
+			this.dodatiBTN.Size = new System.Drawing.Size(75, 23);
+			this.dodatiBTN.TabIndex = 1;
+			this.dodatiBTN.Text = "Dodati";
+			this.dodatiBTN.UseVisualStyleBackColor = true;
+			this.dodatiBTN.Click += new System.EventHandler(this.dodatiBTN_Click);
+			// 
+			// azuriratiBTN
+			// 
+			this.azuriratiBTN.Location = new System.Drawing.Point(102, 313);
+			this.azuriratiBTN.Name = "azuriratiBTN";
+			this.azuriratiBTN.Size = new System.Drawing.Size(75, 23);
+			this.azuriratiBTN.TabIndex = 2;
+			this.azuriratiBTN.Text = "Ažurirati";
+			this.azuriratiBTN.UseVisualStyleBackColor = true;
+			this.azuriratiBTN.Click += new System.EventHandler(this.azuriratiBTN_Click);
+			// 
+			// obrisatiBTN
+			// 
+			this.obrisatiBTN.Location = new System.Drawing.Point(198, 313);
+			this.obrisatiBTN.Name = "obrisatiBTN";
+			this.obrisatiBTN.Size = new System.Drawing.Size(75, 23);
+			this.obrisatiBTN.TabIndex = 3;
+			this.obrisatiBTN.Text = "Obrisati";
+			this.obrisatiBTN.UseVisualStyleBackColor = true;
+			this.obrisatiBTN.Click += new System.EventHandler(this.obrisatiBTN_Click);
 			// 
 			// Administrator
 			// 

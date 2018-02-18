@@ -17,7 +17,7 @@ namespace ProjectManagementSystem {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Login());
-<<<<<<< HEAD
+//<<<<<<< HEAD
 //<<<<<<< HEAD
 //<<<<<<< HEAD
 
@@ -35,8 +35,8 @@ namespace ProjectManagementSystem {
             {
                 Console.WriteLine(p);
             }*/
-=======
->>>>>>> 6247d2d50fcf99960cc28319f52e27c57998429f
+//=======
+//>>>>>>> 6247d2d50fcf99960cc28319f52e27c57998429f
         }
     }
 }
