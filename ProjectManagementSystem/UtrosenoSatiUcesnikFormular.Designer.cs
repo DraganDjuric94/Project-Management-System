@@ -57,6 +57,7 @@
             this.ucesniciLVW.Size = new System.Drawing.Size(257, 153);
             this.ucesniciLVW.TabIndex = 2;
             this.ucesniciLVW.UseCompatibleStateImageBehavior = false;
+            this.ucesniciLVW.View = System.Windows.Forms.View.List;
             // 
             // utrosenoSatiNUD
             // 
@@ -71,7 +72,7 @@
             this.sacuvajBTN.Name = "sacuvajBTN";
             this.sacuvajBTN.Size = new System.Drawing.Size(75, 23);
             this.sacuvajBTN.TabIndex = 4;
-            this.sacuvajBTN.Text = "Sacuvaj";
+            this.sacuvajBTN.Text = "Sačuvaj";
             this.sacuvajBTN.UseVisualStyleBackColor = true;
             this.sacuvajBTN.Click += new System.EventHandler(this.sacuvajBTN_Click);
             // 
@@ -85,8 +86,9 @@
             this.Controls.Add(this.ucesniciLVW);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
             this.Name = "UtrosenoSatiUcesnikFormular";
-            this.Text = "UtrosenoSatiUcesnikFormular";
+            this.Text = "Utrošeno sati po učesnicima";
             ((System.ComponentModel.ISupportInitialize)(this.utrosenoSatiNUD)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

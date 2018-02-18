@@ -51,16 +51,16 @@
             this.nazivLabel.AutoSize = true;
             this.nazivLabel.Location = new System.Drawing.Point(12, 9);
             this.nazivLabel.Name = "nazivLabel";
-            this.nazivLabel.Size = new System.Drawing.Size(34, 13);
+            this.nazivLabel.Size = new System.Drawing.Size(37, 13);
             this.nazivLabel.TabIndex = 0;
-            this.nazivLabel.Text = "Naziv";
+            this.nazivLabel.Text = "Naziv:";
             this.nazivLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // nazivTextBox
             // 
-            this.nazivTextBox.Location = new System.Drawing.Point(52, 6);
+            this.nazivTextBox.Location = new System.Drawing.Point(55, 6);
             this.nazivTextBox.Name = "nazivTextBox";
-            this.nazivTextBox.Size = new System.Drawing.Size(351, 20);
+            this.nazivTextBox.Size = new System.Drawing.Size(425, 20);
             this.nazivTextBox.TabIndex = 1;
             // 
             // rokLabel
@@ -68,15 +68,15 @@
             this.rokLabel.AutoSize = true;
             this.rokLabel.Location = new System.Drawing.Point(12, 38);
             this.rokLabel.Name = "rokLabel";
-            this.rokLabel.Size = new System.Drawing.Size(27, 13);
+            this.rokLabel.Size = new System.Drawing.Size(30, 13);
             this.rokLabel.TabIndex = 2;
-            this.rokLabel.Text = "Rok";
+            this.rokLabel.Text = "Rok:";
             // 
             // rokDateTimePicker
             // 
-            this.rokDateTimePicker.Location = new System.Drawing.Point(52, 32);
+            this.rokDateTimePicker.Location = new System.Drawing.Point(55, 32);
             this.rokDateTimePicker.Name = "rokDateTimePicker";
-            this.rokDateTimePicker.Size = new System.Drawing.Size(351, 20);
+            this.rokDateTimePicker.Size = new System.Drawing.Size(425, 20);
             this.rokDateTimePicker.TabIndex = 3;
             // 
             // brojPotrebnihCovjekCasovaLabel
@@ -84,50 +84,50 @@
             this.brojPotrebnihCovjekCasovaLabel.AutoSize = true;
             this.brojPotrebnihCovjekCasovaLabel.Location = new System.Drawing.Point(12, 71);
             this.brojPotrebnihCovjekCasovaLabel.Name = "brojPotrebnihCovjekCasovaLabel";
-            this.brojPotrebnihCovjekCasovaLabel.Size = new System.Drawing.Size(147, 13);
+            this.brojPotrebnihCovjekCasovaLabel.Size = new System.Drawing.Size(150, 13);
             this.brojPotrebnihCovjekCasovaLabel.TabIndex = 4;
-            this.brojPotrebnihCovjekCasovaLabel.Text = "Broj potrebnih čovjek/časova";
+            this.brojPotrebnihCovjekCasovaLabel.Text = "Broj potrebnih čovjek/časova:";
             // 
             // brojPotrebnihCovjekCasovaNumericUpDown
             // 
-            this.brojPotrebnihCovjekCasovaNumericUpDown.Location = new System.Drawing.Point(168, 69);
+            this.brojPotrebnihCovjekCasovaNumericUpDown.Location = new System.Drawing.Point(181, 69);
             this.brojPotrebnihCovjekCasovaNumericUpDown.Name = "brojPotrebnihCovjekCasovaNumericUpDown";
-            this.brojPotrebnihCovjekCasovaNumericUpDown.Size = new System.Drawing.Size(235, 20);
+            this.brojPotrebnihCovjekCasovaNumericUpDown.Size = new System.Drawing.Size(299, 20);
             this.brojPotrebnihCovjekCasovaNumericUpDown.TabIndex = 5;
             // 
             // ucesniciLabel
             // 
             this.ucesniciLabel.AutoSize = true;
-            this.ucesniciLabel.Location = new System.Drawing.Point(12, 124);
+            this.ucesniciLabel.Location = new System.Drawing.Point(295, 141);
             this.ucesniciLabel.Name = "ucesniciLabel";
-            this.ucesniciLabel.Size = new System.Drawing.Size(48, 13);
+            this.ucesniciLabel.Size = new System.Drawing.Size(51, 13);
             this.ucesniciLabel.TabIndex = 8;
-            this.ucesniciLabel.Text = "Učesnici";
+            this.ucesniciLabel.Text = "Učesnici:";
             this.ucesniciLabel.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // ubaciUcesnikaButton
             // 
-            this.ubaciUcesnikaButton.Location = new System.Drawing.Point(168, 159);
+            this.ubaciUcesnikaButton.Location = new System.Drawing.Point(229, 193);
             this.ubaciUcesnikaButton.Name = "ubaciUcesnikaButton";
-            this.ubaciUcesnikaButton.Size = new System.Drawing.Size(75, 23);
+            this.ubaciUcesnikaButton.Size = new System.Drawing.Size(46, 23);
             this.ubaciUcesnikaButton.TabIndex = 9;
-            this.ubaciUcesnikaButton.Text = "Ubaci";
+            this.ubaciUcesnikaButton.Text = ">>";
             this.ubaciUcesnikaButton.UseVisualStyleBackColor = true;
             this.ubaciUcesnikaButton.Click += new System.EventHandler(this.ubaciUcesnikaButton_Click);
             // 
             // izbaciUcesnikaButton
             // 
-            this.izbaciUcesnikaButton.Location = new System.Drawing.Point(168, 188);
+            this.izbaciUcesnikaButton.Location = new System.Drawing.Point(229, 222);
             this.izbaciUcesnikaButton.Name = "izbaciUcesnikaButton";
-            this.izbaciUcesnikaButton.Size = new System.Drawing.Size(75, 23);
+            this.izbaciUcesnikaButton.Size = new System.Drawing.Size(46, 23);
             this.izbaciUcesnikaButton.TabIndex = 10;
-            this.izbaciUcesnikaButton.Text = "Izbaci";
+            this.izbaciUcesnikaButton.Text = "<<";
             this.izbaciUcesnikaButton.UseVisualStyleBackColor = true;
             this.izbaciUcesnikaButton.Click += new System.EventHandler(this.izbaciUcesnikaButton_Click);
             // 
             // sacuvajBTN
             // 
-            this.sacuvajBTN.Location = new System.Drawing.Point(327, 252);
+            this.sacuvajBTN.Location = new System.Drawing.Point(405, 302);
             this.sacuvajBTN.Name = "sacuvajBTN";
             this.sacuvajBTN.Size = new System.Drawing.Size(75, 23);
             this.sacuvajBTN.TabIndex = 11;
@@ -137,9 +137,9 @@
             // 
             // procenatIzvrsenostiNUD
             // 
-            this.procenatIzvrsenostiNUD.Location = new System.Drawing.Point(168, 95);
+            this.procenatIzvrsenostiNUD.Location = new System.Drawing.Point(181, 95);
             this.procenatIzvrsenostiNUD.Name = "procenatIzvrsenostiNUD";
-            this.procenatIzvrsenostiNUD.Size = new System.Drawing.Size(235, 20);
+            this.procenatIzvrsenostiNUD.Size = new System.Drawing.Size(299, 20);
             this.procenatIzvrsenostiNUD.TabIndex = 12;
             // 
             // label1
@@ -153,17 +153,17 @@
             // 
             // dostupniUcesniciListBox
             // 
-            this.dostupniUcesniciListBox.Location = new System.Drawing.Point(15, 141);
+            this.dostupniUcesniciListBox.Location = new System.Drawing.Point(15, 159);
             this.dostupniUcesniciListBox.Name = "dostupniUcesniciListBox";
-            this.dostupniUcesniciListBox.Size = new System.Drawing.Size(121, 97);
+            this.dostupniUcesniciListBox.Size = new System.Drawing.Size(191, 127);
             this.dostupniUcesniciListBox.TabIndex = 14;
             this.dostupniUcesniciListBox.UseCompatibleStateImageBehavior = false;
             // 
             // ucesniciZadatkaListBox
             // 
-            this.ucesniciZadatkaListBox.Location = new System.Drawing.Point(272, 141);
+            this.ucesniciZadatkaListBox.Location = new System.Drawing.Point(298, 159);
             this.ucesniciZadatkaListBox.Name = "ucesniciZadatkaListBox";
-            this.ucesniciZadatkaListBox.Size = new System.Drawing.Size(121, 97);
+            this.ucesniciZadatkaListBox.Size = new System.Drawing.Size(182, 127);
             this.ucesniciZadatkaListBox.TabIndex = 15;
             this.ucesniciZadatkaListBox.UseCompatibleStateImageBehavior = false;
             // 
@@ -171,7 +171,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(415, 294);
+            this.ClientSize = new System.Drawing.Size(498, 339);
             this.Controls.Add(this.ucesniciZadatkaListBox);
             this.Controls.Add(this.dostupniUcesniciListBox);
             this.Controls.Add(this.label1);
@@ -186,7 +186,9 @@
             this.Controls.Add(this.rokLabel);
             this.Controls.Add(this.nazivTextBox);
             this.Controls.Add(this.nazivLabel);
+            this.MinimizeBox = false;
             this.Name = "ZadatakFormular";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Formular za zadatak";
             ((System.ComponentModel.ISupportInitialize)(this.brojPotrebnihCovjekCasovaNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.procenatIzvrsenostiNUD)).EndInit();

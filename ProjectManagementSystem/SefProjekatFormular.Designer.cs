@@ -79,16 +79,16 @@
             // 
             this.uceniciZaDodatiLVW.Location = new System.Drawing.Point(16, 84);
             this.uceniciZaDodatiLVW.Name = "uceniciZaDodatiLVW";
-            this.uceniciZaDodatiLVW.Size = new System.Drawing.Size(167, 189);
+            this.uceniciZaDodatiLVW.Size = new System.Drawing.Size(214, 189);
             this.uceniciZaDodatiLVW.TabIndex = 4;
             this.uceniciZaDodatiLVW.UseCompatibleStateImageBehavior = false;
             this.uceniciZaDodatiLVW.View = System.Windows.Forms.View.List;
             // 
             // ucesniciNaProjektuLVW
             // 
-            this.ucesniciNaProjektuLVW.Location = new System.Drawing.Point(422, 84);
+            this.ucesniciNaProjektuLVW.Location = new System.Drawing.Point(364, 84);
             this.ucesniciNaProjektuLVW.Name = "ucesniciNaProjektuLVW";
-            this.ucesniciNaProjektuLVW.Size = new System.Drawing.Size(159, 189);
+            this.ucesniciNaProjektuLVW.Size = new System.Drawing.Size(217, 189);
             this.ucesniciNaProjektuLVW.TabIndex = 5;
             this.ucesniciNaProjektuLVW.UseCompatibleStateImageBehavior = false;
             this.ucesniciNaProjektuLVW.View = System.Windows.Forms.View.List;
@@ -107,7 +107,7 @@
             // 
             this.nazivProjektaTBX.Location = new System.Drawing.Point(56, 22);
             this.nazivProjektaTBX.Name = "nazivProjektaTBX";
-            this.nazivProjektaTBX.Size = new System.Drawing.Size(405, 20);
+            this.nazivProjektaTBX.Size = new System.Drawing.Size(525, 20);
             this.nazivProjektaTBX.TabIndex = 7;
             // 
             // ucesnikRBT
@@ -157,8 +157,10 @@
             this.Controls.Add(this.dodajBTN);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
             this.Name = "SefProjekatFormular";
-            this.Text = "SefProjekatFormular";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Formular za projekat";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

@@ -125,7 +125,7 @@
             this.sacuvajBTN.Name = "sacuvajBTN";
             this.sacuvajBTN.Size = new System.Drawing.Size(75, 23);
             this.sacuvajBTN.TabIndex = 9;
-            this.sacuvajBTN.Text = "Sacuvaj";
+            this.sacuvajBTN.Text = "Sačuvaj";
             this.sacuvajBTN.UseVisualStyleBackColor = true;
             this.sacuvajBTN.Click += new System.EventHandler(this.sacuvajBTN_Click);
             // 
@@ -143,7 +143,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Name = "TransakcijaFormular";
-            this.Text = "TransakcijaFormular";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Formular za transakciju";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

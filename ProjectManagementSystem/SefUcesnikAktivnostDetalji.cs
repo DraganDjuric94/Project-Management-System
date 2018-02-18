@@ -24,7 +24,7 @@ namespace ProjectManagementSystem {
             string zavrsena = (ak.Zavrsena == true) ? "završena" : "nezavršena";
             zavrsenaAktivnostStatusLBL.Text = "Status: " + zavrsena;
             foreach (Ucesnik u in ak.UcesniciSaBrojemUtrosenihSati.Keys) {
-                ucesnikSatLVW.Items.Add(u.Ime + "  " + ak.UcesniciSaBrojemUtrosenihSati[u]);
+                ucesnikSatLVW.Items.Add(u.Ime + " " + u.Prezime + ", sati: " + ak.UcesniciSaBrojemUtrosenihSati[u]);
             }
             foreach (Transakcija t in ak.Transakcije) {
                 char c = (t.PrihodRashod == true) ? '+' : '-';
@@ -40,8 +40,11 @@ namespace ProjectManagementSystem {
             if (dokumentiLVW.SelectedItems.Count > 0) {
                 if (MySqlDokumentDao.Instance.Read(new Dokument { DokumentID = Convert.ToInt32(dokumentiLVW.SelectedItems[0].Text.Split('.')[0]), Aktivan = true }).Count > 0) {
                     Dokument d = MySqlDokumentDao.Instance.Read(new Dokument { DokumentID = Convert.ToInt32(dokumentiLVW.SelectedItems[0].Text.Split('.')[0]), Aktivan = true })[0];
-                    posljednjaIzmjenaLBL.Text = d.DatumKreiranja.ToString();
-                    napomenaDokumentLBL.Text = d.Napomena;
+                    if (MySqlUcesnikDao.Instance.Read(new Ucesnik { Aktivan = true, UcesnikID = d.UcesnikID }).Count > 0) {
+                        Ucesnik u = MySqlUcesnikDao.Instance.Read(new Ucesnik { Aktivan = true, UcesnikID = d.UcesnikID })[0];
+                        posljednjaIzmjenaLBL.Text = "Posljednja izmjena:\n" + d.DatumKreiranja.ToString() + "\n" + u.Ime + " " + u.Prezime;
+                        napomenaDokumentLBL.Text = "Napomena:\n" + d.Napomena;
+                    }
                 }
             }
         }

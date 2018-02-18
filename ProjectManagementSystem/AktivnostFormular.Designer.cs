@@ -46,9 +46,9 @@
             this.nazivLabel.AutoSize = true;
             this.nazivLabel.Location = new System.Drawing.Point(12, 9);
             this.nazivLabel.Name = "nazivLabel";
-            this.nazivLabel.Size = new System.Drawing.Size(34, 13);
+            this.nazivLabel.Size = new System.Drawing.Size(37, 13);
             this.nazivLabel.TabIndex = 0;
-            this.nazivLabel.Text = "Naziv";
+            this.nazivLabel.Text = "Naziv:";
             // 
             // opisLabel
             // 
@@ -79,9 +79,9 @@
             this.ucesceUcesnikaLBL.AutoSize = true;
             this.ucesceUcesnikaLBL.Location = new System.Drawing.Point(12, 49);
             this.ucesceUcesnikaLBL.Name = "ucesceUcesnikaLBL";
-            this.ucesceUcesnikaLBL.Size = new System.Drawing.Size(90, 13);
+            this.ucesceUcesnikaLBL.Size = new System.Drawing.Size(93, 13);
             this.ucesceUcesnikaLBL.TabIndex = 5;
-            this.ucesceUcesnikaLBL.Text = "Učešće učesnika";
+            this.ucesceUcesnikaLBL.Text = "Učešće učesnika:";
             this.ucesceUcesnikaLBL.Click += new System.EventHandler(this.ucesceUcesnikaLBL_Click);
             // 
             // dodajButton
@@ -120,7 +120,7 @@
             this.sacuvajBTN.Name = "sacuvajBTN";
             this.sacuvajBTN.Size = new System.Drawing.Size(75, 23);
             this.sacuvajBTN.TabIndex = 9;
-            this.sacuvajBTN.Text = "Sacuvaj";
+            this.sacuvajBTN.Text = "Sačuvaj";
             this.sacuvajBTN.UseVisualStyleBackColor = true;
             this.sacuvajBTN.Click += new System.EventHandler(this.sacuvajBTN_Click);
             // 
@@ -132,6 +132,7 @@
             this.ucesniciListBox.Size = new System.Drawing.Size(243, 108);
             this.ucesniciListBox.TabIndex = 10;
             this.ucesniciListBox.UseCompatibleStateImageBehavior = false;
+            this.ucesniciListBox.View = System.Windows.Forms.View.List;
             // 
             // zavrsenaAktivnostCBX
             // 
@@ -159,7 +160,9 @@
             this.Controls.Add(this.nazivTextBox);
             this.Controls.Add(this.opisLabel);
             this.Controls.Add(this.nazivLabel);
+            this.MaximizeBox = false;
             this.Name = "AktivnostFormular";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Formular za aktivnost";
             this.ResumeLayout(false);
             this.PerformLayout();

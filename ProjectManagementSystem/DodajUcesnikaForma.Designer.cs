@@ -63,8 +63,10 @@
             this.Controls.Add(this.dodajBTN);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.moguciUcesniciCBX);
+            this.MaximizeBox = false;
             this.Name = "DodajUcesnikaForma";
-            this.Text = "DodajUcesnikaForma";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Dodaj učesnika";
             this.ResumeLayout(false);
             this.PerformLayout();
 

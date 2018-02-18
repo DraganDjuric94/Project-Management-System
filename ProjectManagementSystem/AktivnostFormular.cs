@@ -30,7 +30,7 @@ namespace ProjectManagementSystem
                 Svi = ak.UcesniciSaBrojemUtrosenihSati;
                 nazivTextBox.Text = ak.Naziv;
                 foreach(KeyValuePair<Ucesnik,int> p in ak.UcesniciSaBrojemUtrosenihSati) {
-                    ucesniciListBox.Items.Add(p.Key.UcesnikID + ". " + p.Key.Ime + " " + p.Key.Prezime + " " + p.Value + " sati");
+                    ucesniciListBox.Items.Add(p.Key.UcesnikID + ". " + p.Key.Ime + " " + p.Key.Prezime + ", sati: " + p.Value);
                 }
                 opisRichTextBox.Text = ak.Opis;
                 zavrsenaAktivnostCBX.Checked = Convert.ToBoolean(ak.Zavrsena);

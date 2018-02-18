@@ -59,7 +59,7 @@
             // 
             this.lblblbl.AutoSize = true;
             this.lblblbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblblbl.Location = new System.Drawing.Point(27, 117);
+            this.lblblbl.Location = new System.Drawing.Point(27, 123);
             this.lblblbl.Name = "lblblbl";
             this.lblblbl.Size = new System.Drawing.Size(52, 22);
             this.lblblbl.TabIndex = 1;
@@ -69,7 +69,7 @@
             // 
             this.napomenaDokumentLBL.AutoSize = true;
             this.napomenaDokumentLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.napomenaDokumentLBL.Location = new System.Drawing.Point(251, 53);
+            this.napomenaDokumentLBL.Location = new System.Drawing.Point(251, 96);
             this.napomenaDokumentLBL.Name = "napomenaDokumentLBL";
             this.napomenaDokumentLBL.Size = new System.Drawing.Size(81, 17);
             this.napomenaDokumentLBL.TabIndex = 4;
@@ -89,7 +89,7 @@
             // 
             this.covjekCasUcesnikLBL.AutoSize = true;
             this.covjekCasUcesnikLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.covjekCasUcesnikLBL.Location = new System.Drawing.Point(506, 117);
+            this.covjekCasUcesnikLBL.Location = new System.Drawing.Point(408, 123);
             this.covjekCasUcesnikLBL.Name = "covjekCasUcesnikLBL";
             this.covjekCasUcesnikLBL.Size = new System.Drawing.Size(226, 22);
             this.covjekCasUcesnikLBL.TabIndex = 7;
@@ -97,18 +97,19 @@
             // 
             // ucesnikSatLVW
             // 
-            this.ucesnikSatLVW.Location = new System.Drawing.Point(510, 142);
+            this.ucesnikSatLVW.Location = new System.Drawing.Point(412, 148);
             this.ucesnikSatLVW.Name = "ucesnikSatLVW";
-            this.ucesnikSatLVW.Size = new System.Drawing.Size(417, 169);
+            this.ucesnikSatLVW.Size = new System.Drawing.Size(368, 117);
             this.ucesnikSatLVW.TabIndex = 8;
             this.ucesnikSatLVW.UseCompatibleStateImageBehavior = false;
+            this.ucesnikSatLVW.View = System.Windows.Forms.View.List;
             // 
             // opisTBX
             // 
-            this.opisTBX.Location = new System.Drawing.Point(31, 142);
+            this.opisTBX.Location = new System.Drawing.Point(31, 148);
             this.opisTBX.Multiline = true;
             this.opisTBX.Name = "opisTBX";
-            this.opisTBX.Size = new System.Drawing.Size(456, 169);
+            this.opisTBX.Size = new System.Drawing.Size(351, 117);
             this.opisTBX.TabIndex = 9;
             // 
             // transakcijeLVW
@@ -118,6 +119,7 @@
             this.transakcijeLVW.Size = new System.Drawing.Size(320, 178);
             this.transakcijeLVW.TabIndex = 10;
             this.transakcijeLVW.UseCompatibleStateImageBehavior = false;
+            this.transakcijeLVW.View = System.Windows.Forms.View.List;
             // 
             // izmijeniTransakcijuBTN
             // 
@@ -137,6 +139,7 @@
             this.dokumentiLVW.Size = new System.Drawing.Size(239, 178);
             this.dokumentiLVW.TabIndex = 12;
             this.dokumentiLVW.UseCompatibleStateImageBehavior = false;
+            this.dokumentiLVW.View = System.Windows.Forms.View.List;
             this.dokumentiLVW.SelectedIndexChanged += new System.EventHandler(this.dokumentiLVW_SelectedIndexChanged);
             // 
             // dodajDokumentBTN
@@ -167,9 +170,9 @@
             this.dokumentiGBX.Controls.Add(this.izmijeniDokumentBTN);
             this.dokumentiGBX.Controls.Add(this.posljednjaIzmjenaLBL);
             this.dokumentiGBX.Controls.Add(this.napomenaDokumentLBL);
-            this.dokumentiGBX.Location = new System.Drawing.Point(363, 328);
+            this.dokumentiGBX.Location = new System.Drawing.Point(351, 285);
             this.dokumentiGBX.Name = "dokumentiGBX";
-            this.dokumentiGBX.Size = new System.Drawing.Size(564, 239);
+            this.dokumentiGBX.Size = new System.Drawing.Size(532, 239);
             this.dokumentiGBX.TabIndex = 15;
             this.dokumentiGBX.TabStop = false;
             this.dokumentiGBX.Text = "Dokumenti";
@@ -180,7 +183,7 @@
             this.obrisiDokumentBTN.Name = "obrisiDokumentBTN";
             this.obrisiDokumentBTN.Size = new System.Drawing.Size(75, 23);
             this.obrisiDokumentBTN.TabIndex = 15;
-            this.obrisiDokumentBTN.Text = "Obrisi";
+            this.obrisiDokumentBTN.Text = "Obriši";
             this.obrisiDokumentBTN.UseVisualStyleBackColor = true;
             this.obrisiDokumentBTN.Click += new System.EventHandler(this.obrisiDokumentBTN_Click);
             // 
@@ -190,9 +193,9 @@
             this.transakcijeGBX.Controls.Add(this.dodajTransakcijuBTN);
             this.transakcijeGBX.Controls.Add(this.transakcijeLVW);
             this.transakcijeGBX.Controls.Add(this.izmijeniTransakcijuBTN);
-            this.transakcijeGBX.Location = new System.Drawing.Point(31, 328);
+            this.transakcijeGBX.Location = new System.Drawing.Point(19, 285);
             this.transakcijeGBX.Name = "transakcijeGBX";
-            this.transakcijeGBX.Size = new System.Drawing.Size(332, 239);
+            this.transakcijeGBX.Size = new System.Drawing.Size(333, 239);
             this.transakcijeGBX.TabIndex = 16;
             this.transakcijeGBX.TabStop = false;
             this.transakcijeGBX.Text = "Prihodi/rashodi";
@@ -203,7 +206,7 @@
             this.obrisiTransakcijuBTN.Name = "obrisiTransakcijuBTN";
             this.obrisiTransakcijuBTN.Size = new System.Drawing.Size(75, 23);
             this.obrisiTransakcijuBTN.TabIndex = 13;
-            this.obrisiTransakcijuBTN.Text = "Obrisi";
+            this.obrisiTransakcijuBTN.Text = "Obriši";
             this.obrisiTransakcijuBTN.UseVisualStyleBackColor = true;
             this.obrisiTransakcijuBTN.Click += new System.EventHandler(this.obrisiTransakcijuBTN_Click);
             // 
@@ -221,7 +224,7 @@
             // 
             this.zavrsenaAktivnostStatusLBL.AutoSize = true;
             this.zavrsenaAktivnostStatusLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.zavrsenaAktivnostStatusLBL.Location = new System.Drawing.Point(27, 79);
+            this.zavrsenaAktivnostStatusLBL.Location = new System.Drawing.Point(27, 75);
             this.zavrsenaAktivnostStatusLBL.Name = "zavrsenaAktivnostStatusLBL";
             this.zavrsenaAktivnostStatusLBL.Size = new System.Drawing.Size(143, 22);
             this.zavrsenaAktivnostStatusLBL.TabIndex = 17;
@@ -240,7 +243,7 @@
             this.Controls.Add(this.lblblbl);
             this.Controls.Add(this.nazivAktivnostiLBL);
             this.Name = "SefUcesnikAktivnostDetalji";
-            this.Size = new System.Drawing.Size(947, 584);
+            this.Size = new System.Drawing.Size(900, 554);
             this.dokumentiGBX.ResumeLayout(false);
             this.dokumentiGBX.PerformLayout();
             this.transakcijeGBX.ResumeLayout(false);

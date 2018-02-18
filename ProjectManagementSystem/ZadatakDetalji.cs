@@ -15,11 +15,11 @@ namespace ProjectManagementSystem {
         public ZadatakDetalji(Cjelina cj) {
             InitializeComponent();
             nazivZadatkaLBL.Text = cj.Naziv;
-            datumKreiranjaLBL.Text = cj.DatumKreiranja.ToString();
-            rokLBL.Text = cj.Rok.ToString();
-            covjekCasLBL.Text = cj.BrojPotrebnihCovjekCasova.ToString();
+            datumKreiranjaLBL.Text = "Datum kreiranja: " + cj.DatumKreiranja.ToString();
+            rokLBL.Text = "Rok: " + cj.Rok.ToString();
+            covjekCasLBL.Text = "Potreban broj čovjek/časova: " + cj.BrojPotrebnihCovjekCasova.ToString();
             foreach(Ucesnik u in cj.Ucesnici) {
-                ucesniciLVW.Items.Add(u.Ime);
+                ucesniciLVW.Items.Add(u.Ime + " " + u.Prezime + " \"" + u.KorisnickoIme + "\"");
             }
             
            procenatZavrsenostiLBL.Text = cj.ProcenatIzvrsenosti + "%";

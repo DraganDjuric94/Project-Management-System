@@ -221,7 +221,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.sacuvajKaoPdfBTN);
             this.Name = "IzvjestajForma";
-            this.Text = "IzvjestajForma";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Izvještaj";
             this.ResumeLayout(false);
             this.PerformLayout();
 

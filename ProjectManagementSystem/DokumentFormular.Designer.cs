@@ -71,7 +71,7 @@
             this.sacuvajBTN.Name = "sacuvajBTN";
             this.sacuvajBTN.Size = new System.Drawing.Size(75, 23);
             this.sacuvajBTN.TabIndex = 4;
-            this.sacuvajBTN.Text = "Sacuvaj";
+            this.sacuvajBTN.Text = "Sačuvaj";
             this.sacuvajBTN.UseVisualStyleBackColor = true;
             this.sacuvajBTN.Click += new System.EventHandler(this.sacuvajBTN_Click);
             // 
@@ -96,8 +96,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.putanjaLBL);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
             this.Name = "DokumentFormular";
-            this.Text = "DokumentFormular";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Formular za dokument";
             this.ResumeLayout(false);
             this.PerformLayout();
 
