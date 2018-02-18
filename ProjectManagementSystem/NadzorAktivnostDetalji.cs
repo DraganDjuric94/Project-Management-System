@@ -16,8 +16,10 @@ namespace ProjectManagementSystem {
             InitializeComponent();
             nazivAktivnostiLBL.Text = ak.Naziv;
             opisTBX.Text = ak.Opis;
-            foreach(Ucesnik u in ak.UcesniciSaBrojemUtrosenihSati.Keys) {
-                ucesnikSatLVW.Items.Add(u.Ime + "  " + ak.UcesniciSaBrojemUtrosenihSati[u]);
+            string zavrsena = (ak.Zavrsena == true) ? "završena" : "nezavršena";
+            zavrsenaAktivnostStatusLBL.Text = "Status: " + zavrsena;
+            foreach (Ucesnik u in ak.UcesniciSaBrojemUtrosenihSati.Keys) {
+                ucesnikSatLVW.Items.Add(u.Ime + " " + u.Prezime + ", sati: " + ak.UcesniciSaBrojemUtrosenihSati[u]);
             }
             foreach(Transakcija t in ak.Transakcije) {
                 char c = (t.PrihodRashod == true) ? '+' : '-';
@@ -27,8 +29,19 @@ namespace ProjectManagementSystem {
             foreach(Dokument d in dokumenti) {
                 dokumentiLVW.Items.Add(d.Putanja);
                 //promijeniti u selection changed
-                posljednjaIzmjenaLBL.Text = d.UcesnikID + d.DatumKreiranja.ToString();
-                napomenaDokumentLBL.Text = d.Napomena;
+                
+            }
+        }
+
+        private void dokumentiLVW_SelectedIndexChanged(object sender, EventArgs e) {
+            String selektovani = dokumentiLVW.SelectedItems[0].Text;
+            if (MySqlDokumentDao.Instance.Read(new Dokument { Aktivan = true, Putanja = selektovani }).Count > 0) {
+                Dokument d = MySqlDokumentDao.Instance.Read(new Dokument { Aktivan = true, Putanja = selektovani })[0];
+                if (MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = d.UcesnikID, Aktivan = true }).Count > 0) {
+                    Ucesnik u = MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = d.UcesnikID, Aktivan = true })[0];
+                    posljednjaIzmjenaLBL.Text = "Posljednja izmjena: \n" + d.DatumKreiranja.ToString() + "\n" + u.Ime + " " + u.Prezime;
+                    napomenaDokumentLBL.Text = "Napomena> \n" + d.Napomena;
+                }
             }
         }
     }

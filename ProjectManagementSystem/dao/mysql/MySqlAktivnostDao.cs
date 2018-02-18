@@ -47,6 +47,9 @@ namespace ProjectManagementSystem.dao.mysql
                 cmd.Parameters.AddWithValue("@opis", aktivnost.Opis);
                 cmd.Parameters["@opis"].Direction = ParameterDirection.Input;
 
+                cmd.Parameters.AddWithValue("@zavrsena", aktivnost.Zavrsena);
+                cmd.Parameters["@zavrsena"].Direction = ParameterDirection.Input;
+
                 cmd.Parameters.AddWithValue("@aktivna", aktivnost.Aktivna);
                 cmd.Parameters["@aktivna"].Direction = ParameterDirection.Input;
 
@@ -104,6 +107,9 @@ namespace ProjectManagementSystem.dao.mysql
                 cmd.Parameters.AddWithValue("@opis", aktivnost.Opis);
                 cmd.Parameters["@opis"].Direction = ParameterDirection.Input;
 
+                cmd.Parameters.AddWithValue("@zavrsena", aktivnost.Zavrsena);
+                cmd.Parameters["@zavrsena"].Direction = ParameterDirection.Input;
+
                 cmd.Parameters.AddWithValue("@aktivna", aktivnost.Aktivna);
                 cmd.Parameters["@aktivna"].Direction = ParameterDirection.Input;
 
@@ -111,7 +117,7 @@ namespace ProjectManagementSystem.dao.mysql
 
                 while (reader.Read())
                 {
-                    aktivnosti.Add(new Aktivnost { AktivnostID = reader.GetInt32(0), CjelinaID = reader.GetInt32(1), Naziv = reader.GetString(2), Opis = reader.GetString(3), Aktivna = reader.GetBoolean(4) });
+                    aktivnosti.Add(new Aktivnost { AktivnostID = reader.GetInt32(0), CjelinaID = reader.GetInt32(1), Naziv = reader.GetString(2), Opis = reader.GetString(3), Zavrsena = reader.GetBoolean(4), Aktivna = reader.GetBoolean(5) });
                 }
             }
             #endregion
@@ -130,7 +136,9 @@ namespace ProjectManagementSystem.dao.mysql
             {
                 foreach (KeyValuePair<Int32, Int32> pair in ReadUcesnikAktivnostByAktivnostID(a.AktivnostID.Value).ToArray())
                 {
-                    a.UcesniciSaBrojemUtrosenihSati.Add((MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = pair.Key })[0]), pair.Value) ;             
+                    if (MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = pair.Key }).Count > 0) {
+                        a.UcesniciSaBrojemUtrosenihSati.Add((MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = pair.Key })[0]), pair.Value);
+                    }
                 }
             }
             #endregion
@@ -160,6 +168,9 @@ namespace ProjectManagementSystem.dao.mysql
                 cmd.Parameters.AddWithValue("@opis", aktivnost.Opis);
                 cmd.Parameters["@opis"].Direction = ParameterDirection.Input;
 
+                cmd.Parameters.AddWithValue("@zavrsena", aktivnost.Zavrsena);
+                cmd.Parameters["@zavrsena"].Direction = ParameterDirection.Input;
+
                 cmd.Parameters.AddWithValue("@aktivna", aktivnost.Aktivna);
                 cmd.Parameters["@aktivna"].Direction = ParameterDirection.Input;
 
@@ -181,11 +192,14 @@ namespace ProjectManagementSystem.dao.mysql
                 }
             }
             #endregion
+            Dictionary<Ucesnik, int> stari = Read(new Aktivnost { AktivnostID = aktivnost.AktivnostID})[0].UcesniciSaBrojemUtrosenihSati;
+            foreach (KeyValuePair<Ucesnik, Int32> pair in stari.ToArray()) {
+                DeleteUcesnikAktivnostByAktivnostID(aktivnost.AktivnostID.Value);
+            }
 
             #region Azuriraj ucesnike na aktivnosti
-            foreach(KeyValuePair<Ucesnik, Int32> pair in aktivnost.UcesniciSaBrojemUtrosenihSati.ToArray())
+            foreach (KeyValuePair<Ucesnik, Int32> pair in aktivnost.UcesniciSaBrojemUtrosenihSati.ToArray())
             {
-                DeleteUcesnikAktivnostByAktivnostID(aktivnost.AktivnostID.Value);
                 InsertUcesnikAktivnost(pair.Key.UcesnikID.Value, aktivnost.AktivnostID.Value, pair.Value);
             }
             #endregion
@@ -236,7 +250,7 @@ namespace ProjectManagementSystem.dao.mysql
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "insert_ucesnik_aktivnost";
 
-                cmd.Parameters.AddWithValue("@ucesnikID", aktivnostID);
+                cmd.Parameters.AddWithValue("@ucesnikID", ucesnikID);
                 cmd.Parameters["@ucesnikID"].Direction = ParameterDirection.Input;
 
                 cmd.Parameters.AddWithValue("@aktivnostID", aktivnostID);
