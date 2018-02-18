@@ -49,7 +49,7 @@
             // 
             this.procenatZavrsenostiPBR.Location = new System.Drawing.Point(30, 93);
             this.procenatZavrsenostiPBR.Name = "procenatZavrsenostiPBR";
-            this.procenatZavrsenostiPBR.Size = new System.Drawing.Size(459, 29);
+            this.procenatZavrsenostiPBR.Size = new System.Drawing.Size(600, 29);
             this.procenatZavrsenostiPBR.Step = 1;
             this.procenatZavrsenostiPBR.TabIndex = 1;
             // 
@@ -67,7 +67,7 @@
             // 
             this.rokLBL.AutoSize = true;
             this.rokLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rokLBL.Location = new System.Drawing.Point(491, 160);
+            this.rokLBL.Location = new System.Drawing.Point(352, 160);
             this.rokLBL.Name = "rokLBL";
             this.rokLBL.Size = new System.Drawing.Size(47, 22);
             this.rokLBL.TabIndex = 5;
@@ -77,7 +77,7 @@
             // 
             this.istorijaLBL.AutoSize = true;
             this.istorijaLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.istorijaLBL.Location = new System.Drawing.Point(491, 258);
+            this.istorijaLBL.Location = new System.Drawing.Point(468, 258);
             this.istorijaLBL.Name = "istorijaLBL";
             this.istorijaLBL.Size = new System.Drawing.Size(229, 22);
             this.istorijaLBL.TabIndex = 6;
@@ -107,7 +107,7 @@
             // 
             this.procenatZavrsenostiLBL.AutoSize = true;
             this.procenatZavrsenostiLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.procenatZavrsenostiLBL.Location = new System.Drawing.Point(490, 93);
+            this.procenatZavrsenostiLBL.Location = new System.Drawing.Point(636, 93);
             this.procenatZavrsenostiLBL.Name = "procenatZavrsenostiLBL";
             this.procenatZavrsenostiLBL.Size = new System.Drawing.Size(61, 29);
             this.procenatZavrsenostiLBL.TabIndex = 9;
@@ -117,19 +117,17 @@
             // 
             this.ucesniciLVW.Location = new System.Drawing.Point(30, 283);
             this.ucesniciLVW.Name = "ucesniciLVW";
-            this.ucesniciLVW.Size = new System.Drawing.Size(295, 245);
+            this.ucesniciLVW.Size = new System.Drawing.Size(283, 245);
             this.ucesniciLVW.TabIndex = 10;
             this.ucesniciLVW.UseCompatibleStateImageBehavior = false;
-            this.ucesniciLVW.View = System.Windows.Forms.View.List;
             // 
             // istorijaAktivnostiLVW
             // 
-            this.istorijaAktivnostiLVW.Location = new System.Drawing.Point(495, 283);
+            this.istorijaAktivnostiLVW.Location = new System.Drawing.Point(472, 283);
             this.istorijaAktivnostiLVW.Name = "istorijaAktivnostiLVW";
             this.istorijaAktivnostiLVW.Size = new System.Drawing.Size(381, 253);
             this.istorijaAktivnostiLVW.TabIndex = 11;
             this.istorijaAktivnostiLVW.UseCompatibleStateImageBehavior = false;
-            this.istorijaAktivnostiLVW.View = System.Windows.Forms.View.List;
             // 
             // ZadatakDetalji
             // 
@@ -146,7 +144,7 @@
             this.Controls.Add(this.procenatZavrsenostiPBR);
             this.Controls.Add(this.nazivZadatkaLBL);
             this.Name = "ZadatakDetalji";
-            this.Size = new System.Drawing.Size(900, 550);
+            this.Size = new System.Drawing.Size(896, 578);
             this.ResumeLayout(false);
             this.PerformLayout();
 

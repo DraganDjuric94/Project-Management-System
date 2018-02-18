@@ -16,7 +16,7 @@ namespace ProjectManagementSystem {
             nazivProjektaLBL.Text = pr.Naziv;
             int procenatIzvrsenosti = 0, ukupnoPotrebnoCC = 0;
             foreach (Cjelina c in pr.Cjeline) {
-                if (c.CjelinaRoditeljID == null && c.Aktivna == true) {
+                if (c.CjelinaRoditeljID == null) {
                     procenatIzvrsenosti += (int)(((double)c.ProcenatIzvrsenosti / 100.0) * c.BrojPotrebnihCovjekCasova);
                     ukupnoPotrebnoCC += (int)c.BrojPotrebnihCovjekCasova;
                     Console.WriteLine("PI: " + procenatIzvrsenosti + " UK:" + ukupnoPotrebnoCC);
@@ -39,13 +39,10 @@ namespace ProjectManagementSystem {
                 }
             }
             if (sef != null) {
-                sefProjektaLBL.Text = "Šef projekta: " + sef.Ime;
+                sefProjektaLBL.Text = "Sef projekta: " + sef.Ime;
             }
             for (int i = 0; i < pr.UcesniciNaProjektu.Count; i++) {
-                if (!pr.UcesniciNaProjektu[pr.UcesniciNaProjektu.ElementAt(i).Key].Naziv.Equals("sef")) {
-                    Ucesnik u = pr.UcesniciNaProjektu.ElementAt(i).Key;
-                    ucesniciLVW.Items.Add(u.Ime + " " + u.Prezime + " \"" + u.KorisnickoIme + "\"");
-                }
+                ucesniciLVW.Items.Add(pr.UcesniciNaProjektu.ElementAt(i).Key.Ime);
             }
             foreach(Cjelina c in pr.Cjeline) {
                 if(c.CjelinaRoditeljID == null) {

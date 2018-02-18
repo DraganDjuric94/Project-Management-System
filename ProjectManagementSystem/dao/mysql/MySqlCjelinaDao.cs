@@ -158,13 +158,9 @@ namespace ProjectManagementSystem.dao.mysql
             #endregion
 
             #region Azuriraj ucesnike na cjelini
-
-            foreach (Ucesnik pair in Read(new Cjelina { CjelinaID = cjelina.CjelinaID })[0].Ucesnici) {
-                DeleteUcesnikCjelinaByCjelinaID(cjelina.CjelinaID.Value);
-            }
-
-            foreach (Ucesnik u in cjelina.Ucesnici)
+            foreach(Ucesnik u in cjelina.Ucesnici)
             {
+                DeleteUcesnikCjelinaByCjelinaID(cjelina.CjelinaID.Value);
                 InsertUcesnikCjelina(u.UcesnikID.Value, cjelina.CjelinaID.Value);
             }
             #endregion

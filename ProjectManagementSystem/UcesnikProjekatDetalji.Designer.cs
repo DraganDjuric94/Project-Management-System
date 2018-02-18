@@ -43,7 +43,7 @@
             // 
             this.sefProjektaLBL.AutoSize = true;
             this.sefProjektaLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sefProjektaLBL.Location = new System.Drawing.Point(27, 162);
+            this.sefProjektaLBL.Location = new System.Drawing.Point(27, 166);
             this.sefProjektaLBL.Name = "sefProjektaLBL";
             this.sefProjektaLBL.Size = new System.Drawing.Size(111, 22);
             this.sefProjektaLBL.TabIndex = 1;
@@ -53,7 +53,7 @@
             // 
             this.procenatIzvrsenostiLBL.AutoSize = true;
             this.procenatIzvrsenostiLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.procenatIzvrsenostiLBL.Location = new System.Drawing.Point(519, 98);
+            this.procenatIzvrsenostiLBL.Location = new System.Drawing.Point(508, 98);
             this.procenatIzvrsenostiLBL.Name = "procenatIzvrsenostiLBL";
             this.procenatIzvrsenostiLBL.Size = new System.Drawing.Size(61, 29);
             this.procenatIzvrsenostiLBL.TabIndex = 2;
@@ -63,7 +63,7 @@
             // 
             this.procenatIzvrsenostiPBR.Location = new System.Drawing.Point(31, 98);
             this.procenatIzvrsenostiPBR.Name = "procenatIzvrsenostiPBR";
-            this.procenatIzvrsenostiPBR.Size = new System.Drawing.Size(482, 29);
+            this.procenatIzvrsenostiPBR.Size = new System.Drawing.Size(471, 29);
             this.procenatIzvrsenostiPBR.TabIndex = 3;
             // 
             // UcesnikProjekatDetalji
@@ -75,7 +75,7 @@
             this.Controls.Add(this.sefProjektaLBL);
             this.Controls.Add(this.nazivProjektaLBL);
             this.Name = "UcesnikProjekatDetalji";
-            this.Size = new System.Drawing.Size(900, 550);
+            this.Size = new System.Drawing.Size(792, 500);
             this.ResumeLayout(false);
             this.PerformLayout();
 

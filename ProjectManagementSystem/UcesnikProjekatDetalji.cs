@@ -16,19 +16,11 @@ namespace ProjectManagementSystem {
             nazivProjektaLBL.Text = pr.Naziv;
             int? procenatIzvrsenosti = 0, ukupnoPotrebnoCC = 0;
             foreach (Cjelina c in pr.Cjeline) {
-                if (c.CjelinaRoditeljID == null && c.Aktivna == true) {
-                    procenatIzvrsenosti += ((c.ProcenatIzvrsenosti / 100) * c.BrojPotrebnihCovjekCasova);
-                    ukupnoPotrebnoCC += c.BrojPotrebnihCovjekCasova;
-                }
+                procenatIzvrsenosti += ((c.ProcenatIzvrsenosti / 100) * c.BrojPotrebnihCovjekCasova);
+                ukupnoPotrebnoCC += c.BrojPotrebnihCovjekCasova;
             }
-            int? n;
-            if (ukupnoPotrebnoCC == 0) {
-                n = 0;
-            } else {
-                n = (int?)((procenatIzvrsenosti / ukupnoPotrebnoCC) * 100);
-            }
-            procenatIzvrsenostiLBL.Text = n + "%";
-            for (int i = 0; i < n; i++) {
+            procenatIzvrsenostiLBL.Text = (int?)((procenatIzvrsenosti / ukupnoPotrebnoCC) * 100) + "%";
+            for (int i = 0; i < (int?)((procenatIzvrsenosti / ukupnoPotrebnoCC) * 100); i++) {
                 procenatIzvrsenostiPBR.PerformStep();
             }
             Ucesnik sef = null;
@@ -39,7 +31,7 @@ namespace ProjectManagementSystem {
                 }
             }
             if (sef != null) {
-                sefProjektaLBL.Text = "Šef projekta: " + sef.Ime;
+                sefProjektaLBL.Text = "Sef projekta: " + sef.Ime;
             }
         }
     }

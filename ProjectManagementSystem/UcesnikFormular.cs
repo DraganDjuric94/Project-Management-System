@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectManagementSystem.dao.mysql;
 using ProjectManagementSystem.dto;
-using System.Security.Cryptography;
 
 namespace ProjectManagementSystem
 {
@@ -29,36 +28,24 @@ namespace ProjectManagementSystem
 			if (korisnickoImeKorektnoLBL.Text.Equals("korektno") && UcesnikIDKontrolni == 0)
 			{
 				List<Uloga> uloga = MySqlUlogaDao.Instance.Read(new Uloga { Naziv = nazivUlogeCB.Text });
-                HashAlgorithm sha256 = new SHA256CryptoServiceProvider();
-                string hashLozinke = "";
-                Byte[] lozinka = Encoding.Unicode.GetBytes(lozinkaTXT.Text);
-                Byte[] hesirano = sha256.ComputeHash(lozinka);
-                hashLozinke = BitConverter.ToString(hesirano);
-				MySqlUcesnikDao.Instance.Create(new Ucesnik { Ime = imeTXT.Text, Prezime = prezimeTXT.Text, KorisnickoIme = korisnickoImeTXT.Text, Lozinka = hashLozinke, Jmbg = jmbgTXT.Text, Aktivan = aktivanUcesnikCB.Checked, Uloga = uloga[0] });
+				MySqlUcesnikDao.Instance.Create(new Ucesnik { Ime = imeTXT.Text, Prezime = prezimeTXT.Text, KorisnickoIme = korisnickoImeTXT.Text, Lozinka = lozinkaTXT.Text, Jmbg = jmbgTXT.Text, Aktivan = aktivanUcesnikCB.Checked, Uloga = uloga[0] });
 				MessageBox.Show("Korisnik je uspješno unešen", "Obavještenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				this.Close();
 			}
 			else if (UcesnikIDKontrolni != 0)
 			{
-                if (MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = UcesnikIDKontrolni, Aktivan = true }).Count > 0) {
-                    List<Ucesnik> ucesnik = MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = UcesnikIDKontrolni });
-                    HashAlgorithm sha256 = new SHA256CryptoServiceProvider();
-                    string hashLozinke = "";
-                    Byte[] lozinka = Encoding.Unicode.GetBytes(lozinkaTXT.Text);
-                    Byte[] hesirano = sha256.ComputeHash(lozinka);
-                    hashLozinke = BitConverter.ToString(hesirano);
-                    ucesnik[0].Ime = imeTXT.Text;
-                    ucesnik[0].Prezime = prezimeTXT.Text;
-                    ucesnik[0].KorisnickoIme = korisnickoImeTXT.Text;
-                    ucesnik[0].Lozinka = hashLozinke;
-                    ucesnik[0].Jmbg = jmbgTXT.Text;
-                    ucesnik[0].Aktivan = aktivanUcesnikCB.Checked;
-                    List<Uloga> uloga = MySqlUlogaDao.Instance.Read(new Uloga { Naziv = nazivUlogeCB.Text });
-                    ucesnik[0].Uloga = uloga[0];
-                    MySqlUcesnikDao.Instance.Update(ucesnik[0]);
-                    MessageBox.Show("Korisnik je uspješno ažuriran", "Obavještenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
-                }
+				List<Ucesnik> ucesnik = MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = UcesnikIDKontrolni });
+				ucesnik[0].Ime = imeTXT.Text;
+				ucesnik[0].Prezime = prezimeTXT.Text;
+				ucesnik[0].KorisnickoIme = korisnickoImeTXT.Text;
+				ucesnik[0].Lozinka = lozinkaTXT.Text;
+				ucesnik[0].Jmbg = jmbgTXT.Text;
+				ucesnik[0].Aktivan = aktivanUcesnikCB.Checked;
+				List<Uloga> uloga = MySqlUlogaDao.Instance.Read(new Uloga { Naziv = nazivUlogeCB.Text });
+				ucesnik[0].Uloga = uloga[0];
+				MySqlUcesnikDao.Instance.Update(ucesnik[0]);
+				MessageBox.Show("Korisnik je uspješno ažuriran", "Obavještenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				this.Close();
 			}
 		}
 
@@ -78,22 +65,20 @@ namespace ProjectManagementSystem
 		public void SetValues(Int32 IDUcesnik)
 		{
 			List<Ucesnik> ucesnici = MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = IDUcesnik });
-            if (ucesnici.Count > 0) {
-                imeTXT.Text = ucesnici[0].Ime;
-                prezimeTXT.Text = ucesnici[0].Prezime;
-                korisnickoImeTXT.Text = ucesnici[0].KorisnickoIme;
-                lozinkaTXT.Text = "";
-                jmbgTXT.Text = ucesnici[0].Jmbg;
-                aktivanUcesnikCB.Checked = (bool)ucesnici[0].Aktivan;
-                nazivUlogeCB.Text = ucesnici[0].Uloga.Naziv;
-                UcesnikIDKontrolni = ucesnici[0].UcesnikID;
-                this.ShowDialog();
-            }
+			imeTXT.Text = ucesnici[0].Ime;
+			prezimeTXT.Text = ucesnici[0].Prezime;
+			korisnickoImeTXT.Text = ucesnici[0].KorisnickoIme;
+			lozinkaTXT.Text = ucesnici[0].Lozinka;
+			jmbgTXT.Text = ucesnici[0].Jmbg;
+			aktivanUcesnikCB.Checked = (bool)ucesnici[0].Aktivan;
+			nazivUlogeCB.Text = ucesnici[0].Uloga.Naziv;
+			UcesnikIDKontrolni = ucesnici[0].UcesnikID;
+			this.ShowDialog();
 		}
 
 		private void nazivUlogeCB_MouseClick(object sender, EventArgs e)
 		{
-			List<Uloga> uloge = MySqlUlogaDao.Instance.Read(new Uloga { SoftverPoslovnaLogika = true});
+			List<Uloga> uloge = MySqlUlogaDao.Instance.Read(new Uloga());
 			nazivUlogeCB.Items.Clear();
 			foreach (Uloga uloga in uloge)
 			{

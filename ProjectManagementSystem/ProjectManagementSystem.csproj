@@ -32,9 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="itextsharp">
-      <HintPath>Resources\itextsharp.dll</HintPath>
-    </Reference>
     <Reference Include="MySql.Data, Version=6.10.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\MySQL\MySQL Connector Net 6.10.6\Assemblies\v4.5.2\MySql.Data.dll</HintPath>
@@ -86,18 +83,6 @@
     <Compile Include="dao\TransakcijaDao.cs" />
     <Compile Include="dao\UcesnikDao.cs" />
     <Compile Include="dao\UlogaDao.cs" />
-    <Compile Include="DodajUcesnikaForma.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DodajUcesnikaForma.Designer.cs">
-      <DependentUpon>DodajUcesnikaForma.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DokumentFormular.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DokumentFormular.Designer.cs">
-      <DependentUpon>DokumentFormular.cs</DependentUpon>
-    </Compile>
     <Compile Include="dto\Aktivnost.cs" />
     <Compile Include="dto\Cjelina.cs" />
     <Compile Include="dto\Dokument.cs" />
@@ -107,40 +92,16 @@
     <Compile Include="dto\Transakcija.cs" />
     <Compile Include="dto\Ucesnik.cs" />
     <Compile Include="dto\Uloga.cs" />
-    <Compile Include="IzvjestajForma.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="IzvjestajForma.Designer.cs">
-      <DependentUpon>IzvjestajForma.cs</DependentUpon>
-    </Compile>
     <Compile Include="NadzorAktivnostDetalji.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="NadzorAktivnostDetalji.Designer.cs">
       <DependentUpon>NadzorAktivnostDetalji.cs</DependentUpon>
     </Compile>
-    <Compile Include="SefProjekatFormular.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SefProjekatFormular.Designer.cs">
-      <DependentUpon>SefProjekatFormular.cs</DependentUpon>
-    </Compile>
     <Compile Include="Slike.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Slike.resx</DependentUpon>
-    </Compile>
-    <Compile Include="TransakcijaFormular.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TransakcijaFormular.Designer.cs">
-      <DependentUpon>TransakcijaFormular.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UtrosenoSatiUcesnikFormular.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UtrosenoSatiUcesnikFormular.Designer.cs">
-      <DependentUpon>UtrosenoSatiUcesnikFormular.cs</DependentUpon>
     </Compile>
     <Compile Include="ZadatakDetalji.cs">
       <SubType>UserControl</SubType>
@@ -204,15 +165,6 @@
     <EmbeddedResource Include="AktivnostFormular.resx">
       <DependentUpon>AktivnostFormular.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DodajUcesnikaForma.resx">
-      <DependentUpon>DodajUcesnikaForma.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DokumentFormular.resx">
-      <DependentUpon>DokumentFormular.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="IzvjestajForma.resx">
-      <DependentUpon>IzvjestajForma.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ProjekatFormular.resx">
       <DependentUpon>ProjekatFormular.cs</DependentUpon>
     </EmbeddedResource>
@@ -221,9 +173,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NadzorAktivnostDetalji.resx">
       <DependentUpon>NadzorAktivnostDetalji.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SefProjekatFormular.resx">
-      <DependentUpon>SefProjekatFormular.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SefUcesnikAktivnostDetalji.resx">
       <DependentUpon>SefUcesnikAktivnostDetalji.cs</DependentUpon>
@@ -234,9 +183,6 @@
     <EmbeddedResource Include="Slike.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Slike.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TransakcijaFormular.resx">
-      <DependentUpon>TransakcijaFormular.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UcesnikFormular.resx">
       <DependentUpon>UcesnikFormular.cs</DependentUpon>
@@ -255,11 +201,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UtrosenoSatiUcesnikFormular.resx">
-      <DependentUpon>UtrosenoSatiUcesnikFormular.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ZadatakDetalji.resx">
       <DependentUpon>ZadatakDetalji.cs</DependentUpon>
     </EmbeddedResource>
@@ -290,27 +232,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\c.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\edit.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\add-user.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\delete.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\dodajA.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\dodajZ.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\print.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Dokumenti\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

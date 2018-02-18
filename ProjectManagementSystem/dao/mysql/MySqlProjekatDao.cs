@@ -168,12 +168,9 @@ namespace ProjectManagementSystem.dao.mysql
             #endregion
 
             #region Azuriraj ucesnike na projektu
-
-            foreach (KeyValuePair<Ucesnik, Uloga> pair in Read(new Projekat { ProjekatID = projekat.ProjekatID })[0].UcesniciNaProjektu) {
-                DeleteUcesnikProjekatUlogaByProjekatID(projekat.ProjekatID.Value);
-            }
-            foreach (KeyValuePair<Ucesnik, Uloga> pair in projekat.UcesniciNaProjektu)
+            foreach(KeyValuePair<Ucesnik, Uloga> pair in projekat.UcesniciNaProjektu)
             {
+                DeleteUcesnikProjekatUlogaByProjekatID(projekat.ProjekatID.Value);
                 InsertUcesnikProjekatUloga(pair.Key.UcesnikID.Value, projekat.ProjekatID.Value, pair.Value.UlogaID.Value);
             }
             #endregion
