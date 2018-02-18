@@ -16,7 +16,7 @@ namespace ProjectManagementSystem {
             nazivProjektaLBL.Text = pr.Naziv;
             int procenatIzvrsenosti = 0, ukupnoPotrebnoCC = 0;
             foreach (Cjelina c in pr.Cjeline) {
-                if (c.CjelinaRoditeljID == null) {
+                if (c.CjelinaRoditeljID == null && c.Aktivna == true) {
                     procenatIzvrsenosti += (int)(((double)c.ProcenatIzvrsenosti / 100.0) * c.BrojPotrebnihCovjekCasova);
                     ukupnoPotrebnoCC += (int)c.BrojPotrebnihCovjekCasova;
                     Console.WriteLine("PI: " + procenatIzvrsenosti + " UK:" + ukupnoPotrebnoCC);

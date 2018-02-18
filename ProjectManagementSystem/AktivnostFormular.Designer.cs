@@ -38,6 +38,7 @@
             this.obrisiButton = new System.Windows.Forms.Button();
             this.sacuvajBTN = new System.Windows.Forms.Button();
             this.ucesniciListBox = new System.Windows.Forms.ListView();
+            this.zavrsenaAktivnostCBX = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // nazivLabel
@@ -52,7 +53,7 @@
             // opisLabel
             // 
             this.opisLabel.AutoSize = true;
-            this.opisLabel.Location = new System.Drawing.Point(12, 193);
+            this.opisLabel.Location = new System.Drawing.Point(15, 229);
             this.opisLabel.Name = "opisLabel";
             this.opisLabel.Size = new System.Drawing.Size(28, 13);
             this.opisLabel.TabIndex = 1;
@@ -67,7 +68,7 @@
             // 
             // opisRichTextBox
             // 
-            this.opisRichTextBox.Location = new System.Drawing.Point(12, 209);
+            this.opisRichTextBox.Location = new System.Drawing.Point(15, 245);
             this.opisRichTextBox.Name = "opisRichTextBox";
             this.opisRichTextBox.Size = new System.Drawing.Size(327, 143);
             this.opisRichTextBox.TabIndex = 3;
@@ -76,7 +77,7 @@
             // ucesceUcesnikaLBL
             // 
             this.ucesceUcesnikaLBL.AutoSize = true;
-            this.ucesceUcesnikaLBL.Location = new System.Drawing.Point(12, 54);
+            this.ucesceUcesnikaLBL.Location = new System.Drawing.Point(12, 49);
             this.ucesceUcesnikaLBL.Name = "ucesceUcesnikaLBL";
             this.ucesceUcesnikaLBL.Size = new System.Drawing.Size(90, 13);
             this.ucesceUcesnikaLBL.TabIndex = 5;
@@ -85,7 +86,7 @@
             // 
             // dodajButton
             // 
-            this.dodajButton.Location = new System.Drawing.Point(264, 70);
+            this.dodajButton.Location = new System.Drawing.Point(264, 65);
             this.dodajButton.Name = "dodajButton";
             this.dodajButton.Size = new System.Drawing.Size(75, 23);
             this.dodajButton.TabIndex = 6;
@@ -95,7 +96,7 @@
             // 
             // izmijeniButton
             // 
-            this.izmijeniButton.Location = new System.Drawing.Point(264, 113);
+            this.izmijeniButton.Location = new System.Drawing.Point(264, 108);
             this.izmijeniButton.Name = "izmijeniButton";
             this.izmijeniButton.Size = new System.Drawing.Size(75, 23);
             this.izmijeniButton.TabIndex = 7;
@@ -105,7 +106,7 @@
             // 
             // obrisiButton
             // 
-            this.obrisiButton.Location = new System.Drawing.Point(264, 155);
+            this.obrisiButton.Location = new System.Drawing.Point(264, 150);
             this.obrisiButton.Name = "obrisiButton";
             this.obrisiButton.Size = new System.Drawing.Size(75, 23);
             this.obrisiButton.TabIndex = 8;
@@ -115,7 +116,7 @@
             // 
             // sacuvajBTN
             // 
-            this.sacuvajBTN.Location = new System.Drawing.Point(264, 368);
+            this.sacuvajBTN.Location = new System.Drawing.Point(267, 404);
             this.sacuvajBTN.Name = "sacuvajBTN";
             this.sacuvajBTN.Size = new System.Drawing.Size(75, 23);
             this.sacuvajBTN.TabIndex = 9;
@@ -125,18 +126,29 @@
             // 
             // ucesniciListBox
             // 
-            this.ucesniciListBox.Location = new System.Drawing.Point(15, 70);
+            this.ucesniciListBox.Location = new System.Drawing.Point(15, 65);
             this.ucesniciListBox.MultiSelect = false;
             this.ucesniciListBox.Name = "ucesniciListBox";
             this.ucesniciListBox.Size = new System.Drawing.Size(243, 108);
             this.ucesniciListBox.TabIndex = 10;
             this.ucesniciListBox.UseCompatibleStateImageBehavior = false;
             // 
+            // zavrsenaAktivnostCBX
+            // 
+            this.zavrsenaAktivnostCBX.AutoSize = true;
+            this.zavrsenaAktivnostCBX.Location = new System.Drawing.Point(15, 195);
+            this.zavrsenaAktivnostCBX.Name = "zavrsenaAktivnostCBX";
+            this.zavrsenaAktivnostCBX.Size = new System.Drawing.Size(116, 17);
+            this.zavrsenaAktivnostCBX.TabIndex = 11;
+            this.zavrsenaAktivnostCBX.Text = "Aktivnost završena";
+            this.zavrsenaAktivnostCBX.UseVisualStyleBackColor = true;
+            // 
             // AktivnostFormular
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(351, 404);
+            this.ClientSize = new System.Drawing.Size(351, 435);
+            this.Controls.Add(this.zavrsenaAktivnostCBX);
             this.Controls.Add(this.ucesniciListBox);
             this.Controls.Add(this.sacuvajBTN);
             this.Controls.Add(this.obrisiButton);
@@ -166,5 +178,6 @@
         private System.Windows.Forms.Button obrisiButton;
         private System.Windows.Forms.Button sacuvajBTN;
         private System.Windows.Forms.ListView ucesniciListBox;
+        private System.Windows.Forms.CheckBox zavrsenaAktivnostCBX;
     }
 }

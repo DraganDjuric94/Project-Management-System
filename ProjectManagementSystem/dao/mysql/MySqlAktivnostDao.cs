@@ -117,7 +117,7 @@ namespace ProjectManagementSystem.dao.mysql
 
                 while (reader.Read())
                 {
-                    aktivnosti.Add(new Aktivnost { AktivnostID = reader.GetInt32(0), CjelinaID = reader.GetInt32(1), Naziv = reader.GetString(2), Opis = reader.GetString(3), Aktivna = reader.GetBoolean(4) });
+                    aktivnosti.Add(new Aktivnost { AktivnostID = reader.GetInt32(0), CjelinaID = reader.GetInt32(1), Naziv = reader.GetString(2), Opis = reader.GetString(3), Zavrsena = reader.GetBoolean(4), Aktivna = reader.GetBoolean(5) });
                 }
             }
             #endregion

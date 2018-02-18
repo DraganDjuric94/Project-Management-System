@@ -93,7 +93,7 @@ namespace ProjectManagementSystem
 
 		private void nazivUlogeCB_MouseClick(object sender, EventArgs e)
 		{
-			List<Uloga> uloge = MySqlUlogaDao.Instance.Read(new Uloga { SoftverPoslovnaLogika = false});
+			List<Uloga> uloge = MySqlUlogaDao.Instance.Read(new Uloga { SoftverPoslovnaLogika = true});
 			nazivUlogeCB.Items.Clear();
 			foreach (Uloga uloga in uloge)
 			{

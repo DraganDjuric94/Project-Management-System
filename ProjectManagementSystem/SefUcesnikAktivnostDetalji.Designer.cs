@@ -40,6 +40,7 @@
             this.transakcijeGBX = new System.Windows.Forms.GroupBox();
             this.obrisiTransakcijuBTN = new System.Windows.Forms.Button();
             this.dodajTransakcijuBTN = new System.Windows.Forms.Button();
+            this.zavrsenaAktivnostStatusLBL = new System.Windows.Forms.Label();
             this.dokumentiGBX.SuspendLayout();
             this.transakcijeGBX.SuspendLayout();
             this.SuspendLayout();
@@ -58,7 +59,7 @@
             // 
             this.lblblbl.AutoSize = true;
             this.lblblbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblblbl.Location = new System.Drawing.Point(27, 100);
+            this.lblblbl.Location = new System.Drawing.Point(27, 117);
             this.lblblbl.Name = "lblblbl";
             this.lblblbl.Size = new System.Drawing.Size(52, 22);
             this.lblblbl.TabIndex = 1;
@@ -88,7 +89,7 @@
             // 
             this.covjekCasUcesnikLBL.AutoSize = true;
             this.covjekCasUcesnikLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.covjekCasUcesnikLBL.Location = new System.Drawing.Point(506, 100);
+            this.covjekCasUcesnikLBL.Location = new System.Drawing.Point(506, 117);
             this.covjekCasUcesnikLBL.Name = "covjekCasUcesnikLBL";
             this.covjekCasUcesnikLBL.Size = new System.Drawing.Size(226, 22);
             this.covjekCasUcesnikLBL.TabIndex = 7;
@@ -96,7 +97,7 @@
             // 
             // ucesnikSatLVW
             // 
-            this.ucesnikSatLVW.Location = new System.Drawing.Point(510, 125);
+            this.ucesnikSatLVW.Location = new System.Drawing.Point(510, 142);
             this.ucesnikSatLVW.Name = "ucesnikSatLVW";
             this.ucesnikSatLVW.Size = new System.Drawing.Size(417, 169);
             this.ucesnikSatLVW.TabIndex = 8;
@@ -104,7 +105,7 @@
             // 
             // opisTBX
             // 
-            this.opisTBX.Location = new System.Drawing.Point(31, 125);
+            this.opisTBX.Location = new System.Drawing.Point(31, 142);
             this.opisTBX.Multiline = true;
             this.opisTBX.Name = "opisTBX";
             this.opisTBX.Size = new System.Drawing.Size(456, 169);
@@ -216,10 +217,21 @@
             this.dodajTransakcijuBTN.UseVisualStyleBackColor = true;
             this.dodajTransakcijuBTN.Click += new System.EventHandler(this.dodajTransakcijuBTN_Click);
             // 
+            // zavrsenaAktivnostStatusLBL
+            // 
+            this.zavrsenaAktivnostStatusLBL.AutoSize = true;
+            this.zavrsenaAktivnostStatusLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.zavrsenaAktivnostStatusLBL.Location = new System.Drawing.Point(27, 79);
+            this.zavrsenaAktivnostStatusLBL.Name = "zavrsenaAktivnostStatusLBL";
+            this.zavrsenaAktivnostStatusLBL.Size = new System.Drawing.Size(143, 22);
+            this.zavrsenaAktivnostStatusLBL.TabIndex = 17;
+            this.zavrsenaAktivnostStatusLBL.Text = "Status: završena";
+            // 
             // SefUcesnikAktivnostDetalji
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.zavrsenaAktivnostStatusLBL);
             this.Controls.Add(this.transakcijeGBX);
             this.Controls.Add(this.dokumentiGBX);
             this.Controls.Add(this.opisTBX);
@@ -256,5 +268,6 @@
         private System.Windows.Forms.Button obrisiTransakcijuBTN;
         private System.Windows.Forms.Button dodajTransakcijuBTN;
         private System.Windows.Forms.Button obrisiDokumentBTN;
+        private System.Windows.Forms.Label zavrsenaAktivnostStatusLBL;
     }
 }

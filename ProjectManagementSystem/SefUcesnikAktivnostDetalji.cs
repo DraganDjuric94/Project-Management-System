@@ -21,6 +21,8 @@ namespace ProjectManagementSystem {
             aktivnost = ak;
             nazivAktivnostiLBL.Text = ak.Naziv;
             opisTBX.Text = ak.Opis;
+            string zavrsena = (ak.Zavrsena == true) ? "završena" : "nezavršena";
+            zavrsenaAktivnostStatusLBL.Text = "Status: " + zavrsena;
             foreach (Ucesnik u in ak.UcesniciSaBrojemUtrosenihSati.Keys) {
                 ucesnikSatLVW.Items.Add(u.Ime + "  " + ak.UcesniciSaBrojemUtrosenihSati[u]);
             }

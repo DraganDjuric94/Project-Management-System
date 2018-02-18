@@ -226,9 +226,20 @@ namespace ProjectManagementSystem {
             TreeNode selected = projektiTVW.SelectedNode;
             if (selected.Name.StartsWith("p")) {
             } else if (selected.Name.StartsWith("c")) {
-                MySqlCjelinaDao.Instance.Delete(Convert.ToInt32(selected.Name.Split('#')[1]));
+                if (MySqlCjelinaDao.Instance.Read(new Cjelina { Aktivna = true, CjelinaID = Convert.ToInt32(selected.Name.Split('#')[1]) }).Count > 0) {
+                    Cjelina c = MySqlCjelinaDao.Instance.Read(new Cjelina { Aktivna = true, CjelinaID = Convert.ToInt32(selected.Name.Split('#')[1]) })[0];
+                    int? ncid = c.CjelinaRoditeljID;
+                    MySqlCjelinaDao.Instance.Delete(Convert.ToInt32(c.CjelinaID));
+                    updateNadcjeline(ncid);
+                }
             } else if (selected.Name.StartsWith("a")) {
                 MySqlAktivnostDao.Instance.Delete(Convert.ToInt32(selected.Name.Split('#')[1]));
+                if(MySqlAktivnostDao.Instance.Read(new Aktivnost { Aktivna = true, AktivnostID = Convert.ToInt32(selected.Name.Split('#')[1]) }).Count > 0) {
+                    Aktivnost a = MySqlAktivnostDao.Instance.Read(new Aktivnost { Aktivna = true, AktivnostID = Convert.ToInt32(selected.Name.Split('#')[1]) })[0];
+                    int? ncid = a.CjelinaID;
+                    MySqlCjelinaDao.Instance.Delete(Convert.ToInt32(a.AktivnostID));
+                    updateNadcjeline(ncid);
+                }
             }
         }
 
@@ -276,6 +287,57 @@ namespace ProjectManagementSystem {
                 if(MySqlCjelinaDao.Instance.Read(new Cjelina { CjelinaID = Convert.ToInt32(selected.Name.Split('#')[1]), Aktivna = true }).Count > 0)
                 new DodajUcesnikaForma(null, MySqlCjelinaDao.Instance.Read(new Cjelina { CjelinaID = Convert.ToInt32(selected.Name.Split('#')[1]) })[0]).ShowDialog();
             } else if (selected.Name.StartsWith("a")) {
+            }
+        }
+
+        public static void updateNadcjeline(int? ncid) {
+            int? id = ncid;
+            while (id != null) {
+                if (MySqlCjelinaDao.Instance.Read(new Cjelina { Aktivna = true, CjelinaID = id }).Count > 0) {
+                    Cjelina c = MySqlCjelinaDao.Instance.Read(new Cjelina { Aktivna = true, CjelinaID = id })[0];
+                    int proc = 0;
+                    int potrebnoCC = 0;
+                    double zavrseno = 0;
+                    foreach (Cjelina cj in c.Podcjeline) {
+                        potrebnoCC += Convert.ToInt32(cj.BrojPotrebnihCovjekCasova);
+                        zavrseno += ((double)Convert.ToInt32(cj.ProcenatIzvrsenosti) * 0.01 * (double)Convert.ToInt32(cj.BrojPotrebnihCovjekCasova));
+                    }
+
+                    int brojAktivnosti = 0;
+                    foreach(Aktivnost a in c.Aktivnosti) {
+                        if(a.Aktivna == true) {
+                            brojAktivnosti++;
+                        }
+                    }
+                    int potrebnoZaPodcjeline = 0;
+                    foreach(Cjelina pc in c.Podcjeline) {
+                        if(pc.Aktivna == true) {
+                            potrebnoZaPodcjeline += Convert.ToInt32(pc.BrojPotrebnihCovjekCasova);
+                        }
+                    }
+                    if (brojAktivnosti > 0) {
+                        int? brojPreostalihCC = c.BrojPotrebnihCovjekCasova - potrebnoZaPodcjeline;
+                        if (brojPreostalihCC > 0) {
+                            foreach (Aktivnost ak in c.Aktivnosti) {
+                                if (ak.Aktivna == true) {
+                                    if (ak.Zavrsena == true) {
+                                        zavrseno += (int)((double)brojPreostalihCC / (double)brojAktivnosti);
+                                        potrebnoCC += (int)((double)brojPreostalihCC / (double)brojAktivnosti);
+                                    } else {
+                                            potrebnoCC += (int)((double)brojPreostalihCC / (double)brojAktivnosti);
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    if (potrebnoCC != 0) {
+                        proc = (int)(100.00 * (zavrseno / (double)potrebnoCC));
+                    } else proc = 0;
+                    c.ProcenatIzvrsenosti = proc;
+                    MySqlCjelinaDao.Instance.Update(c);
+                    id = c.CjelinaRoditeljID;
+                }
             }
         }
     }

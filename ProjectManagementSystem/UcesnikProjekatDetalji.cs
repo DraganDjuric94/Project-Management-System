@@ -16,8 +16,10 @@ namespace ProjectManagementSystem {
             nazivProjektaLBL.Text = pr.Naziv;
             int? procenatIzvrsenosti = 0, ukupnoPotrebnoCC = 0;
             foreach (Cjelina c in pr.Cjeline) {
-                procenatIzvrsenosti += ((c.ProcenatIzvrsenosti / 100) * c.BrojPotrebnihCovjekCasova);
-                ukupnoPotrebnoCC += c.BrojPotrebnihCovjekCasova;
+                if (c.CjelinaRoditeljID == null && c.Aktivna == true) {
+                    procenatIzvrsenosti += ((c.ProcenatIzvrsenosti / 100) * c.BrojPotrebnihCovjekCasova);
+                    ukupnoPotrebnoCC += c.BrojPotrebnihCovjekCasova;
+                }
             }
             int? n;
             if (ukupnoPotrebnoCC == 0) {

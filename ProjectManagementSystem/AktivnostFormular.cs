@@ -33,6 +33,7 @@ namespace ProjectManagementSystem
                     ucesniciListBox.Items.Add(p.Key.UcesnikID + ". " + p.Key.Ime + " " + p.Key.Prezime + " " + p.Value + " sati");
                 }
                 opisRichTextBox.Text = ak.Opis;
+                zavrsenaAktivnostCBX.Checked = Convert.ToBoolean(ak.Zavrsena);
             }
         }
 
@@ -74,11 +75,14 @@ namespace ProjectManagementSystem
             aktivnost.UcesniciSaBrojemUtrosenihSati = Svi;
             aktivnost.CjelinaID = cid;
             aktivnost.Aktivna = true;
+            aktivnost.Zavrsena = zavrsenaAktivnostCBX.Checked;
             aktivnost.Opis = opisRichTextBox.Text;
             if (edit) {
                 MySqlAktivnostDao.Instance.Update(aktivnost);
+                Projekti.updateNadcjeline(aktivnost.CjelinaID);
             } else {
                 MySqlAktivnostDao.Instance.Create(aktivnost);
+                Projekti.updateNadcjeline(aktivnost.CjelinaID);
             }
         }
     }

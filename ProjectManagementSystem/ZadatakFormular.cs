@@ -108,7 +108,7 @@ namespace ProjectManagementSystem
                     }
                 }
                 MySqlCjelinaDao.Instance.Create(cjelina);
-                updateNadcjeline();
+                Projekti.updateNadcjeline(ncid);
             } else {
                 cjelina.Ucesnici.Clear();
                 foreach (ListViewItem it in ucesniciZadatkaListBox.Items) {
@@ -117,28 +117,10 @@ namespace ProjectManagementSystem
                     }
                 }
                 MySqlCjelinaDao.Instance.Update(cjelina);
-                updateNadcjeline();
+                Projekti.updateNadcjeline(this.ncid);
             }
         }
 
-        private void updateNadcjeline() {
-            int? id = ncid;
-            while (id != null) {
-                Cjelina c = MySqlCjelinaDao.Instance.Read(new Cjelina { Aktivna = true, CjelinaID = id })[0];
-                int proc = 0;
-                int potrebnoCC = 0;
-                double zavrseno = 0;
-                foreach (Cjelina cj in c.Podcjeline) {
-                    potrebnoCC += Convert.ToInt32(cj.BrojPotrebnihCovjekCasova);
-                    zavrseno += ((double)Convert.ToInt32(cj.ProcenatIzvrsenosti) * 0.01 * (double)Convert.ToInt32(cj.BrojPotrebnihCovjekCasova));
-                }
-                if (potrebnoCC != 0) {
-                    proc = (int)(100.00 * (zavrseno / (double)potrebnoCC));
-                } else proc = 0;
-                c.ProcenatIzvrsenosti = proc;
-                MySqlCjelinaDao.Instance.Update(c);
-                id = c.CjelinaRoditeljID;
-            }
-        }
+        
     }
 }
