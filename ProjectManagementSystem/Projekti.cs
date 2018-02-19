@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -220,26 +221,28 @@ namespace ProjectManagementSystem {
         }
 
         private void obrisiTSB_Click(object sender, EventArgs e) {
-
-            //UBACITI DIJALOG DA NE ??? OPCIJA I TO
-
-            TreeNode selected = projektiTVW.SelectedNode;
-            if (selected.Name.StartsWith("p")) {
-            } else if (selected.Name.StartsWith("c")) {
-                if (MySqlCjelinaDao.Instance.Read(new Cjelina { Aktivna = true, CjelinaID = Convert.ToInt32(selected.Name.Split('#')[1]) }).Count > 0) {
-                    Cjelina c = MySqlCjelinaDao.Instance.Read(new Cjelina { Aktivna = true, CjelinaID = Convert.ToInt32(selected.Name.Split('#')[1]) })[0];
-                    int? ncid = c.CjelinaRoditeljID;
-                    MySqlCjelinaDao.Instance.Delete(Convert.ToInt32(c.CjelinaID));
-                    updateNadcjeline(ncid);
+            BrisanjeForma dijalog = new BrisanjeForma();
+            dijalog.ShowDialog();
+            if (dijalog.DialogResult == DialogResult.Yes) {
+                TreeNode selected = projektiTVW.SelectedNode;
+                if (selected.Name.StartsWith("p")) {
+                } else if (selected.Name.StartsWith("c")) {
+                    if (MySqlCjelinaDao.Instance.Read(new Cjelina { Aktivna = true, CjelinaID = Convert.ToInt32(selected.Name.Split('#')[1]) }).Count > 0) {
+                        Cjelina c = MySqlCjelinaDao.Instance.Read(new Cjelina { Aktivna = true, CjelinaID = Convert.ToInt32(selected.Name.Split('#')[1]) })[0];
+                        int? ncid = c.CjelinaRoditeljID;
+                        MySqlCjelinaDao.Instance.Delete(Convert.ToInt32(c.CjelinaID));
+                        updateNadcjeline(ncid);
+                    }
+                } else if (selected.Name.StartsWith("a")) {
+                    MySqlAktivnostDao.Instance.Delete(Convert.ToInt32(selected.Name.Split('#')[1]));
+                    if (MySqlAktivnostDao.Instance.Read(new Aktivnost { Aktivna = true, AktivnostID = Convert.ToInt32(selected.Name.Split('#')[1]) }).Count > 0) {
+                        Aktivnost a = MySqlAktivnostDao.Instance.Read(new Aktivnost { Aktivna = true, AktivnostID = Convert.ToInt32(selected.Name.Split('#')[1]) })[0];
+                        int? ncid = a.CjelinaID;
+                        MySqlCjelinaDao.Instance.Delete(Convert.ToInt32(a.AktivnostID));
+                        updateNadcjeline(ncid);
+                    }
                 }
-            } else if (selected.Name.StartsWith("a")) {
-                MySqlAktivnostDao.Instance.Delete(Convert.ToInt32(selected.Name.Split('#')[1]));
-                if(MySqlAktivnostDao.Instance.Read(new Aktivnost { Aktivna = true, AktivnostID = Convert.ToInt32(selected.Name.Split('#')[1]) }).Count > 0) {
-                    Aktivnost a = MySqlAktivnostDao.Instance.Read(new Aktivnost { Aktivna = true, AktivnostID = Convert.ToInt32(selected.Name.Split('#')[1]) })[0];
-                    int? ncid = a.CjelinaID;
-                    MySqlCjelinaDao.Instance.Delete(Convert.ToInt32(a.AktivnostID));
-                    updateNadcjeline(ncid);
-                }
+            } else {
             }
         }
 

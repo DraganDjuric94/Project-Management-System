@@ -70,32 +70,43 @@ namespace ProjectManagementSystem {
         }
 
         private void sacuvajBTN_Click(object sender, EventArgs e) {
-            if (projekat != null) {
-                projekat.Naziv = nazivProjektaTBX.Text;
-                Ucesnik sef = null;
-                foreach (Ucesnik u in projekat.UcesniciNaProjektu.Keys) {
-                    if (projekat.UcesniciNaProjektu[u].Naziv.Equals("sef")) {
-                        sef = u;
-                        break;
-                    }
-                }
-                Dictionary<Ucesnik, Uloga> novi = new Dictionary<Ucesnik, Uloga>();
-                novi.Add(sef, projekat.UcesniciNaProjektu[sef]);
-                foreach (ListViewItem it in ucesniciNaProjektuLVW.Items) {
-                    if (it.Text.Split('\"').Length > 1 && MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = it.Text.Split('\"')[1], Aktivan = true }).Count > 0) {
-                        Ucesnik u = MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = it.Text.Split('\"')[1], Aktivan = true })[0];
-                        Uloga ul = null;
-                        if (it.Text.StartsWith("Nadzor")) {
-                            ul = MySqlUlogaDao.Instance.Read(new Uloga { Naziv = "nadzor", Aktivna = true })[0];
-                        } else if (it.Text.StartsWith("Učesnik")) {
-                            ul = MySqlUlogaDao.Instance.Read(new Uloga { Naziv = "ucesnik", Aktivna = true })[0];
+            if (validniPodaci()) {
+                if (projekat != null) {
+                    projekat.Naziv = nazivProjektaTBX.Text;
+                    Ucesnik sef = null;
+                    foreach (Ucesnik u in projekat.UcesniciNaProjektu.Keys) {
+                        if (projekat.UcesniciNaProjektu[u].Naziv.Equals("sef")) {
+                            sef = u;
+                            break;
                         }
-                        novi.Add(u, ul);
                     }
-                    projekat.UcesniciNaProjektu = novi;
-                    MySqlProjekatDao.Instance.Update(projekat);
+                    Dictionary<Ucesnik, Uloga> novi = new Dictionary<Ucesnik, Uloga>();
+                    novi.Add(sef, projekat.UcesniciNaProjektu[sef]);
+                    foreach (ListViewItem it in ucesniciNaProjektuLVW.Items) {
+                        if (it.Text.Split('\"').Length > 1 && MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = it.Text.Split('\"')[1], Aktivan = true }).Count > 0) {
+                            Ucesnik u = MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = it.Text.Split('\"')[1], Aktivan = true })[0];
+                            Uloga ul = null;
+                            if (it.Text.StartsWith("Nadzor")) {
+                                ul = MySqlUlogaDao.Instance.Read(new Uloga { Naziv = "nadzor", Aktivna = true })[0];
+                            } else if (it.Text.StartsWith("Učesnik")) {
+                                ul = MySqlUlogaDao.Instance.Read(new Uloga { Naziv = "ucesnik", Aktivna = true })[0];
+                            }
+                            novi.Add(u, ul);
+                        }
+                        projekat.UcesniciNaProjektu = novi;
+                        MySqlProjekatDao.Instance.Update(projekat);
+                    }
+                    this.Close();
                 }
+            } else {
+                errorLBL.Visible = true;
             }
+        }
+
+        private bool validniPodaci() {
+            if (!nazivProjektaTBX.Text.Equals("") && ucesniciNaProjektuLVW.Items.Count > 0)
+                return true;
+            return false;
         }
     }
 }

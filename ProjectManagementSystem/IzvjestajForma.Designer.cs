@@ -220,6 +220,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.sacuvajKaoPdfBTN);
+            this.MaximizeBox = false;
             this.Name = "IzvjestajForma";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Izvještaj";

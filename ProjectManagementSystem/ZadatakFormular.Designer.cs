@@ -42,6 +42,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dostupniUcesniciListBox = new System.Windows.Forms.ListView();
             this.ucesniciZadatkaListBox = new System.Windows.Forms.ListView();
+            this.errorLBL = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.brojPotrebnihCovjekCasovaNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.procenatIzvrsenostiNUD)).BeginInit();
             this.SuspendLayout();
@@ -75,9 +76,11 @@
             // rokDateTimePicker
             // 
             this.rokDateTimePicker.Location = new System.Drawing.Point(55, 32);
+            this.rokDateTimePicker.MinDate = new System.DateTime(2018, 2, 19, 10, 53, 20, 0);
             this.rokDateTimePicker.Name = "rokDateTimePicker";
             this.rokDateTimePicker.Size = new System.Drawing.Size(425, 20);
             this.rokDateTimePicker.TabIndex = 3;
+            this.rokDateTimePicker.Value = new System.DateTime(2018, 2, 19, 10, 53, 24, 0);
             // 
             // brojPotrebnihCovjekCasovaLabel
             // 
@@ -127,7 +130,7 @@
             // 
             // sacuvajBTN
             // 
-            this.sacuvajBTN.Location = new System.Drawing.Point(405, 302);
+            this.sacuvajBTN.Location = new System.Drawing.Point(405, 332);
             this.sacuvajBTN.Name = "sacuvajBTN";
             this.sacuvajBTN.Size = new System.Drawing.Size(75, 23);
             this.sacuvajBTN.TabIndex = 11;
@@ -158,6 +161,7 @@
             this.dostupniUcesniciListBox.Size = new System.Drawing.Size(191, 127);
             this.dostupniUcesniciListBox.TabIndex = 14;
             this.dostupniUcesniciListBox.UseCompatibleStateImageBehavior = false;
+            this.dostupniUcesniciListBox.View = System.Windows.Forms.View.List;
             // 
             // ucesniciZadatkaListBox
             // 
@@ -166,12 +170,26 @@
             this.ucesniciZadatkaListBox.Size = new System.Drawing.Size(182, 127);
             this.ucesniciZadatkaListBox.TabIndex = 15;
             this.ucesniciZadatkaListBox.UseCompatibleStateImageBehavior = false;
+            this.ucesniciZadatkaListBox.View = System.Windows.Forms.View.List;
+            // 
+            // errorLBL
+            // 
+            this.errorLBL.AutoSize = true;
+            this.errorLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.errorLBL.Location = new System.Drawing.Point(295, 302);
+            this.errorLBL.Name = "errorLBL";
+            this.errorLBL.Size = new System.Drawing.Size(180, 17);
+            this.errorLBL.TabIndex = 16;
+            this.errorLBL.Text = "Unešeni podaci nisu validni";
+            this.errorLBL.Visible = false;
             // 
             // ZadatakFormular
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(498, 339);
+            this.ClientSize = new System.Drawing.Size(498, 367);
+            this.Controls.Add(this.errorLBL);
             this.Controls.Add(this.ucesniciZadatkaListBox);
             this.Controls.Add(this.dostupniUcesniciListBox);
             this.Controls.Add(this.label1);
@@ -186,6 +204,7 @@
             this.Controls.Add(this.rokLabel);
             this.Controls.Add(this.nazivTextBox);
             this.Controls.Add(this.nazivLabel);
+            this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ZadatakFormular";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -213,5 +232,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListView dostupniUcesniciListBox;
         private System.Windows.Forms.ListView ucesniciZadatkaListBox;
+        private System.Windows.Forms.Label errorLBL;
     }
 }

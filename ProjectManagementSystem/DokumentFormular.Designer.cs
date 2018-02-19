@@ -29,6 +29,7 @@
             this.napomenaTBX = new System.Windows.Forms.TextBox();
             this.sacuvajBTN = new System.Windows.Forms.Button();
             this.izaberiDokumentBTN = new System.Windows.Forms.Button();
+            this.errorLBL = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -67,7 +68,7 @@
             // 
             // sacuvajBTN
             // 
-            this.sacuvajBTN.Location = new System.Drawing.Point(215, 237);
+            this.sacuvajBTN.Location = new System.Drawing.Point(215, 267);
             this.sacuvajBTN.Name = "sacuvajBTN";
             this.sacuvajBTN.Size = new System.Drawing.Size(75, 23);
             this.sacuvajBTN.TabIndex = 4;
@@ -85,11 +86,24 @@
             this.izaberiDokumentBTN.UseVisualStyleBackColor = true;
             this.izaberiDokumentBTN.Click += new System.EventHandler(this.izaberiDokumentBTN_Click);
             // 
+            // errorLBL
+            // 
+            this.errorLBL.AutoSize = true;
+            this.errorLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.errorLBL.Location = new System.Drawing.Point(115, 236);
+            this.errorLBL.Name = "errorLBL";
+            this.errorLBL.Size = new System.Drawing.Size(180, 17);
+            this.errorLBL.TabIndex = 6;
+            this.errorLBL.Text = "Unešeni podaci nisu validni";
+            this.errorLBL.Visible = false;
+            // 
             // DokumentFormular
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(305, 269);
+            this.ClientSize = new System.Drawing.Size(305, 302);
+            this.Controls.Add(this.errorLBL);
             this.Controls.Add(this.izaberiDokumentBTN);
             this.Controls.Add(this.sacuvajBTN);
             this.Controls.Add(this.napomenaTBX);
@@ -113,5 +127,6 @@
         private System.Windows.Forms.TextBox napomenaTBX;
         private System.Windows.Forms.Button sacuvajBTN;
         private System.Windows.Forms.Button izaberiDokumentBTN;
+        private System.Windows.Forms.Label errorLBL;
     }
 }

@@ -33,34 +33,39 @@ namespace ProjectManagementSystem {
         }
 
         private void sacuvajBTN_Click(object sender, EventArgs e) {
-            if (edit) {
-                if (validanFajl != null) {
-                    string novaPutanja = "Dokumenti\\" + aktivnost.Naziv + DateTime.Now.ToString("yyMMddHHmmssff") + System.IO.Path.GetExtension(validanFajl.FileName);
-                    System.IO.File.Copy(validanFajl.FileName, novaPutanja, true);
-                    dokument.Putanja = novaPutanja;
-                    dokument.DatumKreiranja = DateTime.Now;
-                }
-                dokument.UcesnikID = ucesnik.UcesnikID;
-                dokument.Napomena = napomenaTBX.Text;
-                if (dokument.RevizijeDokumenta == null) {
-                    //URADITI REVIZIJU KAKO VALJA LJA LAJLAJ LJA
-                    dokument.RevizijeDokumenta = new List<RevizijaDokumenta>();
-                }
-                dokument.RevizijeDokumenta.Add(new RevizijaDokumenta { DokumentID = dokument.DokumentID, UcesnikID = ucesnik.UcesnikID, DatumVrijeme = DateTime.Now });
-                MySqlDokumentDao.Instance.Update(dokument);
-            } else {
-                if(validanFajl != null) {
-                    string novaPutanja = "Dokumenti\\" + aktivnost.Naziv + DateTime.Now.ToString("yyMMddHHmmssff") + System.IO.Path.GetExtension(validanFajl.FileName);
-                    System.IO.File.Copy(validanFajl.FileName, novaPutanja, true);
-                    dokument.Putanja = novaPutanja;
-                    dokument.Napomena = napomenaTBX.Text;
+            if (validniPodaci()) {
+                if (edit) {
+                    if (validanFajl != null) {
+                        string novaPutanja = "Dokumenti\\" + aktivnost.Naziv + DateTime.Now.ToString("yyMMddHHmmssff") + System.IO.Path.GetExtension(validanFajl.FileName);
+                        System.IO.File.Copy(validanFajl.FileName, novaPutanja, true);
+                        dokument.Putanja = novaPutanja;
+                        dokument.DatumKreiranja = DateTime.Now;
+                    }
                     dokument.UcesnikID = ucesnik.UcesnikID;
-                    dokument.AktivnostID = aktivnost.AktivnostID;
-                    dokument.DatumKreiranja = DateTime.Now;
-                    dokument.Aktivan = true;
-                    dokument.RevizijeDokumenta = new List<RevizijaDokumenta>();
-                    MySqlDokumentDao.Instance.Create(dokument);
+                    dokument.Napomena = napomenaTBX.Text;
+                    if (dokument.RevizijeDokumenta == null) {
+                        dokument.RevizijeDokumenta = new List<RevizijaDokumenta>();
+                    }
+                    dokument.RevizijeDokumenta.Add(new RevizijaDokumenta { DokumentID = dokument.DokumentID, UcesnikID = ucesnik.UcesnikID, DatumVrijeme = DateTime.Now });
+                    MySqlDokumentDao.Instance.Update(dokument);
+                    this.Close();
+                } else {
+                    if (validanFajl != null) {
+                        string novaPutanja = "Dokumenti\\" + aktivnost.Naziv + DateTime.Now.ToString("yyMMddHHmmssff") + System.IO.Path.GetExtension(validanFajl.FileName);
+                        System.IO.File.Copy(validanFajl.FileName, novaPutanja, true);
+                        dokument.Putanja = novaPutanja;
+                        dokument.Napomena = napomenaTBX.Text;
+                        dokument.UcesnikID = ucesnik.UcesnikID;
+                        dokument.AktivnostID = aktivnost.AktivnostID;
+                        dokument.DatumKreiranja = DateTime.Now;
+                        dokument.Aktivan = true;
+                        dokument.RevizijeDokumenta = new List<RevizijaDokumenta>();
+                        MySqlDokumentDao.Instance.Create(dokument);
+                        this.Close();
+                    }
                 }
+            } else {
+                errorLBL.Visible = true;
             }
         }
 
@@ -70,6 +75,13 @@ namespace ProjectManagementSystem {
                 validanFajl = fajl;
                 putanjaLBL.Text = validanFajl.FileName;
             }
+        }
+
+        private bool validniPodaci() {
+            if (!putanjaLBL.Text.Equals("") && !napomenaTBX.Equals(""))
+                return true;
+            return false;
+
         }
     }
 }

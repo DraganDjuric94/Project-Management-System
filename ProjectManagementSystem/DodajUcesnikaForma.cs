@@ -56,18 +56,31 @@ namespace ProjectManagementSystem {
         }
 
         private void dodajBTN_Click(object sender, EventArgs e) {
-            if(moguciUcesniciCBX.SelectedItem != null) {
-                String korIme = moguciUcesniciCBX.SelectedItem.ToString().Split('"')[1];
-                Ucesnik uc = MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = korIme })[0];
-                Uloga ul = MySqlUlogaDao.Instance.Read(new Uloga { Naziv = "ucesnik" })[0];
-                if(projekat != null) {
-                    projekat.UcesniciNaProjektu.Add(uc, ul);
-                    MySqlProjekatDao.Instance.Update(projekat);
-                }else if (cjelina != null) {
-                    cjelina.Ucesnici.Add(uc);
-                    MySqlCjelinaDao.Instance.Update(cjelina);
+            if (validanUnos()) {
+                if (moguciUcesniciCBX.SelectedItem != null) {
+                    String korIme = moguciUcesniciCBX.SelectedItem.ToString().Split('"')[1];
+                    Ucesnik uc = MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = korIme })[0];
+                    Uloga ul = MySqlUlogaDao.Instance.Read(new Uloga { Naziv = "ucesnik" })[0];
+                    if (projekat != null) {
+                        projekat.UcesniciNaProjektu.Add(uc, ul);
+                        MySqlProjekatDao.Instance.Update(projekat);
+                        this.Close();
+                    } else if (cjelina != null) {
+                        cjelina.Ucesnici.Add(uc);
+                        MySqlCjelinaDao.Instance.Update(cjelina);
+                        this.Close();
+                    }
                 }
+            } else {
+                errorLBL.Visible = true;
             }
+        }
+
+        private bool validanUnos() {
+            if (moguciUcesniciCBX.SelectedItem != null)
+                return true;
+            return false;
+
         }
     }
 }

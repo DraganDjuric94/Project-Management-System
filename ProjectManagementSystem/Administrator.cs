@@ -46,30 +46,27 @@ namespace ProjectManagementSystem
 
 		private void obrisatiBTN_Click(object sender, EventArgs e)
 		{
-			if (administratorTC.SelectedTab == administratorTC.TabPages["ucesniciTP"])
-			{
-				if (korisniciDGW.SelectedRows.Count == 1)
-				{
-					MySqlUcesnikDao.Instance.Delete(Convert.ToInt32(korisniciDGW.SelectedCells[0].Value.ToString()));
-					MessageBox.Show("Izabrani korisnik je uspješno izbrisan", "Obavještenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-				}
-				else
-				{
-					MessageBox.Show("Morate selektovati učesnika", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-				}
-			}
-			else if (administratorTC.SelectedTab == administratorTC.TabPages["projektiTP"])
-			{
-				if (projektiDGW.SelectedRows.Count == 1)
-				{
-					MySqlProjekatDao.Instance.Delete(Convert.ToInt32(projektiDGW.SelectedCells[0].Value.ToString()));
-					MessageBox.Show("Izabrani projekat je uspješno izbrisan", "Obavještenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-				}
-				else
-				{
-					MessageBox.Show("Morate selektovati projekat", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-				}
-			}
+            BrisanjeForma dijalog = new BrisanjeForma();
+            dijalog.ShowDialog();
+            if (dijalog.DialogResult == DialogResult.Yes) {
+                if (administratorTC.SelectedTab == administratorTC.TabPages["ucesniciTP"]) {
+                    if (korisniciDGW.SelectedRows.Count == 1) {
+                        MySqlUcesnikDao.Instance.Delete(Convert.ToInt32(korisniciDGW.SelectedCells[0].Value.ToString()));
+                        MessageBox.Show("Izabrani korisnik je uspješno izbrisan", "Obavještenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    } else {
+                        MessageBox.Show("Morate selektovati učesnika", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                } else if (administratorTC.SelectedTab == administratorTC.TabPages["projektiTP"]) {
+                    if (projektiDGW.SelectedRows.Count == 1) {
+                        MySqlProjekatDao.Instance.Delete(Convert.ToInt32(projektiDGW.SelectedCells[0].Value.ToString()));
+                        MessageBox.Show("Izabrani projekat je uspješno izbrisan", "Obavještenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    } else {
+                        MessageBox.Show("Morate selektovati projekat", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            } else {
+
+            }
 		}
 
 		private void administratorTC_SelectedIndexChanged(object sender, EventArgs e)

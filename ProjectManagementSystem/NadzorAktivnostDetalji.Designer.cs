@@ -103,6 +103,7 @@
             this.opisTBX.Location = new System.Drawing.Point(31, 131);
             this.opisTBX.Multiline = true;
             this.opisTBX.Name = "opisTBX";
+            this.opisTBX.ReadOnly = true;
             this.opisTBX.Size = new System.Drawing.Size(308, 132);
             this.opisTBX.TabIndex = 9;
             // 

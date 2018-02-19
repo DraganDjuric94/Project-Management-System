@@ -28,6 +28,7 @@
             this.ucesniciLVW = new System.Windows.Forms.ListView();
             this.utrosenoSatiNUD = new System.Windows.Forms.NumericUpDown();
             this.sacuvajBTN = new System.Windows.Forms.Button();
+            this.errorLBL = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.utrosenoSatiNUD)).BeginInit();
             this.SuspendLayout();
             // 
@@ -38,7 +39,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Ucesnik:";
+            this.label1.Text = "Učesnik:";
             // 
             // label2
             // 
@@ -47,7 +48,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 13);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Utroseno sati:";
+            this.label2.Text = "Utrošeno sati:";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // ucesniciLVW
@@ -62,13 +63,18 @@
             // utrosenoSatiNUD
             // 
             this.utrosenoSatiNUD.Location = new System.Drawing.Point(16, 213);
+            this.utrosenoSatiNUD.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.utrosenoSatiNUD.Name = "utrosenoSatiNUD";
             this.utrosenoSatiNUD.Size = new System.Drawing.Size(256, 20);
             this.utrosenoSatiNUD.TabIndex = 3;
             // 
             // sacuvajBTN
             // 
-            this.sacuvajBTN.Location = new System.Drawing.Point(197, 252);
+            this.sacuvajBTN.Location = new System.Drawing.Point(197, 291);
             this.sacuvajBTN.Name = "sacuvajBTN";
             this.sacuvajBTN.Size = new System.Drawing.Size(75, 23);
             this.sacuvajBTN.TabIndex = 4;
@@ -76,17 +82,31 @@
             this.sacuvajBTN.UseVisualStyleBackColor = true;
             this.sacuvajBTN.Click += new System.EventHandler(this.sacuvajBTN_Click);
             // 
+            // errorLBL
+            // 
+            this.errorLBL.AutoSize = true;
+            this.errorLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.errorLBL.Location = new System.Drawing.Point(89, 253);
+            this.errorLBL.Name = "errorLBL";
+            this.errorLBL.Size = new System.Drawing.Size(183, 17);
+            this.errorLBL.TabIndex = 5;
+            this.errorLBL.Text = "Morate selektovati učesnika";
+            this.errorLBL.Visible = false;
+            // 
             // UtrosenoSatiUcesnikFormular
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 287);
+            this.ClientSize = new System.Drawing.Size(284, 323);
+            this.Controls.Add(this.errorLBL);
             this.Controls.Add(this.sacuvajBTN);
             this.Controls.Add(this.utrosenoSatiNUD);
             this.Controls.Add(this.ucesniciLVW);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "UtrosenoSatiUcesnikFormular";
             this.Text = "Utrošeno sati po učesnicima";
             ((System.ComponentModel.ISupportInitialize)(this.utrosenoSatiNUD)).EndInit();
@@ -102,5 +122,6 @@
         private System.Windows.Forms.ListView ucesniciLVW;
         private System.Windows.Forms.NumericUpDown utrosenoSatiNUD;
         private System.Windows.Forms.Button sacuvajBTN;
+        private System.Windows.Forms.Label errorLBL;
     }
 }

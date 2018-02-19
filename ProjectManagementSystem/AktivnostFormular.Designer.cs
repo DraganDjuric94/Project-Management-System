@@ -39,6 +39,7 @@
             this.sacuvajBTN = new System.Windows.Forms.Button();
             this.ucesniciListBox = new System.Windows.Forms.ListView();
             this.zavrsenaAktivnostCBX = new System.Windows.Forms.CheckBox();
+            this.errorLBL = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // nazivLabel
@@ -116,7 +117,7 @@
             // 
             // sacuvajBTN
             // 
-            this.sacuvajBTN.Location = new System.Drawing.Point(267, 404);
+            this.sacuvajBTN.Location = new System.Drawing.Point(267, 431);
             this.sacuvajBTN.Name = "sacuvajBTN";
             this.sacuvajBTN.Size = new System.Drawing.Size(75, 23);
             this.sacuvajBTN.TabIndex = 9;
@@ -144,11 +145,24 @@
             this.zavrsenaAktivnostCBX.Text = "Aktivnost završena";
             this.zavrsenaAktivnostCBX.UseVisualStyleBackColor = true;
             // 
+            // errorLBL
+            // 
+            this.errorLBL.AutoSize = true;
+            this.errorLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.errorLBL.Location = new System.Drawing.Point(162, 402);
+            this.errorLBL.Name = "errorLBL";
+            this.errorLBL.Size = new System.Drawing.Size(180, 17);
+            this.errorLBL.TabIndex = 12;
+            this.errorLBL.Text = "Unešeni podaci nisu validni";
+            this.errorLBL.Visible = false;
+            // 
             // AktivnostFormular
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(351, 435);
+            this.ClientSize = new System.Drawing.Size(351, 466);
+            this.Controls.Add(this.errorLBL);
             this.Controls.Add(this.zavrsenaAktivnostCBX);
             this.Controls.Add(this.ucesniciListBox);
             this.Controls.Add(this.sacuvajBTN);
@@ -182,5 +196,6 @@
         private System.Windows.Forms.Button sacuvajBTN;
         private System.Windows.Forms.ListView ucesniciListBox;
         private System.Windows.Forms.CheckBox zavrsenaAktivnostCBX;
+        private System.Windows.Forms.Label errorLBL;
     }
 }

@@ -31,9 +31,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.opisTBX = new System.Windows.Forms.TextBox();
             this.datumTransakcijeDTP = new System.Windows.Forms.DateTimePicker();
-            this.iznosTBX = new System.Windows.Forms.MaskedTextBox();
             this.sacuvajBTN = new System.Windows.Forms.Button();
+            this.iznosTBX = new System.Windows.Forms.NumericUpDown();
+            this.errorLBL = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iznosTBX)).BeginInit();
             this.SuspendLayout();
             // 
             // rashodRBT
@@ -112,16 +114,9 @@
             this.datumTransakcijeDTP.Size = new System.Drawing.Size(200, 20);
             this.datumTransakcijeDTP.TabIndex = 7;
             // 
-            // iznosTBX
-            // 
-            this.iznosTBX.Location = new System.Drawing.Point(59, 229);
-            this.iznosTBX.Name = "iznosTBX";
-            this.iznosTBX.Size = new System.Drawing.Size(200, 20);
-            this.iznosTBX.TabIndex = 8;
-            // 
             // sacuvajBTN
             // 
-            this.sacuvajBTN.Location = new System.Drawing.Point(414, 407);
+            this.sacuvajBTN.Location = new System.Drawing.Point(414, 431);
             this.sacuvajBTN.Name = "sacuvajBTN";
             this.sacuvajBTN.Size = new System.Drawing.Size(75, 23);
             this.sacuvajBTN.TabIndex = 9;
@@ -129,24 +124,57 @@
             this.sacuvajBTN.UseVisualStyleBackColor = true;
             this.sacuvajBTN.Click += new System.EventHandler(this.sacuvajBTN_Click);
             // 
+            // iznosTBX
+            // 
+            this.iznosTBX.DecimalPlaces = 4;
+            this.iznosTBX.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            262144});
+            this.iznosTBX.Location = new System.Drawing.Point(59, 232);
+            this.iznosTBX.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
+            this.iznosTBX.Name = "iznosTBX";
+            this.iznosTBX.Size = new System.Drawing.Size(200, 20);
+            this.iznosTBX.TabIndex = 10;
+            // 
+            // errorLBL
+            // 
+            this.errorLBL.AutoSize = true;
+            this.errorLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.errorLBL.Location = new System.Drawing.Point(309, 400);
+            this.errorLBL.Name = "errorLBL";
+            this.errorLBL.Size = new System.Drawing.Size(180, 17);
+            this.errorLBL.TabIndex = 11;
+            this.errorLBL.Text = "Unešeni podaci nisu validni";
+            this.errorLBL.Visible = false;
+            // 
             // TransakcijaFormular
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(503, 442);
-            this.Controls.Add(this.sacuvajBTN);
+            this.ClientSize = new System.Drawing.Size(503, 466);
+            this.Controls.Add(this.errorLBL);
             this.Controls.Add(this.iznosTBX);
+            this.Controls.Add(this.sacuvajBTN);
             this.Controls.Add(this.datumTransakcijeDTP);
             this.Controls.Add(this.opisTBX);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
+            this.MaximizeBox = false;
             this.Name = "TransakcijaFormular";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Formular za transakciju";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iznosTBX)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,7 +190,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox opisTBX;
         private System.Windows.Forms.DateTimePicker datumTransakcijeDTP;
-        private System.Windows.Forms.MaskedTextBox iznosTBX;
         private System.Windows.Forms.Button sacuvajBTN;
+        private System.Windows.Forms.NumericUpDown iznosTBX;
+        private System.Windows.Forms.Label errorLBL;
     }
 }

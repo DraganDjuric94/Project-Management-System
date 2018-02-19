@@ -38,20 +38,32 @@ namespace ProjectManagementSystem {
         }
 
         private void sacuvajBTN_Click(object sender, EventArgs e) {
-            transakcija.Opis = opisTBX.Text;
-            transakcija.DatumVrijeme = datumTransakcijeDTP.Value;
-            transakcija.Iznos = Convert.ToDecimal(iznosTBX.Text);
-            if (prihodRBT.Checked == true) {
-                transakcija.PrihodRashod = true;
+            if (validniPodaci()) {
+                transakcija.Opis = opisTBX.Text;
+                transakcija.DatumVrijeme = datumTransakcijeDTP.Value;
+                transakcija.Iznos = Convert.ToDecimal(iznosTBX.Text);
+                if (prihodRBT.Checked == true) {
+                    transakcija.PrihodRashod = true;
+                } else {
+                    transakcija.PrihodRashod = false;
+                }
+                transakcija.AktivnostID = aktivnost.AktivnostID;
+                if (edit) {
+                    MySqlTransakcijaDao.Instance.Update(transakcija);
+                    this.Close();
+                } else {
+                    MySqlTransakcijaDao.Instance.Create(transakcija);
+                    this.Close();
+                }
             } else {
-                transakcija.PrihodRashod = false;
+                errorLBL.Visible = true;
             }
-            transakcija.AktivnostID = aktivnost.AktivnostID;
-            if (edit) {
-                MySqlTransakcijaDao.Instance.Update(transakcija);
-            } else {
-                MySqlTransakcijaDao.Instance.Create(transakcija);
-            }
+        }
+
+        private bool validniPodaci() {
+            if (!opisTBX.Text.Equals(""))
+                return true;
+            return false;
         }
     }
 }

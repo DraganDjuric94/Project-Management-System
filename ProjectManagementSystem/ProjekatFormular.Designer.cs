@@ -29,9 +29,7 @@
 		private void InitializeComponent()
 		{
             this.nazivLBL = new System.Windows.Forms.Label();
-            this.datumKreiranjaLBL = new System.Windows.Forms.Label();
             this.nazivTXT = new System.Windows.Forms.TextBox();
-            this.datumKreiranjaDTP = new System.Windows.Forms.DateTimePicker();
             this.dodatiBTN = new System.Windows.Forms.Button();
             this.nazivKorektnoLBL = new System.Windows.Forms.Label();
             this.sefProjektaLBL = new System.Windows.Forms.Label();
@@ -47,15 +45,6 @@
             this.nazivLBL.TabIndex = 0;
             this.nazivLBL.Text = "Naziv:";
             // 
-            // datumKreiranjaLBL
-            // 
-            this.datumKreiranjaLBL.AutoSize = true;
-            this.datumKreiranjaLBL.Location = new System.Drawing.Point(12, 124);
-            this.datumKreiranjaLBL.Name = "datumKreiranjaLBL";
-            this.datumKreiranjaLBL.Size = new System.Drawing.Size(84, 13);
-            this.datumKreiranjaLBL.TabIndex = 1;
-            this.datumKreiranjaLBL.Text = "Datum kreiranja:";
-            // 
             // nazivTXT
             // 
             this.nazivTXT.Location = new System.Drawing.Point(102, 24);
@@ -64,16 +53,9 @@
             this.nazivTXT.TabIndex = 3;
             this.nazivTXT.TextChanged += new System.EventHandler(this.nazivTXT_TextChanged);
             // 
-            // datumKreiranjaDTP
-            // 
-            this.datumKreiranjaDTP.Location = new System.Drawing.Point(102, 118);
-            this.datumKreiranjaDTP.Name = "datumKreiranjaDTP";
-            this.datumKreiranjaDTP.Size = new System.Drawing.Size(238, 20);
-            this.datumKreiranjaDTP.TabIndex = 5;
-            // 
             // dodatiBTN
             // 
-            this.dodatiBTN.Location = new System.Drawing.Point(265, 178);
+            this.dodatiBTN.Location = new System.Drawing.Point(265, 139);
             this.dodatiBTN.Name = "dodatiBTN";
             this.dodatiBTN.Size = new System.Drawing.Size(75, 23);
             this.dodatiBTN.TabIndex = 6;
@@ -111,14 +93,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(352, 213);
+            this.ClientSize = new System.Drawing.Size(352, 169);
             this.Controls.Add(this.sefProjektaCB);
             this.Controls.Add(this.sefProjektaLBL);
             this.Controls.Add(this.nazivKorektnoLBL);
             this.Controls.Add(this.dodatiBTN);
-            this.Controls.Add(this.datumKreiranjaDTP);
             this.Controls.Add(this.nazivTXT);
-            this.Controls.Add(this.datumKreiranjaLBL);
             this.Controls.Add(this.nazivLBL);
             this.MinimizeBox = false;
             this.Name = "ProjekatFormular";
@@ -132,9 +112,7 @@
 		#endregion
 
 		private System.Windows.Forms.Label nazivLBL;
-		private System.Windows.Forms.Label datumKreiranjaLBL;
 		private System.Windows.Forms.TextBox nazivTXT;
-		private System.Windows.Forms.DateTimePicker datumKreiranjaDTP;
 		private System.Windows.Forms.Button dodatiBTN;
 		private System.Windows.Forms.Label nazivKorektnoLBL;
 		private System.Windows.Forms.Label sefProjektaLBL;

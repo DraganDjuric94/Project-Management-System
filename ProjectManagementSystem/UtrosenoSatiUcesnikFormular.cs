@@ -50,22 +50,34 @@ namespace ProjectManagementSystem {
         }
 
         private void sacuvajBTN_Click(object sender, EventArgs e) {
-            if (edit) {
-                if (MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = Convert.ToInt32(af.Ucesnici.SelectedItems[0].Text.Split('.')[0]), Aktivan = true }).Count > 0) {
-                    Ucesnik u = MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = Convert.ToInt32(af.Ucesnici.SelectedItems[0].Text.Split('.')[0]), Aktivan = true })[0];
-                    af.Ucesnici.Items.Remove(af.Ucesnici.SelectedItems[0]);
-                    af.Ucesnici.Items.Add(p.Key.UcesnikID + ". " + p.Key.Ime + " " + p.Key.Prezime + " " + Convert.ToInt32(utrosenoSatiNUD.Value) + " sati");
-                    if (af.Svi.ContainsKey(u)) {
-                        af.Svi[u] = Convert.ToInt32(utrosenoSatiNUD.Value);
+            if (validanUnos()) {
+                if (edit) {
+                    if (MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = Convert.ToInt32(af.Ucesnici.SelectedItems[0].Text.Split('.')[0]), Aktivan = true }).Count > 0) {
+                        Ucesnik u = MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = Convert.ToInt32(af.Ucesnici.SelectedItems[0].Text.Split('.')[0]), Aktivan = true })[0];
+                        af.Ucesnici.Items.Remove(af.Ucesnici.SelectedItems[0]);
+                        af.Ucesnici.Items.Add(p.Key.UcesnikID + ". " + p.Key.Ime + " " + p.Key.Prezime + " " + Convert.ToInt32(utrosenoSatiNUD.Value) + " sati");
+                        if (af.Svi.ContainsKey(u)) {
+                            af.Svi[u] = Convert.ToInt32(utrosenoSatiNUD.Value);
+                        }
+                        this.Close();
+                    }
+                } else {
+                    if (MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = Convert.ToInt32(ucesniciLVW.SelectedItems[0].Text.Split('.')[0]), Aktivan = true }).Count > 0) {
+                        Ucesnik u = MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = Convert.ToInt32(ucesniciLVW.SelectedItems[0].Text.Split('.')[0]), Aktivan = true })[0];
+                        af.Ucesnici.Items.Add(u.UcesnikID + ". " + u.Ime + " " + u.Prezime + " " + Convert.ToInt32(utrosenoSatiNUD.Value) + " sati");
+                        af.Svi.Add(u, (int)Convert.ToInt32(utrosenoSatiNUD.Value));
+                        this.Close();
                     }
                 }
             } else {
-                if (MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = Convert.ToInt32(ucesniciLVW.SelectedItems[0].Text.Split('.')[0]), Aktivan = true }).Count > 0) {
-                    Ucesnik u = MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = Convert.ToInt32(ucesniciLVW.SelectedItems[0].Text.Split('.')[0]), Aktivan = true })[0];
-                    af.Ucesnici.Items.Add(u.UcesnikID + ". " + u.Ime + " " + u.Prezime + " " + Convert.ToInt32(utrosenoSatiNUD.Value) + " sati");
-                    af.Svi.Add(u, (int)Convert.ToInt32(utrosenoSatiNUD.Value));
-                }
+                errorLBL.Visible = true;
             }
+        }
+
+        private bool validanUnos() {
+            if (ucesniciLVW.SelectedItems.Count > 0)
+                return true;
+            return false;
         }
     }
 }

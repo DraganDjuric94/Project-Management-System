@@ -64,6 +64,12 @@
     <Compile Include="AktivnostFormular.Designer.cs">
       <DependentUpon>AktivnostFormular.cs</DependentUpon>
     </Compile>
+    <Compile Include="BrisanjeForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BrisanjeForma.Designer.cs">
+      <DependentUpon>BrisanjeForma.cs</DependentUpon>
+    </Compile>
     <Compile Include="dao\AktivnostDao.cs" />
     <Compile Include="dao\CjelinaDao.cs" />
     <Compile Include="dao\Crud.cs" />
@@ -136,6 +142,7 @@
     <Compile Include="TransakcijaFormular.Designer.cs">
       <DependentUpon>TransakcijaFormular.cs</DependentUpon>
     </Compile>
+    <Compile Include="Updater.cs" />
     <Compile Include="UtrosenoSatiUcesnikFormular.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -203,6 +210,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AktivnostFormular.resx">
       <DependentUpon>AktivnostFormular.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BrisanjeForma.resx">
+      <DependentUpon>BrisanjeForma.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DodajUcesnikaForma.resx">
       <DependentUpon>DodajUcesnikaForma.cs</DependentUpon>
@@ -311,6 +321,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Dokumenti\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\upitnik.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

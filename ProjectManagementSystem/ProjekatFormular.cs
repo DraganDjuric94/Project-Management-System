@@ -27,7 +27,7 @@ namespace ProjectManagementSystem
 				List<Ucesnik> ucesnik = MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = sefProjektaCB.Text });
 				List<Uloga> uloga = MySqlUlogaDao.Instance.Read(new Uloga { Naziv = "sef" });
 				ucesnici.Add(ucesnik[0], uloga[0]);
-				MySqlProjekatDao.Instance.Create(new Projekat { Naziv = nazivTXT.Text, DatumKreiranja = Convert.ToDateTime(datumKreiranjaDTP.Value.Date.ToString()), Aktivan = true, UcesniciNaProjektu = ucesnici });
+				MySqlProjekatDao.Instance.Create(new Projekat { Naziv = nazivTXT.Text, DatumKreiranja = Convert.ToDateTime(DateTime.Now.ToString()), Aktivan = true, UcesniciNaProjektu = ucesnici });
 				MessageBox.Show("Projekat je uspješno unešen", "Obavještenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				this.Close();
 			}

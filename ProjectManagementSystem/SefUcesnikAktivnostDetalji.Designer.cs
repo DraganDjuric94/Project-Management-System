@@ -106,9 +106,11 @@
             // 
             // opisTBX
             // 
+            this.opisTBX.Enabled = false;
             this.opisTBX.Location = new System.Drawing.Point(31, 148);
             this.opisTBX.Multiline = true;
             this.opisTBX.Name = "opisTBX";
+            this.opisTBX.ReadOnly = true;
             this.opisTBX.Size = new System.Drawing.Size(351, 117);
             this.opisTBX.TabIndex = 9;
             // 

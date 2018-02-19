@@ -71,19 +71,31 @@ namespace ProjectManagementSystem
         }
 
         private void sacuvajBTN_Click(object sender, EventArgs e) {
-            aktivnost.Naziv = nazivTextBox.Text;
-            aktivnost.UcesniciSaBrojemUtrosenihSati = Svi;
-            aktivnost.CjelinaID = cid;
-            aktivnost.Aktivna = true;
-            aktivnost.Zavrsena = zavrsenaAktivnostCBX.Checked;
-            aktivnost.Opis = opisRichTextBox.Text;
-            if (edit) {
-                MySqlAktivnostDao.Instance.Update(aktivnost);
-                Projekti.updateNadcjeline(aktivnost.CjelinaID);
+            if (validniPodaci()) {
+                aktivnost.Naziv = nazivTextBox.Text;
+                aktivnost.UcesniciSaBrojemUtrosenihSati = Svi;
+                aktivnost.CjelinaID = cid;
+                aktivnost.Aktivna = true;
+                aktivnost.Zavrsena = zavrsenaAktivnostCBX.Checked;
+                aktivnost.Opis = opisRichTextBox.Text;
+                if (edit) {
+                    MySqlAktivnostDao.Instance.Update(aktivnost);
+                    Projekti.updateNadcjeline(aktivnost.CjelinaID);
+                    this.Close();
+                } else {
+                    MySqlAktivnostDao.Instance.Create(aktivnost);
+                    Projekti.updateNadcjeline(aktivnost.CjelinaID);
+                    this.Close();
+                }
             } else {
-                MySqlAktivnostDao.Instance.Create(aktivnost);
-                Projekti.updateNadcjeline(aktivnost.CjelinaID);
+                errorLBL.Visible = true;
             }
+        }
+
+        private bool validniPodaci() {
+            if (!nazivTextBox.Text.Equals("") && !opisRichTextBox.Text.Equals("") && ucesniciListBox.Items.Count > 0)
+                return true;
+            return false;
         }
     }
 }

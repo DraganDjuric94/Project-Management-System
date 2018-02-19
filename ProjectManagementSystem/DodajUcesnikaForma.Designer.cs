@@ -26,6 +26,7 @@
             this.moguciUcesniciCBX = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dodajBTN = new System.Windows.Forms.Button();
+            this.errorLBL = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // moguciUcesniciCBX
@@ -47,7 +48,7 @@
             // 
             // dodajBTN
             // 
-            this.dodajBTN.Location = new System.Drawing.Point(233, 56);
+            this.dodajBTN.Location = new System.Drawing.Point(233, 94);
             this.dodajBTN.Name = "dodajBTN";
             this.dodajBTN.Size = new System.Drawing.Size(75, 23);
             this.dodajBTN.TabIndex = 2;
@@ -55,11 +56,24 @@
             this.dodajBTN.UseVisualStyleBackColor = true;
             this.dodajBTN.Click += new System.EventHandler(this.dodajBTN_Click);
             // 
+            // errorLBL
+            // 
+            this.errorLBL.AutoSize = true;
+            this.errorLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.errorLBL.Location = new System.Drawing.Point(125, 62);
+            this.errorLBL.Name = "errorLBL";
+            this.errorLBL.Size = new System.Drawing.Size(183, 17);
+            this.errorLBL.TabIndex = 3;
+            this.errorLBL.Text = "Morate selektovati učesnika";
+            this.errorLBL.Visible = false;
+            // 
             // DodajUcesnikaForma
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(330, 98);
+            this.ClientSize = new System.Drawing.Size(330, 129);
+            this.Controls.Add(this.errorLBL);
             this.Controls.Add(this.dodajBTN);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.moguciUcesniciCBX);
@@ -77,5 +91,6 @@
         private System.Windows.Forms.ComboBox moguciUcesniciCBX;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button dodajBTN;
+        private System.Windows.Forms.Label errorLBL;
     }
 }

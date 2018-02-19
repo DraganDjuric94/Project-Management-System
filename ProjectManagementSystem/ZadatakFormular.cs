@@ -24,6 +24,24 @@ namespace ProjectManagementSystem
             this.edit = edit;
             pid = projekatID;
             ncid = nadcjelinaID;
+            if (this.edit && cj != null) {
+                rokDateTimePicker.MinDate = Convert.ToDateTime(cj.DatumKreiranja);
+            } else {
+                rokDateTimePicker.MinDate = DateTime.Now;
+            }
+            
+            if (nadcjelinaID == null) {
+                brojPotrebnihCovjekCasovaNumericUpDown.Maximum = 100000;
+            } else if(MySqlCjelinaDao.Instance.Read(new Cjelina { CjelinaID = nadcjelinaID, Aktivna = true }).Count > 0) {
+                Cjelina nadcjelina = MySqlCjelinaDao.Instance.Read(new Cjelina { CjelinaID = nadcjelinaID, Aktivna = true })[0];
+                int? max = nadcjelina.BrojPotrebnihCovjekCasova;
+                foreach (Cjelina c in nadcjelina.Podcjeline) {
+                    if (c.CjelinaRoditeljID == nadcjelina.CjelinaID) {
+                        max -= c.BrojPotrebnihCovjekCasova;
+                    }
+                }
+                brojPotrebnihCovjekCasovaNumericUpDown.Maximum = Convert.ToInt32(max);
+            }
             if (cj != null) {
                 cjelina = cj;
                 nazivTextBox.Text = cj.Naziv;
@@ -93,34 +111,44 @@ namespace ProjectManagementSystem
         }
 
         private void sacuvajBTN_Click(object sender, EventArgs e) {
-            cjelina.Naziv = nazivTextBox.Text;
-            cjelina.ProcenatIzvrsenosti = Convert.ToInt32(procenatIzvrsenostiNUD.Value);
-            cjelina.BrojPotrebnihCovjekCasova = Convert.ToInt32(brojPotrebnihCovjekCasovaNumericUpDown.Value);
-            cjelina.Rok = rokDateTimePicker.Value;
-            if (!edit) {
-                cjelina.DatumKreiranja = DateTime.Now;
-                cjelina.ProjekatID = pid;
-                cjelina.CjelinaRoditeljID = ncid;
-                cjelina.Aktivna = true;
-                foreach(ListViewItem it in ucesniciZadatkaListBox.Items) {
-                    if (MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = it.Text.Split('"')[1], Aktivan = true }).Count > 0) {
-                        cjelina.Ucesnici.Add(MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = it.Text.Split('"')[1], Aktivan = true })[0]);
+            if (validanUnos()) {
+                cjelina.Naziv = nazivTextBox.Text;
+                cjelina.ProcenatIzvrsenosti = Convert.ToInt32(procenatIzvrsenostiNUD.Value);
+                cjelina.BrojPotrebnihCovjekCasova = Convert.ToInt32(brojPotrebnihCovjekCasovaNumericUpDown.Value);
+                cjelina.Rok = rokDateTimePicker.Value;
+                if (!edit) {
+                    cjelina.DatumKreiranja = DateTime.Now;
+                    cjelina.ProjekatID = pid;
+                    cjelina.CjelinaRoditeljID = ncid;
+                    cjelina.Aktivna = true;
+                    foreach (ListViewItem it in ucesniciZadatkaListBox.Items) {
+                        if (MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = it.Text.Split('"')[1], Aktivan = true }).Count > 0) {
+                            cjelina.Ucesnici.Add(MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = it.Text.Split('"')[1], Aktivan = true })[0]);
+                        }
                     }
+                    MySqlCjelinaDao.Instance.Create(cjelina);
+                    Projekti.updateNadcjeline(ncid);
+                    this.Close();
+                } else {
+                    cjelina.Ucesnici.Clear();
+                    foreach (ListViewItem it in ucesniciZadatkaListBox.Items) {
+                        if (MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = it.Text.Split('"')[1], Aktivan = true }).Count > 0) {
+                            cjelina.Ucesnici.Add(MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = it.Text.Split('"')[1], Aktivan = true })[0]);
+                        }
+                    }
+                    MySqlCjelinaDao.Instance.Update(cjelina);
+                    Projekti.updateNadcjeline(this.ncid);
+                    this.Close();
                 }
-                MySqlCjelinaDao.Instance.Create(cjelina);
-                Projekti.updateNadcjeline(ncid);
             } else {
-                cjelina.Ucesnici.Clear();
-                foreach (ListViewItem it in ucesniciZadatkaListBox.Items) {
-                    if (MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = it.Text.Split('"')[1], Aktivan = true }).Count > 0) {
-                        cjelina.Ucesnici.Add(MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = it.Text.Split('"')[1], Aktivan = true })[0]);
-                    }
-                }
-                MySqlCjelinaDao.Instance.Update(cjelina);
-                Projekti.updateNadcjeline(this.ncid);
+                errorLBL.Visible = true;
             }
         }
 
-        
+        private bool validanUnos() {
+            if (!nazivTextBox.Text.Equals("") && rokDateTimePicker.Value != null && ucesniciZadatkaListBox.Items.Count > 0)
+                return true;
+            return false;
+        }
     }
 }
