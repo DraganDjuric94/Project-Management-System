@@ -48,7 +48,7 @@
             // 
             this.zadaciLBL.AutoSize = true;
             this.zadaciLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.zadaciLBL.Location = new System.Drawing.Point(425, 232);
+            this.zadaciLBL.Location = new System.Drawing.Point(506, 243);
             this.zadaciLBL.Name = "zadaciLBL";
             this.zadaciLBL.Size = new System.Drawing.Size(69, 22);
             this.zadaciLBL.TabIndex = 1;
@@ -58,7 +58,7 @@
             // 
             this.ucesniciLBL.AutoSize = true;
             this.ucesniciLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ucesniciLBL.Location = new System.Drawing.Point(28, 232);
+            this.ucesniciLBL.Location = new System.Drawing.Point(28, 243);
             this.ucesniciLBL.Name = "ucesniciLBL";
             this.ucesniciLBL.Size = new System.Drawing.Size(83, 22);
             this.ucesniciLBL.TabIndex = 2;
@@ -68,7 +68,7 @@
             // 
             this.sefProjektaLBL.AutoSize = true;
             this.sefProjektaLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sefProjektaLBL.Location = new System.Drawing.Point(301, 171);
+            this.sefProjektaLBL.Location = new System.Drawing.Point(413, 171);
             this.sefProjektaLBL.Name = "sefProjektaLBL";
             this.sefProjektaLBL.Size = new System.Drawing.Size(111, 22);
             this.sefProjektaLBL.TabIndex = 3;
@@ -88,7 +88,7 @@
             // 
             this.procenatIzvrsenostiLBL.AutoSize = true;
             this.procenatIzvrsenostiLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.procenatIzvrsenostiLBL.Location = new System.Drawing.Point(536, 98);
+            this.procenatIzvrsenostiLBL.Location = new System.Drawing.Point(463, 100);
             this.procenatIzvrsenostiLBL.Name = "procenatIzvrsenostiLBL";
             this.procenatIzvrsenostiLBL.Size = new System.Drawing.Size(61, 29);
             this.procenatIzvrsenostiLBL.TabIndex = 5;
@@ -98,25 +98,27 @@
             // 
             this.procenatIzvrsenostiPBR.Location = new System.Drawing.Point(32, 98);
             this.procenatIzvrsenostiPBR.Name = "procenatIzvrsenostiPBR";
-            this.procenatIzvrsenostiPBR.Size = new System.Drawing.Size(498, 31);
+            this.procenatIzvrsenostiPBR.Size = new System.Drawing.Size(425, 31);
             this.procenatIzvrsenostiPBR.Step = 1;
             this.procenatIzvrsenostiPBR.TabIndex = 6;
             // 
             // ucesniciLVW
             // 
-            this.ucesniciLVW.Location = new System.Drawing.Point(32, 269);
+            this.ucesniciLVW.Location = new System.Drawing.Point(32, 278);
             this.ucesniciLVW.Name = "ucesniciLVW";
-            this.ucesniciLVW.Size = new System.Drawing.Size(293, 222);
+            this.ucesniciLVW.Size = new System.Drawing.Size(347, 222);
             this.ucesniciLVW.TabIndex = 7;
             this.ucesniciLVW.UseCompatibleStateImageBehavior = false;
+            this.ucesniciLVW.View = System.Windows.Forms.View.List;
             // 
             // zadaciLVW
             // 
-            this.zadaciLVW.Location = new System.Drawing.Point(429, 269);
+            this.zadaciLVW.Location = new System.Drawing.Point(510, 278);
             this.zadaciLVW.Name = "zadaciLVW";
-            this.zadaciLVW.Size = new System.Drawing.Size(299, 222);
+            this.zadaciLVW.Size = new System.Drawing.Size(343, 222);
             this.zadaciLVW.TabIndex = 8;
             this.zadaciLVW.UseCompatibleStateImageBehavior = false;
+            this.zadaciLVW.View = System.Windows.Forms.View.List;
             // 
             // SefNadzorProjekatDetalji
             // 
@@ -132,7 +134,7 @@
             this.Controls.Add(this.zadaciLBL);
             this.Controls.Add(this.nazivProjektaLBL);
             this.Name = "SefNadzorProjekatDetalji";
-            this.Size = new System.Drawing.Size(778, 532);
+            this.Size = new System.Drawing.Size(900, 550);
             this.ResumeLayout(false);
             this.PerformLayout();
 

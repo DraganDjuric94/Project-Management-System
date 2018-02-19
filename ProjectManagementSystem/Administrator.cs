@@ -97,17 +97,5 @@ namespace ProjectManagementSystem
 				}
 			}
 		}
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	}
-=======
     }
->>>>>>> b3588dea45fd6435cf59b4528c15037062a60914
-=======
-		}
->>>>>>> parent of 6ca9bae... Update
-=======
-	}
->>>>>>> parent of 23e9a32... Merge branch 'master' of https://github.com/DraganDjuric94/Project-Management-System
 }

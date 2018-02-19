@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectManagementSystem.dao.mysql;
 using ProjectManagementSystem.dto;
+using System.Security.Cryptography;
 
 namespace ProjectManagementSystem {
     public partial class Login : Form {
@@ -18,7 +19,13 @@ namespace ProjectManagementSystem {
 
 		private void prijavaBTN_Click(object sender, EventArgs e)
 		{
-			/*List<Ucesnik> ucesnik = MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = korisnickoImeTXT.Text, Lozinka = lozinkaTXT.Text });
+            /*
+            HashAlgorithm sha256 = new SHA256CryptoServiceProvider();
+            string hashLozinke = "";
+            Byte[] lozinka = Encoding.Unicode.GetBytes(lozinkaTXT.Text);
+            Byte[] hesirano = sha256.ComputeHash(lozinka);
+            hashLozinke = BitConverter.ToString(hesirano);
+            List<Ucesnik> ucesnik = MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = korisnickoImeTXT.Text, Lozinka = hashLozinke });
 			if (ucesnik.Count() == 0)
 			{
 				MessageBox.Show("Korisnik sa unjetim informacijama ne postoji.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -35,7 +42,7 @@ namespace ProjectManagementSystem {
 		}
 
         private void testBTN_Click(object sender, EventArgs e) {
-            Ucesnik uc = MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = 3})[0];
+            Ucesnik uc = MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = 2})[0];
             new Projekti(uc).Show();
         }
     }
