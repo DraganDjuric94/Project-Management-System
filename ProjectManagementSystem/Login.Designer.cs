@@ -28,7 +28,6 @@
             this.prijavaBTN = new System.Windows.Forms.Button();
             this.korisnickoImeTXT = new System.Windows.Forms.TextBox();
             this.dobrodosliLBL = new System.Windows.Forms.Label();
-            this.testBTN = new System.Windows.Forms.Button();
             this.lozinkaTXT = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
@@ -79,16 +78,6 @@
             this.dobrodosliLBL.Text = "Dobro došli!";
             this.dobrodosliLBL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // testBTN
-            // 
-            this.testBTN.Location = new System.Drawing.Point(15, 228);
-            this.testBTN.Name = "testBTN";
-            this.testBTN.Size = new System.Drawing.Size(31, 23);
-            this.testBTN.TabIndex = 7;
-            this.testBTN.Text = "TEST!";
-            this.testBTN.UseVisualStyleBackColor = true;
-            this.testBTN.Click += new System.EventHandler(this.testBTN_Click);
-            // 
             // lozinkaTXT
             // 
             this.lozinkaTXT.Location = new System.Drawing.Point(109, 163);
@@ -102,7 +91,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(369, 259);
-            this.Controls.Add(this.testBTN);
             this.Controls.Add(this.dobrodosliLBL);
             this.Controls.Add(this.lozinkaTXT);
             this.Controls.Add(this.korisnickoImeTXT);
@@ -125,7 +113,6 @@
 		private System.Windows.Forms.Button prijavaBTN;
 		private System.Windows.Forms.TextBox korisnickoImeTXT;
 		private System.Windows.Forms.Label dobrodosliLBL;
-        private System.Windows.Forms.Button testBTN;
         private System.Windows.Forms.TextBox lozinkaTXT;
     }
 }

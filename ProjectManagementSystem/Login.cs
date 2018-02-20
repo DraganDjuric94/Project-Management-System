@@ -19,7 +19,6 @@ namespace ProjectManagementSystem {
 
 		private void prijavaBTN_Click(object sender, EventArgs e)
 		{
-            /*
             HashAlgorithm sha256 = new SHA256CryptoServiceProvider();
             string hashLozinke = "";
             Byte[] lozinka = Encoding.Unicode.GetBytes(lozinkaTXT.Text);
@@ -37,13 +36,7 @@ namespace ProjectManagementSystem {
                     this.Hide();
                 }
             }
-            */
-            new Administrator().Show();
         }
 
-        private void testBTN_Click(object sender, EventArgs e) {
-            Ucesnik uc = MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = 1})[0];
-            new Projekti(uc).Show();
-        }
     }
 }
