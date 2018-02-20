@@ -142,7 +142,6 @@
     <Compile Include="TransakcijaFormular.Designer.cs">
       <DependentUpon>TransakcijaFormular.cs</DependentUpon>
     </Compile>
-    <Compile Include="Updater.cs" />
     <Compile Include="UtrosenoSatiUcesnikFormular.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -324,6 +323,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\upitnik.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

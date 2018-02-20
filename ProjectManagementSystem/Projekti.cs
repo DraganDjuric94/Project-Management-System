@@ -22,50 +22,7 @@ namespace ProjectManagementSystem {
         }
 
         private void Projekti_Load(object sender, EventArgs e) {
-            List<Projekat> projekti = MySqlProjekatDao.Instance.ReadProjekatByUcesnikID(Ucesnik);
-            Uloga uloga = null;
-            foreach (Projekat p in projekti) {
-                if (p.UcesniciNaProjektu.ContainsKey(Ucesnik) && p.Aktivan == true) {
-                    if (p.UcesniciNaProjektu.TryGetValue(Ucesnik, out uloga) && (uloga.Naziv.Equals("sef") || uloga.Naziv.Equals("nadzor"))) {
-                        Console.WriteLine("Projekat: " + p.Naziv + " Uloga: nadzor ili sef");
-                        projektiTVW.Nodes.Add("p#" + p.ProjekatID.ToString(), p.Naziv, 2); //dodaj projekat u tree view
-                        TreeNode me = projektiTVW.Nodes.Find("p#" + p.ProjekatID.ToString(), false)[0];
-                        Cjelina cjelinaZaPretragu = new Cjelina {
-                            ProjekatID = p.ProjekatID, Aktivna = true
-                        };
-                        List<Cjelina> cjeline = MySqlCjelinaDao.Instance.Read(cjelinaZaPretragu);
-                        foreach (Cjelina c in cjeline) {
-                            if (c.CjelinaRoditeljID == null) {
-                                dodajCjelinu(c, me, false);
-                            }
-                        }
-
-                    } else if (p.UcesniciNaProjektu.TryGetValue(Ucesnik, out uloga) && uloga.Naziv.Equals("ucesnik")) {
-                        Console.WriteLine("Projekat: " + p.Naziv + " Uloga: ucesnik");
-                        projektiTVW.Nodes.Add("p#" + p.ProjekatID.ToString(), p.Naziv, 2); //dodaj projekat u tree view
-                        TreeNode me = projektiTVW.Nodes.Find("p#" + p.ProjekatID.ToString(), false)[0];
-                        Cjelina cjelinaZaPretragu = new Cjelina {
-                            ProjekatID = p.ProjekatID, Aktivna = true
-                        };
-                        List<Cjelina> cjeline = MySqlCjelinaDao.Instance.Read(cjelinaZaPretragu);
-                        foreach (Cjelina c1 in cjeline.ToArray()) {
-                            if (!c1.Ucesnici.Contains(Ucesnik)){
-                                cjeline.Remove(c1);
-                                Console.WriteLine(c1.Naziv);
-                            }
-                        }
-                        foreach (Cjelina c2 in cjeline) {
-                            if (c2.CjelinaRoditeljID == null) {
-                                dodajCjelinu(c2, me, true);
-                            }
-                        }
-                    } else {
-                        Application.Exit();
-                    }
-                } else {
-                     //nista
-                }
-            }   
+            updateTreeView();
         }
 
         private void dodajCjelinu(Cjelina cjelina, TreeNode parent, bool obicniUcesnik) {
@@ -95,111 +52,7 @@ namespace ProjectManagementSystem {
         }
 
         private void projektiTVW_AfterSelect(object sender, TreeViewEventArgs e) {
-            TreeNode selected = projektiTVW.SelectedNode;
-            String ulogaUcesnika = "";
-            TreeNode temp = selected;
-            while (temp.Parent != null) {
-                temp = temp.Parent;
-            }
-            Console.WriteLine(temp.Name);
-            String izabraniId = temp.Name.Split('#')[1];
-            if(MySqlProjekatDao.Instance.Read(new Projekat { ProjekatID = Convert.ToInt32(izabraniId), Aktivan = true }).Count > 0) {
-            Projekat izabraniProjekat = MySqlProjekatDao.Instance.Read(new Projekat { ProjekatID = Convert.ToInt32(izabraniId), Aktivan = true })[0];
-            if (izabraniProjekat.UcesniciNaProjektu.Keys.Contains(Ucesnik)) {
-                ulogaUcesnika = izabraniProjekat.UcesniciNaProjektu[Ucesnik].Naziv;
-            } else return;
-
-            if (selected.Name.StartsWith("p")) {
-                if (ulogaUcesnika.Equals("sef")) {
-                    detaljiPNL.Controls.Clear();
-                    detaljiPNL.Controls.Add(new SefNadzorProjekatDetalji(izabraniProjekat));
-                    azrirajTSB.Enabled = true;
-                    obrisiTSB.Enabled = false;
-                    dodajAktivnostTSB.Enabled = false;
-                    dodajZadatakTSB.Enabled = true;
-                    prikaziIzvjestajTSB.Enabled = true;
-                    dodajUcesnikaTSB.Enabled = true;
-                } else if (ulogaUcesnika.Equals("ucesnik")) {
-                    detaljiPNL.Controls.Clear();
-                    azrirajTSB.Enabled = false;
-                    obrisiTSB.Enabled = false;
-                    dodajAktivnostTSB.Enabled = false;
-                    dodajZadatakTSB.Enabled = false;
-                    prikaziIzvjestajTSB.Enabled = false;
-                    dodajUcesnikaTSB.Enabled = false;
-                    detaljiPNL.Controls.Add(new UcesnikProjekatDetalji(izabraniProjekat));
-                } else if (ulogaUcesnika.Equals("nadzor")) {
-                    detaljiPNL.Controls.Clear();
-                    detaljiPNL.Controls.Add(new SefNadzorProjekatDetalji(izabraniProjekat));
-                    azrirajTSB.Enabled = false;
-                    obrisiTSB.Enabled = false;
-                    dodajAktivnostTSB.Enabled = false;
-                    dodajZadatakTSB.Enabled = false;
-                    prikaziIzvjestajTSB.Enabled = true;
-                    dodajUcesnikaTSB.Enabled = false;
-                }
-            } else if (selected.Name.StartsWith("c")) {
-                if (MySqlCjelinaDao.Instance.Read(new Cjelina { CjelinaID = Convert.ToInt32(selected.Name.Split('#')[1]), Aktivna = true }).Count > 0) {
-                    Cjelina izabranaCjelina = MySqlCjelinaDao.Instance.Read(new Cjelina { CjelinaID = Convert.ToInt32(selected.Name.Split('#')[1]), Aktivna = true })[0];
-                    detaljiPNL.Controls.Clear();
-                    detaljiPNL.Controls.Add(new ZadatakDetalji(izabranaCjelina));
-                    if (ulogaUcesnika.Equals("sef")) {
-                        azrirajTSB.Enabled = true;
-                        obrisiTSB.Enabled = true;
-                        dodajAktivnostTSB.Enabled = true;
-                        dodajZadatakTSB.Enabled = true;
-                        prikaziIzvjestajTSB.Enabled = false;
-                        dodajUcesnikaTSB.Enabled = true;
-                    } else if (ulogaUcesnika.Equals("ucesnik")) {
-                        azrirajTSB.Enabled = false;
-                        obrisiTSB.Enabled = false;
-                        dodajAktivnostTSB.Enabled = true;
-                        dodajZadatakTSB.Enabled = false;
-                        prikaziIzvjestajTSB.Enabled = false;
-                        dodajUcesnikaTSB.Enabled = false;
-                    } else if (ulogaUcesnika.Equals("nadzor")) {
-                        azrirajTSB.Enabled = false;
-                        obrisiTSB.Enabled = false;
-                        dodajAktivnostTSB.Enabled = false;
-                        dodajZadatakTSB.Enabled = false;
-                        prikaziIzvjestajTSB.Enabled = false;
-                        dodajUcesnikaTSB.Enabled = false;
-                    }
-                }
-            } else if (selected.Name.StartsWith("a")) {
-                    if (MySqlAktivnostDao.Instance.Read(new Aktivnost { AktivnostID = Convert.ToInt32(selected.Name.Split('#')[1]), Aktivna = true }).Count > 0) {
-                        Aktivnost izabranaAktivnost = MySqlAktivnostDao.Instance.Read(new Aktivnost { AktivnostID = Convert.ToInt32(selected.Name.Split('#')[1]), Aktivna = true })[0];
-                        if (ulogaUcesnika.Equals("sef")) {
-                            detaljiPNL.Controls.Clear();
-                            azrirajTSB.Enabled = true;
-                            obrisiTSB.Enabled = true;
-                            dodajAktivnostTSB.Enabled = false;
-                            dodajZadatakTSB.Enabled = false;
-                            prikaziIzvjestajTSB.Enabled = false;
-                            dodajUcesnikaTSB.Enabled = false;
-                            detaljiPNL.Controls.Add(new SefUcesnikAktivnostDetalji(izabranaAktivnost, Ucesnik));
-                        } else if (ulogaUcesnika.Equals("ucesnik")) {
-                            detaljiPNL.Controls.Clear();
-                            azrirajTSB.Enabled = true;
-                            obrisiTSB.Enabled = true;
-                            dodajAktivnostTSB.Enabled = false;
-                            dodajZadatakTSB.Enabled = false;
-                            prikaziIzvjestajTSB.Enabled = false;
-                            dodajUcesnikaTSB.Enabled = false;
-                            detaljiPNL.Controls.Add(new SefUcesnikAktivnostDetalji(izabranaAktivnost, Ucesnik));
-                        } else if (ulogaUcesnika.Equals("nadzor")) {
-                            detaljiPNL.Controls.Clear();
-                            azrirajTSB.Enabled = false;
-                            obrisiTSB.Enabled = false;
-                            dodajAktivnostTSB.Enabled = false;
-                            dodajZadatakTSB.Enabled = false;
-                            prikaziIzvjestajTSB.Enabled = false;
-                            dodajUcesnikaTSB.Enabled = false;
-                            detaljiPNL.Controls.Add(new NadzorAktivnostDetalji(izabranaAktivnost));
-                        }
-                    }
-                }
-            }
+            prikaziDetalje();
         }
 
         private void azrirajTSB_Click(object sender, EventArgs e) {
@@ -341,6 +194,172 @@ namespace ProjectManagementSystem {
                     MySqlCjelinaDao.Instance.Update(c);
                     id = c.CjelinaRoditeljID;
                 }
+            }
+        }
+
+        private void updateTreeView() {
+            projektiTVW.Nodes.Clear();
+            List<Projekat> projekti = MySqlProjekatDao.Instance.ReadProjekatByUcesnikID(Ucesnik);
+            Uloga uloga = null;
+            foreach (Projekat p in projekti) {
+                if (p.UcesniciNaProjektu.ContainsKey(Ucesnik) && p.Aktivan == true) {
+                    if (p.UcesniciNaProjektu.TryGetValue(Ucesnik, out uloga) && (uloga.Naziv.Equals("sef") || uloga.Naziv.Equals("nadzor"))) {
+                        Console.WriteLine("Projekat: " + p.Naziv + " Uloga: nadzor ili sef");
+                        projektiTVW.Nodes.Add("p#" + p.ProjekatID.ToString(), p.Naziv, 2); //dodaj projekat u tree view
+                        TreeNode me = projektiTVW.Nodes.Find("p#" + p.ProjekatID.ToString(), false)[0];
+                        Cjelina cjelinaZaPretragu = new Cjelina {
+                            ProjekatID = p.ProjekatID, Aktivna = true
+                        };
+                        List<Cjelina> cjeline = MySqlCjelinaDao.Instance.Read(cjelinaZaPretragu);
+                        foreach (Cjelina c in cjeline) {
+                            if (c.CjelinaRoditeljID == null) {
+                                dodajCjelinu(c, me, false);
+                            }
+                        }
+
+                    } else if (p.UcesniciNaProjektu.TryGetValue(Ucesnik, out uloga) && uloga.Naziv.Equals("ucesnik")) {
+                        Console.WriteLine("Projekat: " + p.Naziv + " Uloga: ucesnik");
+                        projektiTVW.Nodes.Add("p#" + p.ProjekatID.ToString(), p.Naziv, 2); //dodaj projekat u tree view
+                        TreeNode me = projektiTVW.Nodes.Find("p#" + p.ProjekatID.ToString(), false)[0];
+                        Cjelina cjelinaZaPretragu = new Cjelina {
+                            ProjekatID = p.ProjekatID, Aktivna = true
+                        };
+                        List<Cjelina> cjeline = MySqlCjelinaDao.Instance.Read(cjelinaZaPretragu);
+                        foreach (Cjelina c1 in cjeline.ToArray()) {
+                            if (!c1.Ucesnici.Contains(Ucesnik)) {
+                                cjeline.Remove(c1);
+                                Console.WriteLine(c1.Naziv);
+                            }
+                        }
+                        foreach (Cjelina c2 in cjeline) {
+                            if (c2.CjelinaRoditeljID == null) {
+                                dodajCjelinu(c2, me, true);
+                            }
+                        }
+                    } else {
+                        Application.Exit();
+                    }
+                } else {
+                    //nista
+                }
+            }
+        }
+
+        private void updateTSB_Click(object sender, EventArgs e) {
+            updateTreeView();
+        }
+
+        private void prikaziDetalje() {
+            TreeNode selected = projektiTVW.SelectedNode;
+            String ulogaUcesnika = "";
+            TreeNode temp = selected;
+            while (temp.Parent != null) {
+                temp = temp.Parent;
+            }
+            Console.WriteLine(temp.Name);
+            String izabraniId = temp.Name.Split('#')[1];
+            if (MySqlProjekatDao.Instance.Read(new Projekat { ProjekatID = Convert.ToInt32(izabraniId), Aktivan = true }).Count > 0) {
+                Projekat izabraniProjekat = MySqlProjekatDao.Instance.Read(new Projekat { ProjekatID = Convert.ToInt32(izabraniId), Aktivan = true })[0];
+                if (izabraniProjekat.UcesniciNaProjektu.Keys.Contains(Ucesnik)) {
+                    ulogaUcesnika = izabraniProjekat.UcesniciNaProjektu[Ucesnik].Naziv;
+                } else return;
+
+                if (selected.Name.StartsWith("p")) {
+                    if (ulogaUcesnika.Equals("sef")) {
+                        detaljiPNL.Controls.Clear();
+                        detaljiPNL.Controls.Add(new SefNadzorProjekatDetalji(izabraniProjekat));
+                        azrirajTSB.Enabled = true;
+                        obrisiTSB.Enabled = false;
+                        dodajAktivnostTSB.Enabled = false;
+                        dodajZadatakTSB.Enabled = true;
+                        prikaziIzvjestajTSB.Enabled = true;
+                        dodajUcesnikaTSB.Enabled = true;
+                    } else if (ulogaUcesnika.Equals("ucesnik")) {
+                        detaljiPNL.Controls.Clear();
+                        azrirajTSB.Enabled = false;
+                        obrisiTSB.Enabled = false;
+                        dodajAktivnostTSB.Enabled = false;
+                        dodajZadatakTSB.Enabled = false;
+                        prikaziIzvjestajTSB.Enabled = false;
+                        dodajUcesnikaTSB.Enabled = false;
+                        detaljiPNL.Controls.Add(new UcesnikProjekatDetalji(izabraniProjekat));
+                    } else if (ulogaUcesnika.Equals("nadzor")) {
+                        detaljiPNL.Controls.Clear();
+                        detaljiPNL.Controls.Add(new SefNadzorProjekatDetalji(izabraniProjekat));
+                        azrirajTSB.Enabled = false;
+                        obrisiTSB.Enabled = false;
+                        dodajAktivnostTSB.Enabled = false;
+                        dodajZadatakTSB.Enabled = false;
+                        prikaziIzvjestajTSB.Enabled = true;
+                        dodajUcesnikaTSB.Enabled = false;
+                    }
+                } else if (selected.Name.StartsWith("c")) {
+                    if (MySqlCjelinaDao.Instance.Read(new Cjelina { CjelinaID = Convert.ToInt32(selected.Name.Split('#')[1]), Aktivna = true }).Count > 0) {
+                        Cjelina izabranaCjelina = MySqlCjelinaDao.Instance.Read(new Cjelina { CjelinaID = Convert.ToInt32(selected.Name.Split('#')[1]), Aktivna = true })[0];
+                        detaljiPNL.Controls.Clear();
+                        detaljiPNL.Controls.Add(new ZadatakDetalji(izabranaCjelina));
+                        if (ulogaUcesnika.Equals("sef")) {
+                            azrirajTSB.Enabled = true;
+                            obrisiTSB.Enabled = true;
+                            dodajAktivnostTSB.Enabled = true;
+                            dodajZadatakTSB.Enabled = true;
+                            prikaziIzvjestajTSB.Enabled = false;
+                            dodajUcesnikaTSB.Enabled = true;
+                        } else if (ulogaUcesnika.Equals("ucesnik")) {
+                            azrirajTSB.Enabled = false;
+                            obrisiTSB.Enabled = false;
+                            dodajAktivnostTSB.Enabled = true;
+                            dodajZadatakTSB.Enabled = false;
+                            prikaziIzvjestajTSB.Enabled = false;
+                            dodajUcesnikaTSB.Enabled = false;
+                        } else if (ulogaUcesnika.Equals("nadzor")) {
+                            azrirajTSB.Enabled = false;
+                            obrisiTSB.Enabled = false;
+                            dodajAktivnostTSB.Enabled = false;
+                            dodajZadatakTSB.Enabled = false;
+                            prikaziIzvjestajTSB.Enabled = false;
+                            dodajUcesnikaTSB.Enabled = false;
+                        }
+                    }
+                } else if (selected.Name.StartsWith("a")) {
+                    if (MySqlAktivnostDao.Instance.Read(new Aktivnost { AktivnostID = Convert.ToInt32(selected.Name.Split('#')[1]), Aktivna = true }).Count > 0) {
+                        Aktivnost izabranaAktivnost = MySqlAktivnostDao.Instance.Read(new Aktivnost { AktivnostID = Convert.ToInt32(selected.Name.Split('#')[1]), Aktivna = true })[0];
+                        if (ulogaUcesnika.Equals("sef")) {
+                            detaljiPNL.Controls.Clear();
+                            azrirajTSB.Enabled = true;
+                            obrisiTSB.Enabled = true;
+                            dodajAktivnostTSB.Enabled = false;
+                            dodajZadatakTSB.Enabled = false;
+                            prikaziIzvjestajTSB.Enabled = false;
+                            dodajUcesnikaTSB.Enabled = false;
+                            detaljiPNL.Controls.Add(new SefUcesnikAktivnostDetalji(izabranaAktivnost, Ucesnik));
+                        } else if (ulogaUcesnika.Equals("ucesnik")) {
+                            detaljiPNL.Controls.Clear();
+                            azrirajTSB.Enabled = true;
+                            obrisiTSB.Enabled = true;
+                            dodajAktivnostTSB.Enabled = false;
+                            dodajZadatakTSB.Enabled = false;
+                            prikaziIzvjestajTSB.Enabled = false;
+                            dodajUcesnikaTSB.Enabled = false;
+                            detaljiPNL.Controls.Add(new SefUcesnikAktivnostDetalji(izabranaAktivnost, Ucesnik));
+                        } else if (ulogaUcesnika.Equals("nadzor")) {
+                            detaljiPNL.Controls.Clear();
+                            azrirajTSB.Enabled = false;
+                            obrisiTSB.Enabled = false;
+                            dodajAktivnostTSB.Enabled = false;
+                            dodajZadatakTSB.Enabled = false;
+                            prikaziIzvjestajTSB.Enabled = false;
+                            dodajUcesnikaTSB.Enabled = false;
+                            detaljiPNL.Controls.Add(new NadzorAktivnostDetalji(izabranaAktivnost));
+                        }
+                    }
+                }
+            }
+        }
+
+        private void a_Click(object sender, EventArgs e) {
+            if(projektiTVW.SelectedNode != null) {
+                prikaziDetalje();   
             }
         }
     }

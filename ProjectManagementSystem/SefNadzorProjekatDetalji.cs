@@ -39,7 +39,7 @@ namespace ProjectManagementSystem {
                 }
             }
             if (sef != null) {
-                sefProjektaLBL.Text = "Šef projekta: " + sef.Ime;
+                sefProjektaLBL.Text = "Šef projekta: " + sef.Ime + " " + sef.Prezime;
             }
             for (int i = 0; i < pr.UcesniciNaProjektu.Count; i++) {
                 if (!pr.UcesniciNaProjektu[pr.UcesniciNaProjektu.ElementAt(i).Key].Naziv.Equals("sef")) {
