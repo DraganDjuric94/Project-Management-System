@@ -25,24 +25,24 @@ namespace ProjectManagementSystem {
             Byte[] lozinka = Encoding.Unicode.GetBytes(lozinkaTXT.Text);
             Byte[] hesirano = sha256.ComputeHash(lozinka);
             hashLozinke = BitConverter.ToString(hesirano);
-            List<Ucesnik> ucesnik = MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = korisnickoImeTXT.Text, Lozinka = hashLozinke });
-			if (ucesnik.Count() == 0)
-			{
-				MessageBox.Show("Korisnik sa unjetim informacijama ne postoji.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-			}
-			else if (ucesnik[0].Uloga.Naziv.Equals("administrator"))
-			{
-				new Administrator().Show();
-			}
-			else if (ucesnik[0].Uloga.Naziv.Equals("učesnik"))
-			{
-
-			}*/
-			new Administrator().Show();
-		}
+            if (!korisnickoImeTXT.Text.Equals("") && !lozinkaTXT.Text.Equals("")) {
+                List<Ucesnik> ucesnik = MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = korisnickoImeTXT.Text, Lozinka = hashLozinke, Aktivan = true });
+                if (ucesnik.Count() == 0) {
+                    MessageBox.Show("Korisnik sa unjetim informacijama ne postoji.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                } else if (ucesnik[0].Uloga.Naziv.Equals("administrator")) {
+                    new Administrator().Show();
+                    this.Hide();
+                } else if (ucesnik[0].Uloga.Naziv.Equals("korisnik")) {
+                    new Projekti(ucesnik[0]).Show();
+                    this.Hide();
+                }
+            }
+            */
+            new Administrator().Show();
+        }
 
         private void testBTN_Click(object sender, EventArgs e) {
-            Ucesnik uc = MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = 2})[0];
+            Ucesnik uc = MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = 1})[0];
             new Projekti(uc).Show();
         }
     }

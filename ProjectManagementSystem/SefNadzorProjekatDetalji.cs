@@ -48,7 +48,7 @@ namespace ProjectManagementSystem {
                 }
             }
             foreach(Cjelina c in pr.Cjeline) {
-                if(c.CjelinaRoditeljID == null) {
+                if(c.CjelinaRoditeljID == null && c.Aktivna == true) {
                     zadaciLVW.Items.Add(c.Naziv);
                 }
             }

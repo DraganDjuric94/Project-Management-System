@@ -71,6 +71,7 @@ namespace ProjectManagementSystem {
 
         private void sacuvajBTN_Click(object sender, EventArgs e) {
             if (validniPodaci()) {
+                sacuvajBTN.Enabled = false;
                 if (projekat != null) {
                     projekat.Naziv = nazivProjektaTBX.Text;
                     Ucesnik sef = null;

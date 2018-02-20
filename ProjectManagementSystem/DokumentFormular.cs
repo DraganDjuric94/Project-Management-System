@@ -34,6 +34,7 @@ namespace ProjectManagementSystem {
 
         private void sacuvajBTN_Click(object sender, EventArgs e) {
             if (validniPodaci()) {
+                sacuvajBTN.Enabled = false;
                 if (edit) {
                     if (validanFajl != null) {
                         string novaPutanja = "Dokumenti\\" + aktivnost.Naziv + DateTime.Now.ToString("yyMMddHHmmssff") + System.IO.Path.GetExtension(validanFajl.FileName);
@@ -48,6 +49,7 @@ namespace ProjectManagementSystem {
                     }
                     dokument.RevizijeDokumenta.Add(new RevizijaDokumenta { DokumentID = dokument.DokumentID, UcesnikID = ucesnik.UcesnikID, DatumVrijeme = DateTime.Now });
                     MySqlDokumentDao.Instance.Update(dokument);
+                    MessageBox.Show("Dokument je sačuvan u folderu aplikacije, na putanji: " + dokument.Putanja, "Dokument sačuvan", MessageBoxButtons.OK);
                     this.Close();
                 } else {
                     if (validanFajl != null) {
@@ -61,6 +63,7 @@ namespace ProjectManagementSystem {
                         dokument.Aktivan = true;
                         dokument.RevizijeDokumenta = new List<RevizijaDokumenta>();
                         MySqlDokumentDao.Instance.Create(dokument);
+                        MessageBox.Show("Dokument je sačuvan u folderu aplikacije, na putanji: " + dokument.Putanja, "Dokument sačuvan", MessageBoxButtons.OK);
                         this.Close();
                     }
                 }

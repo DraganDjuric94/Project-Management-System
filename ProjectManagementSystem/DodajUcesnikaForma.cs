@@ -57,6 +57,7 @@ namespace ProjectManagementSystem {
 
         private void dodajBTN_Click(object sender, EventArgs e) {
             if (validanUnos()) {
+                dodajBTN.Enabled = false;
                 if (moguciUcesniciCBX.SelectedItem != null) {
                     String korIme = moguciUcesniciCBX.SelectedItem.ToString().Split('"')[1];
                     Ucesnik uc = MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = korIme })[0];

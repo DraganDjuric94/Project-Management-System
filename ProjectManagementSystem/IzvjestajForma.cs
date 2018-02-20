@@ -93,7 +93,8 @@ namespace ProjectManagementSystem {
         private void sacuvajKaoPdfBTN_Click(object sender, EventArgs e) {
 
             //This is the absolute path to the PDF that we will create
-            string outputFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) ,"Izvjestaj-" + projekat.Naziv + DateTime.Now.ToString("yyMMddHHmmssff") + ".pdf");
+            string putanja = "Izvjestaj-" + projekat.Naziv + DateTime.Now.ToString("yyMMddHHmmssff") + ".pdf";
+            string outputFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) , putanja);
 
             //Create a standard .Net FileStream for the file, setting various flags
             using (FileStream fs = new FileStream(outputFile, FileMode.Create, FileAccess.Write, FileShare.None)) {
@@ -143,7 +144,7 @@ namespace ProjectManagementSystem {
                                 } else {
                                     uloga = "Učesnik";
                                 }
-                                ucesnici.AddCell(new PdfPCell(new Phrase(Convert.ToString(i) + ".", f2)));
+                                ucesnici.AddCell(new PdfPCell(new Phrase(Convert.ToString(i-1) + ".", f2)));
                                 ucesnici.AddCell(new PdfPCell(new Phrase(uc.Ime, f2)));
                                 ucesnici.AddCell(new PdfPCell(new Phrase(uc.Prezime, f2)));
                                 ucesnici.AddCell(new PdfPCell(new Phrase(uc.KorisnickoIme, f2)));
@@ -165,7 +166,7 @@ namespace ProjectManagementSystem {
                         foreach (Cjelina uc in projekat.Cjeline) {
                             if (uc.CjelinaRoditeljID == null) {
                                 i++;
-                                zadaci.AddCell(new PdfPCell(new Phrase(Convert.ToString(i) + ".", f2)));
+                                zadaci.AddCell(new PdfPCell(new Phrase(Convert.ToString(i-1) + ".", f2)));
                                 zadaci.AddCell(new PdfPCell(new Phrase(uc.Naziv, f2)));
                                 zadaci.AddCell(new PdfPCell(new Phrase(Convert.ToString(uc.ProcenatIzvrsenosti) + "%", f2)));
                             }
@@ -191,7 +192,7 @@ namespace ProjectManagementSystem {
                             } else {
                                 vrsta = "Rashod";
                             }
-                            trans.AddCell(new PdfPCell(new Phrase(Convert.ToString(i) + ".", f2)));
+                            trans.AddCell(new PdfPCell(new Phrase(Convert.ToString(i-1) + ".", f2)));
                             trans.AddCell(new PdfPCell(new Phrase(vrsta, f2)));
                             trans.AddCell(new PdfPCell(new Phrase(uc.DatumVrijeme.Value.ToString("dd/MM/yyyy"), f2)));
                             trans.AddCell(new PdfPCell(new Phrase(Convert.ToString(uc.Iznos), f2)));
@@ -210,10 +211,11 @@ namespace ProjectManagementSystem {
                     }
                 }
             }
+            MessageBox.Show("Traženi izvještaj je sačuvan na Vaš Desktop pod nazivom: " + putanja, "Izvještaj sačuvan", MessageBoxButtons.OK);
+        }
 
-
-
-
+        private void zatvoriBTN_Click(object sender, EventArgs e) {
+            this.Close();
         }
     }
 }

@@ -30,6 +30,7 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.projektiTVW = new System.Windows.Forms.TreeView();
             this.slikeProjektiIML = new System.Windows.Forms.ImageList(this.components);
             this.detaljiPNL = new System.Windows.Forms.Panel();
@@ -40,9 +41,7 @@
             this.dodajAktivnostTSB = new System.Windows.Forms.ToolStripButton();
             this.prikaziIzvjestajTSB = new System.Windows.Forms.ToolStripButton();
             this.dodajUcesnikaTSB = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.updateTSB = new System.Windows.Forms.ToolStripButton();
-            this.a = new System.Windows.Forms.Button();
             this.mojiProjektiPNL.SuspendLayout();
             this.komandeTSR.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.projektiSPL)).BeginInit();
@@ -53,7 +52,6 @@
             // 
             // mojiProjektiPNL
             // 
-            this.mojiProjektiPNL.Controls.Add(this.a);
             this.mojiProjektiPNL.Controls.Add(this.komandeTSR);
             this.mojiProjektiPNL.Controls.Add(this.projektiTVW);
             this.mojiProjektiPNL.Location = new System.Drawing.Point(3, 3);
@@ -99,6 +97,11 @@
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 38);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 38);
             // 
             // projektiTVW
             // 
@@ -210,11 +213,6 @@
             this.dodajUcesnikaTSB.Text = "Dodaj učesnika";
             this.dodajUcesnikaTSB.Click += new System.EventHandler(this.dodajUcesnikaTSB_Click);
             // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 38);
-            // 
             // updateTSB
             // 
             this.updateTSB.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -224,16 +222,6 @@
             this.updateTSB.Size = new System.Drawing.Size(29, 35);
             this.updateTSB.Text = "Ponovo učitaj podatke";
             this.updateTSB.Click += new System.EventHandler(this.updateTSB_Click);
-            // 
-            // a
-            // 
-            this.a.Location = new System.Drawing.Point(258, 12);
-            this.a.Name = "a";
-            this.a.Size = new System.Drawing.Size(36, 23);
-            this.a.TabIndex = 5;
-            this.a.Text = "A";
-            this.a.UseVisualStyleBackColor = true;
-            this.a.Click += new System.EventHandler(this.a_Click);
             // 
             // Projekti
             // 
@@ -245,6 +233,7 @@
             this.Name = "Projekti";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Projekti";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Projekti_FormClosed);
             this.Load += new System.EventHandler(this.Projekti_Load);
             this.mojiProjektiPNL.ResumeLayout(false);
             this.komandeTSR.ResumeLayout(false);
@@ -276,6 +265,5 @@
         private System.Windows.Forms.ToolStripButton obrisiTSB;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton updateTSB;
-        private System.Windows.Forms.Button a;
     }
 }

@@ -14,9 +14,11 @@ namespace ProjectManagementSystem {
     public partial class SefUcesnikAktivnostDetalji : UserControl {
         Aktivnost aktivnost = new Aktivnost();
         Ucesnik ucesnik = new Ucesnik();
+        Projekti projektiForma = null;
 
-        public SefUcesnikAktivnostDetalji(Aktivnost ak, Ucesnik uc) {
+        public SefUcesnikAktivnostDetalji(Aktivnost ak, Ucesnik uc, Projekti forma) {
             InitializeComponent();
+            projektiForma = forma;
             ucesnik = uc;
             aktivnost = ak;
             nazivAktivnostiLBL.Text = ak.Naziv;
@@ -28,7 +30,7 @@ namespace ProjectManagementSystem {
             }
             foreach (Transakcija t in ak.Transakcije) {
                 char c = (t.PrihodRashod == true) ? '+' : '-';
-                transakcijeLVW.Items.Add(t.TransakcijaID + "." + t.DatumVrijeme + "  " + c + t.Iznos);
+                transakcijeLVW.Items.Add(t.TransakcijaID + ". " + t.DatumVrijeme + "  " + c + t.Iznos);
             }
             List<Dokument> dokumenti = MySqlDokumentDao.Instance.Read(new Dokument { AktivnostID = ak.AktivnostID, Aktivan = true });
             foreach (Dokument d in dokumenti) {
@@ -54,12 +56,14 @@ namespace ProjectManagementSystem {
                 if (MySqlDokumentDao.Instance.Read(new Dokument { DokumentID = Convert.ToInt32(dokumentiLVW.SelectedItems[0].Text.Split('.')[0]), Aktivan = true }).Count > 0) {
                     Dokument d = MySqlDokumentDao.Instance.Read(new Dokument { DokumentID = Convert.ToInt32(dokumentiLVW.SelectedItems[0].Text.Split('.')[0]), Aktivan = true })[0];
                     new DokumentFormular(aktivnost, ucesnik, d, true).ShowDialog();
+                    projektiForma.prikaziDetaljeByTipAndId("a", aktivnost.AktivnostID);
                 }
             }
         }
 
         private void dodajDokumentBTN_Click(object sender, EventArgs e) {
             new DokumentFormular(aktivnost, ucesnik, null, false).ShowDialog();
+            projektiForma.prikaziDetaljeByTipAndId("a", aktivnost.AktivnostID);
         }
 
         private void obrisiDokumentBTN_Click(object sender, EventArgs e) {
@@ -67,6 +71,7 @@ namespace ProjectManagementSystem {
                 if (MySqlDokumentDao.Instance.Read(new Dokument { DokumentID = Convert.ToInt32(dokumentiLVW.SelectedItems[0].Text.Split('.')[0]), Aktivan = true }).Count > 0) {
                     Dokument d = MySqlDokumentDao.Instance.Read(new Dokument { DokumentID = Convert.ToInt32(dokumentiLVW.SelectedItems[0].Text.Split('.')[0]), Aktivan = true })[0];
                     MySqlDokumentDao.Instance.Delete(Convert.ToInt32(d.DokumentID));
+                    projektiForma.prikaziDetaljeByTipAndId("a", aktivnost.AktivnostID);
                 }
             }
         }
@@ -76,12 +81,14 @@ namespace ProjectManagementSystem {
                 if (MySqlTransakcijaDao.Instance.Read(new Transakcija { TransakcijaID = Convert.ToInt32(transakcijeLVW.SelectedItems[0].Text.Split('.')[0]) }).Count > 0) {
                     Transakcija tr = MySqlTransakcijaDao.Instance.Read(new Transakcija { TransakcijaID = Convert.ToInt32(transakcijeLVW.SelectedItems[0].Text.Split('.')[0]) })[0];
                     new TransakcijaFormular(aktivnost, tr, true).ShowDialog();
+                    projektiForma.prikaziDetaljeByTipAndId("a", aktivnost.AktivnostID);
                 }
             }
         }
 
         private void dodajTransakcijuBTN_Click(object sender, EventArgs e) {
             new TransakcijaFormular(aktivnost, null, false).ShowDialog();
+            projektiForma.prikaziDetaljeByTipAndId("a", aktivnost.AktivnostID);
         }
 
         private void obrisiTransakcijuBTN_Click(object sender, EventArgs e) {
@@ -89,6 +96,7 @@ namespace ProjectManagementSystem {
                 if (MySqlTransakcijaDao.Instance.Read(new Transakcija { TransakcijaID = Convert.ToInt32(transakcijeLVW.SelectedItems[0].Text.Split('.')[0]) }).Count > 0) {
                     Transakcija tr = MySqlTransakcijaDao.Instance.Read(new Transakcija { TransakcijaID = Convert.ToInt32(transakcijeLVW.SelectedItems[0].Text.Split('.')[0]) })[0];
                     MySqlTransakcijaDao.Instance.Delete(Convert.ToInt32(tr.TransakcijaID));
+                    projektiForma.prikaziDetaljeByTipAndId("a", aktivnost.AktivnostID);
                 }
             }
         }

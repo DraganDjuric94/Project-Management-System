@@ -40,11 +40,12 @@
             this.ucesniciLVW = new System.Windows.Forms.ListView();
             this.zadaciProcenatLVW = new System.Windows.Forms.ListView();
             this.prihodiRashodiLVW = new System.Windows.Forms.ListView();
+            this.zatvoriBTN = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // sacuvajKaoPdfBTN
             // 
-            this.sacuvajKaoPdfBTN.Location = new System.Drawing.Point(873, 583);
+            this.sacuvajKaoPdfBTN.Location = new System.Drawing.Point(792, 583);
             this.sacuvajKaoPdfBTN.Name = "sacuvajKaoPdfBTN";
             this.sacuvajKaoPdfBTN.Size = new System.Drawing.Size(107, 23);
             this.sacuvajKaoPdfBTN.TabIndex = 0;
@@ -198,11 +199,22 @@
             this.prihodiRashodiLVW.UseCompatibleStateImageBehavior = false;
             this.prihodiRashodiLVW.View = System.Windows.Forms.View.List;
             // 
+            // zatvoriBTN
+            // 
+            this.zatvoriBTN.Location = new System.Drawing.Point(905, 583);
+            this.zatvoriBTN.Name = "zatvoriBTN";
+            this.zatvoriBTN.Size = new System.Drawing.Size(75, 23);
+            this.zatvoriBTN.TabIndex = 18;
+            this.zatvoriBTN.Text = "Zatvori";
+            this.zatvoriBTN.UseVisualStyleBackColor = true;
+            this.zatvoriBTN.Click += new System.EventHandler(this.zatvoriBTN_Click);
+            // 
             // IzvjestajForma
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(992, 618);
+            this.Controls.Add(this.zatvoriBTN);
             this.Controls.Add(this.prihodiRashodiLVW);
             this.Controls.Add(this.zadaciProcenatLVW);
             this.Controls.Add(this.ucesniciLVW);
@@ -248,5 +260,6 @@
         private System.Windows.Forms.ListView ucesniciLVW;
         private System.Windows.Forms.ListView zadaciProcenatLVW;
         private System.Windows.Forms.ListView prihodiRashodiLVW;
+        private System.Windows.Forms.Button zatvoriBTN;
     }
 }

@@ -97,6 +97,7 @@
             this.ucesnikSatLVW.Size = new System.Drawing.Size(305, 132);
             this.ucesnikSatLVW.TabIndex = 8;
             this.ucesnikSatLVW.UseCompatibleStateImageBehavior = false;
+            this.ucesnikSatLVW.View = System.Windows.Forms.View.List;
             // 
             // opisTBX
             // 
@@ -114,6 +115,7 @@
             this.transakcijeLVW.Size = new System.Drawing.Size(236, 178);
             this.transakcijeLVW.TabIndex = 10;
             this.transakcijeLVW.UseCompatibleStateImageBehavior = false;
+            this.transakcijeLVW.View = System.Windows.Forms.View.List;
             // 
             // dokumentiLVW
             // 
@@ -122,6 +124,7 @@
             this.dokumentiLVW.Size = new System.Drawing.Size(239, 207);
             this.dokumentiLVW.TabIndex = 12;
             this.dokumentiLVW.UseCompatibleStateImageBehavior = false;
+            this.dokumentiLVW.View = System.Windows.Forms.View.List;
             this.dokumentiLVW.SelectedIndexChanged += new System.EventHandler(this.dokumentiLVW_SelectedIndexChanged);
             // 
             // dokumentiGBX
@@ -155,6 +158,7 @@
             this.detaljiTransakcijeBTN.TabIndex = 11;
             this.detaljiTransakcijeBTN.Text = "Detalji transakcije";
             this.detaljiTransakcijeBTN.UseVisualStyleBackColor = true;
+            this.detaljiTransakcijeBTN.Click += new System.EventHandler(this.detaljiTransakcijeBTN_Click);
             // 
             // zavrsenaAktivnostStatusLBL
             // 

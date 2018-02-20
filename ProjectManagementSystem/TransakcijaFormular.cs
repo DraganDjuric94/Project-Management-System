@@ -33,12 +33,12 @@ namespace ProjectManagementSystem {
                 }
                 iznosTBX.Text = Convert.ToDecimal(tr.Iznos).ToString();
                 datumTransakcijeDTP.Value = tr.DatumVrijeme.Value;
-            } else { }
-
+            } else { }        
         }
 
         private void sacuvajBTN_Click(object sender, EventArgs e) {
             if (validniPodaci()) {
+                sacuvajBTN.Enabled = false;
                 transakcija.Opis = opisTBX.Text;
                 transakcija.DatumVrijeme = datumTransakcijeDTP.Value;
                 transakcija.Iznos = Convert.ToDecimal(iznosTBX.Text);

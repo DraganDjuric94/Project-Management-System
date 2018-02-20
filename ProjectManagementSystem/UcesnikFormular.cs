@@ -17,6 +17,8 @@ namespace ProjectManagementSystem
 	{
 
 		public Int32? UcesnikIDKontrolni { get; set; }
+        private bool edit = false;
+        private Ucesnik uc = new Ucesnik();
 
 		public UčesnikFormular()
 		{
@@ -27,6 +29,7 @@ namespace ProjectManagementSystem
 		private void dodatiBTN_Click(object sender, EventArgs e)
 		{
             if (validniPodaci()) {
+                dodatiBTN.Enabled = false;
                 if (korisnickoImeKorektnoLBL.Text.Equals("korektno") && UcesnikIDKontrolni == 0) {
                     List<Uloga> uloga = MySqlUlogaDao.Instance.Read(new Uloga { Naziv = nazivUlogeCB.Text });
                     HashAlgorithm sha256 = new SHA256CryptoServiceProvider();
@@ -65,8 +68,8 @@ namespace ProjectManagementSystem
 
 		public void korisnickoImeTXT_TextChanged(object sender, EventArgs e)
 		{
-			List<Ucesnik> ucesnici = MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = korisnickoImeTXT.Text});
-			if (ucesnici.Count() == 0)
+			List<Ucesnik> ucesnici = MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = korisnickoImeTXT.Text, Aktivan = true});
+			if (ucesnici.Count() == 0 || (edit && korisnickoImeTXT.Text.Equals(uc.KorisnickoIme)))
 			{
 				korisnickoImeKorektnoLBL.Text = "korektno";
 			}
@@ -78,8 +81,10 @@ namespace ProjectManagementSystem
 
 		public void SetValues(Int32 IDUcesnik)
 		{
-			List<Ucesnik> ucesnici = MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = IDUcesnik });
+			List<Ucesnik> ucesnici = MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = IDUcesnik , Aktivan = true});
             if (ucesnici.Count > 0) {
+                edit = true;
+                uc = ucesnici[0];
                 imeTXT.Text = ucesnici[0].Ime;
                 prezimeTXT.Text = ucesnici[0].Prezime;
                 korisnickoImeTXT.Text = ucesnici[0].KorisnickoIme;
@@ -103,7 +108,7 @@ namespace ProjectManagementSystem
 		}
 
         private bool validniPodaci() {
-            if (!imeTXT.Text.Equals("") && !prezimeTXT.Text.Equals("") && !korisnickoImeTXT.Text.Equals("") && !lozinkaTXT.Text.Equals("") && !korisnickoImeTXT.Text.Equals("") && !jmbgTXT.Text.Equals("") && jmbgTXT.TextLength == 13 && nazivUlogeCB.SelectedItem != null)
+            if (!imeTXT.Text.Equals("") && !prezimeTXT.Text.Equals("") && !korisnickoImeTXT.Text.Equals("") && !lozinkaTXT.Text.Equals("") && !korisnickoImeTXT.Text.Equals("") && !jmbgTXT.Text.Equals("") && jmbgTXT.Text.Length == 13 && nazivUlogeCB.SelectedItem != null)
                 return true;
             return false;
         }

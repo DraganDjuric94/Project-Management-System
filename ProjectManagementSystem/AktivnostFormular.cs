@@ -72,6 +72,7 @@ namespace ProjectManagementSystem
 
         private void sacuvajBTN_Click(object sender, EventArgs e) {
             if (validniPodaci()) {
+                sacuvajBTN.Enabled = false;
                 aktivnost.Naziv = nazivTextBox.Text;
                 aktivnost.UcesniciSaBrojemUtrosenihSati = Svi;
                 aktivnost.CjelinaID = cid;

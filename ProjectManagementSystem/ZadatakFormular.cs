@@ -52,8 +52,9 @@ namespace ProjectManagementSystem
                 }
                 if (nadcjelinaID == null) {
                     if (MySqlProjekatDao.Instance.Read(new Projekat { ProjekatID = cj.ProjekatID, Aktivan = true }).Count > 0) {
-                        foreach (Ucesnik u in MySqlProjekatDao.Instance.Read(new Projekat { ProjekatID = cj.ProjekatID, Aktivan = true })[0].UcesniciNaProjektu.Keys) {
-                            if (!cj.Ucesnici.Contains(u)) {
+                        Projekat proj = MySqlProjekatDao.Instance.Read(new Projekat { ProjekatID = cj.ProjekatID, Aktivan = true })[0];
+                        foreach (Ucesnik u in proj.UcesniciNaProjektu.Keys) {
+                            if (!cj.Ucesnici.Contains(u) && !proj.UcesniciNaProjektu[u].Naziv.Equals("sef")) {
                                 dostupniUcesniciListBox.Items.Add(u.Ime + " " + u.Prezime + " \"" + u.KorisnickoIme + "\"");
                             }
                         }
@@ -72,8 +73,11 @@ namespace ProjectManagementSystem
             } else {
                 if (nadcjelinaID == null) {
                     if (MySqlProjekatDao.Instance.Read(new Projekat { ProjekatID = projekatID, Aktivan = true }).Count > 0) {
-                        foreach (Ucesnik u in MySqlProjekatDao.Instance.Read(new Projekat { ProjekatID = projekatID, Aktivan = true })[0].UcesniciNaProjektu.Keys) {
-                            dostupniUcesniciListBox.Items.Add(u.Ime + " " + u.Prezime + " \"" + u.KorisnickoIme + "\"");
+                        Projekat proj = MySqlProjekatDao.Instance.Read(new Projekat { ProjekatID = projekatID, Aktivan = true })[0];
+                        foreach (Ucesnik u in proj.UcesniciNaProjektu.Keys) {
+                            if (!proj.UcesniciNaProjektu[u].Naziv.Equals("sef")) {
+                                dostupniUcesniciListBox.Items.Add(u.Ime + " " + u.Prezime + " \"" + u.KorisnickoIme + "\"");
+                            }
                         }
                     }
                 } else {
@@ -112,6 +116,7 @@ namespace ProjectManagementSystem
 
         private void sacuvajBTN_Click(object sender, EventArgs e) {
             if (validanUnos()) {
+                sacuvajBTN.Enabled = false;
                 cjelina.Naziv = nazivTextBox.Text;
                 cjelina.ProcenatIzvrsenosti = Convert.ToInt32(procenatIzvrsenostiNUD.Value);
                 cjelina.BrojPotrebnihCovjekCasova = Convert.ToInt32(brojPotrebnihCovjekCasovaNumericUpDown.Value);

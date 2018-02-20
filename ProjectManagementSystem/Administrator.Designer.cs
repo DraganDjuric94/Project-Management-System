@@ -244,6 +244,7 @@
             this.Name = "Administrator";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administrator";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Administrator_FormClosed);
             this.administratorTC.ResumeLayout(false);
             this.ucesniciTP.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.korisniciDGW)).EndInit();

@@ -23,6 +23,7 @@ namespace ProjectManagementSystem
 		{
 			if (nazivKorektnoLBL.Text.Equals("korektno"))
 			{
+                dodatiBTN.Enabled = false;
 				Dictionary<Ucesnik, Uloga> ucesnici = new Dictionary<Ucesnik, Uloga>();
 				List<Ucesnik> ucesnik = MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = sefProjektaCB.Text });
 				List<Uloga> uloga = MySqlUlogaDao.Instance.Read(new Uloga { Naziv = "sef" });

@@ -51,6 +51,7 @@ namespace ProjectManagementSystem {
 
         private void sacuvajBTN_Click(object sender, EventArgs e) {
             if (validanUnos()) {
+                sacuvajBTN.Enabled = false;
                 if (edit) {
                     if (MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = Convert.ToInt32(af.Ucesnici.SelectedItems[0].Text.Split('.')[0]), Aktivan = true }).Count > 0) {
                         Ucesnik u = MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = Convert.ToInt32(af.Ucesnici.SelectedItems[0].Text.Split('.')[0]), Aktivan = true })[0];

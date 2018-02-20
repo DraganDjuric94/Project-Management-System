@@ -23,7 +23,7 @@ namespace ProjectManagementSystem {
             }
             foreach(Transakcija t in ak.Transakcije) {
                 char c = (t.PrihodRashod == true) ? '+' : '-';
-                transakcijeLVW.Items.Add(t.DatumVrijeme + "  " + c + t.Iznos);
+                transakcijeLVW.Items.Add(t.TransakcijaID + ". " +t.DatumVrijeme + "  " + c + t.Iznos);
             }
             List<Dokument> dokumenti = MySqlDokumentDao.Instance.Read(new Dokument { AktivnostID = ak.AktivnostID, Aktivan = true });
             foreach(Dokument d in dokumenti) {
@@ -41,6 +41,15 @@ namespace ProjectManagementSystem {
                     Ucesnik u = MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = d.UcesnikID, Aktivan = true })[0];
                     posljednjaIzmjenaLBL.Text = "Posljednja izmjena: \n" + d.DatumKreiranja.ToString() + "\n" + u.Ime + " " + u.Prezime;
                     napomenaDokumentLBL.Text = "Napomena> \n" + d.Napomena;
+                }
+            }
+        }
+
+        private void detaljiTransakcijeBTN_Click(object sender, EventArgs e) {
+            if (transakcijeLVW.SelectedItems.Count > 0) {
+                if (MySqlTransakcijaDao.Instance.Read(new Transakcija { TransakcijaID = Convert.ToInt32(transakcijeLVW.SelectedItems[0].Text.Split('.')[0]) }).Count > 0) {
+                    Transakcija tr = MySqlTransakcijaDao.Instance.Read(new Transakcija { TransakcijaID = Convert.ToInt32(transakcijeLVW.SelectedItems[0].Text.Split('.')[0]) })[0];
+                    new DetaljiTransakcije(tr).ShowDialog();
                 }
             }
         }

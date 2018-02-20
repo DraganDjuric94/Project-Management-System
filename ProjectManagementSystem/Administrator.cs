@@ -18,18 +18,35 @@ namespace ProjectManagementSystem
 		public Administrator()
 		{
 			InitializeComponent();
-		}
+            updateTables();
+            
+        }
+
+        private void updateTables() {
+            korisniciDGW.Rows.Clear();
+            List<Ucesnik> korisnici = MySqlUcesnikDao.Instance.Read(new Ucesnik());
+            foreach (Ucesnik u in korisnici) {
+                korisniciDGW.Rows.Add(u.UcesnikID.ToString(), u.Ime, u.Prezime, u.KorisnickoIme, u.Lozinka, u.Jmbg, u.Aktivan, u.Uloga.UlogaID, u.Uloga.Naziv, u.Uloga.SoftverPoslovnaLogika, u.Uloga.Aktivna);
+            }
+            projektiDGW.Rows.Clear();
+            List<Projekat> projekti = MySqlProjekatDao.Instance.Read(new Projekat());
+            foreach (Projekat p in projekti) {
+                projektiDGW.Rows.Add(p.ProjekatID, p.Naziv, p.DatumKreiranja, p.Aktivan);
+            }
+        }
 
 		private void dodatiBTN_Click(object sender, EventArgs e)
 		{
 			if (administratorTC.SelectedTab == administratorTC.TabPages["ucesniciTP"])
 			{
 				new UčesnikFormular().ShowDialog();
-			}
+                updateTables();
+            }
 			else if (administratorTC.SelectedTab == administratorTC.TabPages["projektiTP"])
 			{
 				new ProjekatFormular().ShowDialog();
-			}
+                updateTables();
+            }
 		}
 
 		private void azuriratiBTN_Click(object sender, EventArgs e)
@@ -37,7 +54,8 @@ namespace ProjectManagementSystem
 			if (korisniciDGW.SelectedRows.Count == 1)
 			{
 				new UčesnikFormular().SetValues(Convert.ToInt32(korisniciDGW.SelectedCells[0].Value.ToString()));
-			}
+                updateTables();
+            }
 			else
 			{
 				MessageBox.Show("Morate selektovati učesnika", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -53,6 +71,7 @@ namespace ProjectManagementSystem
                     if (korisniciDGW.SelectedRows.Count == 1) {
                         MySqlUcesnikDao.Instance.Delete(Convert.ToInt32(korisniciDGW.SelectedCells[0].Value.ToString()));
                         MessageBox.Show("Izabrani korisnik je uspješno izbrisan", "Obavještenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        updateTables();
                     } else {
                         MessageBox.Show("Morate selektovati učesnika", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -60,6 +79,7 @@ namespace ProjectManagementSystem
                     if (projektiDGW.SelectedRows.Count == 1) {
                         MySqlProjekatDao.Instance.Delete(Convert.ToInt32(projektiDGW.SelectedCells[0].Value.ToString()));
                         MessageBox.Show("Izabrani projekat je uspješno izbrisan", "Obavještenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        updateTables();
                     } else {
                         MessageBox.Show("Morate selektovati projekat", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -94,5 +114,19 @@ namespace ProjectManagementSystem
 				}
 			}
 		}
+
+        private void Administrator_FormClosed(object sender, FormClosedEventArgs e) {
+            bool postojiLogin = false;
+            foreach (Form f in Application.OpenForms) {
+                if (f.GetType() == typeof(Login)) {
+                    postojiLogin = true;
+                    f.Show();
+                    break;
+                }
+            }
+            if (!postojiLogin) {
+                Application.Exit();
+            }
+        }
     }
 }

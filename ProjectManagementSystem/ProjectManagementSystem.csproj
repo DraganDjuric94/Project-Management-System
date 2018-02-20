@@ -92,6 +92,12 @@
     <Compile Include="dao\TransakcijaDao.cs" />
     <Compile Include="dao\UcesnikDao.cs" />
     <Compile Include="dao\UlogaDao.cs" />
+    <Compile Include="DetaljiTransakcije.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetaljiTransakcije.Designer.cs">
+      <DependentUpon>DetaljiTransakcije.cs</DependentUpon>
+    </Compile>
     <Compile Include="DodajUcesnikaForma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -212,6 +218,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BrisanjeForma.resx">
       <DependentUpon>BrisanjeForma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetaljiTransakcije.resx">
+      <DependentUpon>DetaljiTransakcije.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DodajUcesnikaForma.resx">
       <DependentUpon>DodajUcesnikaForma.cs</DependentUpon>

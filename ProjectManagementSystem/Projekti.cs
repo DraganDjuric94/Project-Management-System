@@ -15,9 +15,11 @@ namespace ProjectManagementSystem {
     public partial class Projekti : Form {
 
         public Ucesnik Ucesnik { get; set; }
+        private bool pronadjeno;
 
         public Projekti(Ucesnik uc) {
             Ucesnik = uc;
+            pronadjeno = false;
             InitializeComponent();
         }
 
@@ -58,17 +60,26 @@ namespace ProjectManagementSystem {
         private void azrirajTSB_Click(object sender, EventArgs e) {
             TreeNode selected = projektiTVW.SelectedNode;
             if (selected.Name.StartsWith("p")) {
-                if(MySqlProjekatDao.Instance.Read(new Projekat { ProjekatID = Convert.ToInt32(selected.Name.Split('#')[1]), Aktivan = true }).Count > 0)
-                new SefProjekatFormular(MySqlProjekatDao.Instance.Read(new Projekat { ProjekatID = Convert.ToInt32(selected.Name.Split('#')[1]), Aktivan = true })[0]).ShowDialog();
+                if (MySqlProjekatDao.Instance.Read(new Projekat { ProjekatID = Convert.ToInt32(selected.Name.Split('#')[1]), Aktivan = true }).Count > 0) {
+                    Projekat p = MySqlProjekatDao.Instance.Read(new Projekat { ProjekatID = Convert.ToInt32(selected.Name.Split('#')[1]), Aktivan = true })[0];
+                    new SefProjekatFormular(p).ShowDialog();
+                    updateTreeView();
+                    prikaziDetaljeByTipAndId("p", p.ProjekatID);
+                }
             } else if (selected.Name.StartsWith("c")) {
                 if (MySqlCjelinaDao.Instance.Read(new Cjelina { CjelinaID = Convert.ToInt32(selected.Name.Split('#')[1]), Aktivna = true }).Count > 0) {
                     Cjelina ova = MySqlCjelinaDao.Instance.Read(new Cjelina { CjelinaID = Convert.ToInt32(selected.Name.Split('#')[1]), Aktivna = true })[0];
                     new ZadatakFormular(ova, Convert.ToInt32(ova.ProjekatID), ova.CjelinaRoditeljID, true).ShowDialog();
+                    updateTreeView();
+                    prikaziDetaljeByTipAndId("c", ova.CjelinaID);
+
                 }
             } else if (selected.Name.StartsWith("a")) {
                 if (MySqlAktivnostDao.Instance.Read(new Aktivnost { AktivnostID = Convert.ToInt32(selected.Name.Split('#')[1]), Aktivna = true }).Count > 0) {
                     Aktivnost ova = MySqlAktivnostDao.Instance.Read(new Aktivnost { AktivnostID = Convert.ToInt32(selected.Name.Split('#')[1]), Aktivna = true })[0];
                     new AktivnostFormular(ova, Convert.ToInt32(ova.CjelinaID), true).ShowDialog();
+                    updateTreeView();
+                    prikaziDetaljeByTipAndId("a", ova.AktivnostID);
                 }
             }
         }
@@ -85,14 +96,27 @@ namespace ProjectManagementSystem {
                         int? ncid = c.CjelinaRoditeljID;
                         MySqlCjelinaDao.Instance.Delete(Convert.ToInt32(c.CjelinaID));
                         updateNadcjeline(ncid);
+                        updateTreeView();
+                        if(projektiTVW.Nodes.Count > 0) {
+                            projektiTVW.SelectedNode = projektiTVW.Nodes[0];
+                            projektiTVW.Select();
+                        } else {
+                            detaljiPNL.Controls.Clear();
+                        }
                     }
                 } else if (selected.Name.StartsWith("a")) {
-                    MySqlAktivnostDao.Instance.Delete(Convert.ToInt32(selected.Name.Split('#')[1]));
                     if (MySqlAktivnostDao.Instance.Read(new Aktivnost { Aktivna = true, AktivnostID = Convert.ToInt32(selected.Name.Split('#')[1]) }).Count > 0) {
                         Aktivnost a = MySqlAktivnostDao.Instance.Read(new Aktivnost { Aktivna = true, AktivnostID = Convert.ToInt32(selected.Name.Split('#')[1]) })[0];
                         int? ncid = a.CjelinaID;
-                        MySqlCjelinaDao.Instance.Delete(Convert.ToInt32(a.AktivnostID));
+                        MySqlAktivnostDao.Instance.Delete(Convert.ToInt32(a.AktivnostID));
                         updateNadcjeline(ncid);
+                        updateTreeView();
+                        if(projektiTVW.Nodes.Count > 0) {
+                            projektiTVW.SelectedNode = projektiTVW.Nodes[0];
+                            projektiTVW.Select();
+                        } else {
+                            detaljiPNL.Controls.Clear();
+                        }
                     }
                 }
             } else {
@@ -102,12 +126,18 @@ namespace ProjectManagementSystem {
         private void dodajZadatakTSB_Click(object sender, EventArgs e) {
             TreeNode selected = projektiTVW.SelectedNode;
             if (selected.Name.StartsWith("p")) {
-                if(MySqlProjekatDao.Instance.Read(new Projekat {ProjekatID = Convert.ToInt32(selected.Name.Split('#')[1]), Aktivan = true }).Count > 0)
-                new ZadatakFormular(null, Convert.ToInt32(selected.Name.Split('#')[1]), null,false).ShowDialog();
+                if (MySqlProjekatDao.Instance.Read(new Projekat { ProjekatID = Convert.ToInt32(selected.Name.Split('#')[1]), Aktivan = true }).Count > 0) {
+                    int pid = Convert.ToInt32(selected.Name.Split('#')[1]);
+                    new ZadatakFormular(null, Convert.ToInt32(selected.Name.Split('#')[1]), null, false).ShowDialog();
+                    updateTreeView();
+                    prikaziDetaljeByTipAndId("p", pid);
+                }
             } else if (selected.Name.StartsWith("c")) {
                 if (MySqlCjelinaDao.Instance.Read(new Cjelina { CjelinaID = Convert.ToInt32(selected.Name.Split('#')[1]), Aktivna = true }).Count > 0) {
                     Cjelina cj = MySqlCjelinaDao.Instance.Read(new Cjelina { CjelinaID = Convert.ToInt32(selected.Name.Split('#')[1]), Aktivna = true })[0];
                     new ZadatakFormular(null, Convert.ToInt32(cj.ProjekatID), Convert.ToInt32(selected.Name.Split('#')[1]), false).ShowDialog();
+                    updateTreeView();
+                    prikaziDetaljeByTipAndId("c", cj.CjelinaID);
                 }
             } else if (selected.Name.StartsWith("a")) {
             }
@@ -117,8 +147,12 @@ namespace ProjectManagementSystem {
             TreeNode selected = projektiTVW.SelectedNode;
             if (selected.Name.StartsWith("p")) {
             } else if (selected.Name.StartsWith("c")) {
-                if (MySqlCjelinaDao.Instance.Read(new Cjelina { CjelinaID = Convert.ToInt32(selected.Name.Split('#')[1]), Aktivna = true }).Count > 0)
-                new AktivnostFormular(null, Convert.ToInt32(selected.Name.Split('#')[1]),false).ShowDialog();
+                if (MySqlCjelinaDao.Instance.Read(new Cjelina { CjelinaID = Convert.ToInt32(selected.Name.Split('#')[1]), Aktivna = true }).Count > 0) {
+                    int cid = Convert.ToInt32(selected.Name.Split('#')[1]);
+                    new AktivnostFormular(null, Convert.ToInt32(selected.Name.Split('#')[1]), false).ShowDialog();
+                    updateTreeView();
+                    prikaziDetaljeByTipAndId("c", cid);
+                }
             } else if (selected.Name.StartsWith("a")) {
             }
         }
@@ -127,7 +161,10 @@ namespace ProjectManagementSystem {
             TreeNode selected = projektiTVW.SelectedNode;
             if (MySqlProjekatDao.Instance.Read(new Projekat { ProjekatID = Convert.ToInt32(selected.Name.Split('#')[1]), Aktivan = true }).Count > 0) {
                 if (selected.Name.StartsWith("p")) {
-                    new IzvjestajForma(MySqlProjekatDao.Instance.Read(new Projekat { ProjekatID = Convert.ToInt32(selected.Name.Split('#')[1]), Aktivan = true })[0]).ShowDialog();
+                    Projekat p = MySqlProjekatDao.Instance.Read(new Projekat { ProjekatID = Convert.ToInt32(selected.Name.Split('#')[1]), Aktivan = true })[0];
+                    new IzvjestajForma(p).ShowDialog();
+                    updateTreeView();
+                    prikaziDetaljeByTipAndId("p", p.ProjekatID);
                 } else if (selected.Name.StartsWith("c")) {
                 } else if (selected.Name.StartsWith("a")) {
                 }
@@ -137,12 +174,51 @@ namespace ProjectManagementSystem {
         private void dodajUcesnikaTSB_Click(object sender, EventArgs e) {
             TreeNode selected = projektiTVW.SelectedNode;
             if (selected.Name.StartsWith("p")) {
-                if(MySqlProjekatDao.Instance.Read(new Projekat { ProjekatID = Convert.ToInt32(selected.Name.Split('#')[1]), Aktivan = true }).Count > 0)
-                new DodajUcesnikaForma(MySqlProjekatDao.Instance.Read(new Projekat { ProjekatID = Convert.ToInt32(selected.Name.Split('#')[1]) })[0], null).ShowDialog();
+                if (MySqlProjekatDao.Instance.Read(new Projekat { ProjekatID = Convert.ToInt32(selected.Name.Split('#')[1]), Aktivan = true }).Count > 0) {
+                    Projekat p = MySqlProjekatDao.Instance.Read(new Projekat { ProjekatID = Convert.ToInt32(selected.Name.Split('#')[1]) })[0];
+                    new DodajUcesnikaForma(p, null).ShowDialog();
+                    updateTreeView();
+                    prikaziDetaljeByTipAndId("p", p.ProjekatID);
+
+                }
             } else if (selected.Name.StartsWith("c")) {
-                if(MySqlCjelinaDao.Instance.Read(new Cjelina { CjelinaID = Convert.ToInt32(selected.Name.Split('#')[1]), Aktivna = true }).Count > 0)
-                new DodajUcesnikaForma(null, MySqlCjelinaDao.Instance.Read(new Cjelina { CjelinaID = Convert.ToInt32(selected.Name.Split('#')[1]) })[0]).ShowDialog();
+                if (MySqlCjelinaDao.Instance.Read(new Cjelina { CjelinaID = Convert.ToInt32(selected.Name.Split('#')[1]), Aktivna = true }).Count > 0) {
+                    Cjelina c = MySqlCjelinaDao.Instance.Read(new Cjelina { CjelinaID = Convert.ToInt32(selected.Name.Split('#')[1]) })[0];
+                    new DodajUcesnikaForma(null, c).ShowDialog();
+                    updateTreeView();
+                    prikaziDetaljeByTipAndId("c", c.CjelinaID);
+                }
             } else if (selected.Name.StartsWith("a")) {
+            }
+        }
+
+        public void prikaziDetaljeByTipAndId(string tip, int? id) {
+            if (id != null) {
+                pretraziStabloByTipAndId(null, tip, id);
+                if (this.pronadjeno == true) {
+                    detaljiPNL.Controls.Clear();
+                    prikaziDetalje();
+                } else {
+                    detaljiPNL.Controls.Clear();
+                }
+            }
+        }
+
+        private void pretraziStabloByTipAndId(TreeNode node ,string tip,int? id) {
+            if (node == null) {
+                this.pronadjeno = false;
+                foreach (TreeNode t in projektiTVW.Nodes) {
+                    pretraziStabloByTipAndId(t, tip, id);
+                }
+            } else {
+                if (node.Name.StartsWith(tip) && Convert.ToInt32(node.Name.Split('#')[1]) == id) {
+                    projektiTVW.SelectedNode = node;
+                    this.pronadjeno = true;
+                    return;
+                }
+                foreach (TreeNode t in node.Nodes) {
+                    pretraziStabloByTipAndId(t, tip, id);
+                }
             }
         }
 
@@ -332,7 +408,7 @@ namespace ProjectManagementSystem {
                             dodajZadatakTSB.Enabled = false;
                             prikaziIzvjestajTSB.Enabled = false;
                             dodajUcesnikaTSB.Enabled = false;
-                            detaljiPNL.Controls.Add(new SefUcesnikAktivnostDetalji(izabranaAktivnost, Ucesnik));
+                            detaljiPNL.Controls.Add(new SefUcesnikAktivnostDetalji(izabranaAktivnost, Ucesnik, this));
                         } else if (ulogaUcesnika.Equals("ucesnik")) {
                             detaljiPNL.Controls.Clear();
                             azrirajTSB.Enabled = true;
@@ -341,7 +417,7 @@ namespace ProjectManagementSystem {
                             dodajZadatakTSB.Enabled = false;
                             prikaziIzvjestajTSB.Enabled = false;
                             dodajUcesnikaTSB.Enabled = false;
-                            detaljiPNL.Controls.Add(new SefUcesnikAktivnostDetalji(izabranaAktivnost, Ucesnik));
+                            detaljiPNL.Controls.Add(new SefUcesnikAktivnostDetalji(izabranaAktivnost, Ucesnik, this));
                         } else if (ulogaUcesnika.Equals("nadzor")) {
                             detaljiPNL.Controls.Clear();
                             azrirajTSB.Enabled = false;
@@ -357,10 +433,19 @@ namespace ProjectManagementSystem {
             }
         }
 
-        private void a_Click(object sender, EventArgs e) {
-            if(projektiTVW.SelectedNode != null) {
-                prikaziDetalje();   
+        private void Projekti_FormClosed(object sender, FormClosedEventArgs e) {
+            bool postojiLogin = false;
+            foreach(Form f in Application.OpenForms) {
+                if(f.GetType() == typeof(Login)) {
+                    postojiLogin = true;
+                    f.Show();
+                    break;
+                }
             }
+            if (!postojiLogin) {
+                Application.Exit();
+            }
+            
         }
     }
 }
