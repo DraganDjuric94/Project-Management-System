@@ -44,7 +44,7 @@
             this.rashodRBT.Location = new System.Drawing.Point(17, 64);
             this.rashodRBT.Name = "rashodRBT";
             this.rashodRBT.Size = new System.Drawing.Size(62, 17);
-            this.rashodRBT.TabIndex = 0;
+            this.rashodRBT.TabIndex = 1;
             this.rashodRBT.TabStop = true;
             this.rashodRBT.Text = "Rashod";
             this.rashodRBT.UseVisualStyleBackColor = true;
@@ -56,7 +56,7 @@
             this.prihodRBT.Location = new System.Drawing.Point(17, 30);
             this.prihodRBT.Name = "prihodRBT";
             this.prihodRBT.Size = new System.Drawing.Size(55, 17);
-            this.prihodRBT.TabIndex = 1;
+            this.prihodRBT.TabIndex = 0;
             this.prihodRBT.TabStop = true;
             this.prihodRBT.Text = "Prihod";
             this.prihodRBT.UseVisualStyleBackColor = true;
@@ -68,7 +68,7 @@
             this.groupBox1.Location = new System.Drawing.Point(15, 274);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 100);
-            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Vrsta";
             // 
@@ -78,7 +78,7 @@
             this.label1.Location = new System.Drawing.Point(12, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(31, 13);
-            this.label1.TabIndex = 3;
+            this.label1.TabIndex = 5;
             this.label1.Text = "Opis:";
             // 
             // label2
@@ -87,7 +87,7 @@
             this.label2.Location = new System.Drawing.Point(12, 179);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 13);
-            this.label2.TabIndex = 4;
+            this.label2.TabIndex = 6;
             this.label2.Text = "Datum:";
             // 
             // label3
@@ -96,7 +96,7 @@
             this.label3.Location = new System.Drawing.Point(12, 232);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 5;
+            this.label3.TabIndex = 7;
             this.label3.Text = "Iznos:";
             // 
             // opisTBX
@@ -105,21 +105,21 @@
             this.opisTBX.Multiline = true;
             this.opisTBX.Name = "opisTBX";
             this.opisTBX.Size = new System.Drawing.Size(474, 117);
-            this.opisTBX.TabIndex = 6;
+            this.opisTBX.TabIndex = 0;
             // 
             // datumTransakcijeDTP
             // 
             this.datumTransakcijeDTP.Location = new System.Drawing.Point(59, 179);
             this.datumTransakcijeDTP.Name = "datumTransakcijeDTP";
             this.datumTransakcijeDTP.Size = new System.Drawing.Size(200, 20);
-            this.datumTransakcijeDTP.TabIndex = 7;
+            this.datumTransakcijeDTP.TabIndex = 1;
             // 
             // sacuvajBTN
             // 
             this.sacuvajBTN.Location = new System.Drawing.Point(414, 431);
             this.sacuvajBTN.Name = "sacuvajBTN";
             this.sacuvajBTN.Size = new System.Drawing.Size(75, 23);
-            this.sacuvajBTN.TabIndex = 9;
+            this.sacuvajBTN.TabIndex = 4;
             this.sacuvajBTN.Text = "Sačuvaj";
             this.sacuvajBTN.UseVisualStyleBackColor = true;
             this.sacuvajBTN.Click += new System.EventHandler(this.sacuvajBTN_Click);
@@ -140,7 +140,7 @@
             0});
             this.iznosTBX.Name = "iznosTBX";
             this.iznosTBX.Size = new System.Drawing.Size(200, 20);
-            this.iznosTBX.TabIndex = 10;
+            this.iznosTBX.TabIndex = 2;
             // 
             // errorLBL
             // 
@@ -150,7 +150,7 @@
             this.errorLBL.Location = new System.Drawing.Point(309, 400);
             this.errorLBL.Name = "errorLBL";
             this.errorLBL.Size = new System.Drawing.Size(180, 17);
-            this.errorLBL.TabIndex = 11;
+            this.errorLBL.TabIndex = 8;
             this.errorLBL.Text = "Unešeni podaci nisu validni";
             this.errorLBL.Visible = false;
             // 
@@ -168,7 +168,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "TransakcijaFormular";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Formular za transakciju";

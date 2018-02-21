@@ -34,6 +34,7 @@
             this.nazivKorektnoLBL = new System.Windows.Forms.Label();
             this.sefProjektaLBL = new System.Windows.Forms.Label();
             this.sefProjektaCB = new System.Windows.Forms.ComboBox();
+            this.errorLBL = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // nazivLBL
@@ -42,7 +43,7 @@
             this.nazivLBL.Location = new System.Drawing.Point(12, 27);
             this.nazivLBL.Name = "nazivLBL";
             this.nazivLBL.Size = new System.Drawing.Size(37, 13);
-            this.nazivLBL.TabIndex = 0;
+            this.nazivLBL.TabIndex = 3;
             this.nazivLBL.Text = "Naziv:";
             // 
             // nazivTXT
@@ -50,7 +51,7 @@
             this.nazivTXT.Location = new System.Drawing.Point(102, 24);
             this.nazivTXT.Name = "nazivTXT";
             this.nazivTXT.Size = new System.Drawing.Size(238, 20);
-            this.nazivTXT.TabIndex = 3;
+            this.nazivTXT.TabIndex = 0;
             this.nazivTXT.TextChanged += new System.EventHandler(this.nazivTXT_TextChanged);
             // 
             // dodatiBTN
@@ -58,7 +59,7 @@
             this.dodatiBTN.Location = new System.Drawing.Point(265, 139);
             this.dodatiBTN.Name = "dodatiBTN";
             this.dodatiBTN.Size = new System.Drawing.Size(75, 23);
-            this.dodatiBTN.TabIndex = 6;
+            this.dodatiBTN.TabIndex = 2;
             this.dodatiBTN.Text = "Dodaj";
             this.dodatiBTN.UseVisualStyleBackColor = true;
             this.dodatiBTN.Click += new System.EventHandler(this.dodatiBTN_Click);
@@ -66,10 +67,10 @@
             // nazivKorektnoLBL
             // 
             this.nazivKorektnoLBL.AutoSize = true;
-            this.nazivKorektnoLBL.Location = new System.Drawing.Point(111, 53);
+            this.nazivKorektnoLBL.Location = new System.Drawing.Point(279, 47);
             this.nazivKorektnoLBL.Name = "nazivKorektnoLBL";
             this.nazivKorektnoLBL.Size = new System.Drawing.Size(0, 13);
-            this.nazivKorektnoLBL.TabIndex = 7;
+            this.nazivKorektnoLBL.TabIndex = 5;
             // 
             // sefProjektaLBL
             // 
@@ -77,29 +78,45 @@
             this.sefProjektaLBL.Location = new System.Drawing.Point(12, 75);
             this.sefProjektaLBL.Name = "sefProjektaLBL";
             this.sefProjektaLBL.Size = new System.Drawing.Size(67, 13);
-            this.sefProjektaLBL.TabIndex = 8;
+            this.sefProjektaLBL.TabIndex = 4;
             this.sefProjektaLBL.Text = "Šef projekta:";
             // 
             // sefProjektaCB
             // 
+            this.sefProjektaCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.sefProjektaCB.FormattingEnabled = true;
             this.sefProjektaCB.Location = new System.Drawing.Point(102, 72);
             this.sefProjektaCB.Name = "sefProjektaCB";
             this.sefProjektaCB.Size = new System.Drawing.Size(238, 21);
-            this.sefProjektaCB.TabIndex = 9;
+            this.sefProjektaCB.TabIndex = 1;
             this.sefProjektaCB.MouseClick += new System.Windows.Forms.MouseEventHandler(this.sefProjektaCB_MouseClick);
+            // 
+            // errorLBL
+            // 
+            this.errorLBL.AutoSize = true;
+            this.errorLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.errorLBL.Location = new System.Drawing.Point(160, 108);
+            this.errorLBL.Name = "errorLBL";
+            this.errorLBL.Size = new System.Drawing.Size(180, 17);
+            this.errorLBL.TabIndex = 6;
+            this.errorLBL.Text = "Unešeni podaci nisu validni";
+            this.errorLBL.Visible = false;
             // 
             // ProjekatFormular
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(352, 169);
+            this.Controls.Add(this.errorLBL);
             this.Controls.Add(this.sefProjektaCB);
             this.Controls.Add(this.sefProjektaLBL);
             this.Controls.Add(this.nazivKorektnoLBL);
             this.Controls.Add(this.dodatiBTN);
             this.Controls.Add(this.nazivTXT);
             this.Controls.Add(this.nazivLBL);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ProjekatFormular";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -117,5 +134,6 @@
 		private System.Windows.Forms.Label nazivKorektnoLBL;
 		private System.Windows.Forms.Label sefProjektaLBL;
 		private System.Windows.Forms.ComboBox sefProjektaCB;
-	}
+        private System.Windows.Forms.Label errorLBL;
+    }
 }

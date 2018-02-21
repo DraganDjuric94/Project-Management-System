@@ -43,7 +43,7 @@
             this.label1.Location = new System.Drawing.Point(12, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 13);
-            this.label1.TabIndex = 1;
+            this.label1.TabIndex = 2;
             this.label1.Text = "Učesnik:";
             // 
             // dodajBTN
@@ -51,7 +51,7 @@
             this.dodajBTN.Location = new System.Drawing.Point(233, 94);
             this.dodajBTN.Name = "dodajBTN";
             this.dodajBTN.Size = new System.Drawing.Size(75, 23);
-            this.dodajBTN.TabIndex = 2;
+            this.dodajBTN.TabIndex = 1;
             this.dodajBTN.Text = "Dodaj";
             this.dodajBTN.UseVisualStyleBackColor = true;
             this.dodajBTN.Click += new System.EventHandler(this.dodajBTN_Click);
@@ -77,7 +77,9 @@
             this.Controls.Add(this.dodajBTN);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.moguciUcesniciCBX);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "DodajUcesnikaForma";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dodaj učesnika";

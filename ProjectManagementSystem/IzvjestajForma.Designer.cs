@@ -48,7 +48,7 @@
             this.sacuvajKaoPdfBTN.Location = new System.Drawing.Point(792, 583);
             this.sacuvajKaoPdfBTN.Name = "sacuvajKaoPdfBTN";
             this.sacuvajKaoPdfBTN.Size = new System.Drawing.Size(107, 23);
-            this.sacuvajKaoPdfBTN.TabIndex = 0;
+            this.sacuvajKaoPdfBTN.TabIndex = 3;
             this.sacuvajKaoPdfBTN.Text = "Sačuvaj kao PDF";
             this.sacuvajKaoPdfBTN.UseVisualStyleBackColor = true;
             this.sacuvajKaoPdfBTN.Click += new System.EventHandler(this.sacuvajKaoPdfBTN_Click);
@@ -60,7 +60,7 @@
             this.label1.Location = new System.Drawing.Point(23, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(112, 16);
-            this.label1.TabIndex = 1;
+            this.label1.TabIndex = 5;
             this.label1.Text = "Naziv projekta:";
             // 
             // label2
@@ -69,7 +69,7 @@
             this.label2.Location = new System.Drawing.Point(23, 359);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 13);
-            this.label2.TabIndex = 2;
+            this.label2.TabIndex = 15;
             this.label2.Text = "Prihodi/Rashodi:";
             // 
             // label3
@@ -78,7 +78,7 @@
             this.label3.Location = new System.Drawing.Point(23, 165);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 13);
-            this.label3.TabIndex = 3;
+            this.label3.TabIndex = 13;
             this.label3.Text = "Učesnici:";
             // 
             // label4
@@ -87,7 +87,7 @@
             this.label4.Location = new System.Drawing.Point(482, 165);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(206, 13);
-            this.label4.TabIndex = 4;
+            this.label4.TabIndex = 14;
             this.label4.Text = "Procenat završenosti zadataka u projektu:";
             // 
             // label5
@@ -96,7 +96,7 @@
             this.label5.Location = new System.Drawing.Point(23, 96);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(109, 13);
-            this.label5.TabIndex = 5;
+            this.label5.TabIndex = 9;
             this.label5.Text = "Procenat završenosti:";
             // 
             // label6
@@ -105,7 +105,7 @@
             this.label6.Location = new System.Drawing.Point(23, 65);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(67, 13);
-            this.label6.TabIndex = 6;
+            this.label6.TabIndex = 7;
             this.label6.Text = "Šef projekta:";
             // 
             // label7
@@ -114,7 +114,7 @@
             this.label7.Location = new System.Drawing.Point(337, 65);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(125, 13);
-            this.label7.TabIndex = 7;
+            this.label7.TabIndex = 11;
             this.label7.Text = "Datum kreiranja projekta:";
             // 
             // procenatIzvrsenostiLBL
@@ -123,7 +123,7 @@
             this.procenatIzvrsenostiLBL.Location = new System.Drawing.Point(129, 96);
             this.procenatIzvrsenostiLBL.Name = "procenatIzvrsenostiLBL";
             this.procenatIzvrsenostiLBL.Size = new System.Drawing.Size(78, 13);
-            this.procenatIzvrsenostiLBL.TabIndex = 9;
+            this.procenatIzvrsenostiLBL.TabIndex = 10;
             this.procenatIzvrsenostiLBL.Text = "Naziv projekta:";
             // 
             // datumKreiranjaLBL
@@ -132,7 +132,7 @@
             this.datumKreiranjaLBL.Location = new System.Drawing.Point(459, 65);
             this.datumKreiranjaLBL.Name = "datumKreiranjaLBL";
             this.datumKreiranjaLBL.Size = new System.Drawing.Size(78, 13);
-            this.datumKreiranjaLBL.TabIndex = 10;
+            this.datumKreiranjaLBL.TabIndex = 12;
             this.datumKreiranjaLBL.Text = "Naziv projekta:";
             // 
             // nazivProjektaLBL
@@ -142,7 +142,7 @@
             this.nazivProjektaLBL.Location = new System.Drawing.Point(129, 26);
             this.nazivProjektaLBL.Name = "nazivProjektaLBL";
             this.nazivProjektaLBL.Size = new System.Drawing.Size(112, 16);
-            this.nazivProjektaLBL.TabIndex = 11;
+            this.nazivProjektaLBL.TabIndex = 6;
             this.nazivProjektaLBL.Text = "Naziv projekta:";
             // 
             // sefProjektaLBL
@@ -151,7 +151,7 @@
             this.sefProjektaLBL.Location = new System.Drawing.Point(87, 65);
             this.sefProjektaLBL.Name = "sefProjektaLBL";
             this.sefProjektaLBL.Size = new System.Drawing.Size(67, 13);
-            this.sefProjektaLBL.TabIndex = 12;
+            this.sefProjektaLBL.TabIndex = 8;
             this.sefProjektaLBL.Text = "Šef projekta:";
             // 
             // label8
@@ -160,7 +160,7 @@
             this.label8.Location = new System.Drawing.Point(482, 359);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(109, 13);
-            this.label8.TabIndex = 13;
+            this.label8.TabIndex = 16;
             this.label8.Text = "Razlika u finansijama:";
             // 
             // razlikaFinansijskaLBL
@@ -169,7 +169,7 @@
             this.razlikaFinansijskaLBL.Location = new System.Drawing.Point(588, 359);
             this.razlikaFinansijskaLBL.Name = "razlikaFinansijskaLBL";
             this.razlikaFinansijskaLBL.Size = new System.Drawing.Size(109, 13);
-            this.razlikaFinansijskaLBL.TabIndex = 14;
+            this.razlikaFinansijskaLBL.TabIndex = 17;
             this.razlikaFinansijskaLBL.Text = "Razlika u finansijama:";
             // 
             // ucesniciLVW
@@ -177,7 +177,7 @@
             this.ucesniciLVW.Location = new System.Drawing.Point(26, 181);
             this.ucesniciLVW.Name = "ucesniciLVW";
             this.ucesniciLVW.Size = new System.Drawing.Size(394, 161);
-            this.ucesniciLVW.TabIndex = 15;
+            this.ucesniciLVW.TabIndex = 0;
             this.ucesniciLVW.UseCompatibleStateImageBehavior = false;
             this.ucesniciLVW.View = System.Windows.Forms.View.List;
             // 
@@ -186,7 +186,7 @@
             this.zadaciProcenatLVW.Location = new System.Drawing.Point(485, 181);
             this.zadaciProcenatLVW.Name = "zadaciProcenatLVW";
             this.zadaciProcenatLVW.Size = new System.Drawing.Size(387, 161);
-            this.zadaciProcenatLVW.TabIndex = 16;
+            this.zadaciProcenatLVW.TabIndex = 1;
             this.zadaciProcenatLVW.UseCompatibleStateImageBehavior = false;
             this.zadaciProcenatLVW.View = System.Windows.Forms.View.List;
             // 
@@ -195,7 +195,7 @@
             this.prihodiRashodiLVW.Location = new System.Drawing.Point(26, 386);
             this.prihodiRashodiLVW.Name = "prihodiRashodiLVW";
             this.prihodiRashodiLVW.Size = new System.Drawing.Size(394, 175);
-            this.prihodiRashodiLVW.TabIndex = 17;
+            this.prihodiRashodiLVW.TabIndex = 2;
             this.prihodiRashodiLVW.UseCompatibleStateImageBehavior = false;
             this.prihodiRashodiLVW.View = System.Windows.Forms.View.List;
             // 
@@ -204,7 +204,7 @@
             this.zatvoriBTN.Location = new System.Drawing.Point(905, 583);
             this.zatvoriBTN.Name = "zatvoriBTN";
             this.zatvoriBTN.Size = new System.Drawing.Size(75, 23);
-            this.zatvoriBTN.TabIndex = 18;
+            this.zatvoriBTN.TabIndex = 4;
             this.zatvoriBTN.Text = "Zatvori";
             this.zatvoriBTN.UseVisualStyleBackColor = true;
             this.zatvoriBTN.Click += new System.EventHandler(this.zatvoriBTN_Click);
@@ -232,7 +232,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.sacuvajKaoPdfBTN);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "IzvjestajForma";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Izvještaj";

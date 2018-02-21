@@ -45,7 +45,7 @@
             this.label1.Location = new System.Drawing.Point(13, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 13);
-            this.label1.TabIndex = 0;
+            this.label1.TabIndex = 7;
             this.label1.Text = "Naziv:";
             // 
             // label2
@@ -54,7 +54,7 @@
             this.label2.Location = new System.Drawing.Point(13, 68);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(51, 13);
-            this.label2.TabIndex = 1;
+            this.label2.TabIndex = 8;
             this.label2.Text = "Učesnici:";
             // 
             // dodajBTN
@@ -62,7 +62,7 @@
             this.dodajBTN.Location = new System.Drawing.Point(252, 166);
             this.dodajBTN.Name = "dodajBTN";
             this.dodajBTN.Size = new System.Drawing.Size(85, 23);
-            this.dodajBTN.TabIndex = 2;
+            this.dodajBTN.TabIndex = 3;
             this.dodajBTN.Text = ">>";
             this.dodajBTN.UseVisualStyleBackColor = true;
             this.dodajBTN.Click += new System.EventHandler(this.dodajBTN_Click);
@@ -72,7 +72,7 @@
             this.izbaciBTN.Location = new System.Drawing.Point(252, 195);
             this.izbaciBTN.Name = "izbaciBTN";
             this.izbaciBTN.Size = new System.Drawing.Size(85, 23);
-            this.izbaciBTN.TabIndex = 3;
+            this.izbaciBTN.TabIndex = 4;
             this.izbaciBTN.Text = "<<";
             this.izbaciBTN.UseVisualStyleBackColor = true;
             this.izbaciBTN.Click += new System.EventHandler(this.izbaciBTN_Click);
@@ -82,7 +82,7 @@
             this.uceniciZaDodatiLVW.Location = new System.Drawing.Point(16, 84);
             this.uceniciZaDodatiLVW.Name = "uceniciZaDodatiLVW";
             this.uceniciZaDodatiLVW.Size = new System.Drawing.Size(214, 189);
-            this.uceniciZaDodatiLVW.TabIndex = 4;
+            this.uceniciZaDodatiLVW.TabIndex = 1;
             this.uceniciZaDodatiLVW.UseCompatibleStateImageBehavior = false;
             this.uceniciZaDodatiLVW.View = System.Windows.Forms.View.List;
             // 
@@ -110,7 +110,7 @@
             this.nazivProjektaTBX.Location = new System.Drawing.Point(56, 22);
             this.nazivProjektaTBX.Name = "nazivProjektaTBX";
             this.nazivProjektaTBX.Size = new System.Drawing.Size(525, 20);
-            this.nazivProjektaTBX.TabIndex = 7;
+            this.nazivProjektaTBX.TabIndex = 0;
             // 
             // ucesnikRBT
             // 
@@ -119,7 +119,7 @@
             this.ucesnikRBT.Location = new System.Drawing.Point(6, 19);
             this.ucesnikRBT.Name = "ucesnikRBT";
             this.ucesnikRBT.Size = new System.Drawing.Size(64, 17);
-            this.ucesnikRBT.TabIndex = 8;
+            this.ucesnikRBT.TabIndex = 0;
             this.ucesnikRBT.TabStop = true;
             this.ucesnikRBT.Text = "Učesnik";
             this.ucesnikRBT.UseVisualStyleBackColor = true;
@@ -130,7 +130,7 @@
             this.nadzorRBT.Location = new System.Drawing.Point(6, 42);
             this.nadzorRBT.Name = "nadzorRBT";
             this.nadzorRBT.Size = new System.Drawing.Size(59, 17);
-            this.nadzorRBT.TabIndex = 9;
+            this.nadzorRBT.TabIndex = 1;
             this.nadzorRBT.Text = "Nadzor";
             this.nadzorRBT.UseVisualStyleBackColor = true;
             // 
@@ -141,7 +141,7 @@
             this.groupBox1.Location = new System.Drawing.Point(236, 85);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(122, 75);
-            this.groupBox1.TabIndex = 10;
+            this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Uloga";
             // 
@@ -151,7 +151,7 @@
             this.label3.Location = new System.Drawing.Point(361, 68);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(107, 13);
-            this.label3.TabIndex = 11;
+            this.label3.TabIndex = 9;
             this.label3.Text = "Učesnici na projektu:";
             // 
             // errorLBL
@@ -162,7 +162,7 @@
             this.errorLBL.Location = new System.Drawing.Point(401, 295);
             this.errorLBL.Name = "errorLBL";
             this.errorLBL.Size = new System.Drawing.Size(180, 17);
-            this.errorLBL.TabIndex = 12;
+            this.errorLBL.TabIndex = 10;
             this.errorLBL.Text = "Unešeni podaci nisu validni";
             this.errorLBL.Visible = false;
             // 
@@ -182,7 +182,9 @@
             this.Controls.Add(this.dodajBTN);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "SefProjekatFormular";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Formular za projekat";

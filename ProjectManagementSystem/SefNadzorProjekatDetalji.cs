@@ -30,7 +30,7 @@ namespace ProjectManagementSystem {
             for (int i = 0; i < procenat; i++) {
                 procenatIzvrsenostiPBR.PerformStep();
             }
-            datumKreiranjaLBL.Text = "Datum kreiranja: " + pr.DatumKreiranja;
+            datumKreiranjaLBL.Text = "Datum kreiranja: " + Convert.ToDateTime(pr.DatumKreiranja).ToString("dd/MM/yyyy");
             Ucesnik sef = null;
             foreach(KeyValuePair<Ucesnik, Uloga> uu in pr.UcesniciNaProjektu) {
                 if (uu.Value.Naziv.Equals("sef")) {

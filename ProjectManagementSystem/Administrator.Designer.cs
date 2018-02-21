@@ -240,6 +240,7 @@
             this.Controls.Add(this.azuriratiBTN);
             this.Controls.Add(this.dodatiBTN);
             this.Controls.Add(this.administratorTC);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "Administrator";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -27,21 +27,21 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Projekti));
             this.mojiProjektiPNL = new System.Windows.Forms.Panel();
             this.komandeTSR = new System.Windows.Forms.ToolStrip();
+            this.azrirajTSB = new System.Windows.Forms.ToolStripButton();
+            this.obrisiTSB = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.dodajZadatakTSB = new System.Windows.Forms.ToolStripButton();
+            this.dodajAktivnostTSB = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.prikaziIzvjestajTSB = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.dodajUcesnikaTSB = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.updateTSB = new System.Windows.Forms.ToolStripButton();
             this.projektiTVW = new System.Windows.Forms.TreeView();
             this.slikeProjektiIML = new System.Windows.Forms.ImageList(this.components);
             this.detaljiPNL = new System.Windows.Forms.Panel();
             this.projektiSPL = new System.Windows.Forms.SplitContainer();
-            this.azrirajTSB = new System.Windows.Forms.ToolStripButton();
-            this.obrisiTSB = new System.Windows.Forms.ToolStripButton();
-            this.dodajZadatakTSB = new System.Windows.Forms.ToolStripButton();
-            this.dodajAktivnostTSB = new System.Windows.Forms.ToolStripButton();
-            this.prikaziIzvjestajTSB = new System.Windows.Forms.ToolStripButton();
-            this.dodajUcesnikaTSB = new System.Windows.Forms.ToolStripButton();
-            this.updateTSB = new System.Windows.Forms.ToolStripButton();
             this.mojiProjektiPNL.SuspendLayout();
             this.komandeTSR.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.projektiSPL)).BeginInit();
@@ -83,25 +83,101 @@
             this.komandeTSR.TabIndex = 4;
             this.komandeTSR.Text = "toolStrip1";
             // 
+            // azrirajTSB
+            // 
+            this.azrirajTSB.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.azrirajTSB.Enabled = false;
+            this.azrirajTSB.Image = global::ProjectManagementSystem.Properties.Resources.edit;
+            this.azrirajTSB.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.azrirajTSB.Name = "azrirajTSB";
+            this.azrirajTSB.Size = new System.Drawing.Size(29, 35);
+            this.azrirajTSB.Text = "Ažuriraj";
+            this.azrirajTSB.Click += new System.EventHandler(this.azrirajTSB_Click);
+            // 
+            // obrisiTSB
+            // 
+            this.obrisiTSB.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.obrisiTSB.Enabled = false;
+            this.obrisiTSB.Image = global::ProjectManagementSystem.Properties.Resources.delete;
+            this.obrisiTSB.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.obrisiTSB.Name = "obrisiTSB";
+            this.obrisiTSB.Size = new System.Drawing.Size(29, 35);
+            this.obrisiTSB.Text = "Obriši";
+            this.obrisiTSB.Click += new System.EventHandler(this.obrisiTSB_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 38);
+            // 
+            // dodajZadatakTSB
+            // 
+            this.dodajZadatakTSB.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.dodajZadatakTSB.Enabled = false;
+            this.dodajZadatakTSB.Image = global::ProjectManagementSystem.Properties.Resources.dodajZ;
+            this.dodajZadatakTSB.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.dodajZadatakTSB.Name = "dodajZadatakTSB";
+            this.dodajZadatakTSB.Size = new System.Drawing.Size(29, 35);
+            this.dodajZadatakTSB.Text = "Dodaj zadatak";
+            this.dodajZadatakTSB.Click += new System.EventHandler(this.dodajZadatakTSB_Click);
+            // 
+            // dodajAktivnostTSB
+            // 
+            this.dodajAktivnostTSB.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.dodajAktivnostTSB.Enabled = false;
+            this.dodajAktivnostTSB.Image = global::ProjectManagementSystem.Properties.Resources.dodajA;
+            this.dodajAktivnostTSB.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.dodajAktivnostTSB.Name = "dodajAktivnostTSB";
+            this.dodajAktivnostTSB.Size = new System.Drawing.Size(29, 35);
+            this.dodajAktivnostTSB.Text = "Dodaj aktivnost";
+            this.dodajAktivnostTSB.Click += new System.EventHandler(this.dodajAktivnostTSB_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 38);
             // 
+            // prikaziIzvjestajTSB
+            // 
+            this.prikaziIzvjestajTSB.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.prikaziIzvjestajTSB.Enabled = false;
+            this.prikaziIzvjestajTSB.Image = global::ProjectManagementSystem.Properties.Resources.print;
+            this.prikaziIzvjestajTSB.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.prikaziIzvjestajTSB.Name = "prikaziIzvjestajTSB";
+            this.prikaziIzvjestajTSB.Size = new System.Drawing.Size(29, 35);
+            this.prikaziIzvjestajTSB.Text = "Prikaži izvještaj";
+            this.prikaziIzvjestajTSB.Click += new System.EventHandler(this.prikaziIzvjestajTSB_Click);
+            // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 38);
             // 
+            // dodajUcesnikaTSB
+            // 
+            this.dodajUcesnikaTSB.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.dodajUcesnikaTSB.Enabled = false;
+            this.dodajUcesnikaTSB.Image = global::ProjectManagementSystem.Properties.Resources.add_user;
+            this.dodajUcesnikaTSB.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.dodajUcesnikaTSB.Name = "dodajUcesnikaTSB";
+            this.dodajUcesnikaTSB.Size = new System.Drawing.Size(29, 35);
+            this.dodajUcesnikaTSB.Text = "Dodaj učesnika";
+            this.dodajUcesnikaTSB.Click += new System.EventHandler(this.dodajUcesnikaTSB_Click);
+            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 38);
+            // 
+            // updateTSB
+            // 
+            this.updateTSB.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.updateTSB.Image = global::ProjectManagementSystem.Properties.Resources.refresh;
+            this.updateTSB.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.updateTSB.Name = "updateTSB";
+            this.updateTSB.Size = new System.Drawing.Size(29, 35);
+            this.updateTSB.Text = "Ponovo učitaj podatke";
+            this.updateTSB.Click += new System.EventHandler(this.updateTSB_Click);
             // 
             // projektiTVW
             // 
@@ -110,7 +186,7 @@
             this.projektiTVW.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.projektiTVW.Location = new System.Drawing.Point(12, 41);
             this.projektiTVW.Name = "projektiTVW";
-            this.projektiTVW.SelectedImageIndex = 0;
+            this.projektiTVW.SelectedImageIndex = 3;
             this.projektiTVW.Size = new System.Drawing.Size(271, 510);
             this.projektiTVW.TabIndex = 3;
             this.projektiTVW.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.projektiTVW_AfterSelect);
@@ -119,9 +195,15 @@
             // 
             this.slikeProjektiIML.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("slikeProjektiIML.ImageStream")));
             this.slikeProjektiIML.TransparentColor = System.Drawing.Color.Transparent;
-            this.slikeProjektiIML.Images.SetKeyName(0, "a.png");
-            this.slikeProjektiIML.Images.SetKeyName(1, "c.png");
-            this.slikeProjektiIML.Images.SetKeyName(2, "p.png");
+            this.slikeProjektiIML.Images.SetKeyName(0, "activity.png");
+            this.slikeProjektiIML.Images.SetKeyName(1, "task.png");
+            this.slikeProjektiIML.Images.SetKeyName(2, "projekat.png");
+            this.slikeProjektiIML.Images.SetKeyName(3, "selecteddd.png");
+            this.slikeProjektiIML.Images.SetKeyName(4, "selected.png");
+            this.slikeProjektiIML.Images.SetKeyName(5, "a.png");
+            this.slikeProjektiIML.Images.SetKeyName(6, "c.png");
+            this.slikeProjektiIML.Images.SetKeyName(7, "activityyyy.png");
+            this.slikeProjektiIML.Images.SetKeyName(8, "p.png");
             // 
             // detaljiPNL
             // 
@@ -147,88 +229,13 @@
             this.projektiSPL.SplitterDistance = 305;
             this.projektiSPL.TabIndex = 3;
             // 
-            // azrirajTSB
-            // 
-            this.azrirajTSB.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.azrirajTSB.Enabled = false;
-            this.azrirajTSB.Image = global::ProjectManagementSystem.Properties.Resources.edit;
-            this.azrirajTSB.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.azrirajTSB.Name = "azrirajTSB";
-            this.azrirajTSB.Size = new System.Drawing.Size(29, 35);
-            this.azrirajTSB.Text = "Ažuriraj";
-            this.azrirajTSB.Click += new System.EventHandler(this.azrirajTSB_Click);
-            // 
-            // obrisiTSB
-            // 
-            this.obrisiTSB.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.obrisiTSB.Enabled = false;
-            this.obrisiTSB.Image = global::ProjectManagementSystem.Properties.Resources.delete;
-            this.obrisiTSB.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.obrisiTSB.Name = "obrisiTSB";
-            this.obrisiTSB.Size = new System.Drawing.Size(29, 35);
-            this.obrisiTSB.Text = "Obriši";
-            this.obrisiTSB.Click += new System.EventHandler(this.obrisiTSB_Click);
-            // 
-            // dodajZadatakTSB
-            // 
-            this.dodajZadatakTSB.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.dodajZadatakTSB.Enabled = false;
-            this.dodajZadatakTSB.Image = global::ProjectManagementSystem.Properties.Resources.dodajZ;
-            this.dodajZadatakTSB.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.dodajZadatakTSB.Name = "dodajZadatakTSB";
-            this.dodajZadatakTSB.Size = new System.Drawing.Size(29, 35);
-            this.dodajZadatakTSB.Text = "Dodaj zadatak";
-            this.dodajZadatakTSB.Click += new System.EventHandler(this.dodajZadatakTSB_Click);
-            // 
-            // dodajAktivnostTSB
-            // 
-            this.dodajAktivnostTSB.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.dodajAktivnostTSB.Enabled = false;
-            this.dodajAktivnostTSB.Image = global::ProjectManagementSystem.Properties.Resources.dodajA;
-            this.dodajAktivnostTSB.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.dodajAktivnostTSB.Name = "dodajAktivnostTSB";
-            this.dodajAktivnostTSB.Size = new System.Drawing.Size(29, 35);
-            this.dodajAktivnostTSB.Text = "Dodaj aktivnost";
-            this.dodajAktivnostTSB.Click += new System.EventHandler(this.dodajAktivnostTSB_Click);
-            // 
-            // prikaziIzvjestajTSB
-            // 
-            this.prikaziIzvjestajTSB.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.prikaziIzvjestajTSB.Enabled = false;
-            this.prikaziIzvjestajTSB.Image = global::ProjectManagementSystem.Properties.Resources.print;
-            this.prikaziIzvjestajTSB.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.prikaziIzvjestajTSB.Name = "prikaziIzvjestajTSB";
-            this.prikaziIzvjestajTSB.Size = new System.Drawing.Size(29, 35);
-            this.prikaziIzvjestajTSB.Text = "Prikaži izvještaj";
-            this.prikaziIzvjestajTSB.Click += new System.EventHandler(this.prikaziIzvjestajTSB_Click);
-            // 
-            // dodajUcesnikaTSB
-            // 
-            this.dodajUcesnikaTSB.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.dodajUcesnikaTSB.Enabled = false;
-            this.dodajUcesnikaTSB.Image = global::ProjectManagementSystem.Properties.Resources.add_user;
-            this.dodajUcesnikaTSB.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.dodajUcesnikaTSB.Name = "dodajUcesnikaTSB";
-            this.dodajUcesnikaTSB.Size = new System.Drawing.Size(29, 35);
-            this.dodajUcesnikaTSB.Text = "Dodaj učesnika";
-            this.dodajUcesnikaTSB.Click += new System.EventHandler(this.dodajUcesnikaTSB_Click);
-            // 
-            // updateTSB
-            // 
-            this.updateTSB.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.updateTSB.Image = global::ProjectManagementSystem.Properties.Resources.refresh;
-            this.updateTSB.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.updateTSB.Name = "updateTSB";
-            this.updateTSB.Size = new System.Drawing.Size(29, 35);
-            this.updateTSB.Text = "Ponovo učitaj podatke";
-            this.updateTSB.Click += new System.EventHandler(this.updateTSB_Click);
-            // 
             // Projekti
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1235, 581);
             this.Controls.Add(this.projektiSPL);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "Projekti";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

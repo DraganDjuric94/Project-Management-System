@@ -42,7 +42,7 @@
             this.nazivZadatkaLBL.Location = new System.Drawing.Point(22, 21);
             this.nazivZadatkaLBL.Name = "nazivZadatkaLBL";
             this.nazivZadatkaLBL.Size = new System.Drawing.Size(269, 46);
-            this.nazivZadatkaLBL.TabIndex = 0;
+            this.nazivZadatkaLBL.TabIndex = 3;
             this.nazivZadatkaLBL.Text = "Naziv zadatka";
             // 
             // procenatZavrsenostiPBR
@@ -51,7 +51,7 @@
             this.procenatZavrsenostiPBR.Name = "procenatZavrsenostiPBR";
             this.procenatZavrsenostiPBR.Size = new System.Drawing.Size(459, 29);
             this.procenatZavrsenostiPBR.Step = 1;
-            this.procenatZavrsenostiPBR.TabIndex = 1;
+            this.procenatZavrsenostiPBR.TabIndex = 0;
             // 
             // datumKreiranjaLBL
             // 
@@ -70,7 +70,7 @@
             this.rokLBL.Location = new System.Drawing.Point(491, 160);
             this.rokLBL.Name = "rokLBL";
             this.rokLBL.Size = new System.Drawing.Size(47, 22);
-            this.rokLBL.TabIndex = 5;
+            this.rokLBL.TabIndex = 8;
             this.rokLBL.Text = "Rok:";
             // 
             // istorijaLBL
@@ -80,7 +80,7 @@
             this.istorijaLBL.Location = new System.Drawing.Point(491, 258);
             this.istorijaLBL.Name = "istorijaLBL";
             this.istorijaLBL.Size = new System.Drawing.Size(229, 22);
-            this.istorijaLBL.TabIndex = 6;
+            this.istorijaLBL.TabIndex = 9;
             this.istorijaLBL.Text = "Istorija aktivnosti u zadatku:";
             // 
             // ucesniciLBL
@@ -90,7 +90,7 @@
             this.ucesniciLBL.Location = new System.Drawing.Point(26, 258);
             this.ucesniciLBL.Name = "ucesniciLBL";
             this.ucesniciLBL.Size = new System.Drawing.Size(83, 22);
-            this.ucesniciLBL.TabIndex = 7;
+            this.ucesniciLBL.TabIndex = 6;
             this.ucesniciLBL.Text = "Učesnici:";
             // 
             // covjekCasLBL
@@ -100,7 +100,7 @@
             this.covjekCasLBL.Location = new System.Drawing.Point(26, 207);
             this.covjekCasLBL.Name = "covjekCasLBL";
             this.covjekCasLBL.Size = new System.Drawing.Size(241, 22);
-            this.covjekCasLBL.TabIndex = 8;
+            this.covjekCasLBL.TabIndex = 5;
             this.covjekCasLBL.Text = "Potreban broj čovjek/časova:";
             // 
             // procenatZavrsenostiLBL
@@ -110,7 +110,7 @@
             this.procenatZavrsenostiLBL.Location = new System.Drawing.Point(490, 93);
             this.procenatZavrsenostiLBL.Name = "procenatZavrsenostiLBL";
             this.procenatZavrsenostiLBL.Size = new System.Drawing.Size(61, 29);
-            this.procenatZavrsenostiLBL.TabIndex = 9;
+            this.procenatZavrsenostiLBL.TabIndex = 7;
             this.procenatZavrsenostiLBL.Text = "45%";
             // 
             // ucesniciLVW
@@ -118,7 +118,7 @@
             this.ucesniciLVW.Location = new System.Drawing.Point(30, 283);
             this.ucesniciLVW.Name = "ucesniciLVW";
             this.ucesniciLVW.Size = new System.Drawing.Size(295, 245);
-            this.ucesniciLVW.TabIndex = 10;
+            this.ucesniciLVW.TabIndex = 1;
             this.ucesniciLVW.UseCompatibleStateImageBehavior = false;
             this.ucesniciLVW.View = System.Windows.Forms.View.List;
             // 
@@ -127,7 +127,7 @@
             this.istorijaAktivnostiLVW.Location = new System.Drawing.Point(495, 283);
             this.istorijaAktivnostiLVW.Name = "istorijaAktivnostiLVW";
             this.istorijaAktivnostiLVW.Size = new System.Drawing.Size(381, 253);
-            this.istorijaAktivnostiLVW.TabIndex = 11;
+            this.istorijaAktivnostiLVW.TabIndex = 2;
             this.istorijaAktivnostiLVW.UseCompatibleStateImageBehavior = false;
             this.istorijaAktivnostiLVW.View = System.Windows.Forms.View.List;
             // 

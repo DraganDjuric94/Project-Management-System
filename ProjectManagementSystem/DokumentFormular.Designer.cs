@@ -38,7 +38,7 @@
             this.label1.Location = new System.Drawing.Point(12, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 13);
-            this.label1.TabIndex = 0;
+            this.label1.TabIndex = 3;
             this.label1.Text = "Izaberite dokument:";
             // 
             // putanjaLBL
@@ -47,7 +47,7 @@
             this.putanjaLBL.Location = new System.Drawing.Point(12, 46);
             this.putanjaLBL.Name = "putanjaLBL";
             this.putanjaLBL.Size = new System.Drawing.Size(0, 13);
-            this.putanjaLBL.TabIndex = 1;
+            this.putanjaLBL.TabIndex = 4;
             // 
             // label3
             // 
@@ -55,7 +55,7 @@
             this.label3.Location = new System.Drawing.Point(12, 86);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(62, 13);
-            this.label3.TabIndex = 2;
+            this.label3.TabIndex = 5;
             this.label3.Text = "Napomena:";
             // 
             // napomenaTBX
@@ -64,14 +64,14 @@
             this.napomenaTBX.Multiline = true;
             this.napomenaTBX.Name = "napomenaTBX";
             this.napomenaTBX.Size = new System.Drawing.Size(275, 113);
-            this.napomenaTBX.TabIndex = 3;
+            this.napomenaTBX.TabIndex = 1;
             // 
             // sacuvajBTN
             // 
             this.sacuvajBTN.Location = new System.Drawing.Point(215, 267);
             this.sacuvajBTN.Name = "sacuvajBTN";
             this.sacuvajBTN.Size = new System.Drawing.Size(75, 23);
-            this.sacuvajBTN.TabIndex = 4;
+            this.sacuvajBTN.TabIndex = 2;
             this.sacuvajBTN.Text = "Sačuvaj";
             this.sacuvajBTN.UseVisualStyleBackColor = true;
             this.sacuvajBTN.Click += new System.EventHandler(this.sacuvajBTN_Click);
@@ -81,7 +81,7 @@
             this.izaberiDokumentBTN.Location = new System.Drawing.Point(118, 18);
             this.izaberiDokumentBTN.Name = "izaberiDokumentBTN";
             this.izaberiDokumentBTN.Size = new System.Drawing.Size(34, 23);
-            this.izaberiDokumentBTN.TabIndex = 5;
+            this.izaberiDokumentBTN.TabIndex = 0;
             this.izaberiDokumentBTN.Text = "...";
             this.izaberiDokumentBTN.UseVisualStyleBackColor = true;
             this.izaberiDokumentBTN.Click += new System.EventHandler(this.izaberiDokumentBTN_Click);
@@ -110,7 +110,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.putanjaLBL);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "DokumentFormular";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Formular za dokument";

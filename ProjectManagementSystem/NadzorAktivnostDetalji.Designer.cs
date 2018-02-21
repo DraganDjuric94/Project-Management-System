@@ -47,7 +47,7 @@
             this.nazivAktivnostiLBL.Location = new System.Drawing.Point(23, 18);
             this.nazivAktivnostiLBL.Name = "nazivAktivnostiLBL";
             this.nazivAktivnostiLBL.Size = new System.Drawing.Size(296, 46);
-            this.nazivAktivnostiLBL.TabIndex = 0;
+            this.nazivAktivnostiLBL.TabIndex = 4;
             this.nazivAktivnostiLBL.Text = "Naziv aktivnosti";
             // 
             // lblblbl
@@ -57,7 +57,7 @@
             this.lblblbl.Location = new System.Drawing.Point(27, 106);
             this.lblblbl.Name = "lblblbl";
             this.lblblbl.Size = new System.Drawing.Size(52, 22);
-            this.lblblbl.TabIndex = 1;
+            this.lblblbl.TabIndex = 6;
             this.lblblbl.Text = "Opis:";
             // 
             // napomenaDokumentLBL
@@ -67,7 +67,7 @@
             this.napomenaDokumentLBL.Location = new System.Drawing.Point(271, 102);
             this.napomenaDokumentLBL.Name = "napomenaDokumentLBL";
             this.napomenaDokumentLBL.Size = new System.Drawing.Size(81, 17);
-            this.napomenaDokumentLBL.TabIndex = 4;
+            this.napomenaDokumentLBL.TabIndex = 2;
             this.napomenaDokumentLBL.Text = "Napomena:";
             // 
             // posljednjaIzmjenaLBL
@@ -77,7 +77,7 @@
             this.posljednjaIzmjenaLBL.Location = new System.Drawing.Point(271, 19);
             this.posljednjaIzmjenaLBL.Name = "posljednjaIzmjenaLBL";
             this.posljednjaIzmjenaLBL.Size = new System.Drawing.Size(129, 17);
-            this.posljednjaIzmjenaLBL.TabIndex = 5;
+            this.posljednjaIzmjenaLBL.TabIndex = 1;
             this.posljednjaIzmjenaLBL.Text = "Posljednja izmjena:";
             // 
             // covjekCasUcesnikLBL
@@ -95,7 +95,7 @@
             this.ucesnikSatLVW.Location = new System.Drawing.Point(486, 131);
             this.ucesnikSatLVW.Name = "ucesnikSatLVW";
             this.ucesnikSatLVW.Size = new System.Drawing.Size(305, 132);
-            this.ucesnikSatLVW.TabIndex = 8;
+            this.ucesnikSatLVW.TabIndex = 1;
             this.ucesnikSatLVW.UseCompatibleStateImageBehavior = false;
             this.ucesnikSatLVW.View = System.Windows.Forms.View.List;
             // 
@@ -106,14 +106,14 @@
             this.opisTBX.Name = "opisTBX";
             this.opisTBX.ReadOnly = true;
             this.opisTBX.Size = new System.Drawing.Size(308, 132);
-            this.opisTBX.TabIndex = 9;
+            this.opisTBX.TabIndex = 0;
             // 
             // transakcijeLVW
             // 
             this.transakcijeLVW.Location = new System.Drawing.Point(6, 19);
             this.transakcijeLVW.Name = "transakcijeLVW";
             this.transakcijeLVW.Size = new System.Drawing.Size(236, 178);
-            this.transakcijeLVW.TabIndex = 10;
+            this.transakcijeLVW.TabIndex = 0;
             this.transakcijeLVW.UseCompatibleStateImageBehavior = false;
             this.transakcijeLVW.View = System.Windows.Forms.View.List;
             // 
@@ -122,7 +122,7 @@
             this.dokumentiLVW.Location = new System.Drawing.Point(6, 19);
             this.dokumentiLVW.Name = "dokumentiLVW";
             this.dokumentiLVW.Size = new System.Drawing.Size(239, 207);
-            this.dokumentiLVW.TabIndex = 12;
+            this.dokumentiLVW.TabIndex = 0;
             this.dokumentiLVW.UseCompatibleStateImageBehavior = false;
             this.dokumentiLVW.View = System.Windows.Forms.View.List;
             this.dokumentiLVW.SelectedIndexChanged += new System.EventHandler(this.dokumentiLVW_SelectedIndexChanged);
@@ -135,7 +135,7 @@
             this.dokumentiGBX.Location = new System.Drawing.Point(303, 287);
             this.dokumentiGBX.Name = "dokumentiGBX";
             this.dokumentiGBX.Size = new System.Drawing.Size(561, 239);
-            this.dokumentiGBX.TabIndex = 15;
+            this.dokumentiGBX.TabIndex = 3;
             this.dokumentiGBX.TabStop = false;
             this.dokumentiGBX.Text = "Dokumenti";
             // 
@@ -146,7 +146,7 @@
             this.transakcijeGBX.Location = new System.Drawing.Point(31, 287);
             this.transakcijeGBX.Name = "transakcijeGBX";
             this.transakcijeGBX.Size = new System.Drawing.Size(250, 239);
-            this.transakcijeGBX.TabIndex = 16;
+            this.transakcijeGBX.TabIndex = 2;
             this.transakcijeGBX.TabStop = false;
             this.transakcijeGBX.Text = "Prihodi/rashodi";
             // 
@@ -155,7 +155,7 @@
             this.detaljiTransakcijeBTN.Location = new System.Drawing.Point(121, 203);
             this.detaljiTransakcijeBTN.Name = "detaljiTransakcijeBTN";
             this.detaljiTransakcijeBTN.Size = new System.Drawing.Size(121, 23);
-            this.detaljiTransakcijeBTN.TabIndex = 11;
+            this.detaljiTransakcijeBTN.TabIndex = 1;
             this.detaljiTransakcijeBTN.Text = "Detalji transakcije";
             this.detaljiTransakcijeBTN.UseVisualStyleBackColor = true;
             this.detaljiTransakcijeBTN.Click += new System.EventHandler(this.detaljiTransakcijeBTN_Click);
@@ -167,7 +167,7 @@
             this.zavrsenaAktivnostStatusLBL.Location = new System.Drawing.Point(27, 73);
             this.zavrsenaAktivnostStatusLBL.Name = "zavrsenaAktivnostStatusLBL";
             this.zavrsenaAktivnostStatusLBL.Size = new System.Drawing.Size(143, 22);
-            this.zavrsenaAktivnostStatusLBL.TabIndex = 17;
+            this.zavrsenaAktivnostStatusLBL.TabIndex = 5;
             this.zavrsenaAktivnostStatusLBL.Text = "Status: završena";
             // 
             // NadzorAktivnostDetalji

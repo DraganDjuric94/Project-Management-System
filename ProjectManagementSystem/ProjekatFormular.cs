@@ -21,7 +21,7 @@ namespace ProjectManagementSystem
 
 		private void dodatiBTN_Click(object sender, EventArgs e)
 		{
-			if (nazivKorektnoLBL.Text.Equals("korektno"))
+			if (nazivKorektnoLBL.Text.Equals("korektno") && validniPodaci())
 			{
                 dodatiBTN.Enabled = false;
 				Dictionary<Ucesnik, Uloga> ucesnici = new Dictionary<Ucesnik, Uloga>();
@@ -31,7 +31,9 @@ namespace ProjectManagementSystem
 				MySqlProjekatDao.Instance.Create(new Projekat { Naziv = nazivTXT.Text, DatumKreiranja = Convert.ToDateTime(DateTime.Now.ToString()), Aktivan = true, UcesniciNaProjektu = ucesnici });
 				MessageBox.Show("Projekat je uspješno unešen", "Obavještenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				this.Close();
-			}
+            } else {
+                errorLBL.Visible = true;
+            }
 		}
 
 		private void nazivTXT_TextChanged(object sender, EventArgs e)
@@ -59,5 +61,11 @@ namespace ProjectManagementSystem
 				}
 			}
 		}
+
+        private bool validniPodaci() {
+            if (!nazivTXT.Text.Equals("") && sefProjektaCB.SelectedItem != null)
+                return true;
+            return false;
+        }
 	}
 }

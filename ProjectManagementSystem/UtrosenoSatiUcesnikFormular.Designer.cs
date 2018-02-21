@@ -38,7 +38,7 @@
             this.label1.Location = new System.Drawing.Point(13, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 13);
-            this.label1.TabIndex = 0;
+            this.label1.TabIndex = 3;
             this.label1.Text = "Učesnik:";
             // 
             // label2
@@ -47,7 +47,7 @@
             this.label2.Location = new System.Drawing.Point(13, 196);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 13);
-            this.label2.TabIndex = 1;
+            this.label2.TabIndex = 4;
             this.label2.Text = "Utrošeno sati:";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
@@ -56,7 +56,7 @@
             this.ucesniciLVW.Location = new System.Drawing.Point(15, 29);
             this.ucesniciLVW.Name = "ucesniciLVW";
             this.ucesniciLVW.Size = new System.Drawing.Size(257, 153);
-            this.ucesniciLVW.TabIndex = 2;
+            this.ucesniciLVW.TabIndex = 0;
             this.ucesniciLVW.UseCompatibleStateImageBehavior = false;
             this.ucesniciLVW.View = System.Windows.Forms.View.List;
             // 
@@ -70,14 +70,14 @@
             0});
             this.utrosenoSatiNUD.Name = "utrosenoSatiNUD";
             this.utrosenoSatiNUD.Size = new System.Drawing.Size(256, 20);
-            this.utrosenoSatiNUD.TabIndex = 3;
+            this.utrosenoSatiNUD.TabIndex = 1;
             // 
             // sacuvajBTN
             // 
             this.sacuvajBTN.Location = new System.Drawing.Point(197, 291);
             this.sacuvajBTN.Name = "sacuvajBTN";
             this.sacuvajBTN.Size = new System.Drawing.Size(75, 23);
-            this.sacuvajBTN.TabIndex = 4;
+            this.sacuvajBTN.TabIndex = 2;
             this.sacuvajBTN.Text = "Sačuvaj";
             this.sacuvajBTN.UseVisualStyleBackColor = true;
             this.sacuvajBTN.Click += new System.EventHandler(this.sacuvajBTN_Click);
@@ -105,9 +105,11 @@
             this.Controls.Add(this.ucesniciLVW);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "UtrosenoSatiUcesnikFormular";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Utrošeno sati po učesnicima";
             ((System.ComponentModel.ISupportInitialize)(this.utrosenoSatiNUD)).EndInit();
             this.ResumeLayout(false);

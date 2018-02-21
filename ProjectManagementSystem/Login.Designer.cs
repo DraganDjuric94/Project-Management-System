@@ -38,7 +38,7 @@
             this.korisnickoImeLBL.Location = new System.Drawing.Point(12, 119);
             this.korisnickoImeLBL.Name = "korisnickoImeLBL";
             this.korisnickoImeLBL.Size = new System.Drawing.Size(91, 15);
-            this.korisnickoImeLBL.TabIndex = 0;
+            this.korisnickoImeLBL.TabIndex = 4;
             this.korisnickoImeLBL.Text = "Korisničko ime:";
             // 
             // lozinkaLBL
@@ -48,7 +48,7 @@
             this.lozinkaLBL.Location = new System.Drawing.Point(12, 163);
             this.lozinkaLBL.Name = "lozinkaLBL";
             this.lozinkaLBL.Size = new System.Drawing.Size(53, 15);
-            this.lozinkaLBL.TabIndex = 1;
+            this.lozinkaLBL.TabIndex = 5;
             this.lozinkaLBL.Text = "Lozinka:";
             // 
             // prijavaBTN
@@ -66,7 +66,7 @@
             this.korisnickoImeTXT.Location = new System.Drawing.Point(109, 118);
             this.korisnickoImeTXT.Name = "korisnickoImeTXT";
             this.korisnickoImeTXT.Size = new System.Drawing.Size(248, 20);
-            this.korisnickoImeTXT.TabIndex = 4;
+            this.korisnickoImeTXT.TabIndex = 0;
             // 
             // dobrodosliLBL
             // 
@@ -74,7 +74,7 @@
             this.dobrodosliLBL.Location = new System.Drawing.Point(31, 9);
             this.dobrodosliLBL.Name = "dobrodosliLBL";
             this.dobrodosliLBL.Size = new System.Drawing.Size(299, 90);
-            this.dobrodosliLBL.TabIndex = 6;
+            this.dobrodosliLBL.TabIndex = 3;
             this.dobrodosliLBL.Text = "Dobro došli!";
             this.dobrodosliLBL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -84,7 +84,8 @@
             this.lozinkaTXT.Name = "lozinkaTXT";
             this.lozinkaTXT.PasswordChar = '*';
             this.lozinkaTXT.Size = new System.Drawing.Size(248, 20);
-            this.lozinkaTXT.TabIndex = 5;
+            this.lozinkaTXT.TabIndex = 1;
+            this.lozinkaTXT.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lozinkaTXT_KeyDown);
             // 
             // Login
             // 
@@ -97,7 +98,9 @@
             this.Controls.Add(this.prijavaBTN);
             this.Controls.Add(this.lozinkaLBL);
             this.Controls.Add(this.korisnickoImeLBL);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Prijava";

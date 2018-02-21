@@ -41,7 +41,7 @@
             this.nazivProjektaLBL.Location = new System.Drawing.Point(24, 29);
             this.nazivProjektaLBL.Name = "nazivProjektaLBL";
             this.nazivProjektaLBL.Size = new System.Drawing.Size(273, 46);
-            this.nazivProjektaLBL.TabIndex = 0;
+            this.nazivProjektaLBL.TabIndex = 8;
             this.nazivProjektaLBL.Text = "Naziv projekta";
             // 
             // zadaciLBL
@@ -51,7 +51,7 @@
             this.zadaciLBL.Location = new System.Drawing.Point(506, 243);
             this.zadaciLBL.Name = "zadaciLBL";
             this.zadaciLBL.Size = new System.Drawing.Size(69, 22);
-            this.zadaciLBL.TabIndex = 1;
+            this.zadaciLBL.TabIndex = 6;
             this.zadaciLBL.Text = "Zadaci:";
             // 
             // ucesniciLBL
@@ -61,7 +61,7 @@
             this.ucesniciLBL.Location = new System.Drawing.Point(28, 243);
             this.ucesniciLBL.Name = "ucesniciLBL";
             this.ucesniciLBL.Size = new System.Drawing.Size(83, 22);
-            this.ucesniciLBL.TabIndex = 2;
+            this.ucesniciLBL.TabIndex = 3;
             this.ucesniciLBL.Text = "Učesnici:";
             // 
             // sefProjektaLBL
@@ -71,7 +71,7 @@
             this.sefProjektaLBL.Location = new System.Drawing.Point(413, 171);
             this.sefProjektaLBL.Name = "sefProjektaLBL";
             this.sefProjektaLBL.Size = new System.Drawing.Size(111, 22);
-            this.sefProjektaLBL.TabIndex = 3;
+            this.sefProjektaLBL.TabIndex = 5;
             this.sefProjektaLBL.Text = "Šef projekta:";
             // 
             // datumKreiranjaLBL
@@ -91,7 +91,7 @@
             this.procenatIzvrsenostiLBL.Location = new System.Drawing.Point(463, 100);
             this.procenatIzvrsenostiLBL.Name = "procenatIzvrsenostiLBL";
             this.procenatIzvrsenostiLBL.Size = new System.Drawing.Size(61, 29);
-            this.procenatIzvrsenostiLBL.TabIndex = 5;
+            this.procenatIzvrsenostiLBL.TabIndex = 7;
             this.procenatIzvrsenostiLBL.Text = "32%";
             // 
             // procenatIzvrsenostiPBR
@@ -100,14 +100,14 @@
             this.procenatIzvrsenostiPBR.Name = "procenatIzvrsenostiPBR";
             this.procenatIzvrsenostiPBR.Size = new System.Drawing.Size(425, 31);
             this.procenatIzvrsenostiPBR.Step = 1;
-            this.procenatIzvrsenostiPBR.TabIndex = 6;
+            this.procenatIzvrsenostiPBR.TabIndex = 0;
             // 
             // ucesniciLVW
             // 
             this.ucesniciLVW.Location = new System.Drawing.Point(32, 278);
             this.ucesniciLVW.Name = "ucesniciLVW";
             this.ucesniciLVW.Size = new System.Drawing.Size(347, 222);
-            this.ucesniciLVW.TabIndex = 7;
+            this.ucesniciLVW.TabIndex = 1;
             this.ucesniciLVW.UseCompatibleStateImageBehavior = false;
             this.ucesniciLVW.View = System.Windows.Forms.View.List;
             // 
@@ -116,7 +116,7 @@
             this.zadaciLVW.Location = new System.Drawing.Point(510, 278);
             this.zadaciLVW.Name = "zadaciLVW";
             this.zadaciLVW.Size = new System.Drawing.Size(343, 222);
-            this.zadaciLVW.TabIndex = 8;
+            this.zadaciLVW.TabIndex = 2;
             this.zadaciLVW.UseCompatibleStateImageBehavior = false;
             this.zadaciLVW.View = System.Windows.Forms.View.List;
             // 

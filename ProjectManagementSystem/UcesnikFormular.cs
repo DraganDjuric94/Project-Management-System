@@ -28,9 +28,9 @@ namespace ProjectManagementSystem
 
 		private void dodatiBTN_Click(object sender, EventArgs e)
 		{
-            if (validniPodaci()) {
+            if (validniPodaci() && korisnickoImeKorektnoLBL.Text.Equals("korektno")) {
                 dodatiBTN.Enabled = false;
-                if (korisnickoImeKorektnoLBL.Text.Equals("korektno") && UcesnikIDKontrolni == 0) {
+                if (UcesnikIDKontrolni == 0) {
                     List<Uloga> uloga = MySqlUlogaDao.Instance.Read(new Uloga { Naziv = nazivUlogeCB.Text });
                     HashAlgorithm sha256 = new SHA256CryptoServiceProvider();
                     string hashLozinke = "";
@@ -68,7 +68,7 @@ namespace ProjectManagementSystem
 
 		public void korisnickoImeTXT_TextChanged(object sender, EventArgs e)
 		{
-			List<Ucesnik> ucesnici = MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = korisnickoImeTXT.Text, Aktivan = true});
+			List<Ucesnik> ucesnici = MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = korisnickoImeTXT.Text});
 			if (ucesnici.Count() == 0 || (edit && korisnickoImeTXT.Text.Equals(uc.KorisnickoIme)))
 			{
 				korisnickoImeKorektnoLBL.Text = "korektno";
@@ -81,7 +81,7 @@ namespace ProjectManagementSystem
 
 		public void SetValues(Int32 IDUcesnik)
 		{
-			List<Ucesnik> ucesnici = MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = IDUcesnik , Aktivan = true});
+			List<Ucesnik> ucesnici = MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = IDUcesnik });
             if (ucesnici.Count > 0) {
                 edit = true;
                 uc = ucesnici[0];

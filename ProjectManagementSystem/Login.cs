@@ -19,6 +19,10 @@ namespace ProjectManagementSystem {
 
 		private void prijavaBTN_Click(object sender, EventArgs e)
 		{
+            provjeriPrijavu();
+        }
+
+        private void provjeriPrijavu() {
             HashAlgorithm sha256 = new SHA256CryptoServiceProvider();
             string hashLozinke = "";
             Byte[] lozinka = Encoding.Unicode.GetBytes(lozinkaTXT.Text);
@@ -38,5 +42,10 @@ namespace ProjectManagementSystem {
             }
         }
 
+        private void lozinkaTXT_KeyDown(object sender, KeyEventArgs e) {
+            if(e.KeyCode == Keys.Enter) {
+                provjeriPrijavu();
+            }
+        }
     }
 }

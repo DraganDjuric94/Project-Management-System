@@ -53,7 +53,7 @@
             this.nazivLabel.Location = new System.Drawing.Point(12, 9);
             this.nazivLabel.Name = "nazivLabel";
             this.nazivLabel.Size = new System.Drawing.Size(37, 13);
-            this.nazivLabel.TabIndex = 0;
+            this.nazivLabel.TabIndex = 9;
             this.nazivLabel.Text = "Naziv:";
             this.nazivLabel.Click += new System.EventHandler(this.label1_Click);
             // 
@@ -62,7 +62,7 @@
             this.nazivTextBox.Location = new System.Drawing.Point(55, 6);
             this.nazivTextBox.Name = "nazivTextBox";
             this.nazivTextBox.Size = new System.Drawing.Size(425, 20);
-            this.nazivTextBox.TabIndex = 1;
+            this.nazivTextBox.TabIndex = 0;
             // 
             // rokLabel
             // 
@@ -70,7 +70,7 @@
             this.rokLabel.Location = new System.Drawing.Point(12, 38);
             this.rokLabel.Name = "rokLabel";
             this.rokLabel.Size = new System.Drawing.Size(30, 13);
-            this.rokLabel.TabIndex = 2;
+            this.rokLabel.TabIndex = 10;
             this.rokLabel.Text = "Rok:";
             // 
             // rokDateTimePicker
@@ -79,7 +79,7 @@
             this.rokDateTimePicker.MinDate = new System.DateTime(2018, 2, 19, 10, 53, 20, 0);
             this.rokDateTimePicker.Name = "rokDateTimePicker";
             this.rokDateTimePicker.Size = new System.Drawing.Size(425, 20);
-            this.rokDateTimePicker.TabIndex = 3;
+            this.rokDateTimePicker.TabIndex = 1;
             this.rokDateTimePicker.Value = new System.DateTime(2018, 2, 19, 10, 53, 24, 0);
             // 
             // brojPotrebnihCovjekCasovaLabel
@@ -88,7 +88,7 @@
             this.brojPotrebnihCovjekCasovaLabel.Location = new System.Drawing.Point(12, 71);
             this.brojPotrebnihCovjekCasovaLabel.Name = "brojPotrebnihCovjekCasovaLabel";
             this.brojPotrebnihCovjekCasovaLabel.Size = new System.Drawing.Size(150, 13);
-            this.brojPotrebnihCovjekCasovaLabel.TabIndex = 4;
+            this.brojPotrebnihCovjekCasovaLabel.TabIndex = 11;
             this.brojPotrebnihCovjekCasovaLabel.Text = "Broj potrebnih čovjek/časova:";
             // 
             // brojPotrebnihCovjekCasovaNumericUpDown
@@ -96,7 +96,7 @@
             this.brojPotrebnihCovjekCasovaNumericUpDown.Location = new System.Drawing.Point(181, 69);
             this.brojPotrebnihCovjekCasovaNumericUpDown.Name = "brojPotrebnihCovjekCasovaNumericUpDown";
             this.brojPotrebnihCovjekCasovaNumericUpDown.Size = new System.Drawing.Size(299, 20);
-            this.brojPotrebnihCovjekCasovaNumericUpDown.TabIndex = 5;
+            this.brojPotrebnihCovjekCasovaNumericUpDown.TabIndex = 2;
             // 
             // ucesniciLabel
             // 
@@ -104,7 +104,7 @@
             this.ucesniciLabel.Location = new System.Drawing.Point(295, 141);
             this.ucesniciLabel.Name = "ucesniciLabel";
             this.ucesniciLabel.Size = new System.Drawing.Size(51, 13);
-            this.ucesniciLabel.TabIndex = 8;
+            this.ucesniciLabel.TabIndex = 13;
             this.ucesniciLabel.Text = "Učesnici:";
             this.ucesniciLabel.Click += new System.EventHandler(this.label1_Click_1);
             // 
@@ -113,7 +113,7 @@
             this.ubaciUcesnikaButton.Location = new System.Drawing.Point(229, 193);
             this.ubaciUcesnikaButton.Name = "ubaciUcesnikaButton";
             this.ubaciUcesnikaButton.Size = new System.Drawing.Size(46, 23);
-            this.ubaciUcesnikaButton.TabIndex = 9;
+            this.ubaciUcesnikaButton.TabIndex = 5;
             this.ubaciUcesnikaButton.Text = ">>";
             this.ubaciUcesnikaButton.UseVisualStyleBackColor = true;
             this.ubaciUcesnikaButton.Click += new System.EventHandler(this.ubaciUcesnikaButton_Click);
@@ -123,7 +123,7 @@
             this.izbaciUcesnikaButton.Location = new System.Drawing.Point(229, 222);
             this.izbaciUcesnikaButton.Name = "izbaciUcesnikaButton";
             this.izbaciUcesnikaButton.Size = new System.Drawing.Size(46, 23);
-            this.izbaciUcesnikaButton.TabIndex = 10;
+            this.izbaciUcesnikaButton.TabIndex = 6;
             this.izbaciUcesnikaButton.Text = "<<";
             this.izbaciUcesnikaButton.UseVisualStyleBackColor = true;
             this.izbaciUcesnikaButton.Click += new System.EventHandler(this.izbaciUcesnikaButton_Click);
@@ -133,7 +133,7 @@
             this.sacuvajBTN.Location = new System.Drawing.Point(405, 332);
             this.sacuvajBTN.Name = "sacuvajBTN";
             this.sacuvajBTN.Size = new System.Drawing.Size(75, 23);
-            this.sacuvajBTN.TabIndex = 11;
+            this.sacuvajBTN.TabIndex = 8;
             this.sacuvajBTN.Text = "Sačuvaj";
             this.sacuvajBTN.UseVisualStyleBackColor = true;
             this.sacuvajBTN.Click += new System.EventHandler(this.sacuvajBTN_Click);
@@ -143,7 +143,7 @@
             this.procenatIzvrsenostiNUD.Location = new System.Drawing.Point(181, 95);
             this.procenatIzvrsenostiNUD.Name = "procenatIzvrsenostiNUD";
             this.procenatIzvrsenostiNUD.Size = new System.Drawing.Size(299, 20);
-            this.procenatIzvrsenostiNUD.TabIndex = 12;
+            this.procenatIzvrsenostiNUD.TabIndex = 3;
             // 
             // label1
             // 
@@ -151,7 +151,7 @@
             this.label1.Location = new System.Drawing.Point(12, 97);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(105, 13);
-            this.label1.TabIndex = 13;
+            this.label1.TabIndex = 12;
             this.label1.Text = "Procenat izvršenosti:";
             // 
             // dostupniUcesniciListBox
@@ -159,7 +159,7 @@
             this.dostupniUcesniciListBox.Location = new System.Drawing.Point(15, 159);
             this.dostupniUcesniciListBox.Name = "dostupniUcesniciListBox";
             this.dostupniUcesniciListBox.Size = new System.Drawing.Size(191, 127);
-            this.dostupniUcesniciListBox.TabIndex = 14;
+            this.dostupniUcesniciListBox.TabIndex = 4;
             this.dostupniUcesniciListBox.UseCompatibleStateImageBehavior = false;
             this.dostupniUcesniciListBox.View = System.Windows.Forms.View.List;
             // 
@@ -168,7 +168,7 @@
             this.ucesniciZadatkaListBox.Location = new System.Drawing.Point(298, 159);
             this.ucesniciZadatkaListBox.Name = "ucesniciZadatkaListBox";
             this.ucesniciZadatkaListBox.Size = new System.Drawing.Size(182, 127);
-            this.ucesniciZadatkaListBox.TabIndex = 15;
+            this.ucesniciZadatkaListBox.TabIndex = 7;
             this.ucesniciZadatkaListBox.UseCompatibleStateImageBehavior = false;
             this.ucesniciZadatkaListBox.View = System.Windows.Forms.View.List;
             // 
@@ -180,7 +180,7 @@
             this.errorLBL.Location = new System.Drawing.Point(295, 302);
             this.errorLBL.Name = "errorLBL";
             this.errorLBL.Size = new System.Drawing.Size(180, 17);
-            this.errorLBL.TabIndex = 16;
+            this.errorLBL.TabIndex = 14;
             this.errorLBL.Text = "Unešeni podaci nisu validni";
             this.errorLBL.Visible = false;
             // 
@@ -204,6 +204,7 @@
             this.Controls.Add(this.rokLabel);
             this.Controls.Add(this.nazivTextBox);
             this.Controls.Add(this.nazivLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ZadatakFormular";

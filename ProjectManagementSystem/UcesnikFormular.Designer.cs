@@ -54,7 +54,7 @@ namespace ProjectManagementSystem
             this.imeLBL.Location = new System.Drawing.Point(12, 24);
             this.imeLBL.Name = "imeLBL";
             this.imeLBL.Size = new System.Drawing.Size(27, 13);
-            this.imeLBL.TabIndex = 0;
+            this.imeLBL.TabIndex = 8;
             this.imeLBL.Text = "Ime:";
             // 
             // prezimeLBL
@@ -63,7 +63,7 @@ namespace ProjectManagementSystem
             this.prezimeLBL.Location = new System.Drawing.Point(12, 61);
             this.prezimeLBL.Name = "prezimeLBL";
             this.prezimeLBL.Size = new System.Drawing.Size(47, 13);
-            this.prezimeLBL.TabIndex = 1;
+            this.prezimeLBL.TabIndex = 9;
             this.prezimeLBL.Text = "Prezime:";
             // 
             // korisnickoImeLBL
@@ -72,7 +72,7 @@ namespace ProjectManagementSystem
             this.korisnickoImeLBL.Location = new System.Drawing.Point(12, 98);
             this.korisnickoImeLBL.Name = "korisnickoImeLBL";
             this.korisnickoImeLBL.Size = new System.Drawing.Size(78, 13);
-            this.korisnickoImeLBL.TabIndex = 2;
+            this.korisnickoImeLBL.TabIndex = 10;
             this.korisnickoImeLBL.Text = "Korisničko ime:";
             // 
             // lozinkaLBL
@@ -81,7 +81,7 @@ namespace ProjectManagementSystem
             this.lozinkaLBL.Location = new System.Drawing.Point(12, 155);
             this.lozinkaLBL.Name = "lozinkaLBL";
             this.lozinkaLBL.Size = new System.Drawing.Size(47, 13);
-            this.lozinkaLBL.TabIndex = 3;
+            this.lozinkaLBL.TabIndex = 12;
             this.lozinkaLBL.Text = "Lozinka:";
             // 
             // jmbgLBL
@@ -90,7 +90,7 @@ namespace ProjectManagementSystem
             this.jmbgLBL.Location = new System.Drawing.Point(12, 194);
             this.jmbgLBL.Name = "jmbgLBL";
             this.jmbgLBL.Size = new System.Drawing.Size(39, 13);
-            this.jmbgLBL.TabIndex = 4;
+            this.jmbgLBL.TabIndex = 13;
             this.jmbgLBL.Text = "JMBG:";
             // 
             // nazivUlogeLBL
@@ -99,7 +99,7 @@ namespace ProjectManagementSystem
             this.nazivUlogeLBL.Location = new System.Drawing.Point(12, 238);
             this.nazivUlogeLBL.Name = "nazivUlogeLBL";
             this.nazivUlogeLBL.Size = new System.Drawing.Size(66, 13);
-            this.nazivUlogeLBL.TabIndex = 6;
+            this.nazivUlogeLBL.TabIndex = 14;
             this.nazivUlogeLBL.Text = "Naziv uloge:";
             // 
             // imeTXT
@@ -107,21 +107,21 @@ namespace ProjectManagementSystem
             this.imeTXT.Location = new System.Drawing.Point(104, 24);
             this.imeTXT.Name = "imeTXT";
             this.imeTXT.Size = new System.Drawing.Size(203, 20);
-            this.imeTXT.TabIndex = 7;
+            this.imeTXT.TabIndex = 0;
             // 
             // prezimeTXT
             // 
             this.prezimeTXT.Location = new System.Drawing.Point(104, 61);
             this.prezimeTXT.Name = "prezimeTXT";
             this.prezimeTXT.Size = new System.Drawing.Size(203, 20);
-            this.prezimeTXT.TabIndex = 8;
+            this.prezimeTXT.TabIndex = 1;
             // 
             // korisnickoImeTXT
             // 
             this.korisnickoImeTXT.Location = new System.Drawing.Point(104, 98);
             this.korisnickoImeTXT.Name = "korisnickoImeTXT";
             this.korisnickoImeTXT.Size = new System.Drawing.Size(203, 20);
-            this.korisnickoImeTXT.TabIndex = 9;
+            this.korisnickoImeTXT.TabIndex = 2;
             this.korisnickoImeTXT.TextChanged += new System.EventHandler(this.korisnickoImeTXT_TextChanged);
             // 
             // lozinkaTXT
@@ -129,7 +129,7 @@ namespace ProjectManagementSystem
             this.lozinkaTXT.Location = new System.Drawing.Point(104, 152);
             this.lozinkaTXT.Name = "lozinkaTXT";
             this.lozinkaTXT.Size = new System.Drawing.Size(203, 20);
-            this.lozinkaTXT.TabIndex = 10;
+            this.lozinkaTXT.TabIndex = 3;
             // 
             // nazivUlogeCB
             // 
@@ -138,16 +138,18 @@ namespace ProjectManagementSystem
             this.nazivUlogeCB.Location = new System.Drawing.Point(104, 235);
             this.nazivUlogeCB.Name = "nazivUlogeCB";
             this.nazivUlogeCB.Size = new System.Drawing.Size(203, 21);
-            this.nazivUlogeCB.TabIndex = 12;
+            this.nazivUlogeCB.TabIndex = 5;
             this.nazivUlogeCB.MouseClick += new System.Windows.Forms.MouseEventHandler(this.nazivUlogeCB_MouseClick);
             // 
             // aktivanUcesnikCB
             // 
             this.aktivanUcesnikCB.AutoSize = true;
+            this.aktivanUcesnikCB.Checked = true;
+            this.aktivanUcesnikCB.CheckState = System.Windows.Forms.CheckState.Checked;
             this.aktivanUcesnikCB.Location = new System.Drawing.Point(245, 271);
             this.aktivanUcesnikCB.Name = "aktivanUcesnikCB";
             this.aktivanUcesnikCB.Size = new System.Drawing.Size(62, 17);
-            this.aktivanUcesnikCB.TabIndex = 14;
+            this.aktivanUcesnikCB.TabIndex = 6;
             this.aktivanUcesnikCB.Text = "Aktivan";
             this.aktivanUcesnikCB.UseVisualStyleBackColor = true;
             // 
@@ -156,7 +158,7 @@ namespace ProjectManagementSystem
             this.dodatiBTN.Location = new System.Drawing.Point(232, 333);
             this.dodatiBTN.Name = "dodatiBTN";
             this.dodatiBTN.Size = new System.Drawing.Size(75, 23);
-            this.dodatiBTN.TabIndex = 16;
+            this.dodatiBTN.TabIndex = 7;
             this.dodatiBTN.Text = "Sačuvaj";
             this.dodatiBTN.UseVisualStyleBackColor = true;
             this.dodatiBTN.Click += new System.EventHandler(this.dodatiBTN_Click);
@@ -167,7 +169,7 @@ namespace ProjectManagementSystem
             this.korisnickoImeKorektnoLBL.Location = new System.Drawing.Point(246, 121);
             this.korisnickoImeKorektnoLBL.Name = "korisnickoImeKorektnoLBL";
             this.korisnickoImeKorektnoLBL.Size = new System.Drawing.Size(0, 13);
-            this.korisnickoImeKorektnoLBL.TabIndex = 17;
+            this.korisnickoImeKorektnoLBL.TabIndex = 11;
             // 
             // errorLBL
             // 
@@ -177,7 +179,7 @@ namespace ProjectManagementSystem
             this.errorLBL.Location = new System.Drawing.Point(127, 303);
             this.errorLBL.Name = "errorLBL";
             this.errorLBL.Size = new System.Drawing.Size(180, 17);
-            this.errorLBL.TabIndex = 18;
+            this.errorLBL.TabIndex = 15;
             this.errorLBL.Text = "Unešeni podaci nisu validni";
             this.errorLBL.Visible = false;
             // 
@@ -187,7 +189,7 @@ namespace ProjectManagementSystem
             this.jmbgTXT.Mask = "0000000000000";
             this.jmbgTXT.Name = "jmbgTXT";
             this.jmbgTXT.Size = new System.Drawing.Size(203, 20);
-            this.jmbgTXT.TabIndex = 19;
+            this.jmbgTXT.TabIndex = 4;
             // 
             // UčesnikFormular
             // 
@@ -210,7 +212,9 @@ namespace ProjectManagementSystem
             this.Controls.Add(this.korisnickoImeLBL);
             this.Controls.Add(this.prezimeLBL);
             this.Controls.Add(this.imeLBL);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "UčesnikFormular";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Formular za korisnika";

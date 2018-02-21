@@ -15,7 +15,7 @@ namespace ProjectManagementSystem {
         public ZadatakDetalji(Cjelina cj) {
             InitializeComponent();
             nazivZadatkaLBL.Text = cj.Naziv;
-            datumKreiranjaLBL.Text = "Datum kreiranja: " + cj.DatumKreiranja.ToString();
+            datumKreiranjaLBL.Text = "Datum kreiranja: " + Convert.ToDateTime(cj.DatumKreiranja).ToString("dd/MM/yyyy");
             rokLBL.Text = "Rok: " + cj.Rok.ToString();
             covjekCasLBL.Text = "Potreban broj čovjek/časova: " + cj.BrojPotrebnihCovjekCasova.ToString();
             foreach(Ucesnik u in cj.Ucesnici) {

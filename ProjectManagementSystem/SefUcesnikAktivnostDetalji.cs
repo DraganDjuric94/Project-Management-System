@@ -30,7 +30,7 @@ namespace ProjectManagementSystem {
             }
             foreach (Transakcija t in ak.Transakcije) {
                 char c = (t.PrihodRashod == true) ? '+' : '-';
-                transakcijeLVW.Items.Add(t.TransakcijaID + ". " + t.DatumVrijeme + "  " + c + t.Iznos);
+                transakcijeLVW.Items.Add(t.TransakcijaID + ". " + Convert.ToDateTime(t.DatumVrijeme).ToString("dd/MM/yyyy") + "  " + c + t.Iznos);
             }
             List<Dokument> dokumenti = MySqlDokumentDao.Instance.Read(new Dokument { AktivnostID = ak.AktivnostID, Aktivan = true });
             foreach (Dokument d in dokumenti) {
