@@ -51,15 +51,21 @@ namespace ProjectManagementSystem
 
 		private void azuriratiBTN_Click(object sender, EventArgs e)
 		{
-			if (korisniciDGW.SelectedRows.Count == 1)
-			{
-				new UčesnikFormular().SetValues(Convert.ToInt32(korisniciDGW.SelectedCells[0].Value.ToString()));
-                updateTables();
+            if (administratorTC.SelectedTab == administratorTC.TabPages["ucesniciTP"]) {
+                if (korisniciDGW.SelectedRows.Count == 1) {
+                    new UčesnikFormular().SetValues(Convert.ToInt32(korisniciDGW.SelectedCells[0].Value.ToString()));
+                    updateTables();
+                } else {
+                    MessageBox.Show("Morate selektovati učesnika", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }else if(administratorTC.SelectedTab == administratorTC.TabPages["projektiTP"]) {
+                if(projektiDGW.SelectedRows.Count == 1) {
+                    new ProjekatFormular().SetValues(Convert.ToInt32(projektiDGW.SelectedCells[0].Value.ToString()));
+                    updateTables();
+                } else {
+                    MessageBox.Show("Morate selektovati projekat", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-			else
-			{
-				MessageBox.Show("Morate selektovati učesnika", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-			}
 		}
 
 		private void obrisatiBTN_Click(object sender, EventArgs e)
@@ -104,7 +110,7 @@ namespace ProjectManagementSystem
 			}
 			else if (administratorTC.SelectedTab == administratorTC.TabPages["projektiTP"])
 			{
-				azuriratiBTN.Enabled = false;
+				azuriratiBTN.Enabled = true;
 
 				projektiDGW.Rows.Clear();
 				List<Projekat> projekti = MySqlProjekatDao.Instance.Read(new Projekat());

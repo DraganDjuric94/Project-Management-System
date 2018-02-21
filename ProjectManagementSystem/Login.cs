@@ -47,5 +47,25 @@ namespace ProjectManagementSystem {
                 provjeriPrijavu();
             }
         }
+
+        private void korisnickoImeTXT_Click(object sender, EventArgs e) {
+            korisnickoImeTXT.SelectionStart = 0;
+            korisnickoImeTXT.SelectionLength = korisnickoImeTXT.Text.Length;
+        }
+
+        private void lozinkaTXT_Click(object sender, EventArgs e) {
+            lozinkaTXT.SelectionStart = 0;
+            lozinkaTXT.SelectionLength = lozinkaTXT.Text.Length;
+        }
+
+        private void korisnickoImeTXT_Enter(object sender, EventArgs e) {
+            korisnickoImeTXT.SelectionStart = 0;
+            korisnickoImeTXT.SelectionLength = korisnickoImeTXT.Text.Length;
+        }
+
+        private void lozinkaTXT_Enter(object sender, EventArgs e) {
+            lozinkaTXT.SelectionStart = 0;
+            lozinkaTXT.SelectionLength = lozinkaTXT.Text.Length;
+        }
     }
 }

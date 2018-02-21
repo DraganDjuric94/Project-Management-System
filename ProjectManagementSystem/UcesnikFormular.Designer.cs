@@ -46,6 +46,7 @@ namespace ProjectManagementSystem
             this.korisnickoImeKorektnoLBL = new System.Windows.Forms.Label();
             this.errorLBL = new System.Windows.Forms.Label();
             this.jmbgTXT = new System.Windows.Forms.MaskedTextBox();
+            this.staraLozinkaCBX = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // imeLBL
@@ -87,7 +88,7 @@ namespace ProjectManagementSystem
             // jmbgLBL
             // 
             this.jmbgLBL.AutoSize = true;
-            this.jmbgLBL.Location = new System.Drawing.Point(12, 194);
+            this.jmbgLBL.Location = new System.Drawing.Point(12, 223);
             this.jmbgLBL.Name = "jmbgLBL";
             this.jmbgLBL.Size = new System.Drawing.Size(39, 13);
             this.jmbgLBL.TabIndex = 13;
@@ -96,7 +97,7 @@ namespace ProjectManagementSystem
             // nazivUlogeLBL
             // 
             this.nazivUlogeLBL.AutoSize = true;
-            this.nazivUlogeLBL.Location = new System.Drawing.Point(12, 238);
+            this.nazivUlogeLBL.Location = new System.Drawing.Point(12, 267);
             this.nazivUlogeLBL.Name = "nazivUlogeLBL";
             this.nazivUlogeLBL.Size = new System.Drawing.Size(66, 13);
             this.nazivUlogeLBL.TabIndex = 14;
@@ -135,7 +136,7 @@ namespace ProjectManagementSystem
             // 
             this.nazivUlogeCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.nazivUlogeCB.FormattingEnabled = true;
-            this.nazivUlogeCB.Location = new System.Drawing.Point(104, 235);
+            this.nazivUlogeCB.Location = new System.Drawing.Point(104, 264);
             this.nazivUlogeCB.Name = "nazivUlogeCB";
             this.nazivUlogeCB.Size = new System.Drawing.Size(203, 21);
             this.nazivUlogeCB.TabIndex = 5;
@@ -146,7 +147,7 @@ namespace ProjectManagementSystem
             this.aktivanUcesnikCB.AutoSize = true;
             this.aktivanUcesnikCB.Checked = true;
             this.aktivanUcesnikCB.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.aktivanUcesnikCB.Location = new System.Drawing.Point(245, 271);
+            this.aktivanUcesnikCB.Location = new System.Drawing.Point(245, 301);
             this.aktivanUcesnikCB.Name = "aktivanUcesnikCB";
             this.aktivanUcesnikCB.Size = new System.Drawing.Size(62, 17);
             this.aktivanUcesnikCB.TabIndex = 6;
@@ -155,7 +156,7 @@ namespace ProjectManagementSystem
             // 
             // dodatiBTN
             // 
-            this.dodatiBTN.Location = new System.Drawing.Point(232, 333);
+            this.dodatiBTN.Location = new System.Drawing.Point(232, 361);
             this.dodatiBTN.Name = "dodatiBTN";
             this.dodatiBTN.Size = new System.Drawing.Size(75, 23);
             this.dodatiBTN.TabIndex = 7;
@@ -176,7 +177,7 @@ namespace ProjectManagementSystem
             this.errorLBL.AutoSize = true;
             this.errorLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errorLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.errorLBL.Location = new System.Drawing.Point(127, 303);
+            this.errorLBL.Location = new System.Drawing.Point(127, 331);
             this.errorLBL.Name = "errorLBL";
             this.errorLBL.Size = new System.Drawing.Size(180, 17);
             this.errorLBL.TabIndex = 15;
@@ -185,17 +186,30 @@ namespace ProjectManagementSystem
             // 
             // jmbgTXT
             // 
-            this.jmbgTXT.Location = new System.Drawing.Point(104, 194);
+            this.jmbgTXT.Location = new System.Drawing.Point(104, 223);
             this.jmbgTXT.Mask = "0000000000000";
             this.jmbgTXT.Name = "jmbgTXT";
             this.jmbgTXT.Size = new System.Drawing.Size(203, 20);
             this.jmbgTXT.TabIndex = 4;
             // 
+            // staraLozinkaCBX
+            // 
+            this.staraLozinkaCBX.AutoSize = true;
+            this.staraLozinkaCBX.Enabled = false;
+            this.staraLozinkaCBX.Location = new System.Drawing.Point(189, 189);
+            this.staraLozinkaCBX.Name = "staraLozinkaCBX";
+            this.staraLozinkaCBX.Size = new System.Drawing.Size(118, 17);
+            this.staraLozinkaCBX.TabIndex = 16;
+            this.staraLozinkaCBX.Text = "Ostavi staru lozinku";
+            this.staraLozinkaCBX.UseVisualStyleBackColor = true;
+            this.staraLozinkaCBX.CheckedChanged += new System.EventHandler(this.staraLozinkaCBX_CheckedChanged);
+            // 
             // UčesnikFormular
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(325, 368);
+            this.ClientSize = new System.Drawing.Size(325, 396);
+            this.Controls.Add(this.staraLozinkaCBX);
             this.Controls.Add(this.jmbgTXT);
             this.Controls.Add(this.errorLBL);
             this.Controls.Add(this.korisnickoImeKorektnoLBL);
@@ -241,5 +255,6 @@ namespace ProjectManagementSystem
 		private System.Windows.Forms.Label korisnickoImeKorektnoLBL;
         private System.Windows.Forms.Label errorLBL;
         private System.Windows.Forms.MaskedTextBox jmbgTXT;
+        private System.Windows.Forms.CheckBox staraLozinkaCBX;
     }
 }

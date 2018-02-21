@@ -67,6 +67,8 @@
             this.korisnickoImeTXT.Name = "korisnickoImeTXT";
             this.korisnickoImeTXT.Size = new System.Drawing.Size(248, 20);
             this.korisnickoImeTXT.TabIndex = 0;
+            this.korisnickoImeTXT.Click += new System.EventHandler(this.korisnickoImeTXT_Click);
+            this.korisnickoImeTXT.Enter += new System.EventHandler(this.korisnickoImeTXT_Enter);
             // 
             // dobrodosliLBL
             // 
@@ -85,6 +87,8 @@
             this.lozinkaTXT.PasswordChar = '*';
             this.lozinkaTXT.Size = new System.Drawing.Size(248, 20);
             this.lozinkaTXT.TabIndex = 1;
+            this.lozinkaTXT.Click += new System.EventHandler(this.lozinkaTXT_Click);
+            this.lozinkaTXT.Enter += new System.EventHandler(this.lozinkaTXT_Enter);
             this.lozinkaTXT.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lozinkaTXT_KeyDown);
             // 
             // Login

@@ -319,6 +319,14 @@ namespace ProjectManagementSystem {
                     //nista
                 }
             }
+            azrirajTSB.Enabled = false;
+            obrisiTSB.Enabled = false;
+            dodajAktivnostTSB.Enabled = false;
+            dodajZadatakTSB.Enabled = false;
+            prikaziIzvjestajTSB.Enabled = false;
+            dodajUcesnikaTSB.Enabled = false;
+            detaljiPNL.Controls.Clear();
+
         }
 
         private void updateTSB_Click(object sender, EventArgs e) {

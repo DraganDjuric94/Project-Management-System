@@ -14,6 +14,9 @@ namespace ProjectManagementSystem
 {
 	public partial class ProjekatFormular : Form
 	{
+        private bool edit = false;
+        private Projekat projekat = new Projekat();
+        private string stariNaziv = "";
 		public ProjekatFormular()
 		{
 			InitializeComponent();
@@ -23,14 +26,41 @@ namespace ProjectManagementSystem
 		{
 			if (nazivKorektnoLBL.Text.Equals("korektno") && validniPodaci())
 			{
-                dodatiBTN.Enabled = false;
-				Dictionary<Ucesnik, Uloga> ucesnici = new Dictionary<Ucesnik, Uloga>();
-				List<Ucesnik> ucesnik = MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = sefProjektaCB.Text });
-				List<Uloga> uloga = MySqlUlogaDao.Instance.Read(new Uloga { Naziv = "sef" });
-				ucesnici.Add(ucesnik[0], uloga[0]);
-				MySqlProjekatDao.Instance.Create(new Projekat { Naziv = nazivTXT.Text, DatumKreiranja = Convert.ToDateTime(DateTime.Now.ToString()), Aktivan = true, UcesniciNaProjektu = ucesnici });
-				MessageBox.Show("Projekat je uspješno unešen", "Obavještenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-				this.Close();
+                if (!edit) {
+                    dodatiBTN.Enabled = false;
+                    Dictionary<Ucesnik, Uloga> ucesnici = new Dictionary<Ucesnik, Uloga>();
+                    List<Ucesnik> ucesnik = MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = sefProjektaCB.Text });
+                    List<Uloga> uloga = MySqlUlogaDao.Instance.Read(new Uloga { Naziv = "sef" });
+                    ucesnici.Add(ucesnik[0], uloga[0]);
+                    MySqlProjekatDao.Instance.Create(new Projekat { Naziv = nazivTXT.Text, DatumKreiranja = Convert.ToDateTime(DateTime.Now.ToString()), Aktivan = aktivanCBX.Checked, UcesniciNaProjektu = ucesnici });
+                    MessageBox.Show("Projekat je uspješno unešen", "Obavještenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                } else {
+                    if (MySqlProjekatDao.Instance.Read(new Projekat { ProjekatID = projekat.ProjekatID }).Count > 0) {
+                        List<Projekat> projekti = MySqlProjekatDao.Instance.Read(new Projekat { ProjekatID = projekat.ProjekatID });
+                        projekti[0].Naziv = nazivTXT.Text;
+                        Ucesnik sef = null;
+                        foreach (Ucesnik u in projekat.UcesniciNaProjektu.Keys) {
+                            if (projekat.UcesniciNaProjektu[u].Naziv.Equals("sef")) {
+                                sef = u;
+                                break;
+                            }
+                        }
+                        if (sef != null) {
+                            if (MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = sefProjektaCB.SelectedItem.ToString(), Aktivan = true }).Count > 0 && MySqlUlogaDao.Instance.Read(new Uloga { Naziv = "sef" }).Count > 0) {
+                                Ucesnik noviSef = MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = sefProjektaCB.SelectedItem.ToString() })[0];
+                                Uloga sefovska = MySqlUlogaDao.Instance.Read(new Uloga { Naziv = "sef" })[0];
+                                projekti[0].UcesniciNaProjektu.Remove(sef);
+                                projekti[0].UcesniciNaProjektu.Add(noviSef, sefovska);
+                                projekti[0].Aktivan = aktivanCBX.Checked;
+                                MySqlProjekatDao.Instance.Update(projekti[0]);
+                                MessageBox.Show("Projekat je uspješno ažuriran", "Obavještenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                this.Close();
+                            }
+                        }
+                        this.Close();
+                    }
+                }
             } else {
                 errorLBL.Visible = true;
             }
@@ -39,7 +69,7 @@ namespace ProjectManagementSystem
 		private void nazivTXT_TextChanged(object sender, EventArgs e)
 		{
 			List<Projekat> projekti = MySqlProjekatDao.Instance.Read(new Projekat { Naziv = nazivTXT.Text });
-			if (projekti.Count == 0)
+			if (projekti.Count == 0 || (edit && nazivTXT.Text.Equals(stariNaziv)))
 			{
 				nazivKorektnoLBL.Text = "korektno";
 			}
@@ -51,15 +81,7 @@ namespace ProjectManagementSystem
 
 		private void sefProjektaCB_MouseClick(object sender, EventArgs e)
 		{
-			List<Ucesnik> ucesnici = MySqlUcesnikDao.Instance.Read(new Ucesnik());
-			sefProjektaCB.Items.Clear();
-			foreach (Ucesnik ucesnik in ucesnici)
-			{
-				if (ucesnik.Aktivan == true && ucesnik.Uloga.Naziv.Equals("korisnik"))
-				{
-					sefProjektaCB.Items.Add(ucesnik.KorisnickoIme);
-				}
-			}
+            popuniComboBoxSef();
 		}
 
         private bool validniPodaci() {
@@ -67,5 +89,45 @@ namespace ProjectManagementSystem
                 return true;
             return false;
         }
-	}
+
+        private void popuniComboBoxSef() {
+            List<Ucesnik> ucesnici = MySqlUcesnikDao.Instance.Read(new Ucesnik());
+            sefProjektaCB.Items.Clear();
+            foreach (Ucesnik ucesnik in ucesnici) {
+                if (ucesnik.Aktivan == true && ucesnik.Uloga.Naziv.Equals("korisnik")) {
+                    sefProjektaCB.Items.Add(ucesnik.KorisnickoIme);
+                }
+            }
+        }
+
+        public void SetValues(Int32 IDProjekat) {
+            List<Projekat> projekti = MySqlProjekatDao.Instance.Read(new Projekat { ProjekatID = IDProjekat });
+            if (projekti.Count > 0) {
+                edit = true;
+                projekat = projekti[0];
+                aktivanCBX.Checked = Convert.ToBoolean(projekti[0].Aktivan);
+                stariNaziv = projekti[0].Naziv;
+                nazivTXT.Text = projekti[0].Naziv;
+                popuniComboBoxSef();
+                string sefKorIme = "";
+                foreach(Ucesnik u in projekti[0].UcesniciNaProjektu.Keys) {
+                    if (projekti[0].UcesniciNaProjektu[u].Naziv.Equals("sef")) {
+                        sefKorIme = u.KorisnickoIme;
+                        break;
+                    }
+                }
+                foreach (String s in sefProjektaCB.Items) {
+                    if (s.Equals(sefKorIme)) {
+                        sefProjektaCB.SelectedItem = s;
+                        break;
+                    }
+                }
+                this.ShowDialog();
+            }
+
+
+
+        }
+
+    }
 }

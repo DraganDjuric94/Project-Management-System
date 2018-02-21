@@ -35,6 +35,7 @@
             this.sefProjektaLBL = new System.Windows.Forms.Label();
             this.sefProjektaCB = new System.Windows.Forms.ComboBox();
             this.errorLBL = new System.Windows.Forms.Label();
+            this.aktivanCBX = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // nazivLBL
@@ -56,11 +57,11 @@
             // 
             // dodatiBTN
             // 
-            this.dodatiBTN.Location = new System.Drawing.Point(265, 139);
+            this.dodatiBTN.Location = new System.Drawing.Point(265, 161);
             this.dodatiBTN.Name = "dodatiBTN";
             this.dodatiBTN.Size = new System.Drawing.Size(75, 23);
             this.dodatiBTN.TabIndex = 2;
-            this.dodatiBTN.Text = "Dodaj";
+            this.dodatiBTN.Text = "Sačuvaj";
             this.dodatiBTN.UseVisualStyleBackColor = true;
             this.dodatiBTN.Click += new System.EventHandler(this.dodatiBTN_Click);
             // 
@@ -96,18 +97,31 @@
             this.errorLBL.AutoSize = true;
             this.errorLBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errorLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.errorLBL.Location = new System.Drawing.Point(160, 108);
+            this.errorLBL.Location = new System.Drawing.Point(160, 131);
             this.errorLBL.Name = "errorLBL";
             this.errorLBL.Size = new System.Drawing.Size(180, 17);
             this.errorLBL.TabIndex = 6;
             this.errorLBL.Text = "Unešeni podaci nisu validni";
             this.errorLBL.Visible = false;
             // 
+            // aktivanCBX
+            // 
+            this.aktivanCBX.AutoSize = true;
+            this.aktivanCBX.Checked = true;
+            this.aktivanCBX.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.aktivanCBX.Location = new System.Drawing.Point(278, 111);
+            this.aktivanCBX.Name = "aktivanCBX";
+            this.aktivanCBX.Size = new System.Drawing.Size(62, 17);
+            this.aktivanCBX.TabIndex = 7;
+            this.aktivanCBX.Text = "Aktivan";
+            this.aktivanCBX.UseVisualStyleBackColor = true;
+            // 
             // ProjekatFormular
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(352, 169);
+            this.ClientSize = new System.Drawing.Size(352, 196);
+            this.Controls.Add(this.aktivanCBX);
             this.Controls.Add(this.errorLBL);
             this.Controls.Add(this.sefProjektaCB);
             this.Controls.Add(this.sefProjektaLBL);
@@ -135,5 +149,6 @@
 		private System.Windows.Forms.Label sefProjektaLBL;
 		private System.Windows.Forms.ComboBox sefProjektaCB;
         private System.Windows.Forms.Label errorLBL;
+        private System.Windows.Forms.CheckBox aktivanCBX;
     }
 }
