@@ -36,7 +36,7 @@ namespace ProjectManagementSystem
                 Cjelina nadcjelina = MySqlCjelinaDao.Instance.Read(new Cjelina { CjelinaID = nadcjelinaID, Aktivna = true })[0];
                 int? max = nadcjelina.BrojPotrebnihCovjekCasova;
                 foreach (Cjelina c in nadcjelina.Podcjeline) {
-                    if (c.CjelinaRoditeljID == nadcjelina.CjelinaID) {
+                    if (c.CjelinaRoditeljID == nadcjelina.CjelinaID && (cj == null || (cj != null && c.CjelinaID != cj.CjelinaID))) {
                         max -= c.BrojPotrebnihCovjekCasova;
                     }
                 }
