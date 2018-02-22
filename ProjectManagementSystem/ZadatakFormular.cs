@@ -48,7 +48,11 @@ namespace ProjectManagementSystem
                 if (!cj.Rok.Value.Date.Equals(cj.DatumKreiranja.Value.Date)) {
                     rokDateTimePicker.Value = Convert.ToDateTime(cj.Rok);
                 }
-                brojPotrebnihCovjekCasovaNumericUpDown.Value = Convert.ToInt32(cj.BrojPotrebnihCovjekCasova);
+                if (cj.BrojPotrebnihCovjekCasova <= brojPotrebnihCovjekCasovaNumericUpDown.Maximum && cj.BrojPotrebnihCovjekCasova >= brojPotrebnihCovjekCasovaNumericUpDown.Minimum) {
+                    brojPotrebnihCovjekCasovaNumericUpDown.Value = Convert.ToInt32(cj.BrojPotrebnihCovjekCasova);
+                } else {
+                    brojPotrebnihCovjekCasovaNumericUpDown.Value = brojPotrebnihCovjekCasovaNumericUpDown.Maximum;
+                }
                 foreach (Ucesnik u in cj.Ucesnici) {
                     ucesniciZadatkaListBox.Items.Add(u.Ime + " " + u.Prezime + " \"" + u.KorisnickoIme + "\"");
                 }
