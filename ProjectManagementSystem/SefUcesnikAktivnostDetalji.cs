@@ -68,10 +68,14 @@ namespace ProjectManagementSystem {
 
         private void obrisiDokumentBTN_Click(object sender, EventArgs e) {
             if(dokumentiLVW.SelectedItems.Count > 0) {
-                if (MySqlDokumentDao.Instance.Read(new Dokument { DokumentID = Convert.ToInt32(dokumentiLVW.SelectedItems[0].Text.Split('.')[0]), Aktivan = true }).Count > 0) {
-                    Dokument d = MySqlDokumentDao.Instance.Read(new Dokument { DokumentID = Convert.ToInt32(dokumentiLVW.SelectedItems[0].Text.Split('.')[0]), Aktivan = true })[0];
-                    MySqlDokumentDao.Instance.Delete(Convert.ToInt32(d.DokumentID));
-                    projektiForma.prikaziDetaljeByTipAndId("a", aktivnost.AktivnostID);
+                BrisanjeForma forma = new BrisanjeForma();
+                forma.ShowDialog();
+                if (forma.DialogResult == DialogResult.Yes) {
+                    if (MySqlDokumentDao.Instance.Read(new Dokument { DokumentID = Convert.ToInt32(dokumentiLVW.SelectedItems[0].Text.Split('.')[0]), Aktivan = true }).Count > 0) {
+                        Dokument d = MySqlDokumentDao.Instance.Read(new Dokument { DokumentID = Convert.ToInt32(dokumentiLVW.SelectedItems[0].Text.Split('.')[0]), Aktivan = true })[0];
+                        MySqlDokumentDao.Instance.Delete(Convert.ToInt32(d.DokumentID));
+                        projektiForma.prikaziDetaljeByTipAndId("a", aktivnost.AktivnostID);
+                    }
                 }
             }
         }

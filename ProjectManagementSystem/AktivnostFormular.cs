@@ -47,7 +47,7 @@ namespace ProjectManagementSystem
         }
 
         private void izmijeniButton_Click(object sender, EventArgs e) {
-            if (MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = Convert.ToInt32(ucesniciListBox.SelectedItems[0].Text.Split('.')[0]), Aktivan = true }).Count > 0) {
+            if (ucesniciListBox.SelectedItems.Count > 0 && MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = Convert.ToInt32(ucesniciListBox.SelectedItems[0].Text.Split('.')[0]), Aktivan = true }).Count > 0) {
                 Ucesnik uc = MySqlUcesnikDao.Instance.Read(new Ucesnik { UcesnikID = Convert.ToInt32(ucesniciListBox.SelectedItems[0].Text.Split('.')[0]), Aktivan = true })[0];
                 int val = 0;
                 if (Svi.ContainsKey(uc)) {

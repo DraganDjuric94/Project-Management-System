@@ -38,7 +38,6 @@
             this.dokumentiGBX = new System.Windows.Forms.GroupBox();
             this.obrisiDokumentBTN = new System.Windows.Forms.Button();
             this.transakcijeGBX = new System.Windows.Forms.GroupBox();
-            this.obrisiTransakcijuBTN = new System.Windows.Forms.Button();
             this.dodajTransakcijuBTN = new System.Windows.Forms.Button();
             this.zavrsenaAktivnostStatusLBL = new System.Windows.Forms.Label();
             this.dokumentiGBX.SuspendLayout();
@@ -124,7 +123,7 @@
             // 
             // izmijeniTransakcijuBTN
             // 
-            this.izmijeniTransakcijuBTN.Location = new System.Drawing.Point(6, 203);
+            this.izmijeniTransakcijuBTN.Location = new System.Drawing.Point(160, 203);
             this.izmijeniTransakcijuBTN.Name = "izmijeniTransakcijuBTN";
             this.izmijeniTransakcijuBTN.Size = new System.Drawing.Size(86, 23);
             this.izmijeniTransakcijuBTN.TabIndex = 1;
@@ -190,7 +189,6 @@
             // 
             // transakcijeGBX
             // 
-            this.transakcijeGBX.Controls.Add(this.obrisiTransakcijuBTN);
             this.transakcijeGBX.Controls.Add(this.dodajTransakcijuBTN);
             this.transakcijeGBX.Controls.Add(this.transakcijeLVW);
             this.transakcijeGBX.Controls.Add(this.izmijeniTransakcijuBTN);
@@ -201,19 +199,9 @@
             this.transakcijeGBX.TabStop = false;
             this.transakcijeGBX.Text = "Prihodi/rashodi";
             // 
-            // obrisiTransakcijuBTN
-            // 
-            this.obrisiTransakcijuBTN.Location = new System.Drawing.Point(179, 203);
-            this.obrisiTransakcijuBTN.Name = "obrisiTransakcijuBTN";
-            this.obrisiTransakcijuBTN.Size = new System.Drawing.Size(75, 23);
-            this.obrisiTransakcijuBTN.TabIndex = 3;
-            this.obrisiTransakcijuBTN.Text = "Obriši";
-            this.obrisiTransakcijuBTN.UseVisualStyleBackColor = true;
-            this.obrisiTransakcijuBTN.Click += new System.EventHandler(this.obrisiTransakcijuBTN_Click);
-            // 
             // dodajTransakcijuBTN
             // 
-            this.dodajTransakcijuBTN.Location = new System.Drawing.Point(98, 203);
+            this.dodajTransakcijuBTN.Location = new System.Drawing.Point(252, 203);
             this.dodajTransakcijuBTN.Name = "dodajTransakcijuBTN";
             this.dodajTransakcijuBTN.Size = new System.Drawing.Size(75, 23);
             this.dodajTransakcijuBTN.TabIndex = 2;
@@ -269,7 +257,6 @@
         private System.Windows.Forms.Button izmijeniDokumentBTN;
         private System.Windows.Forms.GroupBox dokumentiGBX;
         private System.Windows.Forms.GroupBox transakcijeGBX;
-        private System.Windows.Forms.Button obrisiTransakcijuBTN;
         private System.Windows.Forms.Button dodajTransakcijuBTN;
         private System.Windows.Forms.Button obrisiDokumentBTN;
         private System.Windows.Forms.Label zavrsenaAktivnostStatusLBL;

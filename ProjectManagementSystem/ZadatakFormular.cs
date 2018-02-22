@@ -45,7 +45,9 @@ namespace ProjectManagementSystem
             if (cj != null) {
                 cjelina = cj;
                 nazivTextBox.Text = cj.Naziv;
-                rokDateTimePicker.Value = Convert.ToDateTime(cj.Rok);
+                if (!cj.Rok.Value.Date.Equals(cj.DatumKreiranja.Value.Date)) {
+                    rokDateTimePicker.Value = Convert.ToDateTime(cj.Rok);
+                }
                 brojPotrebnihCovjekCasovaNumericUpDown.Value = Convert.ToInt32(cj.BrojPotrebnihCovjekCasova);
                 foreach (Ucesnik u in cj.Ucesnici) {
                     ucesniciZadatkaListBox.Items.Add(u.Ime + " " + u.Prezime + " \"" + u.KorisnickoIme + "\"");

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,6 +39,7 @@ namespace ProjectManagementSystem {
                 if (edit) {
                     if (validanFajl != null) {
                         string novaPutanja = "Dokumenti\\" + aktivnost.Naziv + DateTime.Now.ToString("yyMMddHHmmssff") + System.IO.Path.GetExtension(validanFajl.FileName);
+                        Directory.CreateDirectory("Dokumenti");
                         System.IO.File.Copy(validanFajl.FileName, novaPutanja, true);
                         dokument.Putanja = novaPutanja;
                         dokument.DatumKreiranja = DateTime.Now;
@@ -54,6 +56,7 @@ namespace ProjectManagementSystem {
                 } else {
                     if (validanFajl != null) {
                         string novaPutanja = "Dokumenti\\" + aktivnost.Naziv + DateTime.Now.ToString("yyMMddHHmmssff") + System.IO.Path.GetExtension(validanFajl.FileName);
+                        Directory.CreateDirectory("Dokumenti");
                         System.IO.File.Copy(validanFajl.FileName, novaPutanja, true);
                         dokument.Putanja = novaPutanja;
                         dokument.Napomena = napomenaTBX.Text;
