@@ -31,7 +31,7 @@ namespace ProjectManagementSystem {
             if (!korisnickoImeTXT.Text.Equals("") && !lozinkaTXT.Text.Equals("")) {
                 List<Ucesnik> ucesnik = MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = korisnickoImeTXT.Text, Lozinka = hashLozinke, Aktivan = true });
                 if (ucesnik.Count() == 0) {
-                    MessageBox.Show("Korisnik sa unjetim informacijama ne postoji.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Korisnik sa unešenim informacijama ne postoji.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 } else if (ucesnik[0].Uloga.Naziv.Equals("administrator")) {
                     new Administrator().Show();
                     this.Hide();
