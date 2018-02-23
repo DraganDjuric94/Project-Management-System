@@ -90,6 +90,7 @@
             this.sefProjektaCB.Name = "sefProjektaCB";
             this.sefProjektaCB.Size = new System.Drawing.Size(238, 21);
             this.sefProjektaCB.TabIndex = 1;
+            this.sefProjektaCB.SelectedIndexChanged += new System.EventHandler(this.sefProjektaCB_SelectedIndexChanged);
             this.sefProjektaCB.MouseClick += new System.Windows.Forms.MouseEventHandler(this.sefProjektaCB_MouseClick);
             // 
             // errorLBL

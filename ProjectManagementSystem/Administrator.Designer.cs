@@ -97,6 +97,7 @@
             this.ucesnikUlogaAktivna});
             this.korisniciDGW.Location = new System.Drawing.Point(0, 0);
             this.korisniciDGW.Name = "korisniciDGW";
+            this.korisniciDGW.ReadOnly = true;
             this.korisniciDGW.Size = new System.Drawing.Size(1043, 468);
             this.korisniciDGW.TabIndex = 0;
             // 
@@ -104,56 +105,67 @@
             // 
             this.ucesnikID.HeaderText = "ID";
             this.ucesnikID.Name = "ucesnikID";
+            this.ucesnikID.ReadOnly = true;
             // 
             // ucesnikIme
             // 
             this.ucesnikIme.HeaderText = "Ime";
             this.ucesnikIme.Name = "ucesnikIme";
+            this.ucesnikIme.ReadOnly = true;
             // 
             // ucesnikPrezime
             // 
             this.ucesnikPrezime.HeaderText = "Prezime";
             this.ucesnikPrezime.Name = "ucesnikPrezime";
+            this.ucesnikPrezime.ReadOnly = true;
             // 
             // ucesnikKorisnickoIme
             // 
             this.ucesnikKorisnickoIme.HeaderText = "Korisničko ime";
             this.ucesnikKorisnickoIme.Name = "ucesnikKorisnickoIme";
+            this.ucesnikKorisnickoIme.ReadOnly = true;
             // 
             // ucesnikLozinka
             // 
             this.ucesnikLozinka.HeaderText = "Lozinka";
             this.ucesnikLozinka.Name = "ucesnikLozinka";
+            this.ucesnikLozinka.ReadOnly = true;
             // 
             // ucesnikJmbg
             // 
             this.ucesnikJmbg.HeaderText = "Jmbg";
             this.ucesnikJmbg.Name = "ucesnikJmbg";
+            this.ucesnikJmbg.ReadOnly = true;
             // 
             // ucesnikAktivan
             // 
             this.ucesnikAktivan.HeaderText = "Aktivan";
             this.ucesnikAktivan.Name = "ucesnikAktivan";
+            this.ucesnikAktivan.ReadOnly = true;
             // 
             // ucesnikUlogaID
             // 
             this.ucesnikUlogaID.HeaderText = "ID uloge";
             this.ucesnikUlogaID.Name = "ucesnikUlogaID";
+            this.ucesnikUlogaID.ReadOnly = true;
             // 
             // ucesnikUlogaNaziv
             // 
             this.ucesnikUlogaNaziv.HeaderText = "Naziv uloge";
             this.ucesnikUlogaNaziv.Name = "ucesnikUlogaNaziv";
+            this.ucesnikUlogaNaziv.ReadOnly = true;
             // 
             // ucesnikPoslovnaLogika
             // 
             this.ucesnikPoslovnaLogika.HeaderText = "Poslovna logika";
             this.ucesnikPoslovnaLogika.Name = "ucesnikPoslovnaLogika";
+            this.ucesnikPoslovnaLogika.ReadOnly = true;
             // 
             // ucesnikUlogaAktivna
             // 
             this.ucesnikUlogaAktivna.HeaderText = "Aktivna uloga";
             this.ucesnikUlogaAktivna.Name = "ucesnikUlogaAktivna";
+            this.ucesnikUlogaAktivna.ReadOnly = true;
             // 
             // projektiTP
             // 
@@ -177,6 +189,7 @@
             this.projekatAktivan});
             this.projektiDGW.Location = new System.Drawing.Point(0, 0);
             this.projektiDGW.Name = "projektiDGW";
+            this.projektiDGW.ReadOnly = true;
             this.projektiDGW.Size = new System.Drawing.Size(1044, 471);
             this.projektiDGW.TabIndex = 0;
             // 
@@ -184,21 +197,25 @@
             // 
             this.projekatID.HeaderText = "ID";
             this.projekatID.Name = "projekatID";
+            this.projekatID.ReadOnly = true;
             // 
             // projekatNaziv
             // 
             this.projekatNaziv.HeaderText = "Naziv";
             this.projekatNaziv.Name = "projekatNaziv";
+            this.projekatNaziv.ReadOnly = true;
             // 
             // projekatDatumKreiranja
             // 
             this.projekatDatumKreiranja.HeaderText = "Datum Kreiranja";
             this.projekatDatumKreiranja.Name = "projekatDatumKreiranja";
+            this.projekatDatumKreiranja.ReadOnly = true;
             // 
             // projekatAktivan
             // 
             this.projekatAktivan.HeaderText = "Aktivan";
             this.projekatAktivan.Name = "projekatAktivan";
+            this.projekatAktivan.ReadOnly = true;
             // 
             // dodatiBTN
             // 

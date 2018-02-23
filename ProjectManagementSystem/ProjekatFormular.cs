@@ -50,6 +50,16 @@ namespace ProjectManagementSystem
                             if (MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = sefProjektaCB.SelectedItem.ToString(), Aktivan = true }).Count > 0 && MySqlUlogaDao.Instance.Read(new Uloga { Naziv = "sef" }).Count > 0) {
                                 Ucesnik noviSef = MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = sefProjektaCB.SelectedItem.ToString() })[0];
                                 Uloga sefovska = MySqlUlogaDao.Instance.Read(new Uloga { Naziv = "sef" })[0];
+
+                                if (projekti[0].UcesniciNaProjektu.Keys.Contains(noviSef) && noviSef.UcesnikID != sef.UcesnikID) {
+                                    projekti[0].UcesniciNaProjektu.Remove(noviSef);
+                                    foreach (Cjelina c in projekti[0].Cjeline) {
+                                        if (c.Ucesnici.Contains(noviSef)) {
+                                            c.Ucesnici.Remove(noviSef);
+                                            MySqlCjelinaDao.Instance.Update(c);
+                                        }
+                                    }
+                                }
                                 projekti[0].UcesniciNaProjektu.Remove(sef);
                                 projekti[0].UcesniciNaProjektu.Add(noviSef, sefovska);
                                 projekti[0].Aktivan = aktivanCBX.Checked;
@@ -129,5 +139,23 @@ namespace ProjectManagementSystem
 
         }
 
+        private void provjeriPostojanje() {
+            if(sefProjektaCB.SelectedItem != null && edit) {
+                string izabraniSef = sefProjektaCB.SelectedItem.ToString();
+                if(MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = izabraniSef, Aktivan = true }).Count > 0) {
+                    Ucesnik noviSef = MySqlUcesnikDao.Instance.Read(new Ucesnik { KorisnickoIme = izabraniSef, Aktivan = true })[0];
+                    foreach(Ucesnik u in projekat.UcesniciNaProjektu.Keys) {
+                        if(u.UcesnikID == noviSef.UcesnikID && !projekat.UcesniciNaProjektu[u].Naziv.Equals("sef")) {
+                            MessageBox.Show("Izabrani korisnik već učestvuje na tom projektu. Akcija \"Sačuvaj\" će izbaciti datog korisnika sa svih zadataka na kojima je učestvovao i unaprijediti ga u šefa projekta. Ukoliko ovo nije željeni efekat, izaberite drugog šefa projekta", "Obavještenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void sefProjektaCB_SelectedIndexChanged(object sender, EventArgs e) {
+            provjeriPostojanje();
+        }
     }
 }
